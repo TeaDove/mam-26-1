@@ -1,5 +1,7 @@
 # Source textbooks
 
+Two textbooks were taken for this lab: **tanaka1981** and **stat3**.
+
 Direct download links from Yandex Disk (as received on 2026-09-20). These are signed
 temporary links and expire after a few hours; the PDFs themselves are kept outside the
 repository on the Raspberry Pi (`~/lab2-data/pdf/`) and on `worker-pc` (`~/lab2/pdf/`).

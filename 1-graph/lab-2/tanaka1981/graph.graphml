@@ -1,0 +1,1088 @@
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d0" for="edge" attr.name="weight" attr.type="double" />
+  <graph edgedefault="undirected">
+    <node id="CONTROLLED ROLLING" />
+    <node id="STEEL" />
+    <node id="AUSTENITE" />
+    <node id="FERRITE" />
+    <node id="NIOBIUM" />
+    <node id="CHARPY TEST" />
+    <node id="MECHANICAL PROPERTIES" />
+    <node id="GRAIN STRUCTURE" />
+    <node id="MIZUSHIMA LABORATORY" />
+    <node id="IMR/79" />
+    <node id="DEFORMATION" />
+    <node id="RECRYSTALLIZATION" />
+    <node id="NICKEL" />
+    <node id="HIGH TEMPERATURE" />
+    <node id="LOW TEMPERATURE" />
+    <node id="NB-FREE STEEL" />
+    <node id="PRECIPITATION HARDENING" />
+    <node id="BAINITE" />
+    <node id="NOTCH TOUGHNESS" />
+    <node id="BISRA GROUP" />
+    <node id="HALL AND PETCH" />
+    <node id="LOW FINISHING TEMPERATURE" />
+    <node id="FINE &#913;" />
+    <node id="COARSE &#915;" />
+    <node id="PEARLITE-FREE STEEL" />
+    <node id="DUCKWORTH ET AL." />
+    <node id="PEARLITE-REDUCED STEEL" />
+    <node id="GAMMA" />
+    <node id="ALPHA" />
+    <node id="FINE-GRAINED" />
+    <node id="WARM-WORKED" />
+    <node id="CONTINUOUS ROLLING" />
+    <node id="COARSE GRAIN" />
+    <node id="UPPER BAINITIC STRUCTURE" />
+    <node id="COOLING" />
+    <node id="GRAIN BOUNDARIES" />
+    <node id="TRANSFORMATION MODE" />
+    <node id="DEFORMATION BAND" />
+    <node id="SUBGRAIN" />
+    <node id="STRENGTH" />
+    <node id="BAINITIC STRUCTURE" />
+    <node id="STATIC RECRYSTALLIZATION" />
+    <node id="CARRIAGE" />
+    <node id="DYNAMIC RECOVERY" />
+    <node id="DYNAMIC RECRYSTALLIZATION" />
+    <node id="FLOW STRESS" />
+    <node id="TEMPERATURE" />
+    <node id="ZENER-HOLLOMON PARAMETER" />
+    <node id="GRAIN SIZE" />
+    <node id="ASTM NO. 2 TO 7" />
+    <node id="CONDUSIVE ROLLING" />
+    <node id="NB STEEL" />
+    <node id="PLAIN C STEEL" />
+    <node id="GRAIN REFINEMENT" />
+    <node id="COARSE GRAIN STRUCTURE" />
+    <node id="HUGE GRAINS" />
+    <node id="MIXED GRAIN STRUCTURE" />
+    <node id="REDUCTION" />
+    <node id="C STEEL" />
+    <node id="MATRIX" />
+    <node id="LOW-TEMPERATURE TOUGHNESS" />
+    <node id="FINE GRAIN" />
+    <node id="CRITICAL AMOUNT OF REDUCTION" />
+    <node id="NB" />
+    <node id="RPT DIAGRAM" />
+    <node id="AVRAMI'S LAW" />
+    <node id="ISOTHERMAL HOLDING" />
+    <node id="PRECIPITATION" />
+    <node id="TIME CONSTANT" />
+    <node id="TIME-TEMPERATURE-PRECIPITATION DIAGRAM" />
+    <node id="DEFORMATION TEMPERATURE" />
+    <node id="GRAIN-BOUNDARY AREA" />
+    <node id="NON-RECRYSTALLIZATION REGION" />
+    <node id="NUCLEATION RATE" />
+    <node id="DISLOCATION DENSITY" />
+    <node id="ASTM GRAIN-SIZE NO." />
+    <node id="TRANSFORMATION" />
+    <node id="HEAVY ROLLING" />
+    <node id="TWO-PHASE REGION" />
+    <node id="MICROSTRUCTURAL CHANGE" />
+    <node id="YIELD STRENGTH" />
+    <node id="TENSILE STRENGTH" />
+    <node id="TRANSFORMATION TEMPERATURE" />
+    <node id="NICKEL-BORON STEEL" />
+    <node id="BORON" />
+    <node id="NB(C, N)" />
+    <node id="SUBGRAINS" />
+    <node id="CHARPY IMPACT PROPERTIES" />
+    <node id="INTERACTION" />
+    <node id="DILATOMETRIC METHODS" />
+    <node id="STRIAN-INDUCED AR3 TEMPERATURE" />
+    <node id="MARTENSITE" />
+    <node id="POLYGONAL FERRITE" />
+    <node id="PEARLITE" />
+    <node id="CONTROLLED-ROLLED STEEL" />
+    <node id="TEXTURE DEVELOPMENT" />
+    <node id="INTENSITY IN TEXTURE" />
+    <node id="LOW MN AND/OR NI CONTENT" />
+    <node id="HIGH MN AND/OR NI CONTENT" />
+    <node id="PLANE ANISOTROPY" />
+    <node id="EMBRITTLEMENT" />
+    <node id="TRANSITION TEMPERATURE" />
+    <node id="CHARPY IMPACT ENERGY" />
+    <node id="INAGAKI ET AL." />
+    <node id="TANAKA" />
+    <node id="SUSCEPTIBILITY TO CLEAVAGE FRACTURE" />
+    <node id="MNS" />
+    <node id="SEPARATION" />
+    <node id="CLEAVAGE FRACTURE" />
+    <node id="DIMENSIONAL ANISOTROPY" />
+    <node id="UNAXIAL YIELD STRESS" />
+    <node id="CONTROLLED-ROLLED STEELS" />
+    <node id="SULPHIDE" />
+    <node id="MARTENSITIC STRUCTURE" />
+    <node id="CR" />
+    <node id="HALL-PETCH RELATION" />
+    <node id="SUBGRAIN HARDENING" />
+    <node id="RARE EARTH METALS" />
+    <node id="TEMPER EMBRITTLEMENT" />
+    <node id="TEXTURE HARDENING" />
+    <node id="BAND DENSITY" />
+    <node id="BAND STRUCTURE" />
+    <node id="COLD ROLLING" />
+    <node id="DUCTILE-TO-BRITTLE TRANSITION TEMPERATURE" />
+    <node id="BAINITIC STEEL" />
+    <node id="EFFECTIVE GRAIN SIZE" />
+    <node id="DISLOCATION HARDENING" />
+    <node id="SEPARATIONS" />
+    <node id="SECOND-PHASE PARTICLES" />
+    <node id="SUB-GRAIN STRUCTURE" />
+    <node id="CONSTANTS" />
+    <node id="FOREST DISLOCATIONS" />
+    <node id="AUSTENITE-FERRITE REGION" />
+    <node id="ALLOYING ELEMENTS" />
+    <node id="C-MN STEEL" />
+    <node id="MICROALLOYING ELEMENTS" />
+    <node id="GRAIN GROWTH" />
+    <node id="V" />
+    <node id="TI" />
+    <node id="MN" />
+    <node id="SOLID-SOLUTION HARDENING" />
+    <node id="SI" />
+    <node id="CU" />
+    <node id="HEAT-AFFECTED ZONE" />
+    <node id="BETA PHASE" />
+    <node id="ALPHA PHASE" />
+    <node id="MANGANESE" />
+    <node id="CHROMIUM" />
+    <node id="COPPER" />
+    <node id="MOLYBDENUM" />
+    <node id="ACICULAR FERRITE STEEL" />
+    <node id="PLATE MILL" />
+    <node id="HOT-STRIP MILL" />
+    <node id="GAMMA PHASE" />
+    <node id="TOUGHNESS" />
+    <node id="REDUCTION PER PASS" />
+    <node id="GENERAL STEELS DIVISION" />
+    <node id="BRITISH STEEL CORPORATION" />
+    <node id="ROLLING" />
+    <node id="TOTAL DEFORMATION" />
+    <node id="MILL LOADING" />
+    <node id="FINE-GRAINED STRUCTURE" />
+    <node id="ACICULAR FERRITE" />
+    <node id="CEMENTITE" />
+    <node id="LOW-CARBON STEEL" />
+    <node id="COILING TEMPERATURE" />
+    <node id="ROUGHER" />
+    <node id="FINISHER" />
+    <node id="HEAVY REDUCTION" />
+    <node id="FINE-GRAINED POLYGONAL FERRITE" />
+    <node id="DUAL-PHASE STEEL" />
+    <node id="HEAVY DEFORMATION" />
+    <node id="BAUSCHINGER EFFECT" />
+    <node id="NIOBIUM(NB)" />
+    <node id="GRAIN REFINING" />
+    <node id="CHARPY IMPACT TEST" />
+    <node id="API X70" />
+    <node id="FERRITE-PEARLITE STEELS" />
+    <node id="NORMALIZING" />
+    <node id="QUENCHING" />
+    <node id="TEMPERING" />
+    <node id="ARCTIC LINEPIPE STEEL" />
+    <node id="FINE-GRAIN SIZE" />
+    <node id="&#915;-MICROSTRUCTURE" />
+    <node id="&#913;-MICROSTRUCTURE" />
+    <node id="DEFORMATION BANDS" />
+    <node id="NUCLEATION POTENTIAL" />
+    <node id="I. KOZASU" />
+    <node id="T. SHIMIZU" />
+    <node id="H. KUBOTA" />
+    <node id="H. SEKINE" />
+    <node id="T. MARUYAMA" />
+    <node id="T. TANAKA" />
+    <node id="N. TABATA" />
+    <node id="T. HATOMURA" />
+    <node id="C. SHIGA" />
+    <node id="UNION CARBIDE CORPORATION" />
+    <node id="THE IRON AND STEEL INSTITUTE OF JAPAN" />
+    <node id="METALLURGICAL SOCIETY OF AIME" />
+    <node id="PROCESSING" />
+    <node id="MICROSTRUCTURE" />
+    <node id="HOT DEFORMATION OF STEELS" />
+    <node id="D. DULIEU" />
+    <node id="A. LE BON" />
+    <node id="C. OUCHI" />
+    <node id="J. D. BAIRD" />
+    <node id="J. J. JONAS" />
+    <node id="R. A. P. DJAIC" />
+    <node id="C. ROSSARD" />
+    <node id="H. J. MCQUEEN" />
+    <node id="AMERICAN INSTITUTE OF MINING, METALLURGICAL AND PETROLEUM ENGINEERS" />
+    <node id="M. LAMBERIGTS" />
+    <node id="T. GREDAY" />
+    <node id="R. PRIESTNER" />
+    <node id="HEAT TREATMENT" />
+    <node id="G. F. MELLOY" />
+    <node id="HOT DEFORMATION" />
+    <node id="E. L. BROWN" />
+    <node id="S. SEKINO" />
+    <node id="N. MORI" />
+    <node id="W.B. MORRISON" />
+    <node id="H. WATANABE" />
+    <node id="T. H. HASHIMOTO" />
+    <node id="K.J. IRVINE" />
+    <node id="T. L. CAPELETTI" />
+    <node id="TETSUTO-HAGAN&#201;" />
+    <node id="HOT DEFORMATION OF AUSTENITE" />
+    <node id="DUCTILITY" />
+    <node id="CLIMAX MOLYBDENUM COMPANY" />
+    <node id="MICROALLOYING" />
+    <node id="DOUCILITY" />
+    <node id="COLDREN" />
+    <node id="MIHELICH" />
+    <node id="DUAL-PHASE STEELS" />
+    <node id="STRUCTURE" />
+    <node id="NEW YORK" />
+    <node id="AMERICAN SOCIETY OF MECHANICAL ENGINEERS" />
+    <edge source="CONTROLLED ROLLING" target="STEEL">
+      <data key="d0">18.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="DEFORMATION">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="HIGH TEMPERATURE">
+      <data key="d0">14.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="LOW TEMPERATURE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="BISRA GROUP">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="HALL AND PETCH">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="LOW FINISHING TEMPERATURE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="DEFORMATION BAND">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="STRENGTH">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="CARRIAGE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="MIXED GRAIN STRUCTURE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="COARSE GRAIN">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="FINE GRAIN">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="GRAIN REFINEMENT">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="MECHANICAL PROPERTIES">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="TRANSFORMATION TEMPERATURE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="DILATOMETRIC METHODS">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="STRIAN-INDUCED AR3 TEMPERATURE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="CONTROLLED-ROLLED STEEL">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="DIMENSIONAL ANISOTROPY">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="DUAL-PHASE STEEL">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="HEAVY DEFORMATION">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="NON-RECRYSTALLIZATION REGION">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="ARCTIC LINEPIPE STEEL">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="C-MN STEEL">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="NB STEEL">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="FINE-GRAIN SIZE">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="YIELD STRENGTH">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="TRANSITION TEMPERATURE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="DYNAMIC RECOVERY">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="SUBGRAIN HARDENING">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="POLYGONAL FERRITE">
+      <data key="d0">13.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="DEFORMATION BANDS">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="AUSTENITE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="FERRITE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="CONTROLLED ROLLING" target="NIOBIUM">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="STEEL" target="NIOBIUM">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="STEEL" target="NICKEL">
+      <data key="d0">14.0</data>
+    </edge>
+    <edge source="STEEL" target="AUSTENITE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="STEEL" target="NORMALIZING">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="STEEL" target="QUENCHING">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="STEEL" target="TEMPERING">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="FERRITE">
+      <data key="d0">41.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="RECRYSTALLIZATION">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="DYNAMIC RECOVERY">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="DYNAMIC RECRYSTALLIZATION">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="NON-RECRYSTALLIZATION REGION">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="GRAIN REFINEMENT">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="TRANSFORMATION">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="BAINITE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="MARTENSITE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="LOW MN AND/OR NI CONTENT">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="HIGH MN AND/OR NI CONTENT">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="PEARLITE">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="AUSTENITE" target="DEFORMATION BANDS">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="FERRITE" target="GAMMA">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="FERRITE" target="POLYGONAL FERRITE">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="FERRITE" target="PEARLITE">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="FERRITE" target="BAINITE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="FERRITE" target="GRAIN GROWTH">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="FERRITE" target="ACICULAR FERRITE STEEL">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="FERRITE" target="FERRITE-PEARLITE STEELS">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="FERRITE" target="GRAIN REFINEMENT">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="FERRITE" target="NUCLEATION POTENTIAL">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="NIOBIUM" target="PRECIPITATION HARDENING">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="NIOBIUM" target="C STEEL">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="CHARPY TEST" target="MECHANICAL PROPERTIES">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="MECHANICAL PROPERTIES" target="GRAIN STRUCTURE">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="MECHANICAL PROPERTIES" target="MICROSTRUCTURAL CHANGE">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="MECHANICAL PROPERTIES" target="YIELD STRENGTH">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="MECHANICAL PROPERTIES" target="TENSILE STRENGTH">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="MECHANICAL PROPERTIES" target="CHARPY IMPACT PROPERTIES">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="MECHANICAL PROPERTIES" target="ALLOYING ELEMENTS">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="MECHANICAL PROPERTIES" target="SI">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="MECHANICAL PROPERTIES" target="CR">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="MECHANICAL PROPERTIES" target="CU">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="MECHANICAL PROPERTIES" target="HEAT-AFFECTED ZONE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="MIZUSHIMA LABORATORY" target="IMR/79">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="DEFORMATION" target="HIGH TEMPERATURE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="DEFORMATION" target="NON-RECRYSTALLIZATION REGION">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="DEFORMATION" target="TWO-PHASE REGION">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="FINE-GRAINED">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="MIXED GRAIN STRUCTURE">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="CRITICAL AMOUNT OF REDUCTION">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="NB">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="GAMMA">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="RPT DIAGRAM">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="AVRAMI'S LAW">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="TIME CONSTANT">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="CONTROLLED-ROLLED STEEL">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="GRAIN SIZE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="RECRYSTALLIZATION" target="ROLLING">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="NICKEL" target="NICKEL-BORON STEEL">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="NICKEL" target="CONTROLLED-ROLLED STEEL">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="NB-FREE STEEL" target="PRECIPITATION HARDENING">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="PRECIPITATION HARDENING" target="MARTENSITE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="BAINITE" target="NOTCH TOUGHNESS">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="BAINITE" target="ALPHA">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="BAINITE" target="UPPER BAINITIC STRUCTURE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="BAINITE" target="MARTENSITE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="BAINITE" target="ACICULAR FERRITE">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="NOTCH TOUGHNESS" target="FINE &#913;">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="NOTCH TOUGHNESS" target="COARSE &#915;">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="PEARLITE-FREE STEEL" target="DUCKWORTH ET AL.">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="DUCKWORTH ET AL." target="PEARLITE-REDUCED STEEL">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="GAMMA" target="ALPHA">
+      <data key="d0">17.0</data>
+    </edge>
+    <edge source="GAMMA" target="BAINITIC STRUCTURE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="GAMMA" target="DEFORMATION BAND">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="ALPHA" target="UPPER BAINITIC STRUCTURE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="ALPHA" target="COOLING">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="ALPHA" target="GRAIN BOUNDARIES">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="ALPHA" target="TRANSFORMATION MODE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="ALPHA" target="SUBGRAIN">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="ALPHA" target="DEFORMATION BAND">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="FINE-GRAINED" target="WARM-WORKED">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="FINE-GRAINED" target="COARSE GRAIN">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="WARM-WORKED" target="CONTINUOUS ROLLING">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="GRAIN BOUNDARIES" target="MATRIX">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="DEFORMATION BAND" target="GRAIN REFINEMENT">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="SUBGRAIN" target="STRENGTH">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="STRENGTH" target="STATIC RECRYSTALLIZATION">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="STRENGTH" target="CONTROLLED-ROLLED STEEL">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="STRENGTH" target="SUSCEPTIBILITY TO CLEAVAGE FRACTURE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="STATIC RECRYSTALLIZATION" target="DYNAMIC RECRYSTALLIZATION">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="STATIC RECRYSTALLIZATION" target="CONDUSIVE ROLLING">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="STATIC RECRYSTALLIZATION" target="GRAIN REFINEMENT">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="DYNAMIC RECOVERY" target="DYNAMIC RECRYSTALLIZATION">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="DYNAMIC RECOVERY" target="FLOW STRESS">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="FLOW STRESS" target="TEMPERATURE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="TEMPERATURE" target="GRAIN SIZE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="TEMPERATURE" target="DIMENSIONAL ANISOTROPY">
+      <data key="d0">4.0</data>
+    </edge>
+    <edge source="TEMPERATURE" target="TRANSITION TEMPERATURE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="ZENER-HOLLOMON PARAMETER" target="GRAIN SIZE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="GRAIN SIZE" target="ASTM NO. 2 TO 7">
+      <data key="d0">4.0</data>
+    </edge>
+    <edge source="GRAIN SIZE" target="GRAIN REFINEMENT">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="GRAIN SIZE" target="CONTROLLED-ROLLED STEELS">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="GRAIN SIZE" target="YIELD STRENGTH">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="GRAIN SIZE" target="HALL-PETCH RELATION">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="GRAIN SIZE" target="TEMPER EMBRITTLEMENT">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="GRAIN SIZE" target="TRANSITION TEMPERATURE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="GRAIN SIZE" target="DUCTILE-TO-BRITTLE TRANSITION TEMPERATURE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="NB STEEL" target="PLAIN C STEEL">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="NB STEEL" target="MNS">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="NB STEEL" target="UNAXIAL YIELD STRESS">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="NB STEEL" target="ALLOYING ELEMENTS">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="NB STEEL" target="GRAIN REFINEMENT">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="NB STEEL" target="MICROALLOYING ELEMENTS">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="GRAIN REFINEMENT" target="ASTM GRAIN-SIZE NO.">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="GRAIN REFINEMENT" target="HEAVY ROLLING">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="GRAIN REFINEMENT" target="NON-RECRYSTALLIZATION REGION">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="GRAIN REFINEMENT" target="C-MN STEEL">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="GRAIN REFINEMENT" target="V">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="COARSE GRAIN STRUCTURE" target="HUGE GRAINS">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="COARSE GRAIN STRUCTURE" target="REDUCTION">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="HUGE GRAINS" target="MIXED GRAIN STRUCTURE">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="C STEEL" target="LOW-TEMPERATURE TOUGHNESS">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="NB" target="LOW-CARBON STEEL">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="ISOTHERMAL HOLDING" target="PRECIPITATION">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="PRECIPITATION" target="TIME-TEMPERATURE-PRECIPITATION DIAGRAM">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="DEFORMATION TEMPERATURE" target="GRAIN-BOUNDARY AREA">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="GRAIN-BOUNDARY AREA" target="NON-RECRYSTALLIZATION REGION">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="NUCLEATION RATE" target="DISLOCATION DENSITY">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="DISLOCATION DENSITY" target="YIELD STRENGTH">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="TWO-PHASE REGION" target="MICROSTRUCTURAL CHANGE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="TWO-PHASE REGION" target="CONTROLLED-ROLLED STEEL">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="MICROSTRUCTURAL CHANGE" target="INTERACTION">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="YIELD STRENGTH" target="MARTENSITIC STRUCTURE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="YIELD STRENGTH" target="SUBGRAIN HARDENING">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="YIELD STRENGTH" target="COLD ROLLING">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="TRANSFORMATION TEMPERATURE" target="CONTROLLED-ROLLED STEEL">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="NICKEL-BORON STEEL" target="BORON">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="NB(C, N)" target="SUBGRAINS">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="MARTENSITE" target="ACICULAR FERRITE">
+      <data key="d0">4.0</data>
+    </edge>
+    <edge source="MARTENSITE" target="DUAL-PHASE STEEL">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="POLYGONAL FERRITE" target="PEARLITE">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="POLYGONAL FERRITE" target="FINE-GRAINED POLYGONAL FERRITE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="TEXTURE DEVELOPMENT">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="PLANE ANISOTROPY">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="EMBRITTLEMENT">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="TANAKA">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="MANGANESE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="CHROMIUM">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="COPPER">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="PLATE MILL">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="HOT-STRIP MILL">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="GAMMA PHASE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="TOUGHNESS">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEEL" target="REDUCTION PER PASS">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="TEXTURE DEVELOPMENT" target="INTENSITY IN TEXTURE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="PLANE ANISOTROPY" target="INAGAKI ET AL.">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="EMBRITTLEMENT" target="TRANSITION TEMPERATURE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="TRANSITION TEMPERATURE" target="CHARPY IMPACT ENERGY">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="TRANSITION TEMPERATURE" target="BAINITIC STEEL">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="TRANSITION TEMPERATURE" target="DISLOCATION HARDENING">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="TRANSITION TEMPERATURE" target="SEPARATIONS">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="TRANSITION TEMPERATURE" target="CONSTANTS">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="TRANSITION TEMPERATURE" target="AUSTENITE-FERRITE REGION">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="TANAKA" target="DUAL-PHASE STEELS">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="TANAKA" target="STRUCTURE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="MNS" target="SEPARATION">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="SEPARATION" target="CLEAVAGE FRACTURE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="SEPARATION" target="BAND DENSITY">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="CONTROLLED-ROLLED STEELS" target="SULPHIDE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="SULPHIDE" target="RARE EARTH METALS">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="MARTENSITIC STRUCTURE" target="CR">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="MARTENSITIC STRUCTURE" target="TEXTURE HARDENING">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="MARTENSITIC STRUCTURE" target="BAND STRUCTURE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="MARTENSITIC STRUCTURE" target="DUCTILE-TO-BRITTLE TRANSITION TEMPERATURE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="DUCTILE-TO-BRITTLE TRANSITION TEMPERATURE" target="EFFECTIVE GRAIN SIZE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="DISLOCATION HARDENING" target="SECOND-PHASE PARTICLES">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="DISLOCATION HARDENING" target="SUB-GRAIN STRUCTURE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="DISLOCATION HARDENING" target="FOREST DISLOCATIONS">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="SECOND-PHASE PARTICLES" target="TOUGHNESS">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="SECOND-PHASE PARTICLES" target="DUCTILITY">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="GRAIN GROWTH" target="TI">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="V" target="LOW-CARBON STEEL">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="MN" target="SOLID-SOLUTION HARDENING">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="BETA PHASE" target="ALPHA PHASE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="MOLYBDENUM" target="ACICULAR FERRITE STEEL">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="MOLYBDENUM" target="CLIMAX MOLYBDENUM COMPANY">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="TOUGHNESS" target="TETSUTO-HAGAN&#201;">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="TOUGHNESS" target="BRITISH STEEL CORPORATION">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="TOUGHNESS" target="LOW-CARBON STEEL">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="TOUGHNESS" target="MICROALLOYING">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="GENERAL STEELS DIVISION" target="BRITISH STEEL CORPORATION">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="BRITISH STEEL CORPORATION" target="DUCTILITY">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="ROLLING" target="TOTAL DEFORMATION">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="ROLLING" target="MILL LOADING">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="ROLLING" target="COILING TEMPERATURE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="ROLLING" target="ROUGHER">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="ROLLING" target="FINISHER">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="ROLLING" target="HEAVY REDUCTION">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="TOTAL DEFORMATION" target="FINE-GRAINED STRUCTURE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="ACICULAR FERRITE" target="CEMENTITE">
+      <data key="d0">4.0</data>
+    </edge>
+    <edge source="ACICULAR FERRITE" target="FINE-GRAINED POLYGONAL FERRITE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="ACICULAR FERRITE" target="API X70">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="ACICULAR FERRITE" target="DUAL-PHASE STEEL">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="LOW-CARBON STEEL" target="PROCESSING">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="LOW-CARBON STEEL" target="MICROALLOYING">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="LOW-CARBON STEEL" target="DOUCILITY">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="DUAL-PHASE STEEL" target="CHARPY IMPACT TEST">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="HEAVY DEFORMATION" target="BAUSCHINGER EFFECT">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="NIOBIUM(NB)" target="GRAIN REFINING">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="QUENCHING" target="&#915;-MICROSTRUCTURE">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="TEMPERING" target="&#913;-MICROSTRUCTURE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="I. KOZASU" target="T. SHIMIZU">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="I. KOZASU" target="H. KUBOTA">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="I. KOZASU" target="UNION CARBIDE CORPORATION">
+      <data key="d0">9.0</data>
+    </edge>
+    <edge source="H. SEKINE" target="T. MARUYAMA">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="H. SEKINE" target="METALLURGICAL SOCIETY OF AIME">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="H. SEKINE" target="J. J. JONAS">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="T. TANAKA" target="N. TABATA">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="T. TANAKA" target="THE IRON AND STEEL INSTITUTE OF JAPAN">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="T. TANAKA" target="R. A. P. DJAIC">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="T. TANAKA" target="T. HATOMURA">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="T. HATOMURA" target="C. SHIGA">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="T. HATOMURA" target="AMERICAN INSTITUTE OF MINING, METALLURGICAL AND PETROLEUM ENGINEERS">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="UNION CARBIDE CORPORATION" target="MICROALLOYING">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="MICROSTRUCTURE" target="HOT DEFORMATION OF STEELS">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="MICROSTRUCTURE" target="G. F. MELLOY">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="MICROSTRUCTURE" target="T. L. CAPELETTI">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="D. DULIEU" target="A. LE BON">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="C. OUCHI" target="J. D. BAIRD">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="C. ROSSARD" target="H. J. MCQUEEN">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="AMERICAN INSTITUTE OF MINING, METALLURGICAL AND PETROLEUM ENGINEERS" target="M. LAMBERIGTS">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="AMERICAN INSTITUTE OF MINING, METALLURGICAL AND PETROLEUM ENGINEERS" target="NEW YORK">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="M. LAMBERIGTS" target="T. GREDAY">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="T. GREDAY" target="HOT DEFORMATION">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="R. PRIESTNER" target="HEAT TREATMENT">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="HOT DEFORMATION" target="E. L. BROWN">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="HOT DEFORMATION" target="T. H. HASHIMOTO">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="HOT DEFORMATION" target="K.J. IRVINE">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="S. SEKINO" target="N. MORI">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="W.B. MORRISON" target="H. WATANABE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="TETSUTO-HAGAN&#201;" target="HOT DEFORMATION OF AUSTENITE">
+      <data key="d0">7.0</data>
+    </edge>
+    <edge source="TETSUTO-HAGAN&#201;" target="DUCTILITY">
+      <data key="d0">6.0</data>
+    </edge>
+    <edge source="CLIMAX MOLYBDENUM COMPANY" target="MICROALLOYING">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="CLIMAX MOLYBDENUM COMPANY" target="COLDREN">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="MICROALLOYING" target="DOUCILITY">
+      <data key="d0">8.0</data>
+    </edge>
+    <edge source="COLDREN" target="MIHELICH">
+      <data key="d0">5.0</data>
+    </edge>
+    <edge source="DUAL-PHASE STEELS" target="STRUCTURE">
+      <data key="d0">1.0</data>
+    </edge>
+    <edge source="NEW YORK" target="AMERICAN SOCIETY OF MECHANICAL ENGINEERS">
+      <data key="d0">1.0</data>
+    </edge>
+  </graph>
+</graphml>

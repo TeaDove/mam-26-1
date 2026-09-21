@@ -1,0 +1,110 @@
+title,type,degree,frequency,description
+В. И. СПИВАКОВ,PERSON,1,1,В. И. Спиваков is an author associated with the research on controlled rolling of sheets with accelerated cooling.
+Э. А. ОРЛОВ,PERSON,1,1,Э. А. Орлов is an author associated with the research on controlled rolling of sheets with accelerated cooling.
+И. В. ГАНОШЕНКО,PERSON,1,1,И. В. Ганошенко is an author associated with the research on controlled rolling of sheets with accelerated cooling.
+МК «АЗОВСТАЛЬ»,ORGANIZATION,3,1,МК «Азовсталь» is a steel mill in Ukraine known for its production capabilities and technological advancements in steel processing.
+КОНТРОЛИРОВАННАЯ ПРОКАТКА,PROCESS,10,1,"Контролируемая прокатка (КП) refers to the process of controlled rolling of thick sheets, especially focusing on obtaining fine ferrite grain."
+УСКОРЕННОЕ ОХЛАЖДЕНИЕ,PROCESS,1,1,Ускоренное охлаждение is a process utilized after deformation in steel manufacturing to enhance mechanical properties.
+НИЗКОТЕМПЕРАТУРНАЯ ПРОКАТКА,PROCESS,2,1,Низкотемпературная прокатка is a rolling process conducted at lower temperatures to improve the mechanical properties of steel.
+МАЛОПЕРЛИТНЫЕ СТАЛИ,STEEL GRADE,5,2,"Малоперлитные стали, или low-perlite steels, представляют собой особую категорию сталей, отличающихся специфическими механическими свойствами и применением в различных отраслях. Эти стали характеризуются повышенной прочностью и хорошей свариваемостью, что делает их подходящими для использования в конструкциях, требующих высокой надежности и долговечности.
+
+В то же время, стоит отметить, что существуют другие виды сталей, которые демонстрируют лучшие механические свойства при высоких температурах. Это означает, что хотя малоперлитные стали имеют свои преимущества, их использование может быть ограничено в условиях, требующих высокой термостойкости и устойчивости к деформациям при температурах выше нормальных.
+
+В заключение, малоперлитные стали представляют собой важную категорию материалов с уникальными механическими характеристиками, которые находят применение в ряде промышленностей, однако в случаях, когда критическими являются температура и устойчивость к высокому теплу, могут быть предпочтительнее альтернативные стали с более высокими механическими свойствами."
+ТЕПЕРАТУРНЫЕ ПАРАМЕТРЫ,PROCESS PARAMETER,1,1,Температурные параметры are critical factors in the controlled rolling process that influence the final properties of the steel.
+ФЕРРИТ,PHASE,3,2,"Феррит is a microstructural phase in steel that is characterized by its soft and ductile nature. This phase is significant due to its body-centered cubic (BCC) structure, which is crucial in defining the mechanical properties of steel. The presence of феррит in the steel microstructure contributes to its overall toughness, malleability, and ability to withstand various forms of mechanical stress. Thus, understanding the properties and contributions of феррит is essential for the development and processing of steel products, emphasizing its importance in metallurgical applications."
+АУСТЕНИТ,PHASE,3,2,"Аустенит is a crucial phase in steel known for its face-centered cubic (FCC) crystal structure. This phase plays a significant role in determining the mechanical properties of steel, as its characteristics are significantly influenced by temperature and the presence of alloying elements. The microstructural configuration of аустенит contributes to various performance attributes of the steel, such as strength, ductility, and toughness. Understanding аустенит is essential for engineers and metallurgists who aim to optimize steel for specific applications by manipulating alloy compositions and processing conditions to enhance desired mechanical performance."
+ПРОЧНОСТЬ,MECHANICAL PROPERTY,1,1,"Прочность refers to the strength of steel, which is improved through various processing techniques."
+ПЛАСТИЧНОСТЬ,MECHANICAL PROPERTY,2,2,"Пластичность – это важная характеристика стали, относящаяся к способности материала деформироваться без разрушения. Эта способность, или пластичность, определяется различными условиями обработки стали. В ходе прокатки стали, пластичность позволяет материалу изменять свою форму и размеры под воздействием механических сил, прежде чем произойдет разрушение. Таким образом, понимание пластичности стали имеет критическое значение для процессов ее обработки и использования в различных промышленных и строительных applications."
+ДЕФОРМАЦИЯ,PROCESS,2,1,Деформация is the process involving the alteration of shape or dimensions in materials subjected to stress.
+ВАКУУМИРОВАНИЕ,PROCESS,1,1,Вакуумирование is a process used to improve the purity and quality of metals by removing gas and impurities.
+КЛАССЫ ПРОЧНОСТИ,STEEL GRADE,1,1,"Классы прочности refers to specific grades of steel categorized by their strength characteristics, such as К-56 – К-60."
+НЕКОНТРОЛИРУЕМОЕ ОХЛАЖДЕНИЕ,PROCESS,0,1,"Неконтролируемое охлаждение points to methods of cooling that are not precisely managed during the steel processing, differing from accelerated cooling."
+КРИТИЧЕСКИЙ ИНТЕРВАЛ,PHASE,1,1,"Критический интервал is a temperature range during the processing affecting the material's properties, particularly concerning phase transformations."
+ГОТВИТЕЛЬНОЕ СУДНО,EQUIPMENT,1,1,Готовительное судно refers to the preparatory equipment used in steel production before rolling.
+РЕКРИСТАЛЛИЗАЦИЯ,PHENOMENON,1,1,"Рекристаллизация is a phenomenon that occurs when metals are heated and then cooled, affecting their mechanical properties."
+МЕТАЛЛ,MATERIAL,1,1,"Металл is the base raw material used in various processes, primarily steel manufacturing."
+КП,PROCESS,20,2,"КП, или контролируемая прокатка, представляет собой процесс, который играет ключевую роль в обработке металлов. Этот метод позволяет эффективно управлять свойствами металла в процессе прокатки, что критически важно для достижения требуемых механических характеристик конечного продукта. 
+
+Основной аспект КП заключается в контроле температуры слябов во время обработки, что позволяет достичь оптимальных результатов. Процесс включает в себя тонкую регулировку температурного режима и охлаждения, что непосредственно влияет на качества металла, такие как прочность, пластичность и ударная вязкость. Температурное воздействие во время контрольной прокатки обеспечивает более рациональное распределение энергии в металле, что, в свою очередь, улучшает конечные механические свойства готового изделия.
+
+Таким образом, КП является важной технологией в металлургии, способствующей улучшению свойства металлов и повышению качества готовой продукции."
+КЛЕТЬ,EQUIPMENT,1,1,"Клеть - это оборудование, используемое для прокатки металла в различных процессах, включая черновую и чистовую прокатку."
+МАННЕСМАН–РОХРЕН,ORGANIZATION,1,1,"Компания Mannesman–rohren - производитель толстолистового оборудования, использующегося в процессе прокатки."
+ВОЕСТ–АЛЬПИН,ORGANIZATION,1,1,"Компания Voest – Alpine - производитель оборудования для прокатки металла, включая толстолистовые станы."
+ПОСКО,ORGANIZATION,1,1,"Компания Posko - южнокорейский производитель оборудования, используемого в прокатной технологии."
+МК ИМ. ИЛИЧА,ORGANIZATION,1,1,"Металлургический комбинат им. Илича - завод в Мариуполе, использующий технологии контролируемой прокатки."
+ТЕПЕРАТУРА,PROCESS PARAMETER,1,2,"""ТЕПЕРАТУРА"" является ключевым параметром, который оказывает значительное влияние на процессы, связанные с термической обработкой и контролируемой прокаткой материалов, особенно стали. В контексте термической обработки, температура играет важную роль в определении скорости охлаждения, что, в свою очередь, влияет на механические свойства стали, такие как прочность, твердость и пластичность. Правильное управление температурными условиями позволяет добиться оптимальных характеристик материала, что критично для его последующего применения.
+
+Кроме того, в процессе контролируемой прокатки, температура также становится критическим фактором, который непосредственно влияет на свойства и качество конечного продукта. Параметры температурного режима определяют микроструктуру стали, что сказывается на ее эксплуатационных качествах. Поэтому точный контроль и регулирование температуры в различных этапах обработки стали являются необходимыми для достижения высоких стандартов качества, а также для повышения эффективности производственных процессов.
+
+Таким образом, ""ТЕПЕРАТУРА"" представляет собой важный элемент в металлургии, являясь фактом, который связывает технологические процессы с итоговыми свойствами материалов."
+ЭНЕРГИЯ,MECHANICAL PROPERTY,1,1,"Энергия - это механическая характеристика, важная для процесса прокатки, которая может влиять на производительность и качество проката."
+ПЛОСКОСТЬ,MECHANICAL PROPERTY,1,1,"Плоскость - характеристика поверхности проката, которая должна быть обеспечена в процессе прокатки для удовлетворения стандартов."
+ЛИСТЫ,MATERIAL,1,2,"Листы являются конечным продуктом, получаемым в результате процесса прокатки. Они представляют собой плоские металлические поверхности, которые могут использоваться в различных промышленных и строительных приложениях. В частности, упоминаются листы толщиной 18,7 мм, что указывает на их конкретные характеристики, важные для определённых применений. Кроме того, процесс термической обработки таких листов включает использование охладительных устройств, который помогают регулировать температуру и свойства материала, обеспечивая его прочность и долговечность. Таким образом, Листы являются важным компонентом в производственной цепочке и находят широкое применение благодаря своим физическим параметрам и обработке."
+ТЕПЛОВАЯ МОДЕЛЬ,PROCESS PARAMETER,1,1,"Тепловая модель - это математическое описание, используемое для оптимизации температурного режима в процессе прокатки."
+ПРОДУКТИВНОСТЬ,PROCESS PARAMETER,1,1,"Продуктивность - это характеристика, отражающая эффективность работы прокатного стана и уровня производства."
+ОХЛАЖДЕНИЕ,PROCESS,3,2,"ОХЛАЖДЕНИЕ является важным этапом в процессе контролируемой прокатки, на котором слебы или раскаты охлаждаются до заданной температуры. Этот процесс имеет критическое значение для достижения желаемых микроструктурных и механических свойств стали. Охлаждение происходит между различными стадиями прокатки, обеспечивая необходимую термическую обработку материала, что в свою очередь позволяет добиться высокой прочности, твердости и других характеристик конечного продукта. Правильное управление температурой во время охлаждения является ключевым фактором для оптимизации свойств стали и повышения ее качества."
+ДЛИТЕЛЬНОСТЬ,PROCESS PARAMETER,1,1,"Длительность - это время, необходимое для различных этапов в процессе контролируемой прокатки, включая выдержку подкатов."
+КПУО,PROCESS,10,4,"КПУО, или Контроль Параметров Установки Охлаждения, представляет собой важный процесс в металлургии, который фокусируется на управлении температурой стали во время её охлаждения перед деформацией в прокатных станах. Этот процесс играет ключевую роль в обеспечении необходимых механических свойств стали, что критически для промышленного использования. 
+
+КПУО сочетает в себе контроль за температурой и применение методов быстрого охлаждения, что позволяет достигать оптимальных характеристик материала. В частности, он включает контроль прокатки листов в заданных температурных диапазонах, что способствует получению стальных изделий с требуемыми свойствами. Это делает процесс важным для обеспечения качества и долговечности продукции, производимой на заводах по переработке металлов.
+
+Таким образом, КПУО является критическим элементом в технологии обработки металлов, направленным на улучшение качества стали через точное управление процессами охлаждения и механической переработки."
+ВЫСОКОТЕМПЕРАТУРНАЯ КП,PROCESS,3,2,"Высокотемпературная КП (высокотемпературная контрольная прокатка) представляет собой процесс обработки стали, который осуществляется при температурах от 730 до 800°C. Этот метод применяется для улучшения структурной однородности металла и ограничения мелкозернистости ферритной фазы. Процесс высокотемпературной КП способствует улучшению механических свойств стали, в результате чего материал становится более прочным и устойчивым к механическим воздействиям.
+
+При высокотемпературной прокатке стали происходит реорганизация ее микроструктуры, что позволяет достичь оптимальных характеристик для дальнейшего использования. Основная цель этого процесса заключается в создании однородной структуры, что важно для повышения долговечности и надежности конечного продукта.
+
+Таким образом, Высокотемпературная КП играет ключевую роль в металлургии, особенно при производстве стальных изделий, для которых критически важны высокие механические свойства и стабильность."
+НБ,ALLOYING ELEMENT,1,1,Ниобий (Nb) is an alloying element used in small quantities (up to 0.03%) in certain types of low-perlite steels to enhance mechanical properties.
+ПРОКАТКА,PROCESS,4,2,"ПРОКАТКА refers to the process of shaping steel and other materials by passing them through a series of rolls, which modifies their form and achieves specific thicknesses and mechanical properties. This technique is a form of material processing that involves applying pressure or temperature adjustments to alter the characteristics of the materials being worked on. Through прокатка, the physical properties of the materials can be optimized for various applications, enhancing their usability in industrial contexts."
+ТЕМПЕРАТУРА ДЕФОРМАЦИИ,PROCESS PARAMETER,1,1,Температура деформации is the deformation temperature which should be maintained between 1000 to 850 °C for optimal grain refinement in steel.
+ЖЕСТКОСТЬ,MECHANICAL PROPERTY,1,1,Жесткость is a mechanical property that refers to the ability of a material to resist deformation under applied load.
+ВИДМАНШТЕТТ,MICROSTRUCTURE,0,1,"Структура видманштетта is a microstructure that can form under specific conditions during cooling, affecting the mechanical properties of steel."
+СТАН 3600,EQUIPMENT,2,2,"Стан 3600 представляет собой тип прокатного стана, используемого для переработки стали. Данное оборудование максимально акцентирует внимание на тщательном контроле температуры и механических свойств стали во время процесса деформации. В частности, Стан 3600 обеспечивает возможность ускоренного охлаждения раскатов, что, в свою очередь, способствует повышению прочности получаемых изделий. 
+
+Этот современный механизм сочетает в себе передовые технологии, позволяющие достичь высокой точности в обработке и устойчивости конечных материалов. Стан 3600, таким образом, играет важную роль в производственном процессе сектора сталепроката, повышая эффективность и качество конечного продукта."
+УОВТ,EQUIPMENT,6,4,"УОВТ, or Установка Охлаждения Водяной Технологии, is specialized cooling equipment employed in the steel manufacturing industry to facilitate accelerated cooling during and after the rolling processes. This equipment plays a crucial role in controlling the mechanical properties of the produced steel strips. It is specifically designed for the rapid cooling of rolled products, including sheets, throughout their production processes. 
+
+The УОВТ installation streamlines the cooling process effectively, ensuring that the steel strips attain desired mechanical characteristics, which can impact their strength, durability, and overall quality. By implementing accelerated cooling techniques, УОВТ contributes to the optimization of the rolling process and enhances the performance of the final product.
+
+In summary, УОВТ is an essential tool in steel production, providing targeted cooling solutions that adjust the properties of the metal, thereby improving the processing and end-use applications of rolled steel products."
+НАГРЕВ,PROCESS,1,1,Нагрев refers to the heating process applied to slabs before deformation to achieve desired temperatures.
+УО,PROCESS PARAMETER,2,1,"УО, или ускоренное охлаждение, представляет собой процесс, который происходит после прокатки, с целью увеличения прочности и других механических свойств."
+ТЕМПЕРАТУРА,PROCESS PARAMETER,4,4,"Температура является важнейшим показателем в металлургическом процессе прокатки, существенно влияя на механические свойства конечного продукта и обеспечивая соответствие строгим производственным требованиям. Важно поддерживать оптимальные термические параметры на всех этапах прокатки, так как это напрямую влияет на характеристики материала. Контроль температуры влияет на скорость и эффективность охлаждения, что также имеет критическое значение для достижения желаемых свойств готовой продукции.
+
+В процессе прокатки температура играет особенно важную роль, обеспечивая правильную обработку металлов и сплавов. Неправильное регулирование температуры может отрицательно сказаться на механических свойствах изделия, таких как прочность, пластичность и износостойкость. Поэтому контроль температуры является ключевым аспектом, необходимым для оптимизации производственной линии и достижения высокого качества продукции.
+
+Таким образом, температура в процессе прокатки не только определяет физические свойства материала, но и является критическим параметром, влияющим на все стадии обработки и производства."
+СТАЛЬ,MATERIAL,0,1,"Сталь – это сплав железа с углеродом, который используется в производстве труб и других строительных материалов."
+МК «АЗОВ-СТАЛЬ»,ORGANIZATION,1,1,"МК «Азов-сталь» – это металлургический комбинат в Мариуполе, специализирующийся на производстве сталей и труб."
+СТАН 3000,EQUIPMENT,1,1,"Стан 3000 – это оборудование для прокатки, позволяющее производить штрипсы методом контролируемой прокатки."
+ТРУБНЫЕ СТАЛИ,MATERIAL,2,1,"Трубные стали – это виды сталей, применяемые для производства труб, особенно в условиях высокого давления."
+МАРТЕНСИТ,PHASE,1,1,"Мартенсит – это высокопрочная фаза стали, образующаяся при быстром охлаждении, что может вызвать потерю пластичности."
+ВЯЗКОСТЬ,MECHANICAL PROPERTY,1,1,"Вязкость – это свойство материала сопротивляться деформации, также важное для оценки механических свойств прокатанных сталей."
+ДИАМЕТР ТРУБЫ,PROCESS PARAMETER,1,1,"Диаметр трубы – это спецификация, влияющая на прочность и другие механические свойства труб, производимых из стали."
+КП 3000,PROCESS,2,1,"КП 3000 is a rolling process with specific temperature and compression parameters for steel production, operating at significant temperature ranges and efficiency ratings."
+КП 3600,PROCESS,5,1,"КП 3600 is a high-speed rolling process that allows for accelerated cooling, aimed at producing strips with specific mechanical properties."
+КП+УО+КП,PROCESS,2,1,КП+УО+КП is a controlled rolling scheme that enhances temperature control during processing to maintain high-quality product standards.
+КП+УО,PROCESS,4,1,КП+УО is a modified rolling scheme that employs cooling and heating techniques to improve efficiency and speed in the rolling process.
+ОБЖАТИЕ,PROCESS PARAMETER,1,1,"Обжатие refers to the compression ratio applied during the rolling processes, which affects the material's final properties and dimensions."
+ТАБЛИЦА,PHASE,1,1,"Таблица shows various rolling schemes and their associated temperature and deformation parameters, crucial for understanding production efficiency."
+КПУО 2,PROCESS,1,1,"КПУО 2 is another variant of the high-temperature controlled rolling process, designed for different stages of deformation and cooling."
+ТЕМПЕРАТУРНО-ДЕФОРМАЦИОННЫЙ РЕЖИМ,PROCESS PARAMETER,1,1,"Температурно-деформационный режим refers to the temperature-deformation conditions under which the rolling process is conducted, influencing the mechanical properties of the steel."
+ПАРАМЕТРЫ РЕЖИМОВ,PROCESS PARAMETER,1,1,"Параметры режимов are the specific operational parameters defined for each rolling scheme, determining the temperature, compression, and timing during the process."
+ДТУ,PROCESS PARAMETER,1,1,"ДТУ является параметром, связанным с технологическими процессами проката, учитывающим количество экспериментов и характеристики листов"
+СКОРОСТЬ ОХЛАЖДЕНИЯ,MECHANICAL PROPERTY,4,1,Скорость охлаждения в процессе проката определяет механические свойства финального продукта и его производительность
+РАСХОД ВОДЫ,PROCESS PARAMETER,2,1,Расход воды на верхние и нижние охлаждающие устройства является важным параметром для контроля температуры проката
+ТОЛЩИНА ПРОКАТА,PROCESS PARAMETER,1,1,Толщина проката влияет на его восприимчивость к охлаждению и конечным механическим свойствам
+ТЕМПЕРАТУРА НАЧАЛА ОХЛАЖДЕНИЯ,PROCESS PARAMETER,1,1,"Температура начала охлаждения является узлом, от которого начинается процесс контроля охлаждения проката"
+ЭКСПЕРИМЕНТ,PROCESS,2,1,"Эксперимент представляет собой метод анализа, использованный для определения характеристик и свойств проката в процессе охлаждения"
+ОХЛАЖДАЮЩИЕ УСТРОЙСТВА,EQUIPMENT,1,1,Охлаждающие устройства используют воду или другой охлаждающий агент для контроля температуры проката в процессе производства
+СУММАРНОЕ ОБЖАТИЕ,PROCESS PARAMETER,0,1,Суммарное обжатие обозначает общее значение обжатия материалов в процессе обработки и его влияния на размер и форму правки
+КОРРЕЛЯЦИОННО-РЕГРЕССИОННЫЙ АНАЛИЗ,PROCESS,1,1,"Корреляционно-регрессионный анализ используется для разработки моделей, основанных на многократных экспериментах, чтобы предсказать результаты охлаждения"
+ВОДА,ALLOYING ELEMENT,1,1,Используется как охлаждающая жидкость в процессе термической обработки листов
+НИКЕЛЬ,ALLOYING ELEMENT,0,1,Данный легирующий элемент добавляет устойчивость к коррозии и улучшает механические свойства стали
+ТЕРМИЧЕСКАЯ ОБРАБОТКА,PROCESS,1,1,"Процесс, влияющий на механические и структурные свойства стали"
+Д. А. ЛИТВИНЕНКО,PERSON,1,1,"Автор, участвующий в исследовании и анализе процесса прокатки"
+В.И. ПОГОРЖЕЛЬСКИЙ,PERSON,1,1,"Автор, изучавший терминологию процессов прокатки и термической обработки"
+И.Г. УЗЛОВЫЙ,PERSON,1,1,Рекомендовал статью к печати и оценивал результаты исследования
+НИЗКОТЕМПЕРАТУРНАЯ КП,PROCESS,1,1,"Низкотемпературная контрольная прокатка происходит при температуре 690-740°C, позволяя контролировать характеристики стали"

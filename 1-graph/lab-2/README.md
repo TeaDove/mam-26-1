@@ -1,78 +1,67 @@
-# Lab 2 — MinerU + GraphRAG knowledge graphs
+# Лабораторная 2 — графы знаний: MinerU + GraphRAG
 
-Two textbooks on controlled rolling of steel were parsed with MinerU and turned into
-knowledge graphs with GraphRAG:
+Два учебных текста по контролируемой прокатке стали были распознаны с помощью MinerU и
+превращены в графы знаний с помощью GraphRAG:
 
-- `tanaka1981/` — *Controlled rolling of steel* (English, 28 pages);
-- `stat3/` — a Russian paper on controlled rolling (10 pages).
+- `tanaka1981/` — T. Tanaka, *Controlled rolling of steel plate and strip* (английский, 28 страниц);
+- `stat3/` — статья о выборе схемы контролируемой прокатки листов с ускоренным охлаждением
+  (русский, 10 страниц).
 
-See `SOURCES.md` for the download links and checksums of the original PDFs. The PDFs
-themselves are kept outside the repository.
+Ссылки на исходные PDF и их контрольные суммы — в `SOURCES.md`. Сами PDF в репозиторий не
+включены.
 
-## Pipeline
+## Пайплайн
 
-1. **Parsing — MinerU 4.0.5**, run locally on a GPU host (RTX 5060, 8 GB). Each PDF was
-   converted to Markdown (`tanaka1981.md`, `stat3.md`), including layout, formulas and
-   table recognition.
-2. **Indexing — GraphRAG 3.1.2** with `gpt-4o-mini` as the completion model, reached
-   through the project HTTPS proxy. Text embeddings are computed **locally** by a
-   `bge-m3` (fp16, CUDA) server exposing an OpenAI-compatible `/v1` endpoint, so no
-   embedding traffic leaves the host.
-3. **Visualisation** — `output/graph.graphml` is rendered to an interactive
-   `graph.html` (pyvis, physics enabled, node size by degree, tooltips with entity type
-   and description) and a static `graph.png` (matplotlib spring layout, the 25
-   highest-degree nodes labelled).
+1. **Распознавание — MinerU 4.0.5.** Каждый PDF преобразован в Markdown (`tanaka1981.md`,
+   `stat3.md`) с распознаванием структуры страницы, формул и таблиц.
+2. **Индексация — GraphRAG 3.1.2.** Модель для извлечения сущностей, связей и описаний
+   сообществ — `gpt-4o-mini`; векторные представления текста — `bge-m3`. Текст режется на
+   чанки по 1200 токенов с перекрытием 100, из каждого чанка извлекаются сущности и связи,
+   затем граф кластеризуется на сообщества (Leiden) и для каждого сообщества генерируется
+   отчёт.
+3. **Визуализация.** Граф `graph.graphml` отрисован в интерактивный `graph.html` (pyvis:
+   физика включена, размер узла пропорционален степени, при наведении — тип и описание
+   сущности) и в статичный `graph.png` (matplotlib, spring layout, подписаны 25 узлов с
+   наибольшей степенью).
 
-### Entity types
+### Типы сущностей
 
-Both projects extract the same metallurgy-oriented entity types:
+Для обоих текстов использован один набор типов, подобранный под металлургию:
 
 `material`, `steel grade`, `alloying element`, `process`, `process parameter`,
 `mechanical property`, `microstructure`, `phase`, `equipment`, `phenomenon`, `person`,
 `organization`.
 
-### Network tuning
+## Результаты
 
-The HTTPS path to the proxy stalls on TCP flows larger than roughly 20 KB in either
-direction. Three settings in `settings.yaml` keep every request below that limit:
-
-- `call_args.extra_headers.Connection: close` — one request per TCP connection;
-- `call_args.timeout: 90` plus a bounded `retry` block — a stalled call is aborted and
-  retried instead of hanging forever;
-- `community_reports.max_input_length: 1200` and `max_length: 1200` — the prompts for
-  top-level communities would otherwise reach about 22 KB and never complete.
-
-Embeddings avoid the proxy entirely by running locally.
-
-## Results
-
-| Metric | tanaka1981 | stat3 |
+| Метрика | tanaka1981 | stat3 |
 | --- | --- | --- |
-| Entities | 312 | 79 |
-| Relationships | 287 | 79 |
-| Communities | 51 | 17 |
-| Community reports | 51 | 17 |
-| Text units | 26 | 7 |
-| Graph nodes | 237 | 74 |
-| Graph edges | 282 | 78 |
+| Сущности | 312 | 79 |
+| Связи | 287 | 79 |
+| Сообщества | 51 | 17 |
+| Отчёты по сообществам | 51 | 17 |
+| Текстовые чанки | 26 | 7 |
+| Узлов в графе | 237 | 74 |
+| Рёбер в графе | 282 | 78 |
 
-The graph node count is lower than the entity count because isolated entities — those
-for which no relationship was extracted — are not part of the exported graph.
+Узлов в графе меньше, чем сущностей, потому что изолированные сущности — те, для которых
+не извлечено ни одной связи, — в экспортируемый граф не попадают.
 
-The dominant entity in `tanaka1981` is `CONTROLLED ROLLING` (degree 36), followed by
-`CONTROLLED-ROLLED STEEL`, `AUSTENITE` and `RECRYSTALLIZATION`. In `stat3` the hub is
-`КП` (controlled rolling, degree 20) together with `КОНТРОЛИРОВАННАЯ ПРОКАТКА` and
-`КПУО`. Per-book numbers and the top-15 entities by degree are in each `stats.md`.
+Центральная сущность в `tanaka1981` — `CONTROLLED ROLLING` (степень 36), далее
+`CONTROLLED-ROLLED STEEL`, `AUSTENITE`, `RECRYSTALLIZATION` и `GRAIN REFINEMENT`.
+В `stat3` хаб — `КП` (контролируемая прокатка, степень 20) вместе с
+`КОНТРОЛИРОВАННАЯ ПРОКАТКА`, `КПУО` и `УОВТ`. Полные цифры и топ-15 сущностей по степени
+для каждого текста — в соответствующем `stats.md`.
 
-## Contents of each book folder
+## Содержимое папки каждого текста
 
-| File | Description |
+| Файл | Описание |
 | --- | --- |
-| `graph.graphml` | GraphRAG entity/relationship graph |
-| `graph.html` | Interactive pyvis visualisation |
-| `graph.png` | Static overview of the graph |
-| `stats.md` | Counts and the top-15 entities by degree |
-| `entities.csv` | Exported entities (title, type, degree, frequency, description) |
-| `relationships.csv` | Exported relationships (source, target, weight, description) |
-| `<book>.md` | MinerU Markdown parse of the PDF |
-| `settings.yaml` | GraphRAG configuration used for the run (API key as a placeholder) |
+| `graph.graphml` | Граф сущностей и связей, построенный GraphRAG |
+| `graph.html` | Интерактивная визуализация (pyvis) |
+| `graph.png` | Статичная картинка графа |
+| `stats.md` | Количественные показатели и топ-15 сущностей по степени |
+| `entities.csv` | Сущности (название, тип, степень, частота, описание) |
+| `relationships.csv` | Связи (источник, цель, вес, описание) |
+| `<book>.md` | Markdown-результат распознавания PDF в MinerU |
+| `settings.yaml` | Конфигурация GraphRAG, с которой выполнялся запуск (ключ API — плейсхолдер) |

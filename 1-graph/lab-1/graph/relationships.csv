@@ -1,0 +1,411 @@
+source,target,weight,description
+В. И. СПИВАКОВ,МК «АЗОВСТАЛЬ»,7.0,В. И. Спиваков is involved in the study related to controlled rolling processes at МК «Азовсталь».
+Э. А. ОРЛОВ,МК «АЗОВСТАЛЬ»,7.0,Э. А. Орлов is involved in the study related to controlled rolling processes at МК «Азовсталь».
+И. В. ГАНОШЕНКО,МК «АЗОВСТАЛЬ»,7.0,И. В. Ганошенко is involved in the study related to controlled rolling processes at МК «Азовсталь».
+КП,МАЛОПЕРЛИТНЫЕ СТАЛИ,8.0,Контролируемая прокатка (КП) is applied primarily to малоперлитные стали to enhance their mechanical properties.
+КП,НИТРИДО-И КАРБОНООБРАЗУЮЩИЕ ЭЛЕМЕНТЫ,7.0,КП often includes the presence of nitride- and carbide-forming elements to improve steel properties.
+КП,ТМО,8.0,Контролируемая прокатка (КП) is a specific case of the ТМО process used mainly for thick steel sheets.
+КП,НИЗКОЛЕГИРОВАННЫЕ СТАЛИ,8.0,Контролируемая прокатка (КП) is employed for producing low-alloy steels with enhanced qualities.
+КП,ВЫСОКИЙ ТЕМПЕРАТУРНЫЙ РЕЖИМ,6.0,Высокий температурный режим is part of the CP process to improve the rolling efficiency.
+КП,НИЗКИЕ ТЕМПЕРАТУРЫ,7.0,The CP process adjusts to low temperatures to optimize grain structure in steels.
+ФЕРРИТ,КП,1.0,"Контролируемая прокатка (КП) aims to refine ferrous grains, enhancing mechanical properties of steel."
+АУСТЕНИТ,ФЕРРИТ,9.0,"The transformation of austenite to ferrite occurs during the controlled rolling process, affecting the final steel properties."
+КЛЕТЬ,КП,7.0,The rolling cage is essential equipment utilized during the controlled rolling process to shape the steel sheets.
+ПРОЧНОСТЬ,КП,8.0,Controlled rolling processes are designed to enhance the strength of the steel products manufactured.
+ВЯЗКОСТЬ,КП,8.0,The controlled rolling process seeks to improve the toughness and ductility of the steel produced.
+ТЕПЛОВАЯ ОБРАБОТКА,КП,1.0,The heat treatment that accompanies controlled rolling enhances the mechanical properties of the resulting steel.
+NEPRYEVNOLITOGO METALLA,NOPTEMPERATURNY REGIM,8.0,The low-temperature regime is crucial for the processes involved in continuous metal casting
+NOPTEMPERATURNY REGIM,T_H,8.0,The regime must be maintained at T_H of 750-700 °C for proper metal processing
+MANNESMAN-ROHREN,KONTROLIROVANNOY PROKATKI,7.0,Mannesman-Rohren employs controlled rolling in their steel processing operations
+VOEST-ALPINE,KONTROLIROVANNOY PROKATKI,7.0,Voest-Alpine utilizes controlled rolling processes to enhance their steel production
+POSCO,KONTROLIROVANNOY PROKATKI,7.0,POSCO implements techniques in controlled rolling in their steel manufacturing process
+MK IM. 'ILIČA',KONTROLIROVANNOY PROKATKI,7.0,MK im. 'Iliča' employs controlled rolling processes for steel products
+DURABILITY,PLASTICITY,6.0,Durability of metals during rolling is influenced by their plasticity
+NOPTEMPERATURNY REGIM,TEMPERATURE PROTOCOL,1.0,The low-temperature protocol directly affects the metal’s cooling rates in controlled processes
+CHERNOVAYA KLETI,VYDERZHKA,6.0,The roughing mill requires pauses for cooling between rolling passes
+CHISTOVAYA KLETI,RAVNOE PROKATKI,7.0,The finishing mill contributes to achieving the required flatness of rolled materials
+UOVT,T_H,9.0,Accelerated cooling installation is crucial for managing temperature parameters during the cooling phase
+KONTROLIROVANNOY PROKATKI,TOLSHINA PODKATA,8.0,Thickness of material directly impacts controlled rolling parameters
+TEXNOLOGICHESKIYE OPERACII,KONTROLIROVANNOY PROKATKI,1.0,Technological operations are fundamental to the controlled rolling process
+НИЗКОТЕМПЕРАТУРНАЯ КП,ВЫСОКОТЕМПЕРАТУРНАЯ КП,7.0,Высокотемпературная КП применяется для достижения производительности в низкотемпературной КП
+МАЛОПЕРЛИТНЫЕ СТАЛИ,ТЕМПЕРАТУРА ДЕФОРМАЦИИ,8.0,"Температура деформации должна соответствовать критериям, установленным для малоперлитных сталей"
+ТЕМПЕРАТУРА ДЕФОРМАЦИИ,ЗЕРНО ФЕРРИТА,8.0,Температура деформации влияет на размер зерна феррита в стали
+ВЫСОКОТЕМПЕРАТУРНАЯ КП,УСТАНОВКА УОВТ,6.0,Установка УОВТ используется в процессе высокотемпературной КП для достижения заявленной температуры.
+СЛЯБЫ,ЧЕРНОВАЯ КЛЕТЬ,7.0,Слябы проходят через черновую клеть для получения заданной формы и размеров.
+НИЗКОТЕМПЕРАТУРНАЯ КП,ПРОИЗВОДИТЕЛЬНОСТЬ,1.0,Увеличение производительности связано с уменьшением времени выдержки раскатов в процессе низкотемпературной КП.
+ПРОЦЕСС КОМПЕНСАЦИОННОЙ ПРОКАТКИ,НИЗКОТЕМПЕРАТУРНАЯ КП,6.0,"Процесс КП включает в себя как низкотемпературные, так и высокотемпературные подходы для достижения необходимых свойств."
+ЗАВЕРШАЮЩИЕ 3 ПРОХОДА,ЧЕРНОВАЯ КЛЕТЬ,7.0,Чередование завершающих проходов и работы черновой клети необходимо для получения требуемого профиля металла.
+СОРТАТОПРОКАТ,СЛЯБЫ,6.0,Сортатопркаты могут формироваться из слябов в ходе процесса прокатки.
+ИСКУССТВЕННАЯ СХЕМА,ПРОЦЕСС КОМПЕНСАЦИОННОЙ ПРОКАТКИ,1.0,Искусственная схема позволяет лучше понять процесс компенсационной прокатки и настройки его параметров.
+КПУО,КП,7.0,"КПУО и КП являются противоположными процессами прокатки, где КПУО использует более высокие температуры, чтобы достичь прочности."
+КП,УО,6.0,Низкотемпературная КП может сочетаться с УО для улучшения физических свойств проката.
+КПУО,УО,8.0,КПУО может включать ускоренное охлаждение как развивающий этап для улучшения характеристик раскатов.
+АЦ3,СТАЛЬ 09Г2ФБ,5.0,"Температура АЦ3 имеет значение для стали 09Г2ФБ, определяя ее термическое поведение при прокатке."
+СМУО,СТАН 3600,9.0,СМУО используется на стане 3600 для обеспечения контролируемого охлаждения раскатов.
+СТАН 3000,КП,11.0,"The Стан 3000 is a specialized milling machine employed in the controlled rolling process, specifically noted for its application in low-temperature rolling of strips (штрипсов). However, it is important to highlight that this mill lacks advanced cooling features, which may limit its efficiency in certain operations. Despite this limitation, its primary function within the controlled rolling framework remains significant, ensuring that materials are processed effectively under controlled conditions."
+СТАН 3600,КПУО,8.0,Стан 3600 позволяет реализовать высокотемпературную прокатку с ускоренным охлаждением.
+ТРУБНЫЕ СТАЛИ С КАРБОНИТРИДНЫМ УПРОЧНЕНИЕМ,СТАН 3000,1.0,Стан 3000 предназначен для производства трубных сталей с карбонитридным упрочнением.
+ВЫДЕРЖКА,ТЕМПЕРАТУРЫ ОХЛАЖДЕНИЯ,8.0,Правильная выдержка и контроль температур охлаждения обязательны для достижения желаемых механических свойств раскатов.
+МИКРОСТРУКТУРА,МАРТЕНСИТНАЯ ФАЗА,7.0,"Изменения в микроструктуре могут привести к образованию мартенситной фазы, что критично для определения прочности стали."
+КАЛИБРОВКА,СТАН 3000,1.0,Калибровка стана 3000 важно для поддержания точности и качества производимых изделий.
+СТАН 3600,КП,8.0,The 3600 mill allows for an advanced controlled rolling process including accelerated cooling.
+КП,КП+УО,7.0,"The process КП serves as the basis for the КП+УО scheme, improving efficiency through integrated cooling methods."
+КП+УО,КП+УО+КП,6.0,The КП+УО process is a variant of the more complex КП+УО+КП scheme which integrates additional rolling steps.
+ВЫСОКOTEMПЕРАТУРНАЯ КП,СТАН 3600,9.0,The high-temperature controlled rolling process is optimally facilitated by the features of the 3600 mill.
+ТЕМПЕРАТУРНЫЕ ПАРАМЕТРЫ,КП,8.0,Temperature parameters are critical in determining the controlled rolling process's performance.
+ДЛИТЕЛЬНОСТЬ ПРОКАТКИ,КП+УО+КП,7.0,The duration of rolling in the КП+УО+КП scheme is less than other traditional rolling methods.
+ОХЛАЖДЕНИЕ,КП+УО,8.0,Cooling after rolling in the КП+УО process is necessary for achieving specific mechanical properties.
+ПАРАМЕТРЫ РЕЖИМОВ,КП+УО,1.0,Operational parameters influence the efficiency and success of the КП+УО rolling process.
+КП 3600,ТЕМПЕРАТУРА НА-ГРЕВА СЛЯ-БОВ,8.0,The КП 3600 process requires specific heating temperatures for effective slabs rolling.
+КП+УО,ОБЖАТИЕ,7.0,The level of obжатие in the КП+УО process is an important threshold for achieving the desired dimensions of rolled products.
+ОХЛАЖДЕНИЕ,УОВТ,1.0,The cooling phase utilizes УОВТ to manage the temperature of the metal effectively after the rolling process.
+УОВТ,ДТУ,7.0,Установка УОВТ используется для реализации процесса ДТУ на стане 3600
+ДТУ,ТЕПЛОТЕХНИЧЕСКАЯ МОДЕЛЬ,6.0,Модель разрабатывается на основе данных процесса ДТУ для оценки охлаждения
+ТЕПЛОТЕХНИЧЕСКАЯ МОДЕЛЬ,МЕХАНИЧЕСКИЕ СВОЙСТВА,8.0,Теплотехническая модель помогает рассчитать механические свойства охлаждаемого проката
+УОВТ,РАСХОД ВОДЫ,7.0,Установка УОВТ требует учета расхода воды для оптимизации процесса охлаждения
+РАСКАТ,ДТУ,5.0,Процесс раската связан с выполнением этапов ДТУ
+РАСХОД ВОДЫ,РАСКАТ,1.0,Расход воды имеет критическое значение для успешного осуществления процесса раската
+КПУО,УОВТ,14.0,"КПУО (Коагуляция, Пептизация, Уплотнение и Осветление) представляет собой технологический процесс, который осуществляется на установке УОВТ (Установка Охлаждения Воды и Технологий). Данная установка позволяет эффективно контролировать охлаждение в процессе КПУО и обеспечивает оптимизацию всех этапов обработки. Использование установки УОВТ для выполнения процессов КПУО способствует улучшению качества и стабильности конечного продукта, за счет тщательной регуляции температурных режимов и условий пептизации. Таким образом, процесс КПУО и установка УОВТ взаимосвязаны, создавая синергетический эффект, который способствует повышению эффективности производственных операций."
+СЕЛЬСИНОВЫЙ КОМАНД–АППАРАТ,УОВТ,5.0,Сельсиновый команд-аппарат контролирует операции памяти на установке
+ТЕМПЕРАТУРА,РАСХОД ВОДЫ,7.0,Температура влияет на количество расходуемой воды в процессе охлаждения
+ПЛАВКИ,ДТУ,5.0,Количество плавок влияет на процесс ДТУ и его параметры
+ВОДА,РАСХОД ВОДЫ,8.0,Вода используется в качестве основного материала для охлаждения в установках
+ЛИСТ,УОВТ,7.0,Лист обрабатывается на установке УОВТ в процессе охлаждения
+ТЕМПЕРАТУРЫ,МЕХАНИЧЕСКИЕ СВОЙСТВА,1.0,Температуры определяют механические свойства материалов после охлаждения
+СЛИСТОВ,МАЛОПЕРЛИТНЫЕ СТАЛИ,7.0,Листы производят из малоперлитных сталей для повышения термостойкости
+Д.А. ЛИТВИНЕНКО,В.И. ПОГОРЖЕЛЬСКИЙ,9.0,Д.А. Литвиненко совместно с В.И. Погоржельским работал над контролируемым прокатом
+Ю.И. МАТРОСОВ,В.И. ПОГОРЖЕЛЬСКИЙ,9.0,Ю.И. Матросов также был участником исследований под руководством В.И. Погоржельского
+НИР,ТЕРМОМЕХАНИЧЕСКОЕ УПРОЧНЕНИЕ,6.0,Научно-исследовательская работа фокусируется на процессе термомеханического упрочнения
+КПУО,КОНСТРУКЦИОННАЯ ЛЕГИРОВАННАЯ СТАЛЬ,8.0,Процесс КПУО улучшает характеристики конструкционной легированной стали
+ГРУББЛЕХ,КОНСТРУКЦИОННАЯ ЛЕГИРОВАННАЯ СТАЛЬ,1.0,Грубблех производится из конструкционной легированной стали
+ПРОКАТКА,КПУО,8.0,Процесс прокатки связан с контролируемым процессом охлаждения для достижения желаемых механических свойств
+ПРОЦЕСС УПРОЧНЕНИЯ,КОНСТРУКЦИОННАЯ ЛЕГИРОВАННАЯ СТАЛЬ,7.0,Процесс упрочнения применяется для обеспечения прочности конструкции из легированной стали
+CONTROLLED ROLLING,STEEL,9.0,Controlled rolling is a process specifically designed to improve the properties of steel by refining its grain structure.
+T. TANAKA,CONTROLLED ROLLING,8.0,"Dr. T. Tanaka has conducted research on the process of controlled rolling in steel production, highlighting its significance."
+STEEL,GRAIN STRUCTURE,8.0,The grain structure of steel is a critical aspect that defines its mechanical properties and performance capabilities.
+AUSTENITE,FERRITE,29.0,"Austenite and ferrite are two crucial phases in the structure of steel that significantly influence the material's properties through their interactions during the processes of heating and cooling. These phases are particularly important in the context of controlled rolling processes, where precise temperature management dictates the transformations that occur in the steel.
+
+Austenite, which is stable at high temperatures, can undergo a transformation into ferrite when the material is cooled. This transformation is marked by the Ar3 temperature, which serves as a critical transition point where austenite begins to convert into ferrite under specific conditions. The cooling phases of steel play an essential role in this conversion, highlighting the importance of temperature control in achieving desired steel characteristics.
+
+The transformation of austenite into ferrite is fundamental in steel processing, as it affects not only the strength and ductility of the final material but also its overall performance in various applications. Understanding the dynamics between austenite and ferrite during heating and cooling is crucial for metallurgists and engineers aiming to optimize steel properties for specific uses. 
+
+In summary, the interplay between the austenite and ferrite phases during the cooling of steel is critical in determining the material's overall properties and performance. The transformation process, particularly during controlled rolling, underscores the significance of temperature management in steel production."
+AUSTENITE,CONTROLLED ROLLING,6.0,The controlled rolling process focuses on manipulating the austenite phase to achieve desirable mechanical properties in steel.
+FERRITE,GRAIN STRUCTURE,5.0,The presence of ferrite influences the overall grain structure and thus impacts the mechanical behaviors of steel.
+MECHANICAL PROPERTIES,NOTCH TOUGHNESS,7.0,Notch toughness is one aspect of the mechanical properties that are improved through controlled rolling techniques.
+NIOBIUM,STEEL,6.0,"Niobium is added to steel to enhance its strength, specifically in relation to controlled rolling processes."
+HIGH TEMPERATURE,CONTROLLED ROLLING,8.0,High temperature is crucial in controlled rolling as it aids in the recrystallization of austenite.
+LOW FINISHING TEMPERATURE,CONTROLLED ROLLING,8.0,Using a low finishing temperature in controlled rolling assists in achieving refined grain structures and improved mechanical properties.
+DEFORMATION,GRAIN STRUCTURE,8.0,Deformation during the controlled rolling process significantly impacts the grain structure and mechanical properties of steel.
+CHARPY SPECIMENS,NOTCH TOUGHNESS,1.0,"Charpy specimens are utilized to test the notch toughness of materials, which is influenced by their microstructural properties."
+STEEL,CONTROLLED ROLLING,15.0,"Controlled rolling is an essential process employed in the production of steel, specifically aimed at refining the microstructure of the material to significantly enhance its mechanical properties. This technique involves subjecting the steel to deformation processes that optimize its characteristics, resulting in improved strength, toughness, and formability. Through controlled rolling, steel manufacturers can manipulate the grain structure of the steel, ensuring that the final product meets stringent industry standards for various applications. By integrating controlled rolling into the steel production process, manufacturers achieve a more versatile and high-performance material that can effectively meet the demands of diverse engineering and construction projects."
+CONTROLLED ROLLING,NOTCH TOUGHNESS,7.0,The controlled rolling process aims to improve notch toughness by refining grain structures in the steel.
+CONTROLLED ROLLING,BISRA GROUP,6.0,"The BISRA group researched and developed controlled rolling technology, paving the way for improved steel manufacturing practices."
+CONTROLLED ROLLING,Γ-GRAIN STRUCTURE,7.0,Controlled rolling affects the γ-grain structure by refining its size and promoting better transformation to the α-matrix.
+NB,STEEL,8.0,"The addition of Nb to steel improves its mechanical properties, including toughness and strength, by enhancing the controlled rolling process."
+Γ-GRAIN STRUCTURE,Α-MATRIX,8.0,The transformation from the γ-grain structure to the α-matrix in steel is a crucial phase change that affects the overall mechanical properties.
+HALL-PETCH RELATION,NOTCH TOUGHNESS,1.0,"The Hall-Petch relation helps explain the influence of grain size on notch toughness, indicating that smaller grains can enhance toughness."
+COARSE Γ,BAINITE,6.0,"Coarse γ transforms into a mixture of coarse α and bainite, which negatively impacts notch toughness and overall mechanical properties."
+C—MN—NB FINE-GRAINED STEEL,CONTROLLED ROLLING,8.0,C—Mn—Nb fine-grained steel is produced using controlled rolling processes to enhance its mechanical properties effectively.
+LOW FINISHING TEMPERATURE,C—MN—NB FINE-GRAINED STEEL,1.0,Using a low finishing temperature in the production of C—Mn—Nb fine-grained steel improves its weldability and toughness.
+GAMMA,ALPHA,17.0,"The entities involved are ""GAMMA"" and ""ALPHA,"" which refer to phases in the context of steel processing. GAMMA, also known as the austenite phase, plays a crucial role in influencing the microstructural characteristics and mechanical performance of steel. During processes such as recrystallization and deformation, the GAMMA phase undergoes transformation to the ALPHA phase, also called ferrite, as temperatures decrease and under specific deformation conditions. This transformation is critical to steel processing, as the transition from GAMMA to ALPHA affects the final properties of the material, including its strength, ductility, and overall performance. Therefore, both phases are integral to understanding the behavior of steel during heating, cooling, and mechanical working, with the GAMMA phase initially providing a critical high-temperature structure that is essential for the formation of the lower-temperature ALPHA phase through controlled processing techniques."
+RECRYSTALIZATION,ALPHA,9.0,"The recrystallization process is crucial for the formation of fine-grained alpha in steel, as it helps to refine the gamma phase before deformation occurs."
+CONTROLLED ROLLING,GAMMA,15.0,"Controlled Rolling and Gamma are two critical concepts in the field of steel processing and metallurgy. Controlled rolling utilizes specific deformation techniques aimed at influencing the gamma phase of steel. This process is particularly important as it promotes the transformation of the gamma phase into the alpha phase during the hot-working of steel. By effectively managing this phase transition, controlled rolling enhances the final properties of the steel, such as its strength, toughness, and overall performance.
+
+The technique of controlled rolling particularly targets the deformation of the gamma phase, ensuring that the steel undergoes the desired transformations and achieves optimal characteristics. This approach is integral to modern steel manufacturing, as it not only improves material quality but also enables the production of steel that can meet the rigorous demands of various applications in construction, automotive, and other industries. Through the controlled manipulation of phase changes within the steel, the method ensures that end products possess enhanced mechanical properties, making them more suitable for their intended uses."
+CONTROLLED ROLLING,UPPER BAINITE,6.0,"The controlled rolling process can affect the formation of upper bainite, depending on the temperature and strain rates used during processing."
+DEFORMATION,FINER GRAIN STRUCTURE,8.0,"The process of deformation is employed to achieve a finer grain structure in metals, significantly enhancing their strength and mechanical properties."
+FINER GRAIN STRUCTURE,MIXED GRAIN STRUCTURE,7.0,"Achieving a finer grain structure is critical to avoiding a mixed grain structure, which may lead to inconsistencies in mechanical performance."
+DEFORMATION,ALPHA,1.0,"Deformation techniques significantly impact the microstructure, promoting the formation of desirable alpha grain structures through controlled processing conditions."
+AUSTENITE,ALPHA,8.0,"Austenite transforms into alpha during the phase transformation in steel when cooled or deformed, which is crucial for determining the material's properties."
+AUSTENITE,UPPER BAINITE,7.0,"Austenite can also transform into upper bainite during certain cooling conditions, influencing the microstructure and mechanical properties of the steel."
+TOTAL REDUCTION,FINER GRAIN STRUCTURE,9.0,"An increase in total reduction during deformation is directly related to achieving a finer grain structure in metals, thereby enhancing mechanical properties."
+WARM-WORKED,GAMMA,6.0,"Warm-worked structures involve the gamma phase and indicate the characteristics that result from deformation at specific temperatures, influencing the transformation to other microstructures."
+FINER GRAIN STRUCTURE,FERITE-PEARLITE,1.0,"Creating a finer grain structure can prevent the formation of a ferrite-pearlite microstructure, impacting the overall strength and toughness of steel."
+DEFORMATION BAND,GAMMA,7.0,"Deformation bands are associated with gamma-grain boundaries, facilitating the nucleation of the alpha phase."
+GAMMA,DEFORMATION BAND,5.0,"Gamma grains can be divided by deformation bands, significantly influencing the nucleation of alpha."
+CONTROLLED ROLLING,SUBGRAIN HARDENING,6.0,"Controlled rolling facilitates subgrain hardening through deformation processes, leading to improved steel strength."
+FERRITE,ALPHA,7.0,Ferrite can nucleate at alpha grain boundaries and deformation bands during the transformation between phases.
+CLASSIC HOT ROLLING,ALPHA,6.0,"In classic hot rolling, alpha nucleation is limited to gamma-grain boundaries, affecting grain refinement."
+TANAKA,CONTROLLED ROLLING,8.0,"Tanaka proposed key stages in controlled rolling, highlighting its importance for steel grain improvement."
+RECRYSTALLIZATION REGION,CONTROLLED ROLLING,9.0,The controlled rolling process operates within the recrystallization region to enhance mechanical properties by refining grains.
+MEDIUM HARDENABILITY,ALPHA,8.0,Medium hardenability is significantly influenced by the transformation processes involving the alpha phase in steel.
+BAINITIC STRUCTURE,CONTROLLED ROLLING,7.0,"Controlled rolling helps avoid the development of a bainitic structure, promoting better toughness."
+EQUIAXED GRAINS,SUBGRAIN HARDENING,1.0,"The process of subgrain hardening can lead to a refined microstructure with equiaxed grains, enhancing mechanical properties."
+DEFORMATION,CONTROLLED ROLLING,8.0,Deformation is a key component of the controlled rolling process that influences the final microstructure and properties of steel.
+MICROSTRUCTURAL CHANGE,CONTROLLED ROLLING,9.0,"Controlled rolling induces significant microstructural changes within steel, leading to enhanced mechanical properties."
+HARDENABILITY,ALPHA,8.0,"The hardenability of steel is largely determined by the presence of the alpha phase, which affects its toughness and strength."
+RECRYSTALLIZATION,RECRYSTALLIZATION REGION,9.0,Recrystallization occurs within the recrystallization region during processes like controlled rolling.
+FLOW STRESS,DEFORMATION,7.0,"Flow stress affects the deformation behavior of steel, particularly during high-temperature processing."
+SUBSTRUCTURE,SUBGRAIN HARDENING,1.0,"The development of a substructure is crucial for effective subgrain hardening, enhancing strength in steel."
+STEEL,AUSTENITE,8.0,"Steel can exist in an austenitic phase when heated to high temperatures, where it exhibits specific mechanical properties and structures"
+DYNAMIC RECOVERY,STEEL,8.0,"Dynamic recovery is a process that occurs in steel during high-temperature deformation, affecting the material's flow stress"
+DYNAMIC RECRYSTALLIZATION,STEEL,8.0,Dynamic recrystallization enhances the microstructure of steel by producing new grains during high-temperature deformation
+STATIC RESTORATION,STEEL,8.0,"Static restoration processes occur in steel following deformation, contributing to the recovery and recrystallization of its structure"
+ZENER–HOLLIMON PARAMETER,DYNAMIC RECRYSTALLIZATION,7.0,The Zener–Hollomon parameter is a critical factor influencing dynamic recrystallization during hot deformation
+GRAIN SIZE,STATIC RECRYSTALLIZATION,8.0,"Static recrystallization results in changes in grain size in steel, impacting its mechanical properties"
+NIOBIUM STEEL,STATIC RECRYSTALLIZATION,7.0,Niobium steel exhibits unique static recrystallization characteristics that improve its grain refining capabilities during rolling
+HIGH TEMPERATURES,DYNAMIC RECOVERY,1.0,"High temperatures facilitate the dynamic recovery process in steel, leading to reduced internal stresses during deformation"
+FLOW STRESS,PEAK STRESS,8.0,"Flow stress rises to a peak value during deformation before it starts to decrease, indicating the relationship between the two during the deformation process"
+METADYNAMIC RECRYSTALLIZATION,STATIC RECRYSTALLIZATION,6.0,Both metadynamic and static recrystallization processes are recovery mechanisms aimed at restoring steel's microstructure after deformation
+INITIAL GRAIN SIZE,GRAIN SIZE,1.0,Initial grain size has a significant impact on the final recrystallized grain size after processes like static or dynamic recrystallization
+PLAIN C STEEL,RECRYSTALLIZATION,8.0,Plain C steel undergoes recrystallization affecting its mechanical properties during processes like rolling and deformation
+NB STEEL,RECRYSTALLIZATION,8.0,"Nb steel demonstrates unique recrystallization behavior, particularly sensitive to the addition of niobium"
+ROLLING,CONTROLLED ROLLING,9.0,Controlled rolling is a specific type of rolling process that aims to refine the grain structure of steel
+RECRYSTALLIZATION,DEFORMATION TEMPERATURE,7.0,The temperature at which deformation occurs significantly influences recrystallization behavior in metals
+DEFORMATION TEMPERATURE,CRITICAL AMOUNT OF DEFORMATION,6.0,There is a reliance on deformation temperature to achieve the critical amount of deformation necessary for effective recrystallization
+ROLLING,DEFORMATION TEMPERATURE,8.0,Rolling processes rely on specific deformation temperatures to ensure desirable material properties post-deformation
+ALPHA GRAIN,GRAIN SIZE,7.0,"The alpha grain size in steel affects the overall grain size, influencing the strength and toughness of the material"
+RECRYSTALLIZATION,GRAIN-BOUNDARY MIGRATION,1.0,"Recrystallization processes often involve grain-boundary migration, shaping the resultant grain structure"
+PARTIAL RECRYSTALLIZATION REGION,RECRYSTALLIZATION,7.0,"Partial recrystallization relates to the overall recrystallization process, affecting the material's response to further deformation"
+MIXED GRAIN STRUCTURE,RECRYSTALLIZATION,6.0,"The presence of a mixed grain structure can result from incomplete recrystallization, impacting the strength and toughness of the material"
+UNIQUENESS OF GRAIN STRUCTURE,GRAIN SIZE,1.0,"The uniqueness of grain structure correlates with grain size, which is a key determinant of a material's mechanical behavior"
+NIOBIUM,C STEEL,7.0,"Niobium affects the recrystallization behavior in C steel, specifically increasing the critical amount of reduction required for recrystallization"
+CONTROLLED ROLLING,MIXED GRAIN STRUCTURE,5.0,Controlled rolling can lead to the formation of mixed grain structures in steel
+MIXED GRAIN STRUCTURE,AUSTENITE,6.0,The formation of a mixed grain structure is attributed to the behavior of gamma-grains during processing
+NIOBIUM,CONTROLLED ROLLING,1.0,"Niobium is used in controlled rolling to impact recrystallization, playing a role in grain size reduction"
+RECRYSTALLIZATION,NIOBIUM,7.0,Nb influences the recrystallization process by delaying the recrystallization in C steel
+DEFORMATION,RECRYSTALLIZATION,8.0,Deformation must be applied to initiate the recrystallization process in metals
+TEMPERATURE,RECRYSTALLIZATION REGION,9.0,Temperature plays a significant role in determining the conditions surrounding the recrystallization region
+LOW-TEMPERATURE TOUGHNESS,BAINITE,6.0,Low-temperature toughness is a mechanical property affected by the presence of bainite in the microstructure
+HOLDING TIME,RECRYSTALLIZATION,1.0,Holding time impacts the effectiveness of recrystallization by allowing sufficient time for new grain formation
+SOLUTE NB,RECRYSTALLIZATION,8.0,"The solute Nb has a significant influence on the recrystallization process, affecting both its initiation and kinetics."
+"FINE NB(C,N)",RECRYSTALLIZATION,7.0,"Fine Nb(C,N) precipitates retard recrystallization by interacting with the deformation substructure."
+RECRYSTALLIZATION,DEFORMATION,9.0,"Recrystallization occurs following the deformation process, as internal stresses in materials are relieved through structural changes."
+TIME CONSTANT,RECRYSTALLIZATION,6.0,The time constant is crucial in determining the kinetics of the recrystallization process based on temperature effects.
+GRAIN REFINEMENT,STEEL,8.0,Grain refinement contributes to the improved mechanical properties of steel by reducing grain size during processes like recrystallization.
+DEFORMATION BAND,DEFORMATION,7.0,"Deformation bands are formed during the deformation process, indicating changes in grain structures within materials."
+TEMPERATURE,RECRYSTALLIZATION,7.0,"Temperature affects the kinetics and timing of the recrystallization process, playing a vital role in how materials respond to thermal conditions during deformation."
+AVRAMI'S LAW,RECRYSTALLIZATION,5.0,"Avrami's Law describes the time-dependent nature of recrystallization, indicating how the fraction of recrystallized material evolves."
+OHMORI,RECRYSTALLIZATION,6.0,"Ohmori's work relates to how fine Nb(C,N) precipitation influences the recrystallization process and its kinetics."
+LE BON ET AL.,RECRYSTALLIZATION,1.0,Le Bon et al. provided a framework that links Nb modification to the kinetics of recrystallization in steel.
+NON-RECRYSTALLIZATION REGION,DENSITY,8.0,"Density is affected by deformation within the non-recrystallization region as temperature increases beyond 1000°C, highlighting the relationship between temperature and deformation effects"
+NON-RECRYSTALLIZATION REGION,DEFORMATION BAND,7.0,"Deformation bands are generated during working within the non-recrystallization region, indicating the correlation between deformation and microstructural changes"
+DEFORMATION BAND,GRAIN-BOUNDARY AREA,6.0,"The formation of deformation bands increases the grain-boundary area, correlating grain microstructure with mechanical properties"
+GAMMA-GRAIN,ALPHA-GRAIN,7.0,"Gamma-grains and alpha-grains relationship signifies the transition during steel transformation, affecting mechanical strength"
+RECRYSTALLIZATION REGION,ALPHA-GRAIN,6.0,"The formation of alpha-grains is influenced by deformation in the recrystallization region, showcasing how different phases interact during processing"
+ASTM GRAIN-SIZE NUMBER,GAMMA-GRAIN,5.0,"The ASTM grain-size number provides a measure for gamma-grain size, impacting how the material's mechanical properties are assessed"
+GAMMA-GRAIN,DEFORMATION BAND,6.0,"Gamma-grains contain deformation bands, indicating their influence on structural integrity and deformation behavior"
+ALPHA-GRAIN,RECRYSTALLIZATION REGION,7.0,"The alpha-grain size correlates with conditions in the recrystallization region, affecting the steel’s response to forming processes"
+NB STEEL,ROLLED MATERIAL,1.0,"Nb steel's properties are affected by the rolling process, linking material type to manufacturing technique"
+DEFORMATION,DEFORMATION BAND,8.0,"Deformation causes the formation of deformation bands within the material structure, demonstrating a direct relationship between process and microstructure"
+GRAIN REFINEMENT,DEFORMATION,7.0,"Grain refinement is significantly influenced by the process of deformation during material processing, indicating how mechanical changes improve material quality"
+TRANSFORMATION RATE,NUCLEATION RATE,8.0,"The transformation rate is directly proportional to the nucleation rate during phase changes, establishing a crucial connection between these two parameters"
+INTERFACE NUCLEATION GROWTH MECHANISM,NUCLEATION RATE,1.0,"The interface nucleation growth mechanism relies on the nucleation rate, reflecting how grains morphology is affected during transformations"
+TWO-PHASE REGION,MICROSTRUCTURE,8.0,The two-phase region affects microstructure development and the resulting mechanical properties of materials under strain.
+GRAIN REFINEMENT,MICROSTRUCTURE,9.0,Grain refinement processes lead to changes in microstructure that enhance mechanical properties.
+YIELD STRENGTH,MECHANICAL PROPERTIES,9.0,Yield strength is a key aspect of mechanical properties that define a material's ability to withstand stress before deforming.
+TENSILE STRENGTH,MECHANICAL PROPERTIES,9.0,Tensile strength is vital for understanding the mechanical properties of materials under tensile stress.
+TRANSITION TEMPERATURE,ABSORBED ENERGY,7.0,"The transition temperature is closely related to how much energy a material can absorb during impact, integral for assessing material performance."
+EQUIAXED ALPHA GRAINS,MICROSTRUCTURE,8.0,"The formation of equiaxed alpha grains is a microstructural feature that affects the material properties, particularly in the context of deformation."
+DYNAMIC RECOVERY,MECHANICAL PROPERTIES,8.0,Dynamic recovery processes impact mechanical properties by affecting dislocation structures during deformation.
+CONTROLLED ROLLING,MECHANICAL PROPERTIES,9.0,Controlled rolling is a process used to enhance mechanical properties through careful control of deformation and temperature.
+STAIN-INDUCED TRANSFORMATION,TWO-PHASE REGION,8.0,"Strain-induced transformation processes occur within the two-phase region, influencing the resultant material properties."
+AUSTENITE-FERRITE REGION,TWO-PHASE REGION,7.0,The austenite-ferrite region is a specific phase condition that defines the boundaries of the two-phase region in steel.
+"NB(C, N)",NIOBIUM STEEL,9.0,"The presence of Nb(C, N) precipitates plays a significant role in enhancing the properties of niobium steel alloys."
+DYNAMIC RECRYSTALLIZATION,MICROSTRUCTURE,1.0,"Dynamic recrystallization directly influences the microstructure development during processes like rolling, affecting properties."
+GRAIN SIZE,MECHANICAL PROPERTIES,9.0,"Grain size significantly impacts the mechanical properties of a material, affecting its strength and ductility."
+LIMITING VALUE,GRAIN REFINEMENT,8.0,"The limiting value defines the maximum achievable grain refinement under specific deformation conditions, essential for process control."
+OPTICAL MICROSCOPIC SCALE,ELECTRON MICROSCOPIC SCALE,1.0,Both optical and electron microscopic scales are critical for analyzing microstructures and understanding material behavior at different resolutions.
+CONTROLLED ROLLING,DILATOMETRIC METHODS,7.0,"Dilatometric methods can be used to analyze the thermal and phase transitions occurring during the controlled rolling process, providing vital data on material behavior"
+STRAIN-INDUCED AR3 TEMPERATURE,CONTROLLED ROLLING,8.0,"The strain-induced Ar3 temperature is a critical parameter that can be affected by the controlled rolling process, impacting subsequent phase transformations"
+AUSTENITE,MARTENSITE,9.0,"Austenite transforms into martensite during rapid cooling, which is a key aspect of controlled rolling and heat treatment processes in steel"
+AUSTENITE,BAINITE,7.0,"Austenite can also transform into bainite at certain cooling rates, affecting the mechanical properties of steel"
+BAINITE,MARTENSITE,6.0,"Both bainite and martensite are microstructural phases resulting from the transformation of austenite under different cooling conditions, influencing the toughness and strength of the steel"
+POLYGONAL FERRITE-PEARLITE,BAINITE,5.0,"Polygonal ferrite-pearlite can be part of the microstructural classification of steels, contrasting with bainitic structures which form under different cooling scenarios"
+ACICULAR FERRITE,MARTENSITE,4.0,"Acicular ferrite can be observed in welding processes where rapid cooling leads to the formation of hard phases like martensite, enhancing toughness"
+TEXTURE DEVELOPMENT,TEXTURE INTENSITY,7.0,"Texture development influences texture intensity, impacting the mechanical behavior and properties of the processed materials"
+YUTORI AND OGAWA,CONTROLLED ROLLING,6.0,"Yutori and Ogawa conducted studies relevant to controlled rolling, influencing the understanding of microstructure development under this process"
+TANAKA AND TABATA,STRAIN-INDUCED AR3 TEMPERATURE,1.0,Tanaka and Tabata's work was essential in accurately determining the strain-induced Ar3 temperature through measurements of texture intensity
+TRANSFORMED MICROSTRUCTURE,CONTROLLED ROLLING,8.0,The controlled rolling process leads to specific transformed microstructures that greatly affect the mechanical properties of the steel.
+HEAVY DEFORMATION,NON-RECRYSTALLIZATION REGION,8.0,"Heavy deformation typically occurs within the non-recrystallization region, influencing the resulting microstructure and mechanical properties of the steel"
+CRYSTALLOGRAPHIC TEXTURE,TEXTURE DEVELOPMENT,8.0,"Crystallographic texture results from texture development which occurs during processing like controlled rolling, impacting mechanical behaviors"
+ROLLING DIRECTION (RD),TEXTURE DEVELOPMENT,7.0,"The rolling direction affects texture development in deformed materials, which is crucial for predicting their mechanical properties"
+NORMALIZED STEEL,CONTROLLED ROLLING,6.0,"Normalized steel properties can be enhanced through controlled rolling processes, allowing for improved performance in various applications"
+QUENCHED AND TEMPERED STEEL,CONTROLLED ROLLING,1.0,Quenched and tempered steel processes can be utilized alongside controlled rolling to achieve desired mechanical characteristics
+CONTROLLED-ROLLED STEEL,PLANE ANISOTROPY,8.0,Controlled-rolled steel exhibits plane anisotropy due to its production process that affects strength and fracture directionality
+CONTROLLED-ROLLED STEEL,EMBRITTLEMENT,8.0,Controlled-rolled steel experiences embrittlement primarily due to the formation of specific textures during processing
+EMBRITTLEMENT,TEXTURE,7.0,Texture formation in controlled-rolled steel significantly contributes to the embrittlement of the material
+PLANE ANISOTROPY,CHARPY IMPACT ENERGY,7.0,Plane anisotropy impacts the Charpy impact energy measurements by affecting how a material fractures under stress
+LONGITUDINAL DIRECTION,CHARPY IMPACT ENERGY,6.0,"The longitudinal direction influences Charpy impact energy measurements, as strength varies in different orientations"
+THROUGH-THICKNESS DIRECTION,CHARPY IMPACT ENERGY,6.0,The through-thickness direction significantly affects the Charpy impact energy and the behavior of controlled-rolled steel under stress
+TRANSVERSE DIRECTION,CHARPY IMPACT ENERGY,5.0,The transverse direction's mechanical properties play a critical role in the Charpy impact energy results for materials
+LONGITUDINAL DIRECTION,THROUGH-THICKNESS DIRECTION,7.0,"These two directions define the stress states in controlled-rolled steel, fundamentally influencing its fracture behavior"
+LONGITUDINAL DIRECTION,TRANSVERSE DIRECTION,7.0,The relationship between these directions is crucial for understanding the anisotropic properties and failure mechanisms in materials
+TANAKA,CONTROLLED-ROLLED STEEL,8.0,Tanaka's work focuses on the controlled-rolling processes that affect the mechanical properties and textures in controlled-rolled steel
+CHARPY CURVES,EMBRITTLEMENT,1.0,Charpy curves illustrate the impact of embrittlement on the material's resistance to fracture across varying temperatures
+SEPARATIONS,CLEAVAGE FRACTURE,7.0,"Separations can lead to cleavage fracture by providing cracks initiating points, particularly in the presence of stress and material anisotropy."
+MNS INCLUSION,SEPARATIONS,8.0,"MnS inclusions are a primary trigger for the initiation of separations in steel, influencing the brittleness of the material."
+UNIAXIAL YIELD STRESS,SEPARATIONS,5.0,"The uniaxial yield stress influences the likelihood of separation occurring within steel under stress conditions, as cracks develop when stress exceeds yield strength."
+TEMPER EMBRITTLEMENT,GRAIN BOUNDARY,7.0,"Temper embrittlement occurs due to segregation of impurities along grain boundaries, resulting in reduced toughness at lower temperatures."
+RARE EARTH METALS,DESULPHURIZATION METHOD,6.0,The addition of rare earth metals is a method used in desulphurization processes to enhance the manipulation of inclusions in steel.
+LOW-TEMPERATURE TOUGHNESS,SEPARATIONS,1.0,"The occurrence of separations negatively impacts the low-temperature toughness of steel, leading to increased brittleness."
+DIMENSIONAL ANISOTROPY,SEPARATIONS,6.0,"Dimensional anisotropy contributes to the behavior of separations, leading to varying mechanical properties based on orientation."
+CRACK INITIATION,MNS INCLUSION,8.0,"Crack initiation in steel is often triggered by manganese sulfide inclusions, which serve as stress concentration points leading to failure."
+CONTROLLED ROLLING,HOTPROLLED STRIP,7.0,Controlled rolling is a technique applied during the production of hot-rolled strips to enhance the material's mechanical properties.
+PLANE STRAIN,SEPARATIONS,5.0,"In plane strain conditions, the likelihood of separations occurring can be influenced by how stress distributes across the material."
+PLANE STRESS,SEPARATIONS,5.0,"In a plane stress scenario, separations can develop due to the differing stress states experienced by the material during loading."
+PROPAGATE,SEPARATIONS,1.0,"The propagation of cracks is a crucial factor in the behavior of separations in steel, particularly under varying stress conditions."
+CONTROLLED-ROLLED STEELS,SULPHIDE,8.0,The manufacturing process of controlled-rolled steels involves managing sulphide impurities to enhance the final mechanical properties.
+SULPHIDE,RARE EARTH METALS,7.0,"The addition of rare earth metals is used to modify the shape of sulphide inclusions in steel, improving overall steel quality."
+CONTROLLED-ROLLED STEELS,DEFORMATION,9.0,Controlled-rolled steels undergo specific deformation processes to achieve desired mechanical characteristics.
+DEFORMATION,MARTENSITIC STRUCTURE,7.0,Deformation in controlled-rolled steels leads to the formation of martensitic structures and affects mechanical properties.
+GRAIN SIZE,YIELD STRENGTH,8.0,"Grain size has a direct influence on the yield strength of the material, as detailed by the Hall-Petch relation."
+HALL-PETCH RELATION,YIELD STRENGTH,9.0,The Hall-Petch relation describes how the yield strength of polycrystalline solids increases as grain size decreases.
+DUCTILE-TO-BRITTLE TRANSITION TEMPERATURE,GRAIN SIZE,8.0,"Ductile-to-brittle transition temperature is inversely proportional to grain size, affecting material behavior at different temperatures."
+YIELD STRENGTH,EFFECTIVE GRAIN SIZE,7.0,"Effective grain size influences yield strength, particularly in martensitic and other microstructures."
+SEPARATION,BAND DENSITY,6.0,The occurrence of separation is influenced by band density and other microstructural parameters.
+CR,CONTROLLED-ROLLED STEELS,1.0,The addition of chromium as an alloying element improves the performance of controlled-rolled steels by enhancing hardness and resistance to corrosion.
+SUBGRAIN HARDENING,YIELD STRENGTH,8.0,Subgrain hardening contributes to increased yield strength by creating additional obstacles to dislocation motion in materials.
+PRECIPITATION HARDENING,YIELD STRENGTH,9.0,"Precipitation hardening enhances yield strength by forming fine particles that impede dislocation motion, improving overall hardness."
+LATTICE HARDENING,YIELD STRENGTH,7.0,Lattice hardening improves yield strength through manipulating the crystal lattice to create resistance against dislocation movement.
+SOLID-SOLUTION HARDENING,YIELD STRENGTH,8.0,"Solid-solution hardening increases yield strength by introducing solute atoms that disrupt the lattice structure, making dislocation movement more difficult."
+TEXTURE HARDENING,YIELD STRENGTH,1.0,Texture hardening can contribute to yield strength by modifying the crystal orientation and thus affecting dislocation activity.
+HESLOP AND PETCH,T_{RS},9.0,"Heslop and Petch's work showed that the transition temperature is related to grain size, directly influencing T_{rs}"
+KUNITAKE,T_{RS},9.0,"Kunitake provided a formulation for T_{rs} based on grain size, relevant in martensitic structures"
+GLADMAN,T_{RS},9.0,Gladman's equation outlines the factors affecting T_{rs} for bainitic steel
+GRAIN SIZE,T_{RS},9.0,"Grain size has an inverse relationship with transition temperature, as noted by multiple researchers"
+FINISHING TEMPERATURE,GRAIN SIZE,8.0,"Finishing temperature affects grain size, which in turn influences transition temperature"
+DISLOCATIONS,Σ_{D},8.0,Dislocations contribute to yield strength and are central to Ashby-Orowan strengthening
+Σ_{D},T_{RS},7.0,The yield strength indicated by σ_{D} shows a correlation to the transition temperature
+"N_{B}(C, N)",C-MN STEEL,8.0,"Nb(C, N) influences the mechanical properties of C-Mn steel significantly"
+SUBGRAINS,TRANSITION TEMPERATURE,1.0,"The formation of subgrains affects the propagation of brittle cracks, impacting transition temperature"
+MARTENSITIC STRUCTURE,T_{RS},8.0,The martensitic structure influences the transition temperature (T_{rs}) due to its grain size and distribution
+BAINITIC STEEL,T_{RS},8.0,Bainitic steel exhibits a unique transition temperature behavior based on its specific microstructure
+EFFECTIVE GRAIN SIZE,T_{RS},8.0,The effective grain size in steel directly affects its transition temperature (T_{rs})
+HIGH-ANGLE BOUNDARY,T_{RS},7.0,"The presence of high-angle boundaries can enhance toughness, thereby impacting transition temperature"
+LOW-ANGLE BOUNDARY,T_{RS},1.0,"Low-angle boundaries are less effective at preventing brittle cracking, affecting transition temperature"
+NB,C-MN STEEL,9.0,Nb enhances the strength and toughness of C-Mn steel through grain refinement and precipitation hardening.
+V,C-MN STEEL,8.0,V significantly increases strength and transition temperature in C-Mn steel through precipitation hardening.
+TI,C-MN STEEL,6.0,Ti aids in grain refinement in C-Mn steel but can adversely affect toughness at high levels.
+GRAIN REFINEMENT,CONTROLLED ROLLING,9.0,Grain refinement is a primary goal of controlled rolling to enhance the mechanical properties of steel.
+TRANSITION TEMPERATURE,C-MN STEEL,7.0,The transition temperature is a key factor in determining the mechanical performance of C-Mn steel during phase changes.
+STRAIN-INDUCED PRECIPITATES,GRAIN REFINEMENT,8.0,Strain-induced precipitates play a crucial role in grain refinement by preventing grain growth and enhancing strength.
+MECHANICAL PROPERTIES,CONTROLLED ROLLING,1.0,Controlled rolling significantly improves the mechanical properties of steel through processes like grain refinement and adjustment of transition temperature.
+SI,MECHANICAL PROPERTIES,7.0,"Silicon contributes to the improvement of mechanical properties, particularly strength and ductility, in controlled-rolled steel."
+MANGANESE,MECHANICAL PROPERTIES,8.0,Manganese enhances the mechanical properties of controlled-rolled steel through solid-solution hardening and grain refinement.
+PRECIPITATION HARDENING,MECHANICAL PROPERTIES,9.0,Precipitation hardening increases the mechanical properties of steel by creating a finely distributed phase that strengthens the matrix.
+ALPHA-MATRIX,MECHANICAL PROPERTIES,7.0,The alpha-matrix phase contributes significantly to the toughness and ductility of the steel during mechanical performance.
+GAMMA-RECRYSTALLIZATION,MICROSTRUCTURE,1.0,"Gamma-recrystallization impacts the microstructure of steel during thermal processing, influencing its overall properties."
+MANGANESE,CONTROLLED-ROLLED STEEL,8.0,Manganese is an important alloying element used in the production of controlled-rolled steel for solid-solution hardening and grain refinement.
+MOLYBDENUM,ACICULAR FERRITE STEEL,8.0,Molybdenum is essential in producing acicular ferrite steel by improving strength through transformation hardening.
+CONTROLLED-ROLLED STEEL,RECRYSTALLIZATION,7.0,Controlled-rolled steel manufacturing involves recrystallization processes to achieve specific mechanical properties.
+PLATE MILL,CONTROLLED-ROLLED STEEL,6.0,"The plate mill processes controlled-rolled steel, although it faces challenges in reduction per pass during slab rolling."
+HOT-STRIP MILL,CONTROLLED-ROLLED STEEL,7.0,The hot-strip mill effectively produces controlled-rolled steel due to its ability for significant reduction per pass and uniform grain structure.
+MOLYBDENUM,CONTROLLED-ROLLED STEEL,8.0,The addition of molybdenum in controlled-rolled steel enhances its strength through transformation hardening.
+CHROMIUM,CONTROLLED-ROLLED STEEL,5.0,"Chromium's effect in controlled-rolled steel is to suppress undesirable structural formations, promoting desired grain characteristics."
+COPPER,CONTROLLED-ROLLED STEEL,3.0,Copper's minimal impact on controlled-rolled steel highlights the necessity of combination with other alloying elements for enhanced properties.
+NICKEL,CONTROLLED-ROLLED STEEL,1.0,Nickel's limited effect alone signifies that it requires other elements for better performance in controlled-rolled steel structures.
+NIOBIUM,CONTROLLED-ROLLED STEEL,8.0,"Niobium enhances the properties of controlled-rolled steel by promoting fine precipitate formation, thus improving strength and ductility."
+VANADIUM,CONTROLLED-ROLLED STEEL,8.0,The addition of vanadium in controlled-rolled steel serves to refine grains and increase the strength of the steel through precipitate formation.
+GRAIN REFINEMENT,GRAIN SIZE,9.0,"Grain refinement directly influences grain size, as smaller grains result in improved toughness and strength characteristics in steel."
+GRAIN REFINEMENT,RECRYSTALLIZATION,7.0,"Grain refinement is often achieved through recrystallization processes in metalworking, particularly during the rolling of steel."
+TWO-PHASE REGION,CONTROLLED-ROLLED STEEL,6.0,"The two-phase region occurs during the rolling of controlled-rolled steel, where advantageous properties can be achieved through careful temperature management."
+NON-RECRYSTALLIZATION REGION,CONTROLLED-ROLLED STEEL,6.0,The non-recrystallization region affects the properties of controlled-rolled steel as it dictates the microstructural outcome during processing.
+PASS SCHEDULE,CONTROLLED-ROLLED STEEL,7.0,The pass schedule in controlled-rolled steel processing determines the effectiveness of reducing thickness and influencing mechanical properties.
+ROLLING TEMPERATURE,CONTROLLED-ROLLED STEEL,1.0,"Rolling temperature impacts the microstructure and mechanical properties of controlled-rolled steel, influencing overall product quality."
+ACICULAR FERRITE,LOW-CARBON STEEL,8.0,"Acicular ferrite can be formed in low-carbon steel during controlled rolling, enhancing its mechanical properties"
+MOLYBDENUM,LOW-CARBON STEEL,7.0,Molybdenum is often added as an alloying element to low-carbon steels to improve strength and toughness
+NIOBIUM,LOW-CARBON STEEL,7.0,Niobium is used in low-carbon steel to improve yield strength through precipitation hardening
+VANADIUM,LOW-CARBON STEEL,7.0,"Vanadium is included in low-carbon steel to enhance strength, particularly after hot-rolling"
+CONTROLLED ROLLING,ACICULAR FERRITE,17.0,"Controlled rolling is a metallurgical process that significantly influences the microstructure of steel, primarily by facilitating the formation of acicular ferrite. This process is essential for producing acicular ferrite structures, which are known to enhance the toughness and strength of the final steel material. By carefully managing the rolling conditions, such as temperature and deformation rates, controlled rolling promotes the transformation of the steel's microstructure, resulting in the desirable acicular ferrite phase. This transformation not only improves mechanical properties but also ensures that the steel can perform reliably under various conditions. Overall, the interplay between controlled rolling and the development of acicular ferrite is crucial for manufacturing high-quality steel products with superior performance characteristics."
+RECRYSTALLIZATION,CONTROLLED ROLLING,8.0,"Recrystallization can occur during controlled rolling, impacting the grain structure and mechanical properties of the steel"
+NON-RECRYSTALLIZATION REGION,CONTROLLED ROLLING,9.0,The non-recrystallization region is a critical parameter in controlled rolling that affects the final grain size and mechanical properties
+FINISH ROLLING,CONTROLLED ROLLING,8.0,Finish rolling is a stage in the controlled rolling process that shapes and finalizes the properties of the steel
+GRAIN SIZE,CONTROLLED ROLLING,9.0,Grain size is a key mechanical property that controlled rolling aims to optimize through careful temperature management
+CEMENTITE,ACICULAR FERRITE,7.0,"Cementite within acicular ferrite impacts its mechanical properties, including toughness"
+MARTENSITE,ACICULAR FERRITE,8.0,"Martensite islands are present in the acicular ferrite structure, contributing to the material’s overall strength"
+ACICULAR FERRITE,POLYGONAL FERRITE,6.0,"The relationship describes how an increase in the volume fraction of polygonal ferrite can lead to a decrease in acicular ferrite, affecting the resultant mechanical properties of the steel."
+DUAL-PHASE STEEL,ACICULAR FERRITE,7.0,Dual-Phase Steel often includes acicular ferrite as part of its microstructure which contributes to its distinct mechanical characteristics.
+C-MN STEEL,CONTROLLED ROLLING,8.0,C-Mn Steel is often processed using controlled rolling to enhance its mechanical properties for low-temperature applications.
+CONTROLLED ROLLING,FINISH-ROLLING TEMPERATURE,9.0,Finish-Rolling Temperature is a key parameter in the controlled rolling process that directly influences the final mechanical properties of the material.
+ACICULAR FERRITE,WORK HARDENING,8.0,"Acicular Ferrite is known to exhibit continuous yielding followed by significant work hardening, impacting its overall strength."
+HARDENABILITY,POLYGONAL FERRITE,1.0,"The formation of coarse polygonal ferrite can be attributed to insufficient hardenability, affecting the strength and toughness of the steel."
+FINE-GRAINED POLYGONAL FERRITE,ACICULAR FERRITE,7.0,"The relationship describes how increasing fine-grained polygonal ferrite can enhance overall strength while impacting the volume fraction of acicular ferrite, thus influencing toughness."
+MARTENSITE,DUAL-PHASE STEEL,8.0,"Martensite is present in dual-phase steel, providing high strength characteristics associated with the unique microstructure of the material."
+POLYGONAL FERRITE,STRENGTH,6.0,"The formation of polygonal ferrite within the microstructure is intrinsically related to the overall strength of the material, affecting how it performs under stress."
+FINISH-ROLLING TEMPERATURE,DEFORMATION,8.0,"Finish-Rolling Temperature directly impacts how much deformation a material can undergo, thereby affecting its final microstructure and mechanical properties."
+STRENGTH,TOUGHNESS,1.0,Strength and toughness are interrelated mechanical properties that define how a material behaves under load; the balance between them is crucial for many applications.
+CONTROLLED ROLLING,NORMALIZING,8.0,Controlled rolling plus normalizing produces higher strengths and better toughness than normalizing alone
+CONTROLLED ROLLING,QUENCHING,8.0,Controlled rolling combined with quenching yields a much tougher material than either process alone
+CONTROLLED ROLLING,TEMPERING,7.0,Controlled rolling followed by tempering provides a balance of hardness and toughness in steel
+C-MN STEEL,NIOBIUM STEEL,5.0,Both C-Mn and Nb steels are referenced in conjunction with controlled rolling treatments to enhance mechanical properties
+YIELD STRENGTH,TRANSITION TEMPERATURE,6.0,The processes discussed are aimed at improving yield strength while lowering transition temperatures
+DEFORMATION BANDS,FERRITE,8.0,Deformation bands play a crucial role in the nucleation of fine ferrite structures
+CONTROLLED ROLLING,DEFORMATION BANDS,15.0,"Controlled rolling is a process that significantly impacts the microstructural features of materials, particularly through the generation of deformation bands. These deformation bands act as effective grain boundaries, which play a crucial role in influencing the mechanical properties of the materials. The formation of these bands is integral to the outcomes of controlled rolling, as they enhance the material's characteristics and facilitate subsequent processing stages. By creating a refined microstructure that incorporates deformation bands, controlled rolling not only improves mechanical properties but also sets the groundwork for further manipulation and application of the material."
+SEPARATIONS,CHARPY SPECIMENS,9.0,"Separations are the defects observed in Charpy specimens, indicating material failure under stress"
+CONTROLLED ROLLING,SUPRAPOSITION,6.0,The new thermomechanical treatments utilize supraposition to enhance the properties of steel
+NORMALIZING,AUSTENITE,5.0,Normalizing transforms austenite into a finer distribution of ferrite
+CHARPY TEST,YIELD STRENGTH,6.0,The results of yield strength are evaluated through standard tests like the Charpy test
+NORMALIZING,DEFORMATION BANDS,5.0,Normalizing helps refine the orientation and characteristics of deformation bands
+CONTROLLED ROLLING,GRAIN SIZE,8.0,"Controlled rolling directly influences the grain size of the processed materials, enhancing mechanical properties"
+NORMALIZING,CONTROLLED ROLLING,1.0,Controlled rolling serves as an essential complementary process to normalizing for improved steel properties
+CONTROLLED ROLLING,EFFECT OF FINISHING TEMPERATURE,6.0,"The finishing temperature has a direct impact on the outcome of controlled rolling processes, influencing mechanical properties"
+LOW-TEMPERATURE RANGE,CONTROLLED ROLLING,7.0,"Controlled rolling at low temperatures enhances mechanical properties, leading to superior strength and toughness"
+"HEAVY, REPEATED DEFORMATIONS",GRAIN SIZE,8.0,"Heavy, repeated deformations during processing contribute to grain refinement, improving the materials' mechanical characteristics"
+PLANE ANISOTROPY,THROUGH-THICKNESS EMBRITTLEMENT,1.0,The development of plane anisotropy in steel is linked to issues of through-thickness embrittlement that affect material performance
+CONTROLLED ROLLING,AUSTENITE,8.0,Controlled rolling affects the transformation and refinement of austenite grain structures into desired microstructures
+CONTROLLED ROLLING,FERRITE,8.0,Controlled rolling is utilized to enhance the nucleation potential of ferrite by altering the microstructural formation during processing
+CONTROLLED ROLLING,FINE-GRAINED POLYGONAL FERRITE,9.0,Controlled rolling produces fine-grained polygonal ferrite through the application of specific deformation conditions
+CONTROLLED ROLLING,STRAIN-INDUCED PRECIPITATION,7.0,"Controlled rolling promotes strain-induced precipitation, which is crucial for strengthening the steel"
+CONTROLLED ROLLING,GRAIN REFINEMENT,9.0,Controlled rolling is a method explicitly aimed at achieving grain refinement to improve the mechanical properties of steel
+CONTROLLED ROLLING,MARTENSITE,1.0,Controlled rolling can serve as a pre-treatment process before quenching to form martensite in steels
+CONTROLLED ROLLING,NIOBIUM,7.0,Niobium is commonly added to steel during controlled rolling to enhance its mechanical properties through precipitation hardening
+CONTROLLED ROLLING,SOLUTE-DRAG EFFECT,8.0,The solute-drag effect influences the enhancement of mechanical properties during controlled rolling by impeding dislocation motion
+CONTROLLED ROLLING,DEFORMATION,9.0,Controlled rolling involves the deformation of steel to create desired microstructures and improve mechanical properties
+CONTROLLED ROLLING,TRANSITION TEMPERATURE,6.0,Transition temperature must be controlled during the rolling process to achieve the desired balance between hardening and toughness
+CONTROLLED ROLLING,DISLOCATION,8.0,Dislocation movements during controlled rolling affect the material's strength and ductility
+CONTROLLED ROLLING,PROCESS VARIABLES,7.0,The effectiveness of controlled rolling is influenced by various process variables that determine the material's final properties
+CONTROLLED ROLLING,COOLING,1.0,Cooling regimes following controlled rolling can significantly influence the final microstructure achieved in the steel
+I. KOZASU,H. SEKINE,7.0,Both I. Kozasu and H. Sekine collaborated on research related to metallurgy and alloy microstructures
+I. KOZASU,T. TANAKA,7.0,I. Kozasu has co-authored works with T. Tanaka on the hot deformation of steels
+H. KUBOTA,H. SEKINE,7.0,H. Kubota and H. Sekine are co-authors on various papers published in metallurgical journals
+T. MARUYAMA,H. SEKINE,7.0,T. Maruyama has worked with H. Sekine on studies regarding alloy design and microstructure
+T. TANAKA,UNION CARBIDE CORPORATION,5.0,"T. Tanaka's research has been published in context with Union Carbide Corporation, contributing to their studies in metallurgy"
+THE IRON AND STEEL INSTITUTE OF JAPAN,T. TANAKA,6.0,"Publications by T. Tanaka have been featured in the Iron and Steel Institute, indicating a strong relationship in metallurgy research"
+UNION CARBIDE CORPORATION,THE METALS SOCIETY,5.0,Both organizations are frequently cited in metallurgical literature published around alloy design and microstructures
+METALLURGICAL SOCIETY OF AIME,T. TANAKA,6.0,T. Tanaka has published research under the Metallurgical Society of AIME regarding the processing of low-carbon steel
+MICROSTRUCTURE,AUSTENITE,8.0,"The microstructure of austenite is a significant topic in metallurgy, influencing the mechanical properties of various steels"
+CONTROLLED ROLLING OF STEEL,MICROSTRUCTURE,9.0,"Controlled rolling significantly affects the microstructure of steel, thus influencing its mechanical properties"
+CONTROLLED ROLLING OF STEEL,T. TANAKA,1.0,T. Tanaka has studied the implications of controlled rolling processes on steel microstructure
+MICROALLOYING,LOW-CARBON STEEL,16.0,"Microalloying is a process extensively utilized to improve the mechanical properties of low-carbon steel. This technique involves the addition of small amounts of alloying elements, such as niobium, vanadium, and titanium, to the steel during its production. The primary aim of microalloying is to refine the grain structure and increase the strength, toughness, and overall performance of low-carbon steel. As a result, low-carbon steels treated through microalloying exhibit enhanced characteristics that make them suitable for a variety of demanding applications in industries like construction, automotive, and manufacturing. The synergy between microalloying and low-carbon steel demonstrates a significant advancement in metallurgy, leading to the development of materials with superior properties compared to conventional low-carbon steels."
+DUCTILITY,LOW-CARBON STEEL,9.0,"Ductility is a key mechanical property of low-carbon steel, indicating its ability to deform under stress without fracturing"
+TENSILE STRENGTH,LOW-CARBON STEEL,1.0,"Tensile strength is a critical measurement for low-carbon steel, determining its usability in construction and manufacturing"
+"AMERICAN INSTITUTE OF MINING, METALLURGICAL AND PETROLEUM ENGINEERS",TETSUTO-HAGANE,7.0,The American Institute regularly publishes and references works related to Tetsu-to-Hagané in their reports and conferences concerning metallurgical processes
+TETSUTO-HAGANE,TRANS. IRON STEEL INST. JPN,6.0,Research published in Tetsu-to-Hagané often references findings from Trans. Iron Steel Inst. Jpn showcasing the interconnectedness of metallurgical research in Japan
+TETSUTO-HAGANE,METALL. TRANS.,6.0,Tetsu-to-Hagané articles frequently discuss topics covered in Metall. Trans. noting advancements in research and applications of metallurgical techniques
+TRANS. IRON STEEL INST. JPN,NIPPON KINZOKU GAKKAISHI,6.0,"Both publications focus on advances in iron and steel technology, providing complementary research findings"
+"AMERICAN INSTITUTE OF MINING, METALLURGICAL AND PETROLEUM ENGINEERS",UNION CARBIDE CORPORATION,5.0,Union Carbide engages in collaborative research projects and publications with the American Institute focusing on metallurgical innovations
+TETSUTO-HAGANE,MICROALLOYING,7.0,Discussions in Tetsu-to-Hagané often cover microalloying processes and their implications in steel production and quality improvement
+HOT DEFORMATION OF AUSTENITE,MICROALLOYING,1.0,"Microalloying can influence the hot deformation characteristics of austenitic steel, impacting its mechanical performance"
+"TANAKA, T.","GRELAY, T.",7.0,"Tanaka and Grelay have jointly published works related to the hot deformation of austenite, illustrating their collaboration."
+"KOZASU, I.","OHMORI, Y.",6.0,"Kozasu's findings in Trans. Iron Steel Inst. Jpn often cite works by Ohmori, reflecting their contribution to the field."
+"PRIESTNER, R.","BROWN, E.L.",1.0,"Both authors have published articles related to hot deformation and metallurgical processes in various journals, contributing to a shared field of study."
+T. HASHIMOTO,T. SAWAMURA,7.0,T. Hashimoto collaborated with T. Sawamura in published research on steel
+T. HASHIMOTO,H. OHTANI,7.0,T. Hashimoto worked with H. Ohtani on steel properties research
+C. R. MACKENZIE,R. W. YOUNG,8.0,C. R. Mackenzie and R. W. Young co-authored a study regarding steel in J. Iron Steel Inst.
+Y. SAITO,T. TANAKA,7.0,Y. Saito and T. Tanaka published joint research on steel processing
+Y. E. SMITH,C. A. SIEBERT,6.0,Y. E. Smith and C. A. Siebert collaborated on metallurgical studies in Metall. Trans.
+S. MATSUNO,T. TANAKA,7.0,S. Matsuno and T. Tanaka contributed jointly to research documented in Tetsu-to-Hagané
+B. L. BRAMFITT,"AMERICAN INSTITUTE OF MINING, METALLURGICAL AND PETROLEUM ENGINEERS",5.0,"B. L. Bramfitt's works are published through the American Institute of Mining, Metallurgical and Petroleum Engineers"
+BRITISH STEEL CORPORATION,C. R. MACKENZIE,6.0,British Steel Corporation provided a report that included research authored by C. R. Mackenzie
+CLIMAX MOLYBDENUM COMPANY,TANAKA,5.0,Climax Molybdenum Company employed T. Tanaka who conducted research on steel
+TETSU-TO-HAGANÉ,H. OHTANI,1.0,H. Ohtani published his research in Tetsu-to-Hagané
+I. KOZASU,H. INAGAKI,7.0,I. Kozasu and H. Inagaki collaborated on various studies about steel published in metallurgical journals
+E. MIYOSHI,M. FUKUDA,6.0,E. Miyoshi and M. Fukuda co-authored research papers focusing on the mechanical properties of steel
+J. F. KNOTT,E. MIYOSHI,5.0,J. F. Knott's research on mechanical properties relates to E. Miyoshi's studies on crack propagation
+J. D. EMBURY,I. KOZASU,1.0,J. D. Embury has collaborated with I. Kozasu on metallurgical research including studies on steel
+UNION CARBIDE CORPORATION,MICROALLOYING,7.0,Union Carbide Corporation has been involved in the development of microalloying technologies in steel manufacturing
+CLIMAX MOLYBDENUM COMPANY,DUCTILITY,7.0,"Climax Molybdenum Company focuses on improving the ductility of materials through specific alloying processes, especially in steel"
+CLIMAX MOLYBDENUM COMPANY,TOUGHNESS,7.0,Climax Molybdenum Company develops materials that enhance the toughness of steel products in industrial applications
+LOW-CARBON STEEL,DUCTILITY,9.0,"Low-carbon steel is known for its high ductility, making it suitable for various applications requiring considerable deformation"
+LOW-CARBON STEEL,TOUGHNESS,8.0,"Low-carbon steel exhibits good toughness, an advantageous characteristic for many structural applications"
+STEEL PROCESSING,DUCTILITY,9.0,The steel processing methods influence the ductility of the resultant steel products
+STEEL PROCESSING,TOUGHNESS,1.0,"Steel processing significantly impacts the toughness of steel, altering its mechanical properties during production"
+COLDREN AND MIHELICH,CLIMAX MOLYBDENUM COMPANY,6.0,"A. P. Coldren and J. L. Mihelich's review discusses molybdenum-containing steels, which are relevant to Climax Molybdenum Company's production"
+TANAKA,DUAL-PHASE STEELS,7.0,T. Tanaka has authored works studying the dual-phase steels which are a specific type of steel grade
+TANAKA,STRUCTURE AND PROPERTIES,8.0,T. Tanaka's work often focuses on understanding the structure and properties of dual-phase steels
+STRUCTURE AND PROPERTIES,DUAL-PHASE STEELS,9.0,The relationship involves research on how the microstructure and mechanical properties intersect in dual-phase steels
+TANAKA,"AMERICAN INSTITUTE OF MINING, METALLURGICAL AND PETROLEUM ENGINEERS",7.0,"T. Tanaka's studies are published by the American Institute of Mining, Metallurgical and Petroleum Engineers"
+COLDREN AND MIHELICH,"AMERICAN INSTITUTE OF MINING, METALLURGICAL AND PETROLEUM ENGINEERS",7.0,"The review on molybdenum-containing steels by Coldren and Mihelich is also disseminated through the American Institute of Mining, Metallurgical and Petroleum Engineers"
+TANAKA,METALS SOCIETY,1.0,T. Tanaka contributes to research publications that are associated with the Metals Society

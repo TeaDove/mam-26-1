@@ -7,7 +7,7 @@
 completion_models:
   default_completion_model:
     model_provider: openai
-    api_base: https://teadove.space:7999/proxy/openai/v1
+    api_base: ${GRAPHRAG_API_BASE}
     call_args:
       extra_headers:
         Connection: close
@@ -24,7 +24,7 @@ completion_models:
 embedding_models:
   default_embedding_model:
     model_provider: openai
-    api_base: http://127.0.0.1:8011/v1
+    api_base: ${GRAPHRAG_EMBEDDING_API_BASE}
     model: bge-m3
     auth_method: api_key
     api_key: ${GRAPHRAG_API_KEY}
@@ -91,6 +91,7 @@ extract_graph_nlp:
 
 cluster_graph:
   max_cluster_size: 10
+  use_lcc: false
 
 extract_claims:
   enabled: false

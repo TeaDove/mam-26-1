@@ -1,0 +1,722 @@
+[
+  {
+    "unit": "028989cbaa19a0104d0fbc02cc33ce29d53c8d9b522d9488a944728ed0b2d3a1d3031dddb966cfdad320c29fdbf602556067f4d071eed7e99dd5e541b7ee7961",
+    "book": "tanaka1981",
+    "entities": 13,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Strain-induced precipitation of Nb(C, N) in alpha substructure prevents recrystallization and causes only recovery",
+      "In Nb-free steel, grain refinement during transformation is attributed to substructure, not microalloyed precipitates",
+      "Extra intragranular formation of alpha grains during rolling leads to greater refinement"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 2,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "c7ca62c887eb3d2155619c3345e0b00137b954db6207244aa01ee0b0169cf070e4ea03c1d482fc7389493ad85a1c7d6594e4d54b1a09cedfef91b3c93d85c5cd",
+    "book": "tanaka1981",
+    "entities": 13,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Role of Nb(C,N) precipitates in grain refinement persistence after reheating",
+      "Controlled rolling plus normalizing or quenching/tempering produces higher strength and toughness than single processes",
+      "Continuum rolling involves reductions in γ, γ+α, and α regions and produces cube-on-corner texture"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 2,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "ad9f1fc76356d83fb5313c0aa343d574568ee9949c0716813111dd0c6cd610da9878c77052c864649a81adf4bdbf774b1d81682e6021a3ea229e5ee7b582ad81",
+    "book": "tanaka1981",
+    "entities": 15,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Three deformation temperature ranges and their effects on grain structure",
+      "Role of total reduction in lowering transition temperature",
+      "Importance of delay in rolling for non-recrystallization region"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 0,
+    "noise_entities": 1,
+    "formula_table_integrity": null,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "7ea9b17406918dffbe0453069541081df18ce5615e360ec563a5d977c428a3522685f16d296c118fa9f677be94d506c2f63ccc2b5ad74c0f42f2533b4578f9fa",
+    "book": "stat3",
+    "entities": 14,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Mathematical formula for water flow rate (G_theta) is not captured as a structured entity or relation",
+      "Specific definitions and roles of temperature variables (T0, T3cpm, Tc) are not mapped to entities or relations",
+      "The model's ability to estimate technological capabilities of the unit for different process scenarios (e.g., КПУО) is not represented"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 2,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "2d598251fdf8193ac3358a87318366d53b75d855a70d249a5555f6493a67417cc70ee879be30b1423ae9d2d2bccb855d44591545032134d64703e6992880afcb",
+    "book": "tanaka1981",
+    "entities": 17,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Formulas (5)-(7) relating fracture strengths and stresses in L and Z directions are not explicitly represented",
+      "The condition for separation requires anisotropy: fracture strength lower in Z than L direction",
+      "Occurrence of separation changes stress state from plane strain to plane stress, affecting brittle fracture"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 0,
+    "noise_entities": 1,
+    "formula_table_integrity": 2,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "b80a591a212886cf061315f5edd2eaec19d38891478ef469d46d9b653cceaf6487a73ce57f83879ffa06d82ce7e4ec2c92b7c0faa65aa4abf13d4663f04135e1",
+    "book": "stat3",
+    "entities": 14,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Description of two main controlled rolling with accelerated cooling (КПУО) process schemes and their operational differences",
+      "Impact of lowering slab reheating temperature on energy consumption and process feasibility",
+      "Technical challenges and limitations of cooling transfer bar in roughing stand or on roller table"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 4,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "99c212e143748c9357465d239068ef463823dfcffbb1189e16d576d2b079db1d1e701a6e9dc2941be0a86bd53128a7ef36a604f3bbde6c3ed12e9da1d51bf5ff",
+    "book": "tanaka1981",
+    "entities": 21,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Role of {100} texture intensity in separation crack frequency",
+      "Effect of separation on transition temperature and absorbed energy",
+      "Directional trade-off in toughness (L/T vs Z direction)"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 2,
+    "noise_entities": 1,
+    "formula_table_integrity": null,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "1704e78ffeac79090335e539a24b4b1b1b2eb686321590f6aff9db0965959234ee10853bee78399f09168c64e2074b0c26021c71196182286b5640bc0df963a6",
+    "book": "tanaka1981",
+    "entities": 9,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Importance of lowering slab-reheating temperature for γ-grain refinement",
+      "Role of delay/holding period and its risks (recrystallization, grain growth, mixed α-grain structure)",
+      "Comparison of reduction per pass and flexibility between plate mill and hot-strip mill"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 2,
+    "noise_entities": 0,
+    "formula_table_integrity": null,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "69c21b26dbc14020444b7efd45541b93a1f100193ce815e5c69aeef17b20f59747e93dc2483d511ba8f6c8e6b6701e36af5e86d3a730c66f92a37ad482fa94d5",
+    "book": "tanaka1981",
+    "entities": 12,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Critical reduction for recrystallization increases with decreasing temperature and Nb addition",
+      "Persistence of huge grains if initial passes are in recovery region",
+      "Strain-induced Nb(C,N) precipitation raises critical reduction and temperature dependence in Nb steel"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": 2,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "6e023cd135bba4873311ff8fcf3380b914d29e880bc9640598c55361135bdd80688b2567b73c2031f3ba22cfc3a1f1f743346a10b0c69fd612df673a914d6967",
+    "book": "tanaka1981",
+    "entities": 16,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Distinction between two-stage (rough-hold-finish) and three-stage rolling schedules and their effects on grain structure",
+      "Importance of controlling thickness at commencement of re-rolling (3x or 5x final thickness) to achieve fine grains",
+      "Role of precipitation of Nb and V during coiling in increasing yield strength"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": null,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "84fe5141a1b45e282cb0ebe7a54e4613ed720bdada973339ebf345ca7206396dbc143ee3afaba44bcaa9cf823921e0afde9dcb933559a4909365503047cf19d4",
+    "book": "tanaka1981",
+    "entities": 12,
+    "completeness": 3,
+    "missing_key_facts": [
+      "For fixed S_V, deformation in non-recrystallization region refines alpha grains more than in recrystallization region",
+      "Deformation in non-recrystallization region increases both N_S and S_V, while recrystallization increases only S_V",
+      "Ratio of gamma to alpha grain size reaches ~1 in hot-rolled/normalized, but 2.3–2.5 when heavily deformed in non-recrystallization region"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 4,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "49cbbe080585d0acb8f0e8f82837bc6234c037f320f0eefb669e7d3af67e89bf8fdf64a2cc4593f6d6dee7e7f692122cef0235b6b0b3aacf71bb38c0fa27f8a2",
+    "book": "tanaka1981",
+    "entities": 11,
+    "completeness": 4,
+    "missing_key_facts": [
+      "Ar3 temperature increases with increasing reduction in non-recrystallization region",
+      "Effect of prior austenite grain size on Ar3 temperature increase",
+      "Measurement limitations due to instrument constraints and simulation difficulty"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": null,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "dd2510ed31029b76112483ba26613e9ee0ba6c4a950e6c82f2e1411f95d4d96149790d8fb7734fc2fbeebcbfef9eb62f1dca6c18de25531443ef6176db5f240d",
+    "book": "stat3",
+    "entities": 26,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Advantage of high-temperature controlled rolling (730–800°C) with accelerated cooling at Azovstal 3600 mill increases rolling rate by up to 20% over low-temperature controlled rolling (690–740°C)",
+      "Three-stage controlled rolling (high, medium, low temperature) vs. single-stage hot rolling and its effect on mechanical properties",
+      "Lowering finish rolling temperature by 10°C increases strength by 10–15 N/mm² in low-pearlite niobium steels, reducing Nb or V consumption by 0.01–0.02%"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 4,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "1b34561ac7e3f93ff8d5098220bf3146b7d40a4756dfb2bae43ebd5b206ae19be9b1d87e63081c3c471abfc63c1b6857e27a8f4e90cdcf29cfa0b5409215252a",
+    "book": "tanaka1981",
+    "entities": 10,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Formula for recrystallized grain size (d_rex = k ε^{-0.5} d_0 Z^{-0.06}) not captured",
+      "Role of initial grain size and grain-boundary area in determining recrystallized grain size missing",
+      "Limiting grain size concept and its dependence on reduction and initial grain size not represented"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": 2,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "94bd9403cb4b973983ff3a045da2fad7c6e468a63c16fafeb6b4e9a7af5cd2d37c458cf8664d29b5183f89e1918c874eaa31d6ea2534a86c2b806d71d15d8ee1",
+    "book": "tanaka1981",
+    "entities": 17,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Role of finishing temperature and heavy draughting in property optimization",
+      "Importance of deformation in the non-recrystallization region and extension into γ–α region",
+      "Controlled rolling as a multi-step technology including composition, reheating, deformation, and cooling"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 0,
+    "noise_entities": 1,
+    "formula_table_integrity": null,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "4f735f7bd370a47f78645fdea721c05286a6bd1efe2190d47d48a3a294e4d56287618aff049e8f4f8e5820039e5bc1a4f41ec69d6b06480150db8c58a75f76ec",
+    "book": "tanaka1981",
+    "entities": 22,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Effect of thickness >40 mm on controlled-rolled ferrite-pearlite steels (coarse grain, reduced toughness)",
+      "Role of strain-assisted gamma to alpha transformation in dual-phase steel production",
+      "Difference in recovery ease and finishing conditions between Nb-bearing and Nb-free steels"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 2,
+    "noise_entities": 1,
+    "formula_table_integrity": 2,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "72e8a90160cb517f32137741b196dc670a431ad9c72a23336891c94b6cdf58a6d949ba56d810df155a604ff032f3bf2c3082a0c640f272cadccf681d6a909b6d",
+    "book": "stat3",
+    "entities": 17,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Specific temperature ranges for controlled rolling with accelerated cooling (850–1050°C, Ac3+40–50°C)",
+      "Impact of slab thickness and cooling time on productivity and process selection",
+      "Role of Nb (niobium) content in low-pearlite steels for process conditions"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 1,
+    "formula_table_integrity": 2,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "9265a3752e9880f8222944fe3ad0a2353150bca6e017cfe1e5ce4a6e1896238dacd031f2077e827d71d5e53f30018621c96c9c1f7bb8a19be2a504978cc6e7ca",
+    "book": "stat3",
+    "entities": 17,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Specific temperature ranges for finish rolling and cooling (e.g., 730–800°C, 500–550°C)",
+      "Impact of process on productivity and soaking time reduction",
+      "Application to specific steel grades (09Г2ФБ, 10Г2ФБ) and mill stands (3600, 3000 MK Illicha, Azovstal)"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 4,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "4fec1acbb472d95c7ce89274b530be500206c49dd3953ed09a5bbf4d8897704ec943ee2922764cbbbb9752b088078ebeaa6b809ef42e43c8d79e667247ab0c06",
+    "book": "tanaka1981",
+    "entities": 10,
+    "completeness": 2,
+    "missing_key_facts": [
+      "Role of deformation in the two-phase (austenite-ferrite) region in breaking grain size limits",
+      "Effect of strain-induced precipitation of Nb(C,N) and/or V(C,N) on subgrain stabilization",
+      "Specific trends: yield/tensile strength increase, transition temperature/absorbed energy decrease with deformation"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 1,
+    "formula_table_integrity": 2,
+    "domain_coverage": 2
+  },
+  {
+    "unit": "8127ed2f4a7350887ce544b2b5d48ea14219d3e6314e0d421a0d1420e618cd1a06726c551bed0d0b475838195c906c23b088240a4c635a9593a65e5b70fdfea6",
+    "book": "tanaka1981",
+    "entities": 12,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Nb retards recrystallization only when in solution in austenite before deformation",
+      "Al+N accelerates recrystallization slightly",
+      "Nb's main effect is on incubation time, not on recrystallization kinetics after incubation"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 0,
+    "noise_entities": 1,
+    "formula_table_integrity": 3,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "7717bc7472f61a46bb002089ba58cb7db33cdbc805452167a9f72d541eaecb2467d5ed180403b3dae129b647c63751a4a487b5d88a9c0b6aa53b52ce5c0797d3",
+    "book": "tanaka1981",
+    "entities": 8,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Deformation-band density increases rapidly above ~30% reduction",
+      "Deformation-band density decreases rapidly above ~1000°C",
+      "Not all deformation bands have the same ferrite-nucleation potential"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 4,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "2cf1e005f03c13b4f19552bd5adb09342e834688e45a601fd7b64a9804d6638d52c7f41066b0840f94cc38c7a5d97c03c47e4d48b29bba9845b01b540ea2d7bf",
+    "book": "tanaka1981",
+    "entities": 10,
+    "completeness": 3,
+    "missing_key_facts": [
+      "{100} texture as main cause of through-thickness embrittlement",
+      "Difference in transition temperature between L and Z directions exceeds 100 K",
+      "Separation (delamination/splitting) occurs parallel to plate surface in Charpy specimens"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": 2,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "346200049e24851c9d5db5338a9567ee5e5315bb014ce12ff388e36b8d9ec7136fe3925cfe00621ef062662a3f0e86ecc521d1e77b1d767370d735c078505658",
+    "book": "tanaka1981",
+    "entities": 16,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Nb enhances both strength and toughness via grain refinement and precipitation; V mainly increases strength and transition temperature via precipitation; Ti has limited use due to toughness reduction",
+      "Grain refinement is achieved by fine dispersion of a second phase and/or by lowering transformation temperature with substitutional alloying elements",
+      "Weldability improves with decreasing carbon equivalent, especially C content"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 2,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "534ab273ef1843b66e1a45be49ae69b53b1e5f125c8df15afd14f4e5b24062afe0dc484e45e53d9045f11d0e20939e4f420abf8c20c56b780255ebdda3bdf5b1",
+    "book": "stat3",
+    "entities": 14,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Specific temperature ranges and number of passes for roughing and finishing stands",
+      "Comparison of rolling rates and productivity between mill 3000 and 3600",
+      "Details of accelerated cooling parameters (e.g., cooling rates, temperature drops, equipment used)"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 2,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "104bfcf1ff9405c547b39d2eccf9a1cc8b977f6dc66038080271a7aa15e149a9f972b494565418e46f3534b0cbff4dae78f51b9a3464fc742ed3766b09979f82",
+    "book": "tanaka1981",
+    "entities": 12,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Three distinct stages of controlled rolling (γ-recrystallization, non-recrystallization, γ–α two-phase region) and their specific microstructural outcomes",
+      "Role of deformation bands in dividing γ-grains and enabling further α-grain refinement",
+      "Subgrain hardening as an additional strengthening mechanism after deformation in the two-phase region"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 4,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "dc9c803cbd22d77711bf398a9976b23acf5e807d71f248445239f2617e0aa0867b79e34ed29bd29d2f4e7ddd038daa706815e5b83afd91662e6c7d2c94c86302",
+    "book": "tanaka1981",
+    "entities": 12,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Distinction and mechanisms of transformation types 1A, 1B, 2, and transition type",
+      "Role of γ-grain size (ASTM 5 vs ASTM 6) and temperature in determining transformation path and resulting microstructure",
+      "Effect of nucleation sites (grain boundaries vs interiors) on α-grain size and homogeneity"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 1,
+    "formula_table_integrity": 2,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "89866a1b6b12540cbf4a9480ee1412e1d5975a4291fb1aee31604a5f10cab5e3e2877f23dc35f6cab0decd408c7d6162dd43bbdadfaa2b336cdf76b64433441b",
+    "book": "tanaka1981",
+    "entities": 17,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Role of finish-rolling temperature and pass schedule in controlled rolling",
+      "Effect of Nb (niobium) addition on precipitation hardening and microstructure",
+      "Historical sequence and key contributors (Arrowsmith, Hanemann, Lucke, Barr, Tipper, Mackenzie, Beiser, Norén)"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 2,
+    "formula_table_integrity": null,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "5b3c47e148a8d62df5eacef4a5913e4fb6986a686e5da54d5ce70640ec7537a2d019c1936cd2240a81acafd218c2cef439bdf1abea072956e6132edb3145ee50",
+    "book": "tanaka1981",
+    "entities": 9,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Mixed γ-grain structure cannot be eliminated by later rolling passes",
+      "Prevention methods include suitable holding or continuous reduction schedule",
+      "Recrystallized regions at grain boundaries preferentially recrystallize in subsequent passes"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 3,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "813f96bec8f95837a12ac3545b36c4abe12633553fe9f1f4caa7f8000e8c856ffd55910a0220d89af01b03a851b378cd42313f5490c6e2e6b42d5b923d318228",
+    "book": "tanaka1981",
+    "entities": 19,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Explicit mathematical forms of equations (12), (13), and (14) and their variables",
+      "Role and definition of variables such as sigma_D, Delta P, Delta, f_s, d_e, n_s",
+      "Inverse proportionality of transition temperature to d^{-1/2} and its physical meaning"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 2,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "a5b86da3e17659461db52503b1acd5426dadfe3523f9283ec539301fdff8712133ce27c591f0caf9bb094e4013bae1eea4e1b48bcef4533c9f308aa27f5575e7",
+    "book": "tanaka1981",
+    "entities": 14,
+    "completeness": 2,
+    "missing_key_facts": [
+      "Specific crystallographic texture components (e.g., {112}<110>, {554}<225>, <110>//RD, <100>//ND, <111>//ND, <110>//TD) and their effects",
+      "Relationship between deformation region (two-phase, gamma, non-recrystallization) and resulting texture/anisotropy",
+      "Effects of specific textures on mechanical properties (plane anisotropy, embrittlement, fracture susceptibility)"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 3,
+    "domain_coverage": 2
+  },
+  {
+    "unit": "71f914191e3fa42efe2ced276d5320e58b9a9f8efd547705f50cb1e877f4c3fdda2bac052d8725552824ffeca2244570cfb9670855364065633e142cf7867faf",
+    "book": "tanaka1981",
+    "entities": 17,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Role of excessive alloying elements in suppressing fine ferrite formation",
+      "Combined effect of Cr, Cu, Ni with Nb and/or V in forming fine precipitates",
+      "Transition from bainitic to ferritic structure depending on rolling/normalizing"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": 4,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "be5a864d56896fb5b223cc7db5122d3a782fa4031e94f02625c3c463af89bccdbb5eb70d8926ed25704cfa5a986357bc7255804702eb35bb4c63900faa314296",
+    "book": "stat3",
+    "entities": 9,
+    "completeness": 2,
+    "missing_key_facts": [
+      "Most temperature parameters (T0, Tин, Tкп, Tни, Tно, Tко) and their values are not extracted as entities or relations",
+      "No extraction of cooling medium (e.g., воздух, 500–550°C) or its association with process steps",
+      "No extraction of the actual numeric values or ranges for process parameters per process"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": 2,
+    "domain_coverage": 2
+  },
+  {
+    "unit": "e13617a81620ba9c3062a81951bfb528bf86e333ac43fa48ce44448d0941e3631d36c73b8d2cebbf71fb9f01eb326b7bb9a82d8cd205b70b5577bb430f59d590",
+    "book": "tanaka1981",
+    "entities": 9,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Three stages of controlled rolling (recrystallization, non-recrystallization, austenite-ferrite regions)",
+      "Difference in ferrite nucleation sites between conventional and controlled rolling",
+      "Development of crystallographic texture and its link to delamination in Charpy specimens"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": null,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "0ce3d7be6ad9ca885c9d9a7aa6e980b44a43b5d6b8b909307a20f356b651a6eab1eb5a5bf8588f8fb58a1cb970372801de439d9bb5c5924502714506e2535302",
+    "book": "stat3",
+    "entities": 11,
+    "completeness": 4,
+    "missing_key_facts": [
+      "Constant lower water flow rate of 1500 m³/h",
+      "Cooling rate data is for 18.7 mm thick plates",
+      "High-temperature controlled rolling (730–800 °C) with accelerated cooling increases rolling rate by up to 20% compared to low-temperature controlled rolling (690–740 °C)"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": 4,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "386af2ae593865bce93c68eb6e68e0695890d15ffe70327bb2e4ef2ab262c04772b662536527a9d0cffb1aea7b74de0e25f575a1195ffacd31e88c7d8e858949",
+    "book": "tanaka1981",
+    "entities": 10,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Three stages of controlled rolling and their microstructural effects",
+      "Role of deformation bands in ferrite nucleation and grain refinement",
+      "Mechanisms of recrystallization retardation by Nb (strain-induced precipitation, solute drag)"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": null,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "fb96e946b4aacc495685857706306fe802b5ad209a5550ad5aa6bf5787a850815e96f53427fc3bc87bfcc96a1b32acc66fff75ebcb064ec06bd3d94e2d266226",
+    "book": "tanaka1981",
+    "entities": 15,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Role of controlled rolling in transforming austenite to acicular ferrite",
+      "Effect of fine-grained polygonal ferrite on toughness and strength",
+      "Specific composition of the steel (0.06C—0.2Si—1.96Mn—0.42Mo—0.06Nb)"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 4,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "078a0f530255b307acfff88698375cc2936a7bd3806f1e733d4b2e80b34ff474d63f26d1beeb1e95d7284d779ff01a54a61199c6b77b54b78e7fd37302100e64",
+    "book": "stat3",
+    "entities": 22,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Critical importance of finishing deformation above Ar3 and partial deformation in lower austenite/intercritical range",
+      "Negative impact of intercritical reduction on ductility and toughness, and compensation methods (low C, S, vacuum, etc.)",
+      "Specific process parameters and schedules (temperatures, reductions, pass numbers, pause times, etc.) for controlled rolling"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 2,
+    "noise_entities": 0,
+    "formula_table_integrity": 3,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "650acbfdc604f068b30ffb60c156657a28701be11e793235239792e24c60c9910bf309df84b2df9da10862a920398debc97a30a265b8c066edc955dd04b6ce71",
+    "book": "tanaka1981",
+    "entities": 11,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Desulphurization method reduces S content to extremely low level",
+      "Decreasing P content is desirable to avoid temper embrittlement",
+      "Separation propagates along banded structure once initiated"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 1,
+    "noise_entities": 1,
+    "formula_table_integrity": 2,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "9fd64eb0ae70b84fe5a07e3be1c888d26bda68d3555fa09ff02a8dff941cef3022cd2daa5635f258201dea3e37408e3fe88cc4b51a34a480c6041c31b0a4019b",
+    "book": "tanaka1981",
+    "entities": 22,
+    "completeness": 4,
+    "missing_key_facts": [
+      "Explicit mention of the equations (8), (9), (10), (11) and their mathematical forms",
+      "Role of volume fraction of cell structure (f_c) and its effect in the Bramfitt and Marder model",
+      "Observation that texture hardening is small and subgrain hardening is significant in some microstructures"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 1,
+    "noise_entities": 1,
+    "formula_table_integrity": 3,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "7e533dbf8d5490589e712ef80c0fd5c805b65a7de143b8e2c7869cacc1637fd709088fa1580672c198171f9e49de8d290237278d3f7f61fc16a8daae4db3e497",
+    "book": "tanaka1981",
+    "entities": 14,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Controlled-rolled steel has greater strength and lower transition temperature than conventional or normalized/quenched steel at same carbon equivalent",
+      "Texture intensity differs between polygonal ferrite-pearlite and acicular ferrite or martensite",
+      "Specific crystallographic orientations ({113}<110>, {332}<113>, {311}<011>) are associated with different microstructures"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 1,
+    "noise_entities": 0,
+    "formula_table_integrity": 3,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "6ec48cd75091ce42150291dbfea57e1d5f34e409d489f9b97a3967f05caec7597d49679dbcf75cbb19883e982b436f07bc7c65c9f8f5419e3888b574057eeaee",
+    "book": "tanaka1981",
+    "entities": 8,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Ferrite nucleates only at austenite grain boundaries in conventional hot rolling and normalizing",
+      "Ferrite nucleates at both grain boundaries and grain interiors in controlled rolling",
+      "Deformation bands in unrecrystallized austenite act as nucleation sites for ferrite, promoting grain refinement"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": null,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "7a08c457fa951ce2b0ea9e3bc38aecdafe11d879b6ab2a27b7102945c4070eb8ac21ddc7b77d11165b4d832c0ff191d0e6ab21e86f3a7907a4e2fcb68589155f",
+    "book": "tanaka1981",
+    "entities": 12,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Recrystallization is suppressed below 950°C in Nb steel",
+      "R_crit is much larger and more temperature dependent in Nb steel than in plain C steel",
+      "Initial grain size has a very large effect on R_crit in Nb steel"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 1,
+    "noise_entities": 1,
+    "formula_table_integrity": 3,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "05bf832b5f070567b1fbe61760fd370ef5ed62ab8701e3846a20ee716414aca1baee9b7de2fe4ccc3434a6b365ad153c05937b1bb1cd71400cfde8815011ba30",
+    "book": "tanaka1981",
+    "entities": 13,
+    "completeness": 3,
+    "missing_key_facts": [
+      "Avrami's law formula and meaning of variables (X, t, tau, n)",
+      "Critical role of Nb(C,N) precipitation in retarding recrystallization after deformation",
+      "Distinction between solute drag and precipitation effects on recrystallization timing (RPT diagram, PS vs RS)"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 1,
+    "noise_entities": 1,
+    "formula_table_integrity": 2,
+    "domain_coverage": 3
+  },
+  {
+    "unit": "512dde412cc223fcbb8addbd57ce82c10159c1bf15bc9a1bcff4ccbc5aa6c45149e820058cd41a955b56fbdf6ebd7d61db5d9d4a0dbe6994ae2bd90196eab14f",
+    "book": "tanaka1981",
+    "entities": 9,
+    "completeness": 4,
+    "missing_key_facts": [
+      "Static recrystallization is the main mechanism for grain refinement in Nb steel during hot rolling",
+      "Critical strain for steady-state dynamic recrystallization is very large in Nb steel",
+      "Dynamic restoration structures are thermodynamically unstable and modified by static restoration"
+    ],
+    "contradictions": 0,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": 5,
+    "domain_coverage": 4
+  },
+  {
+    "unit": "a1b769856f586a1fe451d34c20c4041b2269ba43c11612270435b735fe20ec2044dd5e4fc2f588013e926427446026d7398fdd68972fd20f48f337f0dc652d75",
+    "book": "tanaka1981",
+    "entities": 9,
+    "completeness": 4,
+    "missing_key_facts": [
+      "Role of Nb(C, N) precipitates in pinning dislocations in Nb steel",
+      "Equation (14) and its terms (A(σ_ph + σ_dh + Δ), En_S) as key influences on transition temperature",
+      "Effect of {100} texture development in C-Mn steel on transition temperature"
+    ],
+    "contradictions": 1,
+    "coreference_duplicates": 0,
+    "noise_entities": 0,
+    "formula_table_integrity": 3,
+    "domain_coverage": 4
+  }
+]

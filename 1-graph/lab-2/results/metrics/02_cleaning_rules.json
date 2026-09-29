@@ -1,0 +1,20 @@
+{
+  "whitespace": 240,
+  "citation_marker": 231,
+  "dropped_section": 162,
+  "line_break_hyphen": 91,
+  "image_placeholder": 57,
+  "running_header": 48,
+  "broken_paragraph": 42,
+  "formula_noise": 38,
+  "page_number": 35,
+  "space_before_punctuation": 17,
+  "ocr_fix": 9,
+  "reference_list": 9,
+  "markup_tag": 8,
+  "table_cell_hyphen": 5,
+  "metadata_block": 4,
+  "journal_code": 1,
+  "page_footnote": 1,
+  "markdown_escape": 1
+}

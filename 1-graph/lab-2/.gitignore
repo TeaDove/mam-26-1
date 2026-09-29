@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.env
+data/judge_cache/
+graphrag-clean/cache/
+graphrag-clean/output/lancedb/
+graphrag-clean/logs/
+*.log
+graphrag-clean/output/stats.json
+graphrag-clean/output/context.json
+results/graphs/*.graphml
+results/graphs/*_node_vectors.npy
+results/slide-*.jpg
+results/presentation.pdf

@@ -1,0 +1,229 @@
+math_replacements:
+  - source: '$\mathrm { T _ { \mathrm { K I } } }$'
+    target: 'Tкп'
+  - source: '$( \mathrm { ~ \bf ~ T _ { \kappa \pi } ~ } >$'
+    target: '(Tкп >'
+  - source: '$\scriptstyle \mathrm { K I I + V O } .$'
+    target: 'КП+УО.'
+  - source: '$\scriptstyle \mathrm { K I I + V O ) }$'
+    target: 'КП+УО)'
+  - source: '$\mathrm{KII}+\mathrm{VO}+\mathrm{KII}$'
+    target: 'КП+УО+КП'
+  - source: '$\mathrm{K}\Pi+\mathrm{VO}+\mathrm{K}\Pi.$'
+    target: 'КП+УО+КП.'
+  - source: '$15 ~ \mathrm { H / M M } ^ { 2 }$'
+    target: '15 Н/мм²'
+  - source: '$\mathrm { H / { \bf { M M } } ^ { 2 } }$'
+    target: 'Н/мм²'
+  - source: '$\mathfrak { S } _ { \mathrm { T } }$'
+    target: 'σт'
+  - source: '$\mathbf { \mathfrak { S } _ { B } }$'
+    target: 'σв'
+  - source: '$\mathbf { { \boldsymbol { \mathrm { M } } } } ^ { 3 } / \mathbf { { \boldsymbol { \mathrm { q } } } } \mathbf { { \boldsymbol { \mathrm { a } } } } \mathbf { { \boldsymbol { \mathrm { c } } } }$'
+    target: 'м³/ч'
+  - source: '$1500\ м^3/час$'
+    target: '1500 м³/ч'
+  - source: '$800-730^{\circ}C\ \pi o\ 500^{\circ}C$'
+    target: '800–730 °C по 500 °C'
+  - source: '$\mathrm{Ac}_{3}+40-50^{\circ}\mathrm{C}$'
+    target: 'Ac3 + 40–50 °C'
+  - source: '$900^{\circ}C \approx Ar_{3}$'
+    target: '900 °C ≈ Ar3'
+  - source: '$900 ^ { 0 } \mathrm { C } ^ { \mathrm { { } ^ { \mathrm { { } ^ { \mathrm { { } ^ { } } } } } } }$'
+    target: '900 °C'
+  - source: '$et\ al.$'
+    target: 'et al.'
+critical_points:
+  - pattern: '\$\s*(\d+)\s*\^\s*\{?\s*\\circ\s*\}?\s*\$\s*[–-]\s*\$\s*(\d+)\s*\^\s*\{?\s*\\circ\s*\}?\s*\$\s*C\b'
+    target: '\1–\2 °C'
+  - pattern: '\$\s*(\d+)\s*\^\s*\{?\s*\\circ\s*\}?\s*\$\s*C\b'
+    target: '\1 °C'
+  - pattern: '(\d)°(?=\s+to\s+\d)'
+    target: '\1 °C'
+  - pattern: '\$\s*\\mathbf\s*\{\s*A\s*r\s*\}\s*_\s*\{\s*3\s*\}\s*(,?)\s*\$'
+    target: 'Ar3\1'
+  - pattern: '\$\s*\\mathbf\s*\{\s*A\s*\}\s*_\s*\{\s*\\mathrm\s*\{\s*r\s*\}\s*3\s*\}\s*\$'
+    target: 'Ar3'
+  - pattern: '\$\s*\\mathrm\s*\{\s*A\s*c\s*\}\s*_\s*\{\s*3\s*\}\s*\$'
+    target: 'Ac3'
+  - pattern: '\$\s*A([rc])_\{?\s*(\d)\s*\}?\s*\$'
+    target: 'A\1\2'
+greek:
+  gamma: γ
+  alpha: α
+  delta: δ
+unit_replacements:
+  - pattern: '(?<=\d)\s*–\s+(?=\d)'
+    target: '–'
+  - pattern: ',\s*,'
+    target: ','
+  - pattern: '<sup>\s*[0o°]\s*</sup>\s*[СC]'
+    target: ' °C'
+  - pattern: '(?<=\d)\s*°\s*[СC](?![a-zа-я])'
+    target: ' °C'
+  - pattern: '(?<=[\d–])\s?С(?=[)\s.,;]|$)'
+    target: ' °C'
+  - pattern: '°C\s*/\s*сек\b'
+    target: '°C/с'
+  - pattern: '\bсек\b'
+    target: 'с'
+  - pattern: '(?<=\d)\s*с/сек\b'
+    target: ' с'
+  - pattern: '\b([Nn])/mm2\b'
+    target: '\1/mm²'
+  - pattern: '\bkg/mm2\b'
+    target: 'kg/mm²'
+  - pattern: '(?<=\d)\s*мм\b'
+    target: ' мм'
+  - pattern: '(?<=\d)\s*÷\s*(?=\d)'
+    target: '–'
+  - pattern: '(?<=\d)\s?-\s?(?=\d)'
+    target: '–'
+  - pattern: '(?<=[γαδ]) +-(?=[^\W\d_])'
+    target: '-'
+  - pattern: '</?sub>'
+    target: ''
+  - pattern: '\*\*'
+    target: ''
+abbreviations:
+  - short: КП
+    long: контролируемая прокатка
+    en: controlled rolling
+  - short: КПУО
+    long: контролируемая прокатка с ускоренным охлаждением
+    en: controlled rolling with accelerated cooling
+  - short: УОВТ
+    long: ''
+    en: accelerated cooling unit
+  - short: УО
+    long: ускоренное охлаждение
+    en: accelerated cooling
+  - short: СМУО
+    long: система многоцелевого ускоренного охлаждения
+    en: multipurpose accelerated cooling system
+  - short: ТМО
+    long: термомеханическая обработка
+    en: thermomechanical treatment
+  - short: HSLA
+    long: high-strength low-alloy
+    en: high-strength low-alloy
+  - short: RPT
+    long: recrystallization–precipitation–time
+    en: recrystallization–precipitation–time
+  - short: RD
+    long: rolling direction
+    en: rolling direction
+  - short: ND
+    long: normal direction
+    en: normal direction
+  - short: TD
+    long: transverse direction
+    en: transverse direction
+terms:
+  - en: controlled rolling
+    ru: 'контролируем\w* прокатк\w*'
+  - en: accelerated cooling
+    ru: 'ускоренн\w* охлажден\w*'
+  - en: recrystallization
+    ru: 'рекристаллизаци\w*'
+  - en: austenite–ferrite
+    ru: 'аустенитно-ферритн\w*'
+    symbol: γ–α
+  - en: austenite + ferrite
+    ru: 'аустенит\w* и феррит\w*'
+    symbol: γ + α
+  - en: austenite
+    ru: 'аустенит\w*'
+    symbol: γ
+  - en: ferrite
+    ru: 'феррит\w*'
+    symbol: α
+  - en: pearlite
+    ru: 'перлит\w*'
+  - en: bainite
+    ru: 'бейнит\w*'
+  - en: martensite
+    ru: 'мартенсит\w*'
+  - en: grain size
+    ru: 'размер\w* зерна'
+  - en: grain refinement
+    ru: 'измельчени\w* зерна'
+  - en: yield strength
+    ru: 'предел\w* текучести'
+    symbol: σт
+  - en: tensile strength
+    ru: 'временн\w* сопротивлени\w*'
+    symbol: σв
+  - en: toughness
+    ru: '(?:ударн\w* )?вязкост\w*'
+  - en: roughing stand
+    ru: 'чернов\w* клет\w*'
+  - en: finishing stand
+    ru: 'чистов\w* клет\w*'
+  - en: reversing mill
+    ru: 'реверсивн\w* стан\w*'
+  - en: heavy plate
+    ru: 'толст\w* лист\w*'
+  - en: slab
+    ru: 'сляб\w*'
+  - en: reheating temperature
+    ru: 'температур\w* нагрева'
+  - en: finish rolling temperature
+    ru: 'температур\w* конца прокатки'
+    symbol: Tкп
+  - en: deformation
+    ru: 'деформаци(?:я|и|ю|ей|ям|ях|ями)\b'
+  - en: reduction
+    ru: 'обжати\w*'
+  - en: low-pearlite steel
+    ru: 'малоперлитн\w* стал\w*'
+  - en: low-alloy steel
+    ru: 'низколегированн\w* стал\w*'
+  - en: microalloying
+    ru: 'микролегир\w*'
+  - en: niobium
+    ru: 'ниоби\w*'
+    symbol: Nb
+  - en: vanadium
+    ru: 'ванади\w*'
+  - en: titanium
+    ru: 'титан\w*'
+    symbol: Ti
+  - en: molybdenum
+    ru: 'молибден\w*'
+    symbol: Mo
+  - en: manganese
+    ru: 'марган\w*'
+    symbol: Mn
+  - en: silicon
+    ru: 'кремни\w*'
+    symbol: Si
+  - en: aluminium
+    ru: 'алюмини\w*'
+    symbol: Al
+  - en: carbonitride
+    ru: 'карбонитрид\w*'
+  - en: precipitation
+    ru: 'выделени\w* (?:карбо|нитрид|частиц)\w*'
+  - en: two-phase region
+    ru: 'двухфазн\w* област\w*'
+  - en: cooling rate
+    ru: 'скорост\w* охлаждения'
+  - en: normalizing
+    ru: 'нормализаци\w*'
+  - en: rolling schedule
+    ru: 'режим\w* прокатки'
+  - en: strength
+    ru: 'прочност\w*'
+  - en: rolling pass
+    ru: 'проход(?:а|е|у|ом|ы|ов|ах|ами)?\b'
+  - en: mill
+    ru: 'стан(?:а|е|у|ом|ы|ов|ах|ами)?\b'
+  - en: ductility
+    ru: 'пластичност\w*'
+  - en: transfer bar
+    ru: 'подкат(?:а|е|у|ом|ы|ов|ах|ами)?\b'
+  - en: hot rolling
+    ru: 'горяч\w* прокатк\w*'
+  - en: reheating furnace
+    ru: 'методическ\w* печ\w*'

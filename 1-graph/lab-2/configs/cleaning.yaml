@@ -1,0 +1,37 @@
+running_header_min_repeats: 3
+running_header_max_chars: 80
+dehyphenation_keep_tails: [and, or, и, или, а]
+books:
+  tanaka1981:
+    drop_blocks:
+      - '^## T\. Tanaka$'
+      - '^© 1981'
+    drop_sections: [ACKNOWLEDGMENTS, REFERENCES]
+    references_start: null
+  stat3:
+    drop_blocks:
+      - '^УДК'
+      - '^## В\. И\. Спиваков'
+      - '^\\\*ИЧМ НАН Украины'
+      - '^Статья рекомендована к печати'
+    drop_sections: []
+    references_start: '^1\. Контролируемая прокатка /'
+ocr_fixes:
+  - source: 'M ^3/� ac'
+    target: 'м^3/час'
+  - source: '\bar { 1 } 1 5 \bar { 0 }'
+    target: '1 1 5 0'
+  - source: '7 \dot { 1 } 0'
+    target: '7 1 0'
+  - source: '3 0  – 5 \dot { 0 }'
+    target: '3 0  – 5 0'
+  - source: '一 охлаждение подкатов'
+    target: '3 — охлаждение подкатов'
+  - source: '5 0 0 – \dot { 5 } 5 0'
+    target: '5 0 0 – 5 5 0'
+  - source: '$\sim4\bar{0}$'
+    target: '$\sim40$'
+  - source: '6, 6 5'
+    target: '6,65'
+  - source: '0, 1 6 4'
+    target: '0,164'

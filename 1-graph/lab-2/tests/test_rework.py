@@ -1,8 +1,11 @@
 from itertools import pairwise
 from pathlib import Path
 
+import pandas as pd
+
 from lab2.dto.models import Chunk
 from lab2.service.corpus import strip_bibliography, token_windows
+from lab2.service.graph_eval import load_graph
 from lab2.service.lemmatization import Lemmatizer
 from lab2.service.normalization import Glossary, Normalizer
 from lab2.service.retrieval import Query, RankedQuery
@@ -64,3 +67,23 @@ def test_steel_composition_stays_one_term() -> None:
     assert "C–Mn–Nb fine-grained steel" in result
     assert "0.06C–0.2Si–1.96Mn steel" in result
     assert "Mn (manganese) steel" in result
+
+
+def test_reverse_relationships_keep_both_descriptions(tmp_path: Path) -> None:
+    pd.DataFrame({"id": ["d"], "title": ["tanaka1981_c001.md"]}).to_parquet(tmp_path / "documents.parquet")
+    pd.DataFrame({"id": ["u"], "document_id": ["d"], "text": ["x"], "n_tokens": [1]}).to_parquet(
+        tmp_path / "text_units.parquet"
+    )
+    pd.DataFrame(
+        {"title": ["A", "B"], "type": ["concept"] * 2, "description": ["a", "b"], "frequency": [1, 1]}
+        | {"text_unit_ids": [["u"], ["u"]]}
+    ).to_parquet(tmp_path / "entities.parquet")
+    pd.DataFrame(
+        {"source": ["A", "B"], "target": ["B", "A"], "weight": [1.0, 2.0], "description": ["A to B", "B to A"]}
+    ).to_parquet(tmp_path / "relationships.parquet")
+    graph = load_graph(tmp_path).graph
+    edge = graph["A"]["B"]
+    assert graph.number_of_edges() == 1
+    assert edge["weight"] == 3.0
+    assert edge["description"] == "A to B\nB to A"
+    assert edge["merged"] == 2

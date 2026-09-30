@@ -65,7 +65,10 @@ def load_graph(output: Path) -> GraphBundle:
             if endpoint not in graph:
                 graph.add_node(endpoint, type="", description="", frequency=0, books="", lang="unknown")
         if graph.has_edge(row.source, row.target):
-            graph[row.source][row.target]["weight"] += float(row.weight)
+            edge = graph[row.source][row.target]
+            edge["weight"] += float(row.weight)
+            edge["description"] = f"{edge['description']}\n{row.description}"
+            edge["merged"] = edge.get("merged", 1) + 1
         else:
             graph.add_edge(row.source, row.target, weight=float(row.weight), description=str(row.description))
     return GraphBundle(graph=graph, artifacts=artifacts)

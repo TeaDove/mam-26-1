@@ -68,7 +68,7 @@ GraphRAG, модель всё равно называет сущность `АУ
 
 ## Сравнение графов
 
-Полные данные — [results/metrics/07_graph_comparison.json](results/metrics/07_graph_comparison.json).
+Полные данные — [results/metrics/08_graph_comparison.json](results/metrics/08_graph_comparison.json).
 
 | Показатель | грязный | чистый |
 | --- | --- | --- |
@@ -153,9 +153,10 @@ uv run pytest && uv run ruff check . && uv run ruff format --check .
 | `data/raw/` | Markdown MinerU (копия `../lab-1/sources`) |
 | `data/0*_*.jsonl` | Результаты этапов и журналы правок; `03_normalized.jsonl` — чистые чанки для RAG |
 | `data/05_*` | Векторы bge-m3 чанков и матрица TF-IDF |
+| `graphrag-dirty/` | Настройки, вход (markdown без списка литературы) и выход GraphRAG для грязного графа |
 | `graphrag-clean/` | Настройки, входные чанки и выход GraphRAG для чистого графа |
 | `results/metrics/` | Метрики этапов и сравнения графов |
-| `results/graphs/` | Оба графа с атрибутами вершин (тип, язык, векторы bge-m3, метка судьи), `.graphml.gz` |
-| `results/graphs/*_graph.html` | Интерактивные графы (pyvis): цвет — язык источника, размер — степень, подсказка — тип, описание, оценка судьи |
+| `results/graphs/` | Оба графа с атрибутами вершин (тип, язык, векторы bge-m3), `.graphml.gz` |
+| `results/graphs/*_graph.html` | Интерактивные графы (pyvis): цвет — язык источника, размер — степень, подсказка — тип, описание |
 | `results/figures/` | Картинки графов |
 | `results/presentation.pptx` | Презентация |

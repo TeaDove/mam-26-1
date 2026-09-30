@@ -327,7 +327,7 @@ def main() -> None:
     normalization = load("03_normalization.json")
     tokenization = load("04_tokenization.json")
     vectors = load("05_vectorization.json")
-    comparison = load("07_graph_comparison.json")
+    comparison = load("08_graph_comparison.json")
     dirty, clean = comparison["dirty"], comparison["clean"]
     ds, cs = dirty["structure"], clean["structure"]
     deck = Deck()

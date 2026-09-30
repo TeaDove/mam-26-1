@@ -375,6 +375,7 @@ def run_compare(settings: Settings) -> None:
     for arm, output in outputs.items():
         bundle = load_graph(output)
         graph = bundle.graph
+        input_tokens = int(bundle.artifacts.text_units["n_tokens"].sum())
         names = [str(n) for n in graph.nodes]
         title_vectors = embedder.embed(names)
         noise = {n: noise_labels(n, vocabulary, allowed) for n in names}
@@ -417,6 +418,12 @@ def run_compare(settings: Settings) -> None:
         ]
         noisy = [n for n, labels in noise.items() if labels]
         report[arm] = {
+            "input": {
+                "text_units": len(bundle.artifacts.text_units),
+                "input_tokens": input_tokens,
+                "vertices_per_1k_tokens": round(len(names) / input_tokens * 1000, 2),
+                "noise_vertices_per_1k_tokens": round(len(noisy) / input_tokens * 1000, 2),
+            },
             "structure": structure_metrics(graph),
             "completeness": {
                 "reference_terms": len(terms),
@@ -474,14 +481,14 @@ def run_compare(settings: Settings) -> None:
             },
             "traversal": traversal(graph, config, {n: "noise" for n in noisy}),
         }
-        write_json(settings.metrics_dir / f"07_consistency_{arm}.json", verdicts)
+        write_json(settings.metrics_dir / f"08_consistency_{arm}.json", verdicts)
         log.info("%s evaluated; judge tokens: %d in, %d out", arm, client.prompt_tokens, client.completion_tokens)
     report["judge_usage"] = {
         "model": settings.judge_model,
         "prompt_tokens": client.prompt_tokens,
         "completion_tokens": client.completion_tokens,
     }
-    write_json(settings.metrics_dir / "07_graph_comparison.json", report)
+    write_json(settings.metrics_dir / "08_graph_comparison.json", report)
     log.info("comparison written")
 
 
@@ -611,6 +618,7 @@ def run_graphs(settings: Settings) -> None:
     for arm, output in outputs.items():
         bundle = load_graph(output)
         graph = bundle.graph
+        input_tokens = int(bundle.artifacts.text_units["n_tokens"].sum())
         names = [str(n) for n in graph.nodes]
         vectors = embedder.embed([f"{n}: {graph.nodes[n]['description'][:400]}" for n in names])
         for name, vector in zip(names, vectors, strict=True):
@@ -626,6 +634,11 @@ def run_graphs(settings: Settings) -> None:
             "edges": graph.number_of_edges(),
             "vertices_with_vectors": sum(1 for _, d in graph.nodes(data=True) if d.get("embedding")),
             "vector_dimensions": int(vectors.shape[1]),
+            "reverse_relationships_merged": sum(d.get("merged", 1) - 1 for *_, d in graph.edges(data=True)),
+            "input_tokens": input_tokens,
+            "mean_text_unit_tokens": round(input_tokens / len(bundle.artifacts.text_units), 1),
+            "vertices_per_1k_tokens": round(graph.number_of_nodes() / input_tokens * 1000, 2),
+            "edges_per_1k_tokens": round(graph.number_of_edges() / input_tokens * 1000, 2),
         }
-    write_json(settings.metrics_dir / "06_graphs.json", summary)
+    write_json(settings.metrics_dir / "07_graphs.json", summary)
     log.info("graphs exported to %s", graph_dir)

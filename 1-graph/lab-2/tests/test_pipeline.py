@@ -79,7 +79,7 @@ def test_formulas_and_element_formulas_are_protected(normalizer: Normalizer) -> 
     text = "Precipitation of Nb(C, N) in Mn-Nb-V steel.\n\n$$\n44(\\%\\mathrm{Si})\n$$"
     result = normalizer.normalize([_chunk(text)])[0].text
     assert "Nb(C, N)" in result
-    assert "Mn-Nb-V" in result
+    assert "Mn–Nb–V" in result
     assert "\\mathrm{Si})" in result
 
 

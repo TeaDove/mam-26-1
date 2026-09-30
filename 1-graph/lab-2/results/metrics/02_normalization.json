@@ -42,10 +42,10 @@
     "full_lemmatization_share": null
   },
   "normalized:tanaka1981": {
-    "words": 12665,
-    "words_changed": 557,
-    "words_changed_share": 0.044,
-    "annotation_events": 74,
+    "words": 12662,
+    "words_changed": 558,
+    "words_changed_share": 0.0441,
+    "annotation_events": 66,
     "distinct_terms_canonicalized": 22,
     "glossary_terms_found": 35,
     "glossary_terms_with_english": 35,
@@ -168,10 +168,10 @@
     "full_lemmatization_share": null
   },
   "normalized:total": {
-    "words": 15272,
-    "words_changed": 1467,
+    "words": 15269,
+    "words_changed": 1468,
     "words_changed_share": 0.0961,
-    "annotation_events": 165,
+    "annotation_events": 157,
     "distinct_terms_canonicalized": 59,
     "glossary_terms_found": 46,
     "glossary_terms_with_english": 46,

@@ -17,6 +17,8 @@ TEMPERATURE_MATH = re.compile(
 )
 GREEK_MATH = re.compile(r"\$\s*((?:\\(?:gamma|alpha|delta)\s*[-+,]?\s*)+)\$")
 HEADER_UNIT = re.compile(r"(\$[^$\n]*?),\s*\^\{?\s*0\s*\}?\s*C\$")
+ELEMENT = r"(?:\d+(?:[.,]\d+)?)?(?:Mn|Nb|Ti|Mo|Si|Al|Cr|Ni|Cu|Ca|C|V|N|S|P|B)"
+COMPOSITION = re.compile(rf"(?<![\w-]){ELEMENT}(?:\s?[—–-]\s?{ELEMENT})+(?![\w])")
 
 
 class Replacement(BaseModel):
@@ -77,6 +79,7 @@ class Normalizer:
         text = INLINE_MATH.sub(lambda m: self._temperature_math(chunk_id, m.group(0)), text)
         text = GREEK_MATH.sub(lambda m: self._greek(chunk_id, m), text)
         text = self._outside_math(text, lambda piece: self._units(chunk_id, piece))
+        text = self._outside_math(text, lambda piece: self._composition(chunk_id, piece))
         masked, protected = _mask(text)
         masked = self.lemmatizer.lemmatize(chunk_id, masked, lang)
         masked = self._annotate_terms(chunk_id, masked, lang)
@@ -105,6 +108,15 @@ class Normalizer:
         self._log(chunk_id, "greek_symbol", match.group(0), after)
         return after
 
+    def _composition(self, chunk_id: str, text: str) -> str:
+        def replace(match: re.Match[str]) -> str:
+            after = re.sub(r"\s?[—–-]\s?", "–", match.group(0))
+            if after != match.group(0):
+                self._log(chunk_id, "composition", match.group(0), after)
+            return after
+
+        return COMPOSITION.sub(replace, text)
+
     def _units(self, chunk_id: str, text: str) -> str:
         for item in self.glossary.unit_replacements:
             text = self._regex(chunk_id, "unit", re.compile(item.pattern), item.target, text)
@@ -128,7 +140,8 @@ class Normalizer:
                 text = self._annotate_first(chunk_id, text, re.compile(rf"\b{term.ru}", re.I), term.en)
             if term.symbol:
                 symbol_pattern = re.compile(
-                    rf"(?<![\w$\\-])(?>{re.escape(term.symbol)}(?:-[a-z]{{2,}})?)(?![\w$(])(?![–-]\s)(?!-[A-Z])(?! \()"
+                    rf"(?<![\w$\\\-—–])(?>{re.escape(term.symbol)}(?:-[a-z]{{2,}})?)"
+                    rf"(?![\w$(—–])(?![–-]\s)(?!-[A-Z])(?! \()"
                 )
                 text = self._annotate_symbol(chunk_id, text, symbol_pattern, term)
         return text

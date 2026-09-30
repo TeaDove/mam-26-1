@@ -13,11 +13,11 @@
   "clean_chunks:tanaka1981": {
     "documents": 29,
     "tfidf_windows": 41,
-    "tfidf_vocabulary": 1495,
-    "tfidf_sparsity": 0.9014,
-    "tfidf_mean_nonzero_per_doc": 147.4,
+    "tfidf_vocabulary": 1493,
+    "tfidf_sparsity": 0.9013,
+    "tfidf_mean_nonzero_per_doc": 147.3,
     "dense_dimensions": 1024,
-    "dense_mean_pairwise_cosine": 0.6935,
+    "dense_mean_pairwise_cosine": 0.694,
     "cross_language_mean_cosine": null,
     "cross_language_best_match_cosine": null
   },
@@ -57,12 +57,12 @@
   "clean_chunks:total": {
     "documents": 36,
     "tfidf_windows": 49,
-    "tfidf_vocabulary": 2157,
-    "tfidf_sparsity": 0.9303,
+    "tfidf_vocabulary": 2155,
+    "tfidf_sparsity": 0.9302,
     "tfidf_mean_nonzero_per_doc": 150.4,
     "dense_dimensions": 1024,
-    "dense_mean_pairwise_cosine": 0.6577,
-    "cross_language_mean_cosine": 0.5759,
+    "dense_mean_pairwise_cosine": 0.6582,
+    "cross_language_mean_cosine": 0.5764,
     "cross_language_best_match_cosine": 0.6658
   }
 }

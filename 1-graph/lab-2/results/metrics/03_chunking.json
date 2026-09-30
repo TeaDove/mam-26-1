@@ -26,11 +26,11 @@
     "n_chunks": 29,
     "tokens": {
       "count": 29,
-      "mean": 652.9,
+      "mean": 651.6,
       "median": 666.0,
       "min": 253,
       "max": 1053,
-      "std": 218.6
+      "std": 217.8
     },
     "end_mid_sentence_share": 0.036,
     "start_mid_sentence_share": 0.036,
@@ -118,11 +118,11 @@
     "n_chunks": 36,
     "tokens": {
       "count": 36,
-      "mean": 692.4,
+      "mean": 691.3,
       "median": 754.5,
       "min": 253,
       "max": 1053,
-      "std": 212.4
+      "std": 211.9
     },
     "end_mid_sentence_share": 0.029,
     "start_mid_sentence_share": 0.029,

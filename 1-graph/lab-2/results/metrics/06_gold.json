@@ -55,8 +55,8 @@
     "units_expected": 4,
     "units_correct": 4,
     "unit_accuracy": 1.0,
-    "terms_expected": 3,
-    "terms_correct": 3,
+    "terms_expected": 4,
+    "terms_correct": 4,
     "term_accuracy": 1.0
   },
   "tanaka1981_p202": {
@@ -95,8 +95,8 @@
     "units_expected": 7,
     "units_correct": 7,
     "unit_accuracy": 1.0,
-    "terms_expected": 9,
-    "terms_correct": 9,
+    "terms_expected": 10,
+    "terms_correct": 10,
     "term_accuracy": 1.0
   }
 }

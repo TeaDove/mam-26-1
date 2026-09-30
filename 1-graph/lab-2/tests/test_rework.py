@@ -52,3 +52,15 @@ def test_ndcg_and_first_hit() -> None:
     ranked = RankedQuery(query=query, ranking=[3, 1, 2], relevant={1})
     assert ranked.first_hit() == 2
     assert round(ranked.ndcg(10), 4) == round(1 / 1.5849625007211562, 4)
+
+
+def test_steel_composition_stays_one_term() -> None:
+    normalizer = Normalizer(glossary=Glossary.load(ROOT / "configs" / "glossary.yaml"))
+    text = "The C—Mn—Nb fine-grained steel and 0.06C-0.2Si-1.96Mn steel differ from Mn steel."
+    chunk = Chunk(
+        chunk_id="tanaka1981_all", book="tanaka1981", lang="en", section="", text=text, n_tokens=0, start=0, end=0
+    )
+    result = normalizer.normalize([chunk])[0].text
+    assert "C–Mn–Nb fine-grained steel" in result
+    assert "0.06C–0.2Si–1.96Mn steel" in result
+    assert "Mn (manganese) steel" in result

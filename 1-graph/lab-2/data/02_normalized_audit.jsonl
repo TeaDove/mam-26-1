@@ -294,6 +294,15 @@
 {"chunk_id":"tanaka1981_all","rule":"unit","before":" -","after":"-"}
 {"chunk_id":"tanaka1981_all","rule":"unit","before":" -","after":"-"}
 {"chunk_id":"tanaka1981_all","rule":"unit","before":" -","after":"-"}
+{"chunk_id":"tanaka1981_all","rule":"composition","before":"C—Mn—Nb","after":"C–Mn–Nb"}
+{"chunk_id":"tanaka1981_all","rule":"composition","before":"C—Mn—Nb","after":"C–Mn–Nb"}
+{"chunk_id":"tanaka1981_all","rule":"composition","before":"Mn-Nb-V","after":"Mn–Nb–V"}
+{"chunk_id":"tanaka1981_all","rule":"composition","before":"C-Mn","after":"C–Mn"}
+{"chunk_id":"tanaka1981_all","rule":"composition","before":"0.06C—0.2Si—1.96Mn—0.42Mo—0.06Nb","after":"0.06C–0.2Si–1.96Mn–0.42Mo–0.06Nb"}
+{"chunk_id":"tanaka1981_all","rule":"composition","before":"C-Mn","after":"C–Mn"}
+{"chunk_id":"tanaka1981_all","rule":"composition","before":"C—Mn","after":"C–Mn"}
+{"chunk_id":"tanaka1981_all","rule":"composition","before":"C-Mn","after":"C–Mn"}
+{"chunk_id":"tanaka1981_all","rule":"composition","before":"0.05C—Mn—Nb","after":"0.05C–Mn–Nb"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"γ–α-region","after":"γ–α-region (austenite–ferrite region)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"γ–α","after":"γ–α (austenite–ferrite)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"γ–α","after":"γ–α (austenite–ferrite)"}
@@ -339,9 +348,7 @@
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Nb","after":"Nb (niobium)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Nb","after":"Nb (niobium)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Nb","after":"Nb (niobium)"}
-{"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Nb","after":"Nb (niobium)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Nb-modified","after":"Nb-modified (niobium modified)"}
-{"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Nb","after":"Nb (niobium)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Nb","after":"Nb (niobium)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Nb","after":"Nb (niobium)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Nb","after":"Nb (niobium)"}
@@ -353,12 +360,6 @@
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Ti","after":"Ti (titanium)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mo","after":"Mo (molybdenum)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mo","after":"Mo (molybdenum)"}
-{"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mo","after":"Mo (molybdenum)"}
-{"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mn","after":"Mn (manganese)"}
-{"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mn","after":"Mn (manganese)"}
-{"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mn","after":"Mn (manganese)"}
-{"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mn","after":"Mn (manganese)"}
-{"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mn","after":"Mn (manganese)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mn","after":"Mn (manganese)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mn","after":"Mn (manganese)"}
 {"chunk_id":"tanaka1981_all","rule":"symbol_term","before":"Mn","after":"Mn (manganese)"}

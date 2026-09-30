@@ -17,19 +17,19 @@
   },
   "clean_windows:all": {
     "queries": 26,
-    "hit_at_1": 0.4615,
+    "hit_at_1": 0.5,
     "hit_at_3": 0.8077,
-    "hit_at_5": 1.0,
-    "mrr": 0.6724,
-    "ndcg_at_10": 0.6748
+    "hit_at_5": 0.9615,
+    "mrr": 0.6923,
+    "ndcg_at_10": 0.6692
   },
   "clean_structural:all": {
     "queries": 26,
-    "hit_at_1": 0.6923,
-    "hit_at_3": 0.8077,
+    "hit_at_1": 0.6538,
+    "hit_at_3": 0.8462,
     "hit_at_5": 0.9231,
-    "mrr": 0.7908,
-    "ndcg_at_10": 0.725
+    "mrr": 0.7738,
+    "ndcg_at_10": 0.7113
   },
   "dirty_windows:same_language": {
     "queries": 14,
@@ -49,19 +49,19 @@
   },
   "clean_windows:same_language": {
     "queries": 14,
-    "hit_at_1": 0.5,
+    "hit_at_1": 0.5714,
     "hit_at_3": 0.8571,
     "hit_at_5": 1.0,
-    "mrr": 0.6988,
-    "ndcg_at_10": 0.72
+    "mrr": 0.7381,
+    "ndcg_at_10": 0.7264
   },
   "clean_structural:same_language": {
     "queries": 14,
-    "hit_at_1": 0.7857,
+    "hit_at_1": 0.7143,
     "hit_at_3": 0.8571,
     "hit_at_5": 1.0,
-    "mrr": 0.8571,
-    "ndcg_at_10": 0.8117
+    "mrr": 0.8214,
+    "ndcg_at_10": 0.7853
   },
   "dirty_windows:cross_language": {
     "queries": 12,
@@ -83,17 +83,17 @@
     "queries": 12,
     "hit_at_1": 0.4167,
     "hit_at_3": 0.75,
-    "hit_at_5": 1.0,
-    "mrr": 0.6417,
-    "ndcg_at_10": 0.622
+    "hit_at_5": 0.9167,
+    "mrr": 0.6389,
+    "ndcg_at_10": 0.6025
   },
   "clean_structural:cross_language": {
     "queries": 12,
     "hit_at_1": 0.5833,
-    "hit_at_3": 0.75,
+    "hit_at_3": 0.8333,
     "hit_at_5": 0.8333,
-    "mrr": 0.7133,
-    "ndcg_at_10": 0.624
+    "mrr": 0.7183,
+    "ndcg_at_10": 0.6251
   },
   "dirty_windows:classmate_set": {
     "queries": 10,
@@ -113,18 +113,18 @@
   },
   "clean_windows:classmate_set": {
     "queries": 10,
-    "hit_at_1": 0.3,
+    "hit_at_1": 0.4,
     "hit_at_3": 0.7,
-    "hit_at_5": 1.0,
-    "mrr": 0.575,
-    "ndcg_at_10": 0.6065
+    "hit_at_5": 0.9,
+    "mrr": 0.6167,
+    "ndcg_at_10": 0.6036
   },
   "clean_structural:classmate_set": {
     "queries": 10,
     "hit_at_1": 0.6,
     "hit_at_3": 0.7,
     "hit_at_5": 0.8,
-    "mrr": 0.706,
-    "ndcg_at_10": 0.6342
+    "mrr": 0.7036,
+    "ndcg_at_10": 0.6328
   }
 }

@@ -21,8 +21,7 @@ def tooltip(name: str, data: dict, degree: int) -> str:
         f"<b>{html.escape(name)}</b><br>"
         f"тип: {html.escape(str(data.get('type', '')))}<br>"
         f"источник: {LANGUAGE_NAMES.get(data.get('lang', 'unknown'), '')}<br>"
-        f"степень: {degree}<br>"
-        f"оценка судьи: {html.escape(str(data.get('judge_label', '')))}<br><br>{description}"
+        f"степень: {degree}<br><br>{description}"
     )
 
 

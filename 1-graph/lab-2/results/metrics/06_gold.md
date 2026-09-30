@@ -17,6 +17,6 @@
 | units_expected | 2 | 1 | 4 | 0 | 7 |
 | units_correct | 2 | 1 | 4 | 0 | 7 |
 | unit_accuracy | 1 | 1 | 1 | — | 1 |
-| terms_expected | 6 | 0 | 3 | 0 | 9 |
-| terms_correct | 6 | 0 | 3 | 0 | 9 |
+| terms_expected | 6 | 0 | 4 | 0 | 10 |
+| terms_correct | 6 | 0 | 4 | 0 | 10 |
 | term_accuracy | 1 | — | 1 | — | 1 |

@@ -1,3 +1,4 @@
+import gzip
 import logging
 import re
 import sys
@@ -376,14 +377,7 @@ def run_compare(settings: Settings) -> None:
         graph = bundle.graph
         names = [str(n) for n in graph.nodes]
         title_vectors = embedder.embed(names)
-        node_vectors = embedder.embed([f"{n}: {graph.nodes[n]['description'][:400]}" for n in names])
         noise = {n: noise_labels(n, vocabulary, allowed) for n in names}
-        for name, vector in zip(names, node_vectors, strict=True):
-            graph.nodes[name]["embedding"] = " ".join(f"{value:.5f}" for value in vector)
-            graph.nodes[name]["noise_rules"] = ",".join(noise[name])
-        graph_dir = settings.root / "results" / "graphs"
-        graph_dir.mkdir(parents=True, exist_ok=True)
-        nx.write_graphml(graph, graph_dir / f"{arm}_graph_with_vectors.graphml")
 
         term_similarity = _cosine(term_vectors, title_vectors)
         keys = {n: f" {lemma_key(n)} " for n in names}
@@ -603,3 +597,35 @@ def run_retrieval(settings: Settings) -> None:
         {"unanswerable": unanswerable, "chunks": {arm: len(chunks) for arm, chunks in arms.items()}},
     )
     save_metrics(settings, "05_retrieval", "Stage 5: retrieval quality (bge-m3), chunking × preprocessing", columns)
+
+
+def run_graphs(settings: Settings) -> None:
+    embedder = EmbeddingClient(url=settings.embedding_url, model=settings.embedding_model)
+    outputs = {
+        "dirty": settings.root / settings.dirty_graphrag_dir,
+        "clean": settings.root / settings.clean_graphrag_dir,
+    }
+    graph_dir = settings.root / "results" / "graphs"
+    graph_dir.mkdir(parents=True, exist_ok=True)
+    summary: dict[str, dict[str, object]] = {}
+    for arm, output in outputs.items():
+        bundle = load_graph(output)
+        graph = bundle.graph
+        names = [str(n) for n in graph.nodes]
+        vectors = embedder.embed([f"{n}: {graph.nodes[n]['description'][:400]}" for n in names])
+        for name, vector in zip(names, vectors, strict=True):
+            graph.nodes[name]["embedding"] = " ".join(f"{value:.5f}" for value in vector)
+        with gzip.open(graph_dir / f"{arm}_graph_with_vectors.graphml.gz", "wb") as stream:
+            nx.write_graphml(graph, stream)
+        summary[arm] = {
+            "documents": len(bundle.artifacts.documents),
+            "text_units": len(bundle.artifacts.text_units),
+            "entities": len(bundle.artifacts.entities),
+            "relationships": len(bundle.artifacts.relationships),
+            "vertices": graph.number_of_nodes(),
+            "edges": graph.number_of_edges(),
+            "vertices_with_vectors": sum(1 for _, d in graph.nodes(data=True) if d.get("embedding")),
+            "vector_dimensions": int(vectors.shape[1]),
+        }
+    write_json(settings.metrics_dir / "06_graphs.json", summary)
+    log.info("graphs exported to %s", graph_dir)

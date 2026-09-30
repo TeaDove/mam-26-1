@@ -267,6 +267,9 @@ class Deck:
         tree.insert(2, picture._element)
 
     def save(self, path: Path) -> None:
+        total = len(self.prs.slides)
+        for number, slide in enumerate(self.prs.slides, start=1):
+            self.text(slide, f"{number} / {total}", 11.73, 7.14, 1.0, 0.26, size=11, color=MUTED, align=PP_ALIGN.RIGHT)
         self.prs.save(str(path))
 
 
@@ -671,7 +674,7 @@ def main() -> None:
         1.55,
         pct(dirty["coverage"]["domain_coverage"]),
         pct(clean["coverage"]["domain_coverage"], 1),
-        "покрытие ПрО: 40 концептов найдено",
+        "покрытие ПрО: найдено из 40 ключевых понятий",
     )
     deck.stat(
         slide,

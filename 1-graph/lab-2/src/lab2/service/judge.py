@@ -14,8 +14,8 @@ NODE_SYSTEM = (
     "Label every node strictly: 'core' = a correctly named, meaningful domain concept, material, process, "
     "parameter, property, phase or equipment, or a researcher cited for a scientific result; 'peripheral' = "
     "correct but generic or marginal (a bare symbol, a generic word like STEEL or WATER, a figure-specific value); "
-    "'noise' = any of: Latin transliteration of Russian words (e.g. KONTROLIROVANNOY PROKATKI), misspelled, "
-    "OCR-broken, hyphen-broken or glued names (e.g. SLAAB, ТЕМПЕРАТУРА НА-ГРЕВА, СОРТАТОПРОКАТ), words unrelated "
+    "'noise' = any of: Latin transliteration of Russian words, misspelled, "
+    "OCR-broken, hyphen-broken or glued names, words unrelated "
     "to the domain, formatting leftovers, bibliographic metadata (journals, publishers, report codes), the authors "
     "and affiliations of the source article itself, or fragments without domain meaning. When a name is visibly "
     "corrupted, label it noise even if the concept behind it is valid. "
@@ -161,3 +161,48 @@ def _items(answer: dict, key: str) -> list[dict]:
     if isinstance(items, dict):
         items = [{"id": k, **v} if isinstance(v, dict) else {"id": k, "value": v} for k, v in items.items()]
     return [item for item in items if isinstance(item, dict) and str(item.get("id", "")).isdigit()]
+
+
+CONSISTENCY_SYSTEM = (
+    "You are an expert in physical metallurgy and steel rolling. You check one vertex of a knowledge graph built from "
+    "texts on controlled rolling of steel. You get the vertex, its neighbourhood collected by a breadth-first "
+    "traversal (neighbour vertices with descriptions and the relations between them) and the source text fragment "
+    "the vertex was extracted from. Judge strictly and only against the source fragment. Answer JSON with keys: "
+    '"definition" ("full" if the vertex and its neighbourhood define the term completely and correctly, "partial" if '
+    'important parts are missing, "none" if it is not defined or not a real term), '
+    '"contradictions" (int: statements in the vertex or its relations that contradict or distort the source), '
+    '"comment" (one short sentence).'
+)
+
+
+def consistency_prompt(graph: nx.Graph, node: str, nodes: list[str], source: str, limit: int = 3500) -> str:
+    lines = [f"VERTEX: {node} [{graph.nodes[node].get('type', '')}]: {graph.nodes[node].get('description', '')[:500]}"]
+    lines.append("NEIGHBOURHOOD:")
+    lines.extend(
+        f"- {n} [{graph.nodes[n].get('type', '')}]: {graph.nodes[n].get('description', '')[:250]}"
+        for n in nodes
+        if n != node
+    )
+    lines.append("RELATIONS:")
+    members = set(nodes)
+    lines.extend(
+        f"- {a} — {b}: {str(data.get('description', ''))[:200]}"
+        for a, b, data in graph.edges(nodes, data=True)
+        if a in members and b in members
+    )
+    lines.append(f"SOURCE FRAGMENT:\n{_truncate_bytes(source, limit)}")
+    return _truncate_bytes("\n".join(lines), 15000)
+
+
+def check_consistency(
+    client: LlmClient, graph: nx.Graph, node: str, nodes: list[str], source: str
+) -> dict[str, object]:
+    answer = client.complete_json(CONSISTENCY_SYSTEM, consistency_prompt(graph, node, nodes, source))
+    definition = str(answer.get("definition", "none")).lower()
+    contradictions = answer.get("contradictions", 0)
+    return {
+        "node": node,
+        "definition": definition if definition in {"full", "partial", "none"} else "none",
+        "contradictions": int(contradictions) if isinstance(contradictions, int | float) else 0,
+        "comment": str(answer.get("comment", ""))[:300],
+    }

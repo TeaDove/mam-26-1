@@ -42,9 +42,9 @@
     "full_lemmatization_share": null
   },
   "normalized:tanaka1981": {
-    "words": 12664,
-    "words_changed": 749,
-    "words_changed_share": 0.0591,
+    "words": 12665,
+    "words_changed": 557,
+    "words_changed_share": 0.044,
     "annotation_events": 74,
     "distinct_terms_canonicalized": 22,
     "glossary_terms_found": 35,
@@ -58,8 +58,8 @@
     "temperatures_in_range_share": 1.0,
     "dates": 6,
     "dates_valid_share": 1.0,
-    "lemmatized_words": 527,
-    "lemmatized_share": 0.0432,
+    "lemmatized_words": 334,
+    "lemmatized_share": 0.0274,
     "full_lemmatization_share": 0.1884
   },
   "raw:stat3": {
@@ -105,10 +105,10 @@
     "full_lemmatization_share": null
   },
   "normalized:stat3": {
-    "words": 2605,
-    "words_changed": 1162,
-    "words_changed_share": 0.4461,
-    "annotation_events": 90,
+    "words": 2607,
+    "words_changed": 910,
+    "words_changed_share": 0.3491,
+    "annotation_events": 91,
     "distinct_terms_canonicalized": 38,
     "glossary_terms_found": 34,
     "glossary_terms_with_english": 34,
@@ -121,9 +121,9 @@
     "temperatures_in_range_share": 1.0,
     "dates": 0,
     "dates_valid_share": null,
-    "lemmatized_words": 883,
-    "lemmatized_share": 0.4391,
-    "full_lemmatization_share": 0.551
+    "lemmatized_words": 629,
+    "lemmatized_share": 0.3126,
+    "full_lemmatization_share": 0.5507
   },
   "raw:total": {
     "words": 16074,
@@ -168,10 +168,10 @@
     "full_lemmatization_share": null
   },
   "normalized:total": {
-    "words": 15269,
-    "words_changed": 1911,
-    "words_changed_share": 0.1252,
-    "annotation_events": 164,
+    "words": 15272,
+    "words_changed": 1467,
+    "words_changed_share": 0.0961,
+    "annotation_events": 165,
     "distinct_terms_canonicalized": 59,
     "glossary_terms_found": 46,
     "glossary_terms_with_english": 46,
@@ -184,8 +184,8 @@
     "temperatures_in_range_share": 1.0,
     "dates": 6,
     "dates_valid_share": 1.0,
-    "lemmatized_words": 1410,
-    "lemmatized_share": 0.0993,
+    "lemmatized_words": 963,
+    "lemmatized_share": 0.0678,
     "full_lemmatization_share": 0.2397
   }
 }

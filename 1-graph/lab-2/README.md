@@ -122,23 +122,27 @@ GraphRAG, модель всё равно называет сущность `АУ
 
 Нужны Python 3.14 и `uv`. Эмбеддинги — локальный сервер bge-m3 с OpenAI-совместимым API
 (`LAB2_EMBEDDING_URL`), LLM — OpenAI-совместимый API (`LAB2_OPENAI_BASE_URL`, ключ — `LAB2_OPENAI_API_KEY`
-или stdin). Грязный граф берётся из выхода GraphRAG lab-1 (`LAB2_DIRTY_GRAPHRAG_DIR`).
+или stdin). Оба графа строит GraphRAG с настройками lab-1: грязный — из `data/00_dirty`, чистый — из чанков после предобработки.
 
 ```bash
 uv sync
-uv run lab2 chunk       # 1. chunking
-uv run lab2 clean       # 2. очистка
-uv run lab2 normalize   # 3. нормализация
+uv run lab2 prepare     # сырой markdown без списка литературы → data/00_dirty (вход грязного графа)
+uv run lab2 clean       # 1. очистка книги целиком
+uv run lab2 normalize   # 2. нормализация и лемматизация терминов
+uv run lab2 chunk       # 3. структурный chunking
 uv run lab2 tokenize    # 4. токенизация
 uv run lab2 vectorize   # 5. векторизация
-uv run lab2 export      # чанки → graphrag-clean/input
-scripts/run_index_clean.sh < api_key   # GraphRAG для чистого графа
-uv run lab2 compare     # сравнение графов и LLM-as-a-judge
+uv run lab2 gold        # оценка очистки и нормализации на эталонных страницах
+uv run lab2 retrieval   # Hit@k, MRR, NDCG@10
+uv run lab2 export      # входы GraphRAG: graphrag-dirty/input и graphrag-clean/input
+uv run lab2 compare     # сравнение графов обходами и LLM-судья
 uv run lab2 figures     # картинки графов
 uv run --with pyvis python scripts/build_html_graphs.py   # интерактивные HTML-графы
 uv run python scripts/build_presentation.py
 uv run pytest && uv run ruff check . && uv run ruff format --check .
 ```
+
+Метрики первой версии (до работы над ошибками) — в `results/v1/`, план доработки — в [TASK2.md](TASK2.md).
 
 ## Содержимое
 

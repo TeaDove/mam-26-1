@@ -26,11 +26,11 @@
     "n_chunks": 29,
     "tokens": {
       "count": 29,
-      "mean": 652.8,
+      "mean": 652.9,
       "median": 666.0,
       "min": 253,
       "max": 1053,
-      "std": 218.7
+      "std": 218.6
     },
     "end_mid_sentence_share": 0.036,
     "start_mid_sentence_share": 0.036,
@@ -72,10 +72,10 @@
     "n_chunks": 7,
     "tokens": {
       "count": 7,
-      "mean": 856.4,
-      "median": 861.0,
+      "mean": 855.9,
+      "median": 865.0,
       "min": 798,
-      "max": 898,
+      "max": 899,
       "std": 28.7
     },
     "end_mid_sentence_share": 0.0,
@@ -119,10 +119,10 @@
     "tokens": {
       "count": 36,
       "mean": 692.4,
-      "median": 754.0,
+      "median": 754.5,
       "min": 253,
       "max": 1053,
-      "std": 212.5
+      "std": 212.4
     },
     "end_mid_sentence_share": 0.029,
     "start_mid_sentence_share": 0.029,

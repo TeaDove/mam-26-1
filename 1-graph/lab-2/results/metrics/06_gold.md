@@ -14,6 +14,9 @@
 | deletion_precision | 1 | 1 | 1 | 1 | 1 |
 | deletion_recall | 1 | 1 | 1 | 1 | 1 |
 | deletion_f1 | 1 | 1 | 1 | 1 | 1 |
-| units_expected | 2 | 0 | 4 | 0 | 6 |
-| units_correct | 2 | 0 | 4 | 0 | 6 |
-| unit_accuracy | 1 | — | 1 | — | 1 |
+| units_expected | 2 | 1 | 4 | 0 | 7 |
+| units_correct | 2 | 1 | 4 | 0 | 7 |
+| unit_accuracy | 1 | 1 | 1 | — | 1 |
+| terms_expected | 6 | 0 | 3 | 0 | 9 |
+| terms_correct | 6 | 0 | 3 | 0 | 9 |
+| term_accuracy | 1 | — | 1 | — | 1 |

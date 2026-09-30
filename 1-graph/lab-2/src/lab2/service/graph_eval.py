@@ -13,6 +13,10 @@ from pydantic import BaseModel
 
 class EvaluationConfig(BaseModel):
     duplicate_similarity: float
+    term_similarity: float
+    terms_en: int
+    terms_ru: int
+    consistency_sample: int
     bfs_depths: list[int]
     concepts: dict[str, list[str]]
     seeds: list[str]
@@ -119,7 +123,7 @@ def structure_metrics(graph: nx.Graph) -> dict[str, object]:
         "edges_touching_bilingual_nodes": touches_both,
         "components_mixing_languages": mixed_components,
         "nodes_by_type": dict(types.most_common()),
-        "edges_by_type_pair": dict(pair_types.most_common(15)),
+        "edges_by_type_pair": dict(pair_types.most_common()),
         "top_hubs": [f"{node} ({degree})" for node, degree in sorted(graph.degree(), key=lambda x: -x[1])[:12]],
     }
 

@@ -7,6 +7,7 @@ import jiwer
 
 from lab2.dto.models import Chunk, GoldPageMetrics
 from lab2.service.cleaning import Cleaner, CleaningConfig
+from lab2.service.lemmatization import Lemmatizer, english_terms, russian_terms
 from lab2.service.normalization import Glossary, Normalizer
 from lab2.util.text import count_tokens, language, parse_blocks
 
@@ -20,6 +21,7 @@ class GoldPage:
     raw: str
     gold: str
     units: list[str]
+    terms: list[str]
 
 
 def load_pages(directory: Path) -> list[GoldPage]:
@@ -27,7 +29,8 @@ def load_pages(directory: Path) -> list[GoldPage]:
     for gold_path in sorted(directory.glob("*.gold.md")):
         name = gold_path.name.removesuffix(".gold.md")
         units_path = directory / f"{name}.units.txt"
-        units = [line.strip() for line in units_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+        units = _lines(units_path)
+        terms = _lines(directory / f"{name}.terms.txt")
         pages.append(
             GoldPage(
                 name=name,
@@ -35,6 +38,7 @@ def load_pages(directory: Path) -> list[GoldPage]:
                 raw=(directory / f"{name}.raw.md").read_text(encoding="utf-8"),
                 gold=gold_path.read_text(encoding="utf-8"),
                 units=units,
+                terms=terms,
             )
         )
     return pages
@@ -45,7 +49,7 @@ class GoldEvaluator:
     cleaning: CleaningConfig
     glossary: Glossary
 
-    def evaluate(self, page: GoldPage, book_text: str) -> GoldPageMetrics:
+    def evaluate(self, page: GoldPage, book_text: str, clean_book_text: str) -> GoldPageMetrics:
         chunk = Chunk(
             chunk_id=f"{page.book}_gold",
             book=page.book,
@@ -58,10 +62,14 @@ class GoldEvaluator:
         )
         cleaned = Cleaner(config=self.cleaning).clean([chunk], {page.book: book_text})
         clean_text = cleaned[0].text if cleaned else ""
-        normalized = Normalizer(glossary=self.glossary).normalize(cleaned) if cleaned else []
+        lang = language(book_text)
+        terms = russian_terms(clean_book_text) if lang == "ru" else english_terms(clean_book_text)
+        normalizer = Normalizer(glossary=self.glossary, lemmatizer=Lemmatizer(terms={page.book: terms}))
+        normalized = normalizer.normalize(cleaned) if cleaned else []
         normalized_text = _flat(normalized[0].text) if normalized else ""
         should_delete, deleted, correct = self._deletions(page, clean_text)
         units_found = sum(1 for unit in page.units if _flat(unit) in normalized_text)
+        terms_found = sum(1 for term in page.terms if _flat(term) in normalized_text)
         precision = correct / deleted if deleted else 1.0
         recall = correct / should_delete if should_delete else 1.0
         return GoldPageMetrics(
@@ -80,6 +88,9 @@ class GoldEvaluator:
             units_expected=len(page.units),
             units_correct=units_found,
             unit_accuracy=round(units_found / len(page.units), 4) if page.units else None,
+            terms_expected=len(page.terms),
+            terms_correct=terms_found,
+            term_accuracy=round(terms_found / len(page.terms), 4) if page.terms else None,
         )
 
     def _deletions(self, page: GoldPage, clean_text: str) -> tuple[int, int, int]:
@@ -104,3 +115,9 @@ def _coverage(fragment: str, text: str) -> float:
     matcher = difflib.SequenceMatcher(None, source, target, autojunk=False)
     matched = sum(block.size for block in matcher.get_matching_blocks() if block.size >= 4)
     return matched / len(source)
+
+
+def _lines(path: Path) -> list[str]:
+    if not path.exists():
+        return []
+    return [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]

@@ -1,4 +1,8 @@
-duplicate_similarity: 0.86
+duplicate_similarity: 0.92
+term_similarity: 0.8
+terms_en: 120
+terms_ru: 60
+consistency_sample: 120
 bfs_depths: [1, 2, 3]
 concepts:
   controlled rolling: [CONTROLLED ROLLING, КП, КОНТРОЛИРУЕМАЯ ПРОКАТКА]

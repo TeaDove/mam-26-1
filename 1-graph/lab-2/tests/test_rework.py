@@ -29,15 +29,15 @@ def test_token_windows_cover_text_with_overlap() -> None:
 
 
 def test_russian_lemmatization_agrees_adjective_with_noun() -> None:
-    lemmatizer = Lemmatizer()
-    result = lemmatizer.lemmatize("stat3_all", "прокатка в чистовой клети стана", "ru")
-    assert result == "прокатка в чистовая клеть стан"
+    lemmatizer = Lemmatizer(terms={"stat3": frozenset({"клеть", "стан", "прокатка", "сталь"})})
+    result = lemmatizer.lemmatize("stat3_all", "прокатка в черновых клетях стана, в том числе стали", "ru")
+    assert result == "прокатка в черновая клеть стан, в том числе сталь"
 
 
 def test_english_lemmatization_only_touches_plural_nouns() -> None:
-    lemmatizer = Lemmatizer()
-    result = lemmatizer.lemmatize("tanaka1981_all", "The grains are coarse and separations occur.", "en")
-    assert result == "The grain are coarse and separation occur."
+    lemmatizer = Lemmatizer(terms={"tanaka1981": frozenset({"grain", "separation"})})
+    result = lemmatizer.lemmatize("tanaka1981_all", "Nb retards grains and separations occur in data.", "en")
+    assert result == "Nb retards grain and separation occur in data."
 
 
 def test_canonical_term_is_repeated_after_distance() -> None:

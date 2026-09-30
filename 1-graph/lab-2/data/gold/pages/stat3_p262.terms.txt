@@ -1,0 +1,6 @@
+roughing stand (черновая клеть)
+finishing stand (чистовая клеть)
+accelerated cooling (ускоренное охлаждение)
+controlled rolling (КП, контролируемая прокатка)
+slab (сляб)
+accelerated cooling unit (УОВТ)

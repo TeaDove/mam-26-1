@@ -25,8 +25,23 @@ from lab2.service.cleaning_metrics import CleaningEvaluator, combine
 from lab2.service.corpus import Corpus, strip_bibliography, token_windows
 from lab2.service.figures import draw_background, draw_graph
 from lab2.service.gold_eval import GoldEvaluator, load_pages
+from lab2.service.graph_criteria import (
+    duplicate_groups,
+    embedding_duplicates,
+    formula_atoms,
+    formulas_and_tables,
+    integrity,
+    lemma_key,
+    lift_pronouns,
+    noise_labels,
+    rule_counts,
+    sample_nodes,
+    source_vocabulary,
+    text_terms,
+    window,
+)
 from lab2.service.graph_eval import EvaluationConfig, coverage, load_graph, structure_metrics, traversal
-from lab2.service.judge import Judge, label_summary, summarize_units
+from lab2.service.judge import check_consistency
 from lab2.service.normalization import Glossary, Normalizer
 from lab2.service.normalization_metrics import ANNOTATION_RULES, NormalizationEvaluator
 from lab2.service.retrieval import QuerySet, RankedQuery, rank, relevant, summarize
@@ -310,60 +325,163 @@ def run_export(settings: Settings) -> None:
         log.info("exported %d documents to %s", len(files), target)
 
 
-def run_compare(settings: Settings) -> None:
+def _api_key(settings: Settings) -> str:
     api_key = settings.openai_api_key or sys.stdin.readline().strip()
     if not api_key:
         raise ValueError("OpenAI API key is empty: set LAB2_OPENAI_API_KEY or pass it on stdin")
+    return api_key
+
+
+def _cosine(left: np.ndarray, right: np.ndarray) -> np.ndarray:
+    a = left / np.linalg.norm(left, axis=1, keepdims=True)
+    b = right / np.linalg.norm(right, axis=1, keepdims=True)
+    return a @ b.T
+
+
+def run_compare(settings: Settings) -> None:
     client = LlmClient(
         base_url=settings.openai_base_url,
-        api_key=api_key,
+        api_key=_api_key(settings),
         model=settings.judge_model,
         cache_dir=settings.data_dir / "judge_cache",
     )
-    judge = Judge(client=client)
     embedder = EmbeddingClient(url=settings.embedding_url, model=settings.embedding_model)
     config = EvaluationConfig.load(settings.evaluation_path)
+    cleaned = {chunk.book: chunk.text for chunk in load_chunks(settings, "01_clean.jsonl")}
+    corpus = Corpus(raw_dir=settings.dirty_dir, books=settings.books)
+    chunks = load_chunks(settings, "03_chunks.jsonl")
+    sources = {
+        "dirty": "\n\n".join(corpus.raw_text(book) for book in settings.books),
+        "clean": "\n\n".join(chunk.text for chunk in chunks),
+    }
+    terms = text_terms(cleaned["tanaka1981"], "en", config.terms_en)
+    terms += text_terms(cleaned["stat3"], "ru", config.terms_ru)
+    glossary = Glossary.load(settings.glossary_path)
+    vocabulary = source_vocabulary([*cleaned.values(), sources["clean"]])
+    allowed = frozenset(
+        {t.symbol.casefold() for t in glossary.terms if t.symbol}
+        | {a.short.casefold() for a in glossary.abbreviations}
+        | {"ar1", "ar3", "ac1", "ac3", "nb", "ti", "v", "mo", "mn", "si", "al", "cr", "ni", "cu"}
+    )
+    term_vectors = embedder.embed(terms)
+    concepts = list(config.concepts)
+    concept_vectors = embedder.embed([" / ".join(config.concepts[c]) for c in concepts])
     outputs = {
         "dirty": settings.root / settings.dirty_graphrag_dir,
         "clean": settings.root / settings.clean_graphrag_dir,
     }
-    report: dict[str, dict[str, object]] = {}
+    report: dict[str, object] = {"reference_terms": terms}
     for arm, output in outputs.items():
         bundle = load_graph(output)
         graph = bundle.graph
-        names = list(graph.nodes)
-        title_vectors = embedder.embed([str(name) for name in names])
-        node_vectors = embedder.embed([f"{name}: {graph.nodes[name]['description'][:400]}" for name in names])
-        labels = judge.label_nodes(graph)
+        names = [str(n) for n in graph.nodes]
+        title_vectors = embedder.embed(names)
+        node_vectors = embedder.embed([f"{n}: {graph.nodes[n]['description'][:400]}" for n in names])
+        noise = {n: noise_labels(n, vocabulary, allowed) for n in names}
         for name, vector in zip(names, node_vectors, strict=True):
             graph.nodes[name]["embedding"] = " ".join(f"{value:.5f}" for value in vector)
-            graph.nodes[name]["judge_label"] = labels.get(name, "unlabeled")
+            graph.nodes[name]["noise_rules"] = ",".join(noise[name])
         graph_dir = settings.root / "results" / "graphs"
         graph_dir.mkdir(parents=True, exist_ok=True)
         nx.write_graphml(graph, graph_dir / f"{arm}_graph_with_vectors.graphml")
-        np.save(graph_dir / f"{arm}_node_vectors.npy", node_vectors)
-        write_json(graph_dir / f"{arm}_node_ids.json", [str(name) for name in names])
-        units = judge.judge_units(bundle)
-        write_json(settings.metrics_dir / f"07_judge_units_{arm}.json", units)
-        duplicates = judge.duplicates(graph, dict(zip(names, title_vectors, strict=True)), config.duplicate_similarity)
+
+        term_similarity = _cosine(term_vectors, title_vectors)
+        keys = {n: f" {lemma_key(n)} " for n in names}
+        exact = [any(f" {lemma_key(t)} " in key for key in keys.values()) for t in terms]
+        semantic = [bool(e or term_similarity[i].max() >= config.term_similarity) for i, e in enumerate(exact)]
+
+        lemma_groups = duplicate_groups(names)
+        embedded = embedding_duplicates(names, title_vectors, config.duplicate_similarity)
+        cross = [p for p in embedded if {graph.nodes[p[0]]["lang"], graph.nodes[p[1]]["lang"]} == {"en", "ru"}]
+        lifted, subtree = lift_pronouns(graph)
+
+        formulas, tables = formulas_and_tables(sources[arm])
+        formula_result = integrity(graph, [formula_atoms(f) for f in formulas])
+        table_atoms = [{re.sub(r"\D", "", c) for c in cells if re.sub(r"\D", "", c)} for cells in tables]
+        table_result = integrity(graph, table_atoms)
+
+        concept_similarity = _cosine(concept_vectors, title_vectors).max(axis=1)
+        name_coverage = coverage(graph, config)
+        vector_found = [c for c, s in zip(concepts, concept_similarity, strict=True) if s >= config.term_similarity]
+
+        entity_units = {
+            row.title: list(row.text_unit_ids)
+            for row in bundle.artifacts.entities.itertuples()
+            if len(row.text_unit_ids)
+        }
+        unit_text = dict(zip(bundle.artifacts.text_units["id"], bundle.artifacts.text_units["text"], strict=True))
+        sample = sample_nodes(graph, list(name_coverage["resolved"].values()), config.consistency_sample)
+        verdicts = [
+            check_consistency(
+                client,
+                graph,
+                node,
+                window(graph, node),
+                str(unit_text.get(entity_units.get(node, [""])[0], "")),
+            )
+            for node in sample
+        ]
+        noisy = [n for n, labels in noise.items() if labels]
         report[arm] = {
             "structure": structure_metrics(graph),
-            "judge_nodes": label_summary(labels),
-            "judge_units": summarize_units(units),
-            "judge_units_by_book": {
-                book: summarize_units([u for u in units if u["book"] == book]) for book in settings.books
+            "completeness": {
+                "reference_terms": len(terms),
+                "covered_exact": sum(exact),
+                "covered_exact_share": round(sum(exact) / max(len(terms), 1), 4),
+                "covered_semantic": sum(semantic),
+                "covered_semantic_share": round(sum(semantic) / max(len(terms), 1), 4),
+                "missing_examples": [t for t, s in zip(terms, semantic, strict=True) if not s][:25],
             },
-            "duplicates": duplicates,
-            "coverage": coverage(graph, config),
-            "traversal": traversal(graph, config, labels),
-            "noise_examples": sorted((n for n, label in labels.items() if label == "noise"), key=str)[:40],
+            "noise": {
+                "vertices": len(names),
+                "noise_vertices": len(noisy),
+                "noise_share": round(len(noisy) / max(len(names), 1), 4),
+                "by_rule": rule_counts(noise),
+                "examples": sorted(noisy, key=str)[:40],
+            },
+            "coreference": {
+                "lemma_duplicate_groups": len(lemma_groups),
+                "lemma_duplicate_vertices": sum(len(g) for g in lemma_groups),
+                "embedding_duplicate_pairs": len(embedded),
+                "cross_language_pairs": len(cross),
+                "pronoun_vertices_lifted": lifted,
+                "pronoun_subtree_vertices": subtree,
+                "lemma_examples": [" = ".join(g) for g in lemma_groups[:15]],
+                "embedding_examples": [f"{a} = {b} ({s})" for a, b, s in embedded[:15]],
+            },
+            "integrity": {
+                "formulas": len(formulas),
+                "formulas_in_vertex": formula_result.in_vertex,
+                "formulas_in_window": formula_result.in_window,
+                "formulas_broken": formula_result.broken,
+                "tables": len(tables),
+                "tables_in_vertex": table_result.in_vertex,
+                "tables_in_window": table_result.in_window,
+                "tables_broken": table_result.broken,
+                "table_best_window_share": table_result.best_share,
+            },
+            "consistency": {
+                "checked_vertices": len(verdicts),
+                "fully_defined_share": round(
+                    sum(v["definition"] == "full" for v in verdicts) / max(len(verdicts), 1), 4
+                ),
+                "partially_defined_share": round(
+                    sum(v["definition"] == "partial" for v in verdicts) / max(len(verdicts), 1), 4
+                ),
+                "contradictions_total": sum(int(v["contradictions"]) for v in verdicts),
+                "vertices_with_contradictions_share": round(
+                    sum(int(v["contradictions"]) > 0 for v in verdicts) / max(len(verdicts), 1), 4
+                ),
+            },
+            "coverage": {
+                **name_coverage,
+                "vector_found": len(vector_found),
+                "vector_coverage": round(len(vector_found) / max(len(concepts), 1), 4),
+            },
+            "traversal": traversal(graph, config, {n: "noise" for n in noisy}),
         }
-        log.info(
-            "%s evaluated; judge usage so far: %d in / %d out tokens",
-            arm,
-            client.prompt_tokens,
-            client.completion_tokens,
-        )
+        write_json(settings.metrics_dir / f"07_consistency_{arm}.json", verdicts)
+        log.info("%s evaluated; judge tokens: %d in, %d out", arm, client.prompt_tokens, client.completion_tokens)
     report["judge_usage"] = {
         "model": settings.judge_model,
         "prompt_tokens": client.prompt_tokens,
@@ -396,7 +514,8 @@ def run_gold(settings: Settings) -> None:
         cleaning=CleaningConfig.load(settings.cleaning_path), glossary=Glossary.load(settings.glossary_path)
     )
     pages = load_pages(settings.data_dir / "gold" / "pages")
-    columns = {page.name: evaluator.evaluate(page, corpus.raw_text(page.book)) for page in pages}
+    cleaned = {chunk.book: chunk.text for chunk in load_chunks(settings, "01_clean.jsonl")}
+    columns = {page.name: evaluator.evaluate(page, corpus.raw_text(page.book), cleaned[page.book]) for page in pages}
     total = _gold_total(list(columns.values()))
     save_metrics(settings, "06_gold", "Gold pages: cleaning and normalization quality", {**columns, "total": total})
 
@@ -408,6 +527,8 @@ def _gold_total(parts: list[GoldPageMetrics]) -> GoldPageMetrics:
     correct = sum(p.blocks_deleted_correctly for p in parts)
     units = sum(p.units_expected for p in parts)
     found = sum(p.units_correct for p in parts)
+    terms = sum(p.terms_expected for p in parts)
+    terms_found = sum(p.terms_correct for p in parts)
     precision = correct / deleted if deleted else 1.0
     recall = correct / should if should else 1.0
 
@@ -430,38 +551,55 @@ def _gold_total(parts: list[GoldPageMetrics]) -> GoldPageMetrics:
         units_expected=units,
         units_correct=found,
         unit_accuracy=round(found / units, 4) if units else None,
+        terms_expected=terms,
+        terms_correct=terms_found,
+        term_accuracy=round(terms_found / terms, 4) if terms else None,
     )
 
 
 def run_retrieval(settings: Settings) -> None:
     client = EmbeddingClient(url=settings.embedding_url, model=settings.embedding_model)
     queries = QuerySet.load(settings.root / "configs" / "queries.yaml").queries
+    corpus = Corpus(raw_dir=settings.dirty_dir, books=settings.books)
+    normalized = {chunk.book: chunk.text for chunk in load_chunks(settings, "02_normalized.jsonl")}
+    chunker = StructuralChunker(
+        target_tokens=settings.chunk_target_tokens,
+        min_tokens=settings.chunk_min_tokens,
+        hard_max_tokens=settings.chunk_hard_max_tokens,
+    )
+    size, overlap = settings.graphrag_chunk_tokens, settings.graphrag_chunk_overlap
     arms = {
-        "dirty_units": load_chunks(settings, "00_dirty_units.jsonl"),
-        "clean_chunks": load_chunks(settings, "03_chunks.jsonl"),
+        "dirty_windows": load_chunks(settings, "00_dirty_units.jsonl"),
+        "dirty_structural": [c for b in settings.books for c in chunker.chunk(b, corpus.raw_text(b))],
+        "clean_windows": [c for b in settings.books for c in token_windows(b, normalized[b], size, overlap)],
+        "clean_structural": load_chunks(settings, "03_chunks.jsonl"),
     }
     query_vectors = client.embed([query.question for query in queries])
     ranked: dict[str, list[RankedQuery]] = {}
     unanswerable: dict[str, list[str]] = {}
     for arm, chunks in arms.items():
-        vectors = np.load(settings.data_dir / f"05_dense_{arm}.npy")
+        vectors = client.embed([chunk.text for chunk in chunks])
         order = rank(query_vectors, vectors)
         ranked[arm] = [
             RankedQuery(query=query, ranking=[int(i) for i in order[index]], relevant=relevant(query, chunks))
             for index, query in enumerate(queries)
         ]
         unanswerable[arm] = [item.query.id for item in ranked[arm] if not item.relevant]
-    usable = {query.id for query in queries} - set(unanswerable["dirty_units"]) - set(unanswerable["clean_chunks"])
-    book_lang = {c.book: c.lang for c in arms["clean_chunks"]}
+    usable = {query.id for query in queries} - {q for ids in unanswerable.values() for q in ids}
+    book_lang = {c.book: c.lang for c in arms["clean_structural"]}
     groups = {
         "all": lambda q: True,
         "same_language": lambda q: q.lang == book_lang[q.book],
         "cross_language": lambda q: q.lang != book_lang[q.book],
+        "classmate_set": lambda q: q.source.startswith("classmate"),
     }
     columns: dict[str, RetrievalMetrics] = {}
     for group, keep in groups.items():
         for arm, items in ranked.items():
             selected = [item for item in items if item.query.id in usable and keep(item.query)]
             columns[f"{arm}:{group}"] = summarize(selected)
-    write_json(settings.metrics_dir / "05_retrieval_unanswerable.json", unanswerable)
-    save_metrics(settings, "05_retrieval", "Stage 5: retrieval quality (bge-m3)", columns)
+    write_json(
+        settings.metrics_dir / "05_retrieval_details.json",
+        {"unanswerable": unanswerable, "chunks": {arm: len(chunks) for arm, chunks in arms.items()}},
+    )
+    save_metrics(settings, "05_retrieval", "Stage 5: retrieval quality (bge-m3), chunking × preprocessing", columns)

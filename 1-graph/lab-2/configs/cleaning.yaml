@@ -16,7 +16,7 @@ books:
       - '^\\\*ИЧМ НАН Украины'
       - '^Статья рекомендована к печати'
     drop_sections: []
-    references_start: '^1\. Контролируемая прокатка /'
+    references_start: null
     bibliography_start: '^1\. Контролируемая прокатка /'
 ocr_fixes:
   - source: 'M ^3/� ac'

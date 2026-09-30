@@ -14,7 +14,10 @@
     "deletion_f1": 1.0,
     "units_expected": 2,
     "units_correct": 2,
-    "unit_accuracy": 1.0
+    "unit_accuracy": 1.0,
+    "terms_expected": 6,
+    "terms_correct": 6,
+    "term_accuracy": 1.0
   },
   "stat3_p267": {
     "gold_characters": 1688,
@@ -29,9 +32,12 @@
     "deletion_precision": 1.0,
     "deletion_recall": 1.0,
     "deletion_f1": 1.0,
-    "units_expected": 0,
-    "units_correct": 0,
-    "unit_accuracy": null
+    "units_expected": 1,
+    "units_correct": 1,
+    "unit_accuracy": 1.0,
+    "terms_expected": 0,
+    "terms_correct": 0,
+    "term_accuracy": null
   },
   "tanaka1981_p186": {
     "gold_characters": 5697,
@@ -48,7 +54,10 @@
     "deletion_f1": 1.0,
     "units_expected": 4,
     "units_correct": 4,
-    "unit_accuracy": 1.0
+    "unit_accuracy": 1.0,
+    "terms_expected": 3,
+    "terms_correct": 3,
+    "term_accuracy": 1.0
   },
   "tanaka1981_p202": {
     "gold_characters": 3636,
@@ -65,7 +74,10 @@
     "deletion_f1": 1.0,
     "units_expected": 0,
     "units_correct": 0,
-    "unit_accuracy": null
+    "unit_accuracy": null,
+    "terms_expected": 0,
+    "terms_correct": 0,
+    "term_accuracy": null
   },
   "total": {
     "gold_characters": 12464,
@@ -80,8 +92,11 @@
     "deletion_precision": 1.0,
     "deletion_recall": 1.0,
     "deletion_f1": 1.0,
-    "units_expected": 6,
-    "units_correct": 6,
-    "unit_accuracy": 1.0
+    "units_expected": 7,
+    "units_correct": 7,
+    "unit_accuracy": 1.0,
+    "terms_expected": 9,
+    "terms_correct": 9,
+    "term_accuracy": 1.0
   }
 }

@@ -157,6 +157,9 @@ class GoldPageMetrics(BaseModel):
     units_expected: int
     units_correct: int
     unit_accuracy: float | None
+    terms_expected: int
+    terms_correct: int
+    term_accuracy: float | None
 
 
 class RetrievalMetrics(BaseModel):

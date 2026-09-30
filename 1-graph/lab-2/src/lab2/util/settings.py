@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     judge_model: str = "gpt-4.1"
     tfidf_window: int = 300
-    dirty_graphrag_dir: Path = Path("../lab1-combined/output")
+    dirty_graphrag_dir: Path = Path("graphrag-dirty/output")
     clean_graphrag_dir: Path = Path("graphrag-clean/output")
 
     @property

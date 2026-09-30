@@ -4,12 +4,12 @@ __pycache__/
 .ruff_cache/
 .env
 data/judge_cache/
-graphrag-clean/cache/
-graphrag-clean/output/lancedb/
-graphrag-clean/logs/
+graphrag-*/cache/
+graphrag-*/output/lancedb/
+graphrag-*/logs/
 *.log
-graphrag-clean/output/stats.json
-graphrag-clean/output/context.json
+graphrag-*/output/stats.json
+graphrag-*/output/context.json
 results/graphs/*.graphml
 results/graphs/*_node_vectors.npy
 results/slide-*.jpg

@@ -21,7 +21,7 @@ from lab2.service.chunking import StructuralChunker
 from lab2.service.cleaning import Cleaner, CleaningConfig
 from lab2.service.cleaning_metrics import CleaningEvaluator, combine
 from lab2.service.corpus import Corpus
-from lab2.service.figures import draw_graph
+from lab2.service.figures import draw_background, draw_graph
 from lab2.service.graph_eval import EvaluationConfig, coverage, load_graph, structure_metrics, traversal
 from lab2.service.judge import Judge, label_summary, summarize_units
 from lab2.service.normalization import Glossary, Normalizer
@@ -337,4 +337,6 @@ def run_figures(settings: Settings) -> None:
         graph = load_graph(output).graph
         graph.remove_nodes_from([n for n, d in dict(graph.degree()).items() if d == 0])
         draw_graph(graph, titles[arm], target / f"{arm}_graph.png")
+        if arm == "clean":
+            draw_background(graph, target / "clean_graph_background.png")
     log.info("figures written to %s", target)

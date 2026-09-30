@@ -259,6 +259,12 @@ class Deck:
         shape.shadow.inherit = False
         self.text(slide, lines, 0.85, top + 0.15, 11.7, height - 0.2, size=12, color=INK, font="Consolas", spacing=2)
 
+    def background(self, slide: object, path: Path) -> None:
+        picture = slide.shapes.add_picture(str(path), 0, 0, width=self.prs.slide_width, height=self.prs.slide_height)
+        tree = slide.shapes._spTree
+        tree.remove(picture._element)
+        tree.insert(2, picture._element)
+
     def save(self, path: Path) -> None:
         self.prs.save(str(path))
 
@@ -741,6 +747,7 @@ def main() -> None:
         "этот корпус; один прогон GraphRAG без повторов; судья — одна модель. Следующий шаг — RAG на сохранённых "
         "чанках и векторах.",
     )
+    deck.background(slide, FIGURES / "clean_graph_background.png")
     deck.text(
         slide,
         [
@@ -755,8 +762,8 @@ def main() -> None:
         1.6,
         12.0,
         4.5,
-        size=20,
-        spacing=16,
+        size=16,
+        spacing=12,
     )
     deck.save(target)
     print(target)

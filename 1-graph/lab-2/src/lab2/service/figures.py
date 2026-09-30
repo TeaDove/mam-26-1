@@ -54,3 +54,26 @@ def draw_graph(graph: nx.Graph, title: str, target: Path, labels: int = 4) -> No
     figure.tight_layout()
     figure.savefig(target, facecolor="white")
     plt.close(figure)
+
+
+def draw_background(graph: nx.Graph, target: Path, alpha: float = 0.16) -> None:
+    layout = nx.spring_layout(graph, seed=42, k=0.35, iterations=120)
+    degrees = dict(graph.degree())
+    figure, axis = plt.subplots(figsize=(13.333, 7.5), dpi=150)
+    figure.patch.set_facecolor("white")
+    nx.draw_networkx_edges(graph, layout, ax=axis, edge_color=EDGE_COLOR, width=0.6, alpha=alpha * 2)
+    nx.draw_networkx_nodes(
+        graph,
+        layout,
+        node_size=[14 + 9 * degrees[n] for n in graph.nodes],
+        node_color=[
+            LANGUAGE_COLORS.get(d.get("lang", "unknown"), LANGUAGE_COLORS["unknown"]) for _, d in graph.nodes(data=True)
+        ],
+        linewidths=0,
+        alpha=alpha,
+        ax=axis,
+    )
+    axis.axis("off")
+    figure.subplots_adjust(left=0, right=1, top=1, bottom=0)
+    figure.savefig(target, facecolor="white")
+    plt.close(figure)

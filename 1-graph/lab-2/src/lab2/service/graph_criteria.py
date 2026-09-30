@@ -67,7 +67,7 @@ NOISE_RULES: dict[str, re.Pattern[str]] = {
     "formula_variable": re.compile(r"^(?:[A-Za-zΑ-Ωα-ω]{1,2}\d*|.*[\\$^{}].*|[A-Za-zΑ-Ωα-ω]_\S+)$"),
     "number_or_unit": re.compile(rf"^[~≈<>≤≥]?\s*[\d.,\s–÷+-]+\s*{UNIT}?$|^{UNIT}$", re.I),
     "pronoun_or_function_word": re.compile(r"^(?:" + "|".join(sorted(PRONOUNS)) + r")$", re.I),
-    "broken_word": re.compile(r"(?:\b[А-ЯA-Z]{1,4}-[А-ЯA-Z]{2,}\b.*-|\b\w+-\s|\s-\w)", re.I),
+    "broken_word": re.compile(r"\b\w+-\s|\s-\w"),
 }
 
 
@@ -123,9 +123,24 @@ def noise_labels(name: str, vocabulary: frozenset[str], allowed: frozenset[str])
     if stripped.casefold() in allowed:
         return []
     labels = [rule for rule, pattern in NOISE_RULES.items() if pattern.search(stripped)]
+    if "broken_word" not in labels and _hyphen_split(stripped, vocabulary):
+        labels.append("broken_word")
     if _unknown_word(stripped, vocabulary, allowed):
         labels.append("unknown_word")
     return labels
+
+
+def _hyphen_split(name: str, vocabulary: frozenset[str]) -> bool:
+    for left, right in re.findall(r"([A-Za-zА-Яа-яЁё]+)-([A-Za-zА-Яа-яЁё]+)", name):
+        joined = f"{left}{right}".lower()
+        if _known(joined, vocabulary) and not (_known(left.lower(), vocabulary) and _known(right.lower(), vocabulary)):
+            return True
+    return False
+
+
+def _known(word: str, vocabulary: frozenset[str]) -> bool:
+    lang = "ru" if re.search(r"[а-яё]", word) else "en"
+    return word in vocabulary or zipf_frequency(word, lang) > 0
 
 
 def _unknown_word(name: str, vocabulary: frozenset[str], allowed: frozenset[str]) -> bool:
@@ -133,7 +148,7 @@ def _unknown_word(name: str, vocabulary: frozenset[str], allowed: frozenset[str]
         lowered = word.lower()
         if re.search(r"[a-z]", lowered) and re.search(r"[а-я]", lowered):
             return True
-        if lowered in vocabulary or lowered in allowed:
+        if lowered in vocabulary or lowered in allowed or lemma_key(lowered) in vocabulary:
             continue
         lang = "ru" if re.search(r"[а-я]", lowered) else "en"
         if zipf_frequency(lowered, lang) == 0 and zipf_frequency(lemma_key(lowered), lang) == 0:
@@ -145,7 +160,7 @@ def source_vocabulary(texts: list[str]) -> frozenset[str]:
     words: set[str] = set()
     for text in texts:
         words.update(word.lower() for word in re.findall(r"[A-Za-zА-Яа-яЁё]{3,}", text))
-    return frozenset(words)
+    return frozenset(words | {lemma_key(word) for word in words})
 
 
 def formula_atoms(latex: str) -> set[str]:

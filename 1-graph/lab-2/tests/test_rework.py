@@ -3,8 +3,10 @@ from pathlib import Path
 
 import pandas as pd
 
+from lab2.api.stages import _source_fragment
 from lab2.dto.models import Chunk
 from lab2.service.corpus import strip_bibliography, token_windows
+from lab2.service.graph_criteria import noise_labels, source_vocabulary
 from lab2.service.graph_eval import load_graph
 from lab2.service.lemmatization import Lemmatizer
 from lab2.service.normalization import Glossary, Normalizer
@@ -87,3 +89,23 @@ def test_reverse_relationships_keep_both_descriptions(tmp_path: Path) -> None:
     assert edge["weight"] == 3.0
     assert edge["description"] == "A to B\nB to A"
     assert edge["merged"] == 2
+
+
+def test_hyphenated_terms_are_not_broken_words() -> None:
+    vocabulary = frozenset({"нагрева", "слябов", "температура", "steel"})
+    assert noise_labels("C-MN-NB STEEL", vocabulary, frozenset()) == []
+    assert noise_labels("HIGH-STRENGTH LOW-ALLOY STEEL", vocabulary, frozenset()) == []
+    assert "broken_word" in noise_labels("ТЕМПЕРАТУРА НА-ГРЕВА СЛЯ-БОВ", vocabulary, frozenset())
+
+
+def test_inflected_source_words_are_known() -> None:
+    vocabulary = source_vocabulary(["малоперлитных сталей"])
+    assert noise_labels("МАЛОПЕРЛИТНЫЕ СТАЛИ", vocabulary, frozenset()) == []
+    assert noise_labels("МАЛОПЕРЛИТНЫЕ СТАЛИЩИ", vocabulary, frozenset()) == ["unknown_word"]
+
+
+def test_source_fragment_prefers_unit_mentioning_node() -> None:
+    texts = {"a": "about austenite", "b": "ferrite and more ferrite", "c": "ferrite"}
+    assert _source_fragment("FERRITE", ["a", "c", "b"], texts) == "ferrite and more ferrite"
+    assert _source_fragment("PEARLITE", ["a", "b"], texts) == "about austenite"
+    assert _source_fragment("PEARLITE", [], texts) == ""

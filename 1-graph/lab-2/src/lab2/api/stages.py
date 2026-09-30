@@ -333,6 +333,12 @@ def _api_key(settings: Settings) -> str:
     return api_key
 
 
+def _source_fragment(node: str, units: list[str], unit_text: dict[str, str]) -> str:
+    name = node.casefold()
+    best = max(units, key=lambda unit: str(unit_text.get(unit, "")).casefold().count(name), default="")
+    return str(unit_text.get(best, ""))
+
+
 def _cosine(left: np.ndarray, right: np.ndarray) -> np.ndarray:
     a = left / np.linalg.norm(left, axis=1, keepdims=True)
     b = right / np.linalg.norm(right, axis=1, keepdims=True)
@@ -412,7 +418,7 @@ def run_compare(settings: Settings) -> None:
                 graph,
                 node,
                 window(graph, node),
-                str(unit_text.get(entity_units.get(node, [""])[0], "")),
+                _source_fragment(node, entity_units.get(node, []), unit_text),
             )
             for node in sample
         ]

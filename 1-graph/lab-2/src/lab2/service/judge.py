@@ -170,12 +170,14 @@ CONSISTENCY_SYSTEM = (
     "the vertex was extracted from. Judge strictly and only against the source fragment. Answer JSON with keys: "
     '"definition" ("full" if the vertex and its neighbourhood define the term completely and correctly, "partial" if '
     'important parts are missing, "none" if it is not defined or not a real term), '
-    '"contradictions" (int: statements in the vertex or its relations that contradict or distort the source), '
+    '"contradictions" (int: statements in the vertex or its relations that conflict with the source or distort it; '
+    "a statement the source does not mention is incompleteness, not a contradiction), "
     '"comment" (one short sentence).'
 )
 
 
-def consistency_prompt(graph: nx.Graph, node: str, nodes: list[str], source: str, limit: int = 3500) -> str:
+def consistency_prompt(graph: nx.Graph, node: str, nodes: list[str], source: str, limit: int = 15000) -> str:
+    fragment = f"SOURCE FRAGMENT:\n{_truncate_bytes(source, 7000)}"
     lines = [f"VERTEX: {node} [{graph.nodes[node].get('type', '')}]: {graph.nodes[node].get('description', '')[:500]}"]
     lines.append("NEIGHBOURHOOD:")
     lines.extend(
@@ -190,8 +192,8 @@ def consistency_prompt(graph: nx.Graph, node: str, nodes: list[str], source: str
         for a, b, data in graph.edges(nodes, data=True)
         if a in members and b in members
     )
-    lines.append(f"SOURCE FRAGMENT:\n{_truncate_bytes(source, limit)}")
-    return _truncate_bytes("\n".join(lines), 15000)
+    context = _truncate_bytes("\n".join(lines), limit - len(fragment.encode()) - 1)
+    return f"{context}\n{fragment}"
 
 
 def check_consistency(

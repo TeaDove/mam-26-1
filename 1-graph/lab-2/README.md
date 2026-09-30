@@ -135,6 +135,7 @@ uv run lab2 export      # чанки → graphrag-clean/input
 scripts/run_index_clean.sh < api_key   # GraphRAG для чистого графа
 uv run lab2 compare     # сравнение графов и LLM-as-a-judge
 uv run lab2 figures     # картинки графов
+uv run --with pyvis python scripts/build_html_graphs.py   # интерактивные HTML-графы
 uv run python scripts/build_presentation.py
 uv run pytest && uv run ruff check . && uv run ruff format --check .
 ```
@@ -151,5 +152,6 @@ uv run pytest && uv run ruff check . && uv run ruff format --check .
 | `graphrag-clean/` | Настройки, входные чанки и выход GraphRAG для чистого графа |
 | `results/metrics/` | Метрики этапов и сравнения графов |
 | `results/graphs/` | Оба графа с атрибутами вершин (тип, язык, векторы bge-m3, метка судьи), `.graphml.gz` |
+| `results/graphs/*_graph.html` | Интерактивные графы (pyvis): цвет — язык источника, размер — степень, подсказка — тип, описание, оценка судьи |
 | `results/figures/` | Картинки графов |
 | `results/presentation.pptx` | Презентация |

@@ -22,6 +22,8 @@ DIRTY = RGBColor(0xEB, 0x68, 0x34)
 TINT = RGBColor(0xF1, 0xF4, 0xF8)
 LINE = RGBColor(0xD9, 0xD8, 0xD3)
 CODE_BG = RGBColor(0xF4, 0xF4, 0xF2)
+MARK_COLOR = RGBColor(0x00, 0x83, 0x00)
+MARKS = {"L": "\u22c6", "D": "\u22c4", "H": "\u22b9"}
 FONT = "Calibri"
 NOISE_SHOWCASE = [
     "KONTROLIROVANNOY PROKATKI",
@@ -54,6 +56,22 @@ def pct(value: float, digits: int = 0) -> str:
 
 def num(value: float, digits: int = 2) -> str:
     return f"{value:.{digits}f}".replace(".", ",")
+
+
+def split_mark(text: str) -> tuple[str, str | None]:
+    if len(text) > 2 and text[-2] == "@" and text[-1] in MARKS:
+        return text[:-2], text[-1]
+    return text, None
+
+
+def add_mark(paragraph: object, kind: str | None, size: float) -> None:
+    if kind is None:
+        return
+    run = paragraph.add_run()
+    run.text = " " + MARKS[kind]
+    run.font.size = Pt(max(11, size))
+    run.font.bold = False
+    run.font.color.rgb = MARK_COLOR
 
 
 class Deck:
@@ -94,12 +112,14 @@ class Deck:
             paragraph = frame.paragraphs[0] if index == 0 else frame.add_paragraph()
             paragraph.alignment = align
             paragraph.space_after = Pt(spacing)
+            line, kind = split_mark(line)
             run = paragraph.add_run()
             run.text = line
             run.font.size = Pt(size)
             run.font.bold = bold
             run.font.color.rgb = color
             run.font.name = font
+            add_mark(paragraph, kind, size)
         return box
 
     def card(self, slide: object, left: float, top: float, width: float, height: float) -> None:
@@ -125,7 +145,7 @@ class Deck:
             run.font.bold = True
             run.font.color.rgb = color
             run.font.name = FONT
-        self.text(slide, label, left + 0.3, top + 1.0, 3.3, 0.7, size=13, color=MUTED)
+        self.text(slide, label, left + 0.3, top + 1.0, 3.45, 0.7, size=13, color=MUTED)
 
     def table(
         self, slide: object, rows: list[list[str]], left: float, top: float, widths: list[float], size: int = 13
@@ -145,8 +165,10 @@ class Deck:
                 cell.fill.fore_color.rgb = TINT if r == 0 else RGBColor(0xFF, 0xFF, 0xFF)
                 cell.margin_left = cell.margin_right = Inches(0.08)
                 cell.margin_top = cell.margin_bottom = Inches(0.03)
+                cell.vertical_anchor = MSO_ANCHOR.MIDDLE
                 frame = cell.text_frame
                 frame.paragraphs[0].text = ""
+                value, kind = split_mark(value) if c == 0 and r > 0 else (value, None)
                 run = frame.paragraphs[0].add_run()
                 run.text = value
                 run.font.size = Pt(size)
@@ -159,6 +181,7 @@ class Deck:
                 else:
                     run.font.color.rgb = INK if r > 0 else MUTED
                 frame.paragraphs[0].alignment = PP_ALIGN.LEFT if c == 0 else PP_ALIGN.RIGHT
+                add_mark(frame.paragraphs[0], kind, size)
 
     def bars(
         self,
@@ -182,11 +205,13 @@ class Deck:
         )
         chart = frame.chart
         chart.has_title = True
+        title, kind = split_mark(title)
         chart.chart_title.text_frame.text = title
         title_run = chart.chart_title.text_frame.paragraphs[0].runs[0]
         title_run.font.size = Pt(14)
         title_run.font.bold = True
         title_run.font.color.rgb = INK
+        add_mark(chart.chart_title.text_frame.paragraphs[0], kind, 14)
         chart.has_legend = True
         chart.legend.position = XL_LEGEND_POSITION.BOTTOM
         chart.legend.include_in_layout = False
@@ -236,11 +261,13 @@ class Deck:
             frame.word_wrap = False
             paragraph = frame.paragraphs[0]
             paragraph.alignment = PP_ALIGN.CENTER
+            step, kind = split_mark(step)
             run = paragraph.add_run()
             run.text = step
-            run.font.size = Pt(11)
+            run.font.size = Pt(10)
             run.font.color.rgb = INK
             run.font.name = FONT
+            add_mark(paragraph, kind, 10)
             if index < len(steps) - 1:
                 arrow = self.text(
                     slide, "→", left + width, top, gap, height, size=14, color=MUTED, align=PP_ALIGN.CENTER
@@ -259,6 +286,26 @@ class Deck:
         shape.line.fill.background()
         shape.shadow.inherit = False
         self.text(slide, lines, 0.85, top + 0.15, 11.7, height - 0.2, size=12, color=INK, font="Consolas", spacing=2)
+
+    def legend(self, slide: object, left: float, top: float) -> None:
+        box = slide.shapes.add_textbox(Inches(left), Inches(top), Inches(12.1), Inches(0.4))
+        frame = box.text_frame
+        frame.word_wrap = True
+        frame.margin_left = frame.margin_right = frame.margin_top = frame.margin_bottom = 0
+        paragraph = frame.paragraphs[0]
+        paragraph.alignment = PP_ALIGN.LEFT
+        run = paragraph.add_run()
+        run.text = "Метки у метрик:"
+        run.font.size = Pt(14)
+        run.font.color.rgb = MUTED
+        run.font.name = FONT
+        for kind, meaning in (("L", "LLM"), ("D", "детерминированный алгоритм"), ("H", "гибрид")):
+            add_mark(paragraph, kind, 18)
+            run = paragraph.add_run()
+            run.text = f" — {meaning}   "
+            run.font.size = Pt(14)
+            run.font.color.rgb = MUTED
+            run.font.name = FONT
 
     def background(self, slide: object, path: Path) -> None:
         picture = slide.shapes.add_picture(str(path), 0, 0, width=self.prs.slide_width, height=self.prs.slide_height)
@@ -323,11 +370,11 @@ def main() -> None:
         "markdown после пяти этапов предобработки. После каждого этапа считаем метрики по каждой книге и суммарно, "
         "каждый этап проверял независимый ревьюер.",
     )
-    deck.arrow_row(slide, "Грязный", ["MinerU", "GraphRAG"], 1.8, DIRTY)
+    deck.arrow_row(slide, "Грязный", ["MinerU", "GraphRAG@L"], 1.8, DIRTY)
     deck.arrow_row(
         slide,
         "Чистый",
-        ["MinerU", "Chunking", "Очистка", "Нормализация", "Токенизация", "Векторизация", "GraphRAG"],
+        ["MinerU", "Chunking@D", "Очистка@D", "Нормализация@D", "Токенизация@D", "Векторизация@D", "GraphRAG@L"],
         3.0,
         CLEAN,
     )
@@ -345,6 +392,7 @@ def main() -> None:
         size=16,
         color=MUTED,
     )
+    deck.legend(slide, 0.6, 6.2)
 
     ch_d, ch_c = chunking["dirty_graphrag:total"], chunking["structural:total"]
     slide = deck.slide(
@@ -359,7 +407,7 @@ def main() -> None:
         1.55,
         pct(ch_d["boundaries_cutting_sentence_share"]),
         pct(ch_c["boundaries_cutting_sentence_share"]),
-        "границ чанков режут предложение",
+        "границ чанков режут предложение@D",
     )
     deck.stat(
         slide,
@@ -367,11 +415,11 @@ def main() -> None:
         3.5,
         str(ch_d["tables_broken"] + ch_d["formulas_broken"]),
         str(ch_c["tables_broken"] + ch_c["formulas_broken"]),
-        "формул и таблиц разрезано границей",
+        "формул и таблиц разрезано границей@D",
     )
     deck.bars(
         slide,
-        "Размер чанка, токенов o200k (среднее)",
+        "Размер чанка, токенов o200k (среднее)@D",
         ["tanaka1981", "stat3", "всего"],
         [chunking[f"dirty_graphrag:{s}"]["tokens"]["mean"] for s in ("tanaka1981", "stat3", "total")],
         [chunking[f"structural:{s}"]["tokens"]["mean"] for s in ("tanaka1981", "stat3", "total")],
@@ -408,9 +456,9 @@ def main() -> None:
         "метаданные авторов (PII). Склеиваем абзацы, разорванные страницами и подписями к рисункам, и переносы. "
         "Все правки журналируются. Числа, формулы и ячейки таблиц в содержательной части сохранены на 100%.",
     )
-    deck.stat(slide, 0.6, 1.55, pct(cl_d["noise_share"], 1), pct(cl_c["noise_share"], 2), "доля шумовых символов")
-    deck.stat(slide, 4.75, 1.55, str(cl_d["service_marks"]), str(cl_c["service_marks"]), "служебных меток")
-    deck.stat(slide, 8.9, 1.55, str(cl_d["broken_paragraphs"]), str(cl_c["broken_paragraphs"]), "разорванных абзацев")
+    deck.stat(slide, 0.6, 1.55, pct(cl_d["noise_share"], 1), pct(cl_c["noise_share"], 2), "доля шумовых символов@D")
+    deck.stat(slide, 4.75, 1.55, str(cl_d["service_marks"]), str(cl_c["service_marks"]), "служебных меток@D")
+    deck.stat(slide, 8.9, 1.55, str(cl_d["broken_paragraphs"]), str(cl_c["broken_paragraphs"]), "разорванных абзацев@D")
     deck.card(slide, 0.6, 3.65, 12.1, 2.35)
     deck.text(slide, "Было → стало", 0.9, 3.85, 5, 0.4, size=14, bold=True, color=MUTED)
     deck.text(
@@ -421,7 +469,7 @@ def main() -> None:
             "ох- лаждение,  1 9 + 4 4  (в формуле)   →   охлаждение,  19 + 44",
             f"PII (авторы, аффилиации): {cl_d['pii_hits']} → {cl_c['pii_hits']};  "
             f"числа, формулы, ячейки таблиц: {pct(cl_c['numbers_preserved_share'])} / "
-            f"{pct(cl_c['formulas_preserved_share'])} / {pct(cl_c['table_cells_preserved_share'])} сохранено",
+            f"{pct(cl_c['formulas_preserved_share'])} / {pct(cl_c['table_cells_preserved_share'])} сохранено@D",
         ],
         0.9,
         4.35,
@@ -454,10 +502,10 @@ def main() -> None:
         1.55,
         pct(nm_r["unit_canonical_share"]),
         pct(nm_n["unit_canonical_share"]),
-        "единиц измерения в каноническом виде",
+        "единиц измерения в каноническом виде@D",
     )
     deck.stat(
-        slide, 0.6, 3.5, str(nm_r["bridging_terms"]), str(nm_n["bridging_terms"]), "терминов глоссария в обеих книгах"
+        slide, 0.6, 3.5, str(nm_r["bridging_terms"]), str(nm_n["bridging_terms"]), "терминов глоссария в обеих книгах@D"
     )
     deck.card(slide, 4.75, 1.55, 7.95, 3.7)
     deck.text(slide, "stat3, было", 5.05, 1.75, 7.3, 0.4, size=14, bold=True, color=DIRTY)
@@ -516,18 +564,22 @@ def main() -> None:
         slide,
         [
             ["Метрика", "грязный", "чистый"],
-            ["OOV-rate (доля неизвестных слов)", pct(tk_r["oov_rate"], 1), pct(tk_n["oov_rate_original_words"], 1)],
-            ["Уникальных OOV", str(tk_r["unique_oov"]), str(tk_n["unique_oov"])],
+            ["OOV-rate (доля неизвестных слов)@D", pct(tk_r["oov_rate"], 1), pct(tk_n["oov_rate_original_words"], 1)],
+            ["Уникальных OOV@D", str(tk_r["unique_oov"]), str(tk_n["unique_oov"])],
             [
-                "Неразобранные $ (обрывки формул)",
+                "Неразобранные $ (обрывки формул)@D",
                 str(tk_r["unmatched_math_delimiters"]),
                 str(tk_n["unmatched_math_delimiters"]),
             ],
-            ["LaTeX-обозначения → текст (γ, °C, Ar3)", "—", str(tk_n["formulas_converted_to_text"])],
-            ["Словарь TF-IDF, слов", str(vc_d["tfidf_vocabulary"]), str(vc_n["tfidf_vocabulary"])],
-            ["Разреженность TF-IDF (окна по 300 слов)", num(vc_d["tfidf_sparsity"], 3), num(vc_n["tfidf_sparsity"], 3)],
+            ["LaTeX-обозначения → текст (γ, °C, Ar3)@D", "—", str(tk_n["formulas_converted_to_text"])],
+            ["Словарь TF-IDF, слов@D", str(vc_d["tfidf_vocabulary"]), str(vc_n["tfidf_vocabulary"])],
             [
-                "Сходство RU→EN, лучший чанк (cos)",
+                "Разреженность TF-IDF (окна по 300 слов)@D",
+                num(vc_d["tfidf_sparsity"], 3),
+                num(vc_n["tfidf_sparsity"], 3),
+            ],
+            [
+                "Сходство RU→EN, лучший чанк (cos)@D",
                 num(vc_d["cross_language_best_match_cosine"], 3),
                 num(vc_n["cross_language_best_match_cosine"], 3),
             ],
@@ -571,7 +623,7 @@ def main() -> None:
     deck.picture(slide, FIGURES / "clean_graph.png", 6.85, 1.35, 5.5)
     deck.text(
         slide,
-        f"рёбер EN–RU: {ds['edges_en_ru']}, общих узлов: {ds['nodes_both_languages']}",
+        f"рёбер EN–RU: {ds['edges_en_ru']}, общих узлов: {ds['nodes_both_languages']}@D",
         0.6,
         6.9,
         5.8,
@@ -582,7 +634,7 @@ def main() -> None:
     )
     deck.text(
         slide,
-        f"рёбер EN–RU: {cs['edges_en_ru']}, общих узлов: {cs['nodes_both_languages']}",
+        f"рёбер EN–RU: {cs['edges_en_ru']}, общих узлов: {cs['nodes_both_languages']}@D",
         6.95,
         6.9,
         5.8,
@@ -602,26 +654,26 @@ def main() -> None:
         slide,
         [
             ["Показатель", "грязный", "чистый"],
-            ["Вершины / рёбра", f"{ds['nodes']} / {ds['edges']}", f"{cs['nodes']} / {cs['edges']}"],
+            ["Вершины / рёбра@D", f"{ds['nodes']} / {ds['edges']}", f"{cs['nodes']} / {cs['edges']}"],
             [
-                "Компоненты связности (без изолированных)",
+                "Компоненты (без изолированных)@D",
                 f"{ds['connected_components']} ({non_isolated(ds)})",
                 f"{cs['connected_components']} ({non_isolated(cs)})",
             ],
-            ["Доля крупнейшей компоненты", pct(ds["largest_component_share"]), pct(cs["largest_component_share"])],
-            ["Изолированные вершины", str(ds["isolated_nodes"]), str(cs["isolated_nodes"])],
+            ["Доля крупнейшей компоненты@D", pct(ds["largest_component_share"]), pct(cs["largest_component_share"])],
+            ["Изолированные вершины@D", str(ds["isolated_nodes"]), str(cs["isolated_nodes"])],
             [
-                "Мосты / точки сочленения",
+                "Мосты / точки сочленения@D",
                 f"{ds['bridges']} / {ds['articulation_points']}",
                 f"{cs['bridges']} / {cs['articulation_points']}",
             ],
-            ["Независимые циклы (E − V + C)", str(ds["cyclomatic_number"]), str(cs["cyclomatic_number"])],
+            ["Независимые циклы (E − V + C)@D", str(ds["cyclomatic_number"]), str(cs["cyclomatic_number"])],
             [
-                "Средняя / макс. степень",
+                "Средняя / макс. степень@D",
                 f"{num(ds['degree_mean'])} / {ds['degree_max']}",
                 f"{num(cs['degree_mean'])} / {cs['degree_max']}",
             ],
-            ["Кластеризация", num(ds["average_clustering"], 3), num(cs["average_clustering"], 3)],
+            ["Кластеризация@D", num(ds["average_clustering"], 3), num(cs["average_clustering"], 3)],
         ],
         0.6,
         1.55,
@@ -632,7 +684,7 @@ def main() -> None:
     labels = ["процесс", "параметр", "мех. свойство", "микроструктура", "фаза", "персона"]
     deck.bars(
         slide,
-        "Вершины по типам",
+        "Вершины по типам@D",
         labels,
         [ds["nodes_by_type"].get(t, 0) for t in types],
         [cs["nodes_by_type"].get(t, 0) for t in types],
@@ -666,7 +718,7 @@ def main() -> None:
         1.55,
         f"{dt['pairs_connected']}/{dt['pairs_total']}",
         f"{ct['pairs_connected']}/{ct['pairs_total']}",
-        "пар концептов связаны путём",
+        "пар концептов связаны путём@D",
     )
     deck.stat(
         slide,
@@ -674,7 +726,7 @@ def main() -> None:
         1.55,
         pct(dirty["coverage"]["domain_coverage"]),
         pct(clean["coverage"]["domain_coverage"], 1),
-        "покрытие ПрО: найдено из 40 ключевых понятий",
+        "покрытие ПрО: найдено из 40 ключевых понятий@D",
     )
     deck.stat(
         slide,
@@ -682,21 +734,21 @@ def main() -> None:
         1.55,
         pct(dt["bfs2_other_language_share"]),
         pct(ct["bfs2_other_language_share"]),
-        "узлов другого языка в BFS-2",
+        "узлов другого языка в BFS-2@D",
     )
     deck.table(
         slide,
         [
             ["Обход от 8 ключевых концептов", "грязный", "чистый"],
             [
-                "BFS-1 / BFS-2 / BFS-3, узлов в среднем",
+                "BFS-1 / BFS-2 / BFS-3, узлов в среднем@D",
                 bfs_triple(dt),
                 bfs_triple(ct),
             ],
-            ["Концептов ПрО в BFS-2", num(dt["bfs2_mean_concepts"], 1), num(ct["bfs2_mean_concepts"], 1)],
-            ["Шумовых узлов в BFS-2 (судья)", pct(dt["bfs2_noise_share"], 1), pct(ct["bfs2_noise_share"], 1)],
-            ["DFS: достижимо узлов", num(dt["dfs_mean_reached"], 0), num(ct["dfs_mean_reached"], 0)],
-            ["Средняя длина пути", num(dt["pairs_mean_length"] or 0, 1), num(ct["pairs_mean_length"] or 0, 1)],
+            ["Концептов ПрО в BFS-2@D", num(dt["bfs2_mean_concepts"], 1), num(ct["bfs2_mean_concepts"], 1)],
+            ["Шумовых узлов в BFS-2 (судья)@H", pct(dt["bfs2_noise_share"], 1), pct(ct["bfs2_noise_share"], 1)],
+            ["DFS: достижимо узлов@D", num(dt["dfs_mean_reached"], 0), num(ct["dfs_mean_reached"], 0)],
+            ["Средняя длина пути@D", num(dt["pairs_mean_length"] or 0, 1), num(ct["pairs_mean_length"] or 0, 1)],
         ],
         0.6,
         3.65,
@@ -704,7 +756,7 @@ def main() -> None:
         size=14,
     )
     if path:
-        deck.text(slide, "Пример пути в чистом графе", 0.6, 6.15, 6.0, 0.4, size=13, bold=True, color=MUTED)
+        deck.text(slide, "Пример пути в чистом графе@D", 0.6, 6.15, 6.0, 0.4, size=13, bold=True, color=MUTED)
         deck.text(slide, "  →  ".join(path["path"]), 0.6, 6.5, 12.1, 0.5, size=14)
 
     ju_d, ju_c = dirty["judge_units"], clean["judge_units"]
@@ -720,22 +772,26 @@ def main() -> None:
         slide,
         [
             ["Критерий", "грязный", "чистый"],
-            ["Полнота по тексту (1–5)", num(ju_d["completeness_mean"]), num(ju_c["completeness_mean"])],
-            ["Покрытие понятий фрагмента (1–5)", num(ju_d["domain_coverage_mean"]), num(ju_c["domain_coverage_mean"])],
+            ["Полнота по тексту (1–5)@L", num(ju_d["completeness_mean"]), num(ju_c["completeness_mean"])],
             [
-                "Целостность формул и таблиц (1–5)",
+                "Покрытие понятий фрагмента (1–5)@L",
+                num(ju_d["domain_coverage_mean"]),
+                num(ju_c["domain_coverage_mean"]),
+            ],
+            [
+                "Целостность формул и таблиц (1–5)@L",
                 num(ju_d["formula_table_integrity_mean"]),
                 num(ju_c["formula_table_integrity_mean"]),
             ],
-            ["Противоречия тексту, шт.", str(ju_d["contradictions_total"]), str(ju_c["contradictions_total"])],
+            ["Противоречия тексту, шт.@L", str(ju_d["contradictions_total"]), str(ju_c["contradictions_total"])],
             [
-                "Шумовые сущности во фрагментах",
+                "Шумовые сущности во фрагментах@L",
                 pct(ju_d["noise_entities_share"], 1),
                 pct(ju_c["noise_entities_share"], 1),
             ],
-            ["Шумовые вершины графа", pct(jn_d["noise_share"], 1), pct(jn_c["noise_share"], 1)],
-            ["Корреференции: дубликаты вершин", str(du_d["confirmed"]), str(du_c["confirmed"])],
-            ["  из них межъязыковые", str(du_d["confirmed_cross_language"]), str(du_c["confirmed_cross_language"])],
+            ["Шумовые вершины графа@L", pct(jn_d["noise_share"], 1), pct(jn_c["noise_share"], 1)],
+            ["Корреференции: дубликаты вершин@H", str(du_d["confirmed"]), str(du_c["confirmed"])],
+            ["  из них межъязыковые@H", str(du_d["confirmed_cross_language"]), str(du_c["confirmed_cross_language"])],
         ],
         0.6,
         1.55,
@@ -743,7 +799,7 @@ def main() -> None:
         size=15,
     )
     deck.card(slide, 10.15, 1.55, 2.6, 3.9)
-    deck.text(slide, "Шум грязного графа", 10.4, 1.75, 2.2, 0.4, size=13, bold=True, color=MUTED)
+    deck.text(slide, "Шум грязного графа@L", 10.4, 1.75, 2.2, 0.4, size=13, bold=True, color=MUTED)
     examples = [n for n in NOISE_SHOWCASE if n in dirty["noise_examples"]][:8]
     deck.text(slide, examples, 10.4, 2.2, 2.2, 3.2, size=11, spacing=3)
 

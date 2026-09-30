@@ -7,7 +7,7 @@ from pyvis.network import Network
 
 ROOT = Path(__file__).resolve().parents[1]
 GRAPHS = ROOT / "results" / "graphs"
-LANGUAGE_COLORS = {"en": "#2a78d6", "ru": "#eb6834", "both": "#1baf7a", "unknown": "#a3a29c"}
+LANGUAGE_COLORS = {"en": "#4a3aa7", "ru": "#eda100", "both": "#1baf7a", "unknown": "#a3a29c"}
 LANGUAGE_NAMES = {"en": "английский текст", "ru": "русский текст", "both": "оба текста", "unknown": "неизвестно"}
 TITLES = {
     "dirty": "Грязный граф: текст MinerU как есть",

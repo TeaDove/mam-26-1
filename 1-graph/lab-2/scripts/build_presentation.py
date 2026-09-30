@@ -7,7 +7,7 @@ from pptx.chart.data import CategoryChartData
 from pptx.dml.color import RGBColor
 from pptx.enum.chart import XL_CHART_TYPE, XL_LABEL_POSITION, XL_LEGEND_POSITION
 from pptx.enum.shapes import MSO_SHAPE
-from pptx.enum.text import PP_ALIGN
+from pptx.enum.text import MSO_ANCHOR, PP_ALIGN
 from pptx.util import Inches, Pt
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -20,6 +20,7 @@ CLEAN = RGBColor(0x2A, 0x78, 0xD6)
 DIRTY = RGBColor(0xEB, 0x68, 0x34)
 TINT = RGBColor(0xF1, 0xF4, 0xF8)
 LINE = RGBColor(0xD9, 0xD8, 0xD3)
+CODE_BG = RGBColor(0xF4, 0xF4, 0xF2)
 FONT = "Calibri"
 NOISE_SHOWCASE = [
     "KONTROLIROVANNOY PROKATKI",
@@ -216,12 +217,11 @@ class Deck:
         slide.shapes.add_picture(str(path), Inches(left), Inches(top), height=Inches(height))
 
     def arrow_row(self, slide: object, label: str, steps: list[str], top: float, color: RGBColor) -> None:
-        self.text(slide, label, 0.6, top + 0.12, 1.7, 0.5, size=16, bold=True, color=color)
-        left = 2.35
-        width = min(1.62, (10.4 - 0.25 * (len(steps) - 1)) / len(steps))
+        self.text(slide, label, 0.6, top + 0.2, 1.4, 0.4, size=16, bold=True, color=color)
+        left, width, gap, height = 2.1, 1.28, 0.26, 0.72
         for index, step in enumerate(steps):
             shape = slide.shapes.add_shape(
-                MSO_SHAPE.ROUNDED_RECTANGLE, Inches(left), Inches(top), Inches(width), Inches(0.72)
+                MSO_SHAPE.ROUNDED_RECTANGLE, Inches(left), Inches(top), Inches(width), Inches(height)
             )
             shape.adjustments[0] = 0.15
             shape.fill.solid()
@@ -230,17 +230,34 @@ class Deck:
             shape.line.width = Pt(1.25)
             shape.shadow.inherit = False
             frame = shape.text_frame
-            frame.margin_left = frame.margin_right = Inches(0.04)
+            frame.margin_left = frame.margin_right = Inches(0.02)
+            frame.vertical_anchor = MSO_ANCHOR.MIDDLE
+            frame.word_wrap = False
             paragraph = frame.paragraphs[0]
             paragraph.alignment = PP_ALIGN.CENTER
             run = paragraph.add_run()
             run.text = step
-            run.font.size = Pt(12)
+            run.font.size = Pt(11)
             run.font.color.rgb = INK
             run.font.name = FONT
             if index < len(steps) - 1:
-                self.text(slide, "→", left + width, top + 0.14, 0.25, 0.4, size=16, color=MUTED, align=PP_ALIGN.CENTER)
-            left += width + 0.25
+                arrow = self.text(
+                    slide, "→", left + width, top, gap, height, size=14, color=MUTED, align=PP_ALIGN.CENTER
+                )
+                arrow.text_frame.vertical_anchor = MSO_ANCHOR.MIDDLE
+            left += width + gap
+
+    def code(self, slide: object, lines: list[str], top: float) -> None:
+        height = 0.32 * len(lines) + 0.3
+        shape = slide.shapes.add_shape(
+            MSO_SHAPE.ROUNDED_RECTANGLE, Inches(0.6), Inches(top), Inches(12.1), Inches(height)
+        )
+        shape.adjustments[0] = 0.08
+        shape.fill.solid()
+        shape.fill.fore_color.rgb = CODE_BG
+        shape.line.fill.background()
+        shape.shadow.inherit = False
+        self.text(slide, lines, 0.85, top + 0.15, 11.7, height - 0.2, size=12, color=INK, font="Consolas", spacing=2)
 
     def save(self, path: Path) -> None:
         self.prs.save(str(path))
@@ -293,18 +310,18 @@ def main() -> None:
         "markdown после пяти этапов предобработки. После каждого этапа считаем метрики по каждой книге и суммарно, "
         "каждый этап проверял независимый ревьюер.",
     )
-    deck.arrow_row(slide, "Грязный", ["PDF", "MinerU", "GraphRAG"], 1.8, DIRTY)
+    deck.arrow_row(slide, "Грязный", ["MinerU", "GraphRAG"], 1.8, DIRTY)
     deck.arrow_row(
         slide,
         "Чистый",
-        ["PDF", "MinerU", "Chunking", "Очистка", "Нормали-\nзация", "Токени-\nзация", "Вектори-\nзация", "GraphRAG"],
+        ["MinerU", "Chunking", "Очистка", "Нормализация", "Токенизация", "Векторизация", "GraphRAG"],
         3.0,
         CLEAN,
     )
     deck.text(
         slide,
         [
-            "Одинаковые: модели, промпты, типы сущностей, размер чанка 1200 токенов, кластеризация.",
+            "Общий вход: PDF → MinerU → markdown. Одинаковые модели, промпты, типы сущностей, чанк 1200 токенов.",
             "Оба учебника → один граф. Метрики — после каждого этапа, по книгам и суммарно.",
             "Сравнение графов: структура, обходы (BFS/DFS/пути), покрытие ПрО, LLM-as-a-judge.",
         ],
@@ -362,6 +379,15 @@ def main() -> None:
         color=MUTED,
     )
 
+    deck.code(
+        slide,
+        [
+            "blocks = parse_blocks(markdown)  →  разделы по заголовкам, формулы $$…$$ и <table> — неделимые блоки",
+            "cut = последняя граница, где tokens(left) ≤ 900 и ends_sentence(left) and not starts_lowercase(right)",
+        ],
+        6.15,
+    )
+
     cl_d, cl_c = cleaning["dirty:total"], cleaning["clean:total"]
     slide = deck.slide(
         "2. Очистка: убираем шум, не теряя смысла",
@@ -372,7 +398,7 @@ def main() -> None:
     deck.stat(slide, 0.6, 1.55, pct(cl_d["noise_share"], 1), pct(cl_c["noise_share"], 2), "доля шумовых символов")
     deck.stat(slide, 4.75, 1.55, str(cl_d["service_marks"]), str(cl_c["service_marks"]), "служебных меток")
     deck.stat(slide, 8.9, 1.55, str(cl_d["broken_paragraphs"]), str(cl_c["broken_paragraphs"]), "разорванных абзацев")
-    deck.card(slide, 0.6, 3.65, 12.1, 2.9)
+    deck.card(slide, 0.6, 3.65, 12.1, 2.35)
     deck.text(slide, "Было → стало", 0.9, 3.85, 5, 0.4, size=14, bold=True, color=MUTED)
     deck.text(
         slide,
@@ -387,9 +413,18 @@ def main() -> None:
         0.9,
         4.35,
         11.5,
-        2.1,
+        1.6,
         size=15,
         font="Consolas",
+    )
+
+    deck.code(
+        slide,
+        [
+            r're.sub(r"</?(?:strong|u|b|i|em)>", "", text);   re.sub(r"\s*\$\^\{[\d,\s–-]+\}\$", "", text)',
+            r're.sub(r"([^\W\d_]+)-\s+([а-яё]+)", r"\1\2", text);   блоки = колонтитулы ∪ r"^\d{1,3}$" → удалить',
+        ],
+        6.15,
     )
 
     nm_r, nm_n = normalization["raw:total"], normalization["normalized:total"]
@@ -444,6 +479,16 @@ def main() -> None:
         color=MUTED,
     )
 
+    deck.code(
+        slide,
+        [
+            r're.sub(r"<sup>\s*[0o°]\s*</sup>\s*[СC]", " °C", text)',
+            r're.sub(r"\bконтролируем\w* прокатк\w*", lambda m: f"controlled rolling ({m[0]})", text, count=1)'
+            "   ← glossary.yaml",
+        ],
+        6.1,
+    )
+
     tk_r, tk_n = tokenization["raw:total"], tokenization["normalized:total"]
     vc_d, vc_n = vectors["dirty_units:total"], vectors["normalized:total"]
     slide = deck.slide(
@@ -492,6 +537,15 @@ def main() -> None:
         1.4,
         size=15,
         color=MUTED,
+    )
+
+    deck.code(
+        slide,
+        [
+            r'oov = [w for w in re.findall(r"[^\W\d_]+", text) if zipf_frequency(w, lang) == 0 and w not in glossary]',
+            'SentenceTransformer("BAAI/bge-m3").encode(chunks);   TfidfVectorizer().fit_transform(windows_300)',
+        ],
+        6.0,
     )
 
     slide = deck.slide(

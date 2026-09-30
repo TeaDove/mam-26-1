@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import networkx as nx
 from matplotlib.lines import Line2D
 
-LANGUAGE_COLORS = {"en": "#2a78d6", "ru": "#eb6834", "both": "#1baf7a", "unknown": "#a3a29c"}
+LANGUAGE_COLORS = {"en": "#4a3aa7", "ru": "#eda100", "both": "#1baf7a", "unknown": "#a3a29c"}
 LANGUAGE_NAMES = {"en": "только английский текст", "ru": "только русский текст", "both": "оба текста"}
 EDGE_COLOR = "#c9c8c2"
 TEXT_COLOR = "#0b0b0b"

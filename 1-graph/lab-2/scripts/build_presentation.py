@@ -13,6 +13,7 @@ from pptx.util import Inches, Pt
 ROOT = Path(__file__).resolve().parents[1]
 METRICS = ROOT / "results" / "metrics"
 FIGURES = ROOT / "results" / "figures"
+AUTHORS = ROOT / "authors.txt"
 
 INK = RGBColor(0x1F, 0x23, 0x28)
 MUTED = RGBColor(0x5F, 0x5E, 0x5A)
@@ -308,6 +309,9 @@ def main() -> None:
         size=16,
         color=MUTED,
     )
+    if AUTHORS.exists():
+        authors = [line.strip() for line in AUTHORS.read_text(encoding="utf-8").splitlines() if line.strip()]
+        deck.text(slide, authors, 7.7, 5.5, 5.0, 1.5, size=14, color=MUTED, align=PP_ALIGN.RIGHT, spacing=2)
 
     slide = deck.slide(
         "Эксперимент: отличие только в предобработке",

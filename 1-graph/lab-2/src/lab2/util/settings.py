@@ -12,6 +12,7 @@ class Settings(BaseSettings):
     chunk_min_tokens: int = 250
     chunk_hard_max_tokens: int = 1100
     graphrag_chunk_tokens: int = 1200
+    graphrag_chunk_overlap: int = 100
     tiktoken_encoding: str = "o200k_base"
     bge_tokenizer_path: Path = Path(
         "~/.cache/huggingface/hub/models--BAAI--bge-m3/snapshots/5617a9f61b028005a4858fdac845db406aefb181/tokenizer.json"
@@ -32,6 +33,10 @@ class Settings(BaseSettings):
     @property
     def data_dir(self) -> Path:
         return self.root / "data"
+
+    @property
+    def dirty_dir(self) -> Path:
+        return self.root / "data" / "00_dirty"
 
     @property
     def metrics_dir(self) -> Path:

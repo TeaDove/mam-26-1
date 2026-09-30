@@ -1,0 +1,101 @@
+{
+  "dirty_units:tanaka1981": {
+    "documents": 26,
+    "tfidf_windows": 47,
+    "tfidf_vocabulary": 1815,
+    "tfidf_sparsity": 0.9188,
+    "tfidf_mean_nonzero_per_doc": 147.3,
+    "dense_dimensions": 1024,
+    "dense_mean_pairwise_cosine": 0.6882,
+    "cross_language_mean_cosine": null,
+    "cross_language_best_match_cosine": null
+  },
+  "cleaned:tanaka1981": {
+    "documents": 36,
+    "tfidf_windows": 40,
+    "tfidf_vocabulary": 1512,
+    "tfidf_sparsity": 0.902,
+    "tfidf_mean_nonzero_per_doc": 148.2,
+    "dense_dimensions": 1024,
+    "dense_mean_pairwise_cosine": 0.6703,
+    "cross_language_mean_cosine": null,
+    "cross_language_best_match_cosine": null
+  },
+  "normalized:tanaka1981": {
+    "documents": 36,
+    "tfidf_windows": 41,
+    "tfidf_vocabulary": 1533,
+    "tfidf_sparsity": 0.902,
+    "tfidf_mean_nonzero_per_doc": 150.2,
+    "dense_dimensions": 1024,
+    "dense_mean_pairwise_cosine": 0.6762,
+    "cross_language_mean_cosine": null,
+    "cross_language_best_match_cosine": null
+  },
+  "dirty_units:stat3": {
+    "documents": 7,
+    "tfidf_windows": 8,
+    "tfidf_vocabulary": 969,
+    "tfidf_sparsity": 0.8075,
+    "tfidf_mean_nonzero_per_doc": 186.5,
+    "dense_dimensions": 1024,
+    "dense_mean_pairwise_cosine": 0.7704,
+    "cross_language_mean_cosine": null,
+    "cross_language_best_match_cosine": null
+  },
+  "cleaned:stat3": {
+    "documents": 9,
+    "tfidf_windows": 7,
+    "tfidf_vocabulary": 750,
+    "tfidf_sparsity": 0.7648,
+    "tfidf_mean_nonzero_per_doc": 176.4,
+    "dense_dimensions": 1024,
+    "dense_mean_pairwise_cosine": 0.7362,
+    "cross_language_mean_cosine": null,
+    "cross_language_best_match_cosine": null
+  },
+  "normalized:stat3": {
+    "documents": 9,
+    "tfidf_windows": 8,
+    "tfidf_vocabulary": 807,
+    "tfidf_sparsity": 0.7756,
+    "tfidf_mean_nonzero_per_doc": 181.1,
+    "dense_dimensions": 1024,
+    "dense_mean_pairwise_cosine": 0.7637,
+    "cross_language_mean_cosine": null,
+    "cross_language_best_match_cosine": null
+  },
+  "dirty_units:total": {
+    "documents": 33,
+    "tfidf_windows": 55,
+    "tfidf_vocabulary": 2777,
+    "tfidf_sparsity": 0.9449,
+    "tfidf_mean_nonzero_per_doc": 153.0,
+    "dense_dimensions": 1024,
+    "dense_mean_pairwise_cosine": 0.6503,
+    "cross_language_mean_cosine": 0.5686,
+    "cross_language_best_match_cosine": 0.6251
+  },
+  "cleaned:total": {
+    "documents": 45,
+    "tfidf_windows": 47,
+    "tfidf_vocabulary": 2258,
+    "tfidf_sparsity": 0.9325,
+    "tfidf_mean_nonzero_per_doc": 152.4,
+    "dense_dimensions": 1024,
+    "dense_mean_pairwise_cosine": 0.6259,
+    "cross_language_mean_cosine": 0.5271,
+    "cross_language_best_match_cosine": 0.6162
+  },
+  "normalized:total": {
+    "documents": 45,
+    "tfidf_windows": 49,
+    "tfidf_vocabulary": 2296,
+    "tfidf_sparsity": 0.9324,
+    "tfidf_mean_nonzero_per_doc": 155.3,
+    "dense_dimensions": 1024,
+    "dense_mean_pairwise_cosine": 0.6466,
+    "cross_language_mean_cosine": 0.5762,
+    "cross_language_best_match_cosine": 0.6808
+  }
+}

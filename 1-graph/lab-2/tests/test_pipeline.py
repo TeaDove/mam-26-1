@@ -17,7 +17,9 @@ def _chunk(text: str, book: str = "tanaka1981", lang: str = "en") -> Chunk:
 
 @pytest.fixture
 def cleaner() -> Cleaner:
-    rules = BookRules(drop_blocks=[], drop_sections=["REFERENCES"], references_start=None)
+    rules = BookRules(
+        drop_blocks=[], drop_sections=["REFERENCES"], references_start=None, bibliography_start="^## REFERENCES"
+    )
     config = CleaningConfig(
         running_header_min_repeats=3,
         running_header_max_chars=80,

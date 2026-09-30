@@ -11,11 +11,14 @@ from lab2.supplier.llm import LlmClient
 NODE_SYSTEM = (
     "You are an expert in physical metallurgy and steel rolling. You audit nodes of a knowledge graph built "
     "from two texts on controlled rolling of steel (an English review and a Russian article). "
-    "Label every node: 'core' = a meaningful domain concept, material, process, parameter, property, phase, "
-    "equipment or a researcher/organization that matters for the domain; 'peripheral' = correct but generic or "
-    "marginal (e.g. a bare symbol, a generic word like STEEL, a figure-specific value); 'noise' = OCR or "
-    "transliteration garbage, misspelled or broken names, formatting leftovers, bibliographic metadata "
-    "(journal, publisher, authors of the article itself), or a fragment without domain meaning. "
+    "Label every node strictly: 'core' = a correctly named, meaningful domain concept, material, process, "
+    "parameter, property, phase or equipment, or a researcher cited for a scientific result; 'peripheral' = "
+    "correct but generic or marginal (a bare symbol, a generic word like STEEL or WATER, a figure-specific value); "
+    "'noise' = any of: Latin transliteration of Russian words (e.g. KONTROLIROVANNOY PROKATKI), misspelled, "
+    "OCR-broken, hyphen-broken or glued names (e.g. SLAAB, ТЕМПЕРАТУРА НА-ГРЕВА, СОРТАТОПРОКАТ), words unrelated "
+    "to the domain, formatting leftovers, bibliographic metadata (journals, publishers, report codes), the authors "
+    "and affiliations of the source article itself, or fragments without domain meaning. When a name is visibly "
+    "corrupted, label it noise even if the concept behind it is valid. "
     'Answer JSON: {"labels": [{"id": <int>, "label": "core"|"peripheral"|"noise"}]} covering every id.'
 )
 UNIT_SYSTEM = (

@@ -1,0 +1,157 @@
+queries:
+  - id: f01
+    lang: en
+    book: stat3
+    question: At Azovstal mill 3600, what high-temperature controlled-rolling range is reported?
+    evidence: ['730\s*[–-]\s*800', 'высокотемпературн']
+    source: classmate set, stat3 p.1
+  - id: f02
+    lang: en
+    book: stat3
+    question: What accelerated-cooling rate after deformation is reported for thick plate?
+    evidence: ['10\s*[–-]\s*30', 'скорост']
+    source: classmate set, stat3 p.1
+  - id: f03
+    lang: en
+    book: stat3
+    question: What maximum rolling-rate increase is reported for high-temperature rolling with accelerated cooling?
+    evidence: ['темп прокатк', '20\s?%']
+    source: classmate set, stat3 p.1
+  - id: f04
+    lang: en
+    book: stat3
+    question: Under existing low-temperature controlled rolling at mill 3600, how long is the air-cooling hold for a roughly 50 mm slab?
+    evidence: ['50\s?мм', '300 с']
+    source: classmate set, stat3 p.3
+  - id: f05
+    lang: en
+    book: stat3
+    question: In the КП+УО+КП route, how many finishing passes occur before and after accelerated cooling?
+    evidence: ['5\+3']
+    source: classmate set, stat3 p.4
+  - id: f06
+    lang: en
+    book: tanaka1981
+    question: Which controlled-rolling stage uses the non-recrystallization region?
+    evidence: ['stage 2', 'non-recrystallization']
+    source: classmate set, tanaka p.1
+  - id: f07
+    lang: en
+    book: tanaka1981
+    question: What feature divides unrecrystallized austenite grains during controlled rolling?
+    evidence: ['deformation band', 'unrecrystallized']
+    source: classmate set, tanaka p.1
+  - id: f08
+    lang: en
+    book: tanaka1981
+    question: Besides austenite grain boundaries, where does ferrite nucleate in controlled-rolled steel?
+    evidence: ['grain interior', 'nucleat']
+    source: classmate set, tanaka p.1
+  - id: f09
+    lang: en
+    book: tanaka1981
+    question: Which element retards austenite recrystallization?
+    evidence: ['Nb', 'retard']
+    source: classmate set, tanaka p.2
+  - id: f10
+    lang: en
+    book: tanaka1981
+    question: What is the Hall–Petch yield-stress relation?
+    evidence: ['Hall.?Petch', 'yield stress']
+    source: classmate set, tanaka p.17
+  - id: e01
+    lang: en
+    book: tanaka1981
+    question: What is separation (delamination) in controlled-rolled steel and how does it affect toughness?
+    evidence: ['delamination|splitting']
+    source: own, tanaka p.15
+  - id: e02
+    lang: en
+    book: tanaka1981
+    question: Which equation gives the transition temperature of bainitic steel?
+    evidence: ['Gladman']
+    source: own, tanaka p.18
+  - id: e03
+    lang: en
+    book: tanaka1981
+    question: Which steelmaker in Dunkirk used a three-stage rolling schedule?
+    evidence: ['USINOR']
+    source: own, tanaka p.21
+  - id: e04
+    lang: en
+    book: tanaka1981
+    question: What is acicular ferrite steel and who developed it?
+    evidence: ['acicular ferrite', 'Climax']
+    source: own, tanaka p.22
+  - id: e05
+    lang: en
+    book: stat3
+    question: Which unit is used for accelerated water cooling of plates at mill 3600?
+    evidence: ['УОВТ', 'раскат']
+    source: own, stat3 p.3
+  - id: e06
+    lang: en
+    book: stat3
+    question: How many plate experiments were used to build the thermal model of the cooling unit?
+    evidence: ['300 эксперимент']
+    source: own, stat3 p.8
+  - id: r01
+    lang: ru
+    book: tanaka1981
+    question: Какой легирующий элемент замедляет рекристаллизацию аустенита?
+    evidence: ['Nb', 'retard']
+    source: own, tanaka p.2
+  - id: r02
+    lang: ru
+    book: tanaka1981
+    question: Что такое полосы деформации и где они образуются при контролируемой прокатке?
+    evidence: ['deformation band', 'unrecrystallized']
+    source: own, tanaka p.1
+  - id: r03
+    lang: ru
+    book: tanaka1981
+    question: Как температура хрупко-вязкого перехода зависит от размера зерна?
+    evidence: ['Heslop']
+    source: own, tanaka p.2
+  - id: r04
+    lang: ru
+    book: tanaka1981
+    question: Кто разработал сталь с игольчатым ферритом?
+    evidence: ['acicular ferrite', 'Climax']
+    source: own, tanaka p.22
+  - id: r05
+    lang: ru
+    book: tanaka1981
+    question: Какое уравнение описывает температуру перехода бейнитной стали?
+    evidence: ['Gladman']
+    source: own, tanaka p.18
+  - id: r06
+    lang: ru
+    book: stat3
+    question: Какая установка используется для ускоренного охлаждения раскатов на стане 3600?
+    evidence: ['УОВТ', 'раскат']
+    source: own, stat3 p.3
+  - id: r07
+    lang: ru
+    book: stat3
+    question: Сколько экспериментов с листами использовалось для теплотехнической модели?
+    evidence: ['300 эксперимент']
+    source: own, stat3 p.8
+  - id: r08
+    lang: ru
+    book: stat3
+    question: На сколько повышается темп прокатки при высокотемпературной КП с ускоренным охлаждением?
+    evidence: ['темп прокатк', '20\s?%']
+    source: own, stat3 p.1
+  - id: r09
+    lang: ru
+    book: stat3
+    question: Сколько проходов делают в чистовой клети до и после ускоренного охлаждения по схеме КП+УО+КП?
+    evidence: ['5\+3']
+    source: own, stat3 p.8
+  - id: r10
+    lang: ru
+    book: stat3
+    question: При какой температуре заканчивают высокотемпературную контролируемую прокатку на стане 3600?
+    evidence: ['730\s*[–-]\s*800', 'высокотемпературн']
+    source: own, stat3 p.1

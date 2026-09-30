@@ -7,6 +7,7 @@ import yaml
 from pydantic import BaseModel
 
 from lab2.dto.models import AuditEntry, Chunk
+from lab2.service.lemmatization import Lemmatizer
 from lab2.util.text import CYRILLIC, DISPLAY_MATH, INLINE_MATH, TABLE, count_tokens
 
 MATH_WRAPPERS = re.compile(r"\\(?:mathrm|mathbf|bf|text|scriptstyle|boldsymbol|rm)\b")
@@ -57,6 +58,8 @@ class Glossary(BaseModel):
 class Normalizer:
     glossary: Glossary
     audit: list[AuditEntry] = field(default_factory=list)
+    lemmatizer: Lemmatizer = field(default_factory=Lemmatizer)
+    repeat_chars: int = 3000
 
     def normalize(self, chunks: list[Chunk]) -> list[Chunk]:
         result: list[Chunk] = []
@@ -75,6 +78,7 @@ class Normalizer:
         text = GREEK_MATH.sub(lambda m: self._greek(chunk_id, m), text)
         text = self._outside_math(text, lambda piece: self._units(chunk_id, piece))
         masked, protected = _mask(text)
+        masked = self.lemmatizer.lemmatize(chunk_id, masked, lang)
         masked = self._annotate_terms(chunk_id, masked, lang)
         masked = self._expand_abbreviations(chunk_id, masked)
         return _unmask(masked, protected)
@@ -109,17 +113,13 @@ class Normalizer:
     def _expand_abbreviations(self, chunk_id: str, text: str) -> str:
         for abbreviation in sorted(self.glossary.abbreviations, key=lambda a: -len(a.short)):
             pattern = re.compile(rf"(?<![\w(+]){re.escape(abbreviation.short)}(?![\w+])(?! \()")
-            match = pattern.search(text)
-            if not match:
-                continue
             if not CYRILLIC.search(abbreviation.short):
                 after = f"{abbreviation.short} ({abbreviation.long})"
             elif abbreviation.long:
                 after = f"{abbreviation.en} ({abbreviation.short}, {abbreviation.long})"
             else:
                 after = f"{abbreviation.en} ({abbreviation.short})"
-            self._log(chunk_id, "abbreviation", abbreviation.short, after)
-            text = text[: match.start()] + after + text[match.end() :]
+            text = self._periodic(chunk_id, "abbreviation", text, pattern, lambda _m, a=after: a)
         return text
 
     def _annotate_terms(self, chunk_id: str, text: str, lang: str) -> str:
@@ -134,23 +134,45 @@ class Normalizer:
         return text
 
     def _annotate_first(self, chunk_id: str, text: str, pattern: re.Pattern[str], english: str) -> str:
-        match = next((m for m in pattern.finditer(text) if not _inside_parentheses(text, m.start())), None)
-        if not match:
-            return text
-        after = f"{english} ({match.group(0)})"
-        self._log(chunk_id, "glossary_term", match.group(0), after)
-        return text[: match.start()] + after + text[match.end() :]
+        return self._periodic(
+            chunk_id,
+            "glossary_term",
+            text,
+            pattern,
+            lambda m: f"{english} ({m.group(0)})",
+            skip=lambda t, position: _inside_parentheses(t, position) or t[:position].endswith(f"{english} ("),
+        )
 
     def _annotate_symbol(self, chunk_id: str, text: str, pattern: re.Pattern[str], term: Term) -> str:
-        match = pattern.search(text)
-        if not match:
-            return text
-        surface = match.group(0)
-        suffix = surface[len(term.symbol or "") :]
-        english = term.en + suffix.replace("-", " ")
-        after = f"{surface} ({english})"
-        self._log(chunk_id, "symbol_term", surface, after)
-        return text[: match.start()] + after + text[match.end() :]
+        def render(match: re.Match[str]) -> str:
+            surface = match.group(0)
+            suffix = surface[len(term.symbol or "") :]
+            return f"{surface} ({term.en + suffix.replace('-', ' ')})"
+
+        return self._periodic(chunk_id, "symbol_term", text, pattern, render)
+
+    def _periodic(
+        self,
+        chunk_id: str,
+        rule: str,
+        text: str,
+        pattern: re.Pattern[str],
+        render: Callable[[re.Match[str]], str],
+        skip: Callable[[str, int], bool] | None = None,
+    ) -> str:
+        pieces: list[str] = []
+        cursor = 0
+        last = -self.repeat_chars
+        for match in pattern.finditer(text):
+            if match.start() - last < self.repeat_chars or (skip and skip(text, match.start())):
+                continue
+            after = render(match)
+            self._log(chunk_id, rule, match.group(0), after)
+            pieces.extend([text[cursor : match.start()], after])
+            cursor = match.end()
+            last = match.start()
+        pieces.append(text[cursor:])
+        return "".join(pieces)
 
     def _outside_math(self, text: str, function: Callable[[str], str]) -> str:
         pieces: list[str] = []

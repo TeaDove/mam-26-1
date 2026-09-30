@@ -8,6 +8,7 @@ books:
       - '^© 1981'
     drop_sections: [ACKNOWLEDGMENTS, REFERENCES]
     references_start: null
+    bibliography_start: '^## REFERENCES'
   stat3:
     drop_blocks:
       - '^УДК'
@@ -16,6 +17,7 @@ books:
       - '^Статья рекомендована к печати'
     drop_sections: []
     references_start: '^1\. Контролируемая прокатка /'
+    bibliography_start: '^1\. Контролируемая прокатка /'
 ocr_fixes:
   - source: 'M ^3/� ac'
     target: 'м^3/час'

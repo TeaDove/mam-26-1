@@ -145,11 +145,11 @@ terms:
   - en: martensite
     ru: 'мартенсит\w*'
   - en: grain size
-    ru: 'размер\w* зерна'
+    ru: 'размер\w* зерн\w*'
   - en: grain refinement
-    ru: 'измельчени\w* зерна'
+    ru: 'измельчени\w* зерн\w*'
   - en: yield strength
-    ru: 'предел\w* текучести'
+    ru: 'предел\w* текучест\w*'
     symbol: σт
   - en: tensile strength
     ru: 'временн\w* сопротивлени\w*'
@@ -167,9 +167,9 @@ terms:
   - en: slab
     ru: 'сляб\w*'
   - en: reheating temperature
-    ru: 'температур\w* нагрева'
+    ru: 'температур\w* нагрев\w*'
   - en: finish rolling temperature
-    ru: 'температур\w* конца прокатки'
+    ru: 'температур\w* кон\w* прокатк\w*'
     symbol: Tкп
   - en: deformation
     ru: 'деформаци(?:я|и|ю|ей|ям|ях|ями)\b'
@@ -208,11 +208,11 @@ terms:
   - en: two-phase region
     ru: 'двухфазн\w* област\w*'
   - en: cooling rate
-    ru: 'скорост\w* охлаждения'
+    ru: 'скорост\w* охлажден\w*'
   - en: normalizing
     ru: 'нормализаци\w*'
   - en: rolling schedule
-    ru: 'режим\w* прокатки'
+    ru: 'режим\w* прокатк\w*'
   - en: strength
     ru: 'прочност\w*'
   - en: rolling pass

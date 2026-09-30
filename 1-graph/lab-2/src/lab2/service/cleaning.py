@@ -62,6 +62,7 @@ class BookRules(BaseModel):
     drop_blocks: list[str]
     drop_sections: list[str]
     references_start: str | None
+    bibliography_start: str
 
 
 class CleaningConfig(BaseModel):

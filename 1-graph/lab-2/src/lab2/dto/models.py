@@ -102,6 +102,9 @@ class NormalizationMetrics(BaseModel):
     temperatures_in_range_share: float | None
     dates: int
     dates_valid_share: float | None
+    lemmatized_words: int | None = None
+    lemmatized_share: float | None = None
+    full_lemmatization_share: float | None = None
 
 
 class TokenizationMetrics(BaseModel):
@@ -136,3 +139,30 @@ class VectorizationMetrics(BaseModel):
     dense_mean_pairwise_cosine: float
     cross_language_mean_cosine: float | None
     cross_language_best_match_cosine: float | None
+
+
+class GoldPageMetrics(BaseModel):
+    gold_characters: int
+    raw_cer: float
+    clean_cer: float
+    raw_wer: float
+    clean_wer: float
+    blocks: int
+    blocks_should_delete: int
+    blocks_deleted: int
+    blocks_deleted_correctly: int
+    deletion_precision: float
+    deletion_recall: float
+    deletion_f1: float
+    units_expected: int
+    units_correct: int
+    unit_accuracy: float | None
+
+
+class RetrievalMetrics(BaseModel):
+    queries: int
+    hit_at_1: float
+    hit_at_3: float
+    hit_at_5: float
+    mrr: float
+    ndcg_at_10: float

@@ -9,7 +9,7 @@ import numpy as np
 from wordfreq import zipf_frequency
 
 from lab2.service.lemmatization import english, morph
-from lab2.util.text import DISPLAY_MATH, TABLE, table_cells
+from lab2.util.text import DISPLAY_MATH, INLINE_MATH, TABLE, table_cells
 
 GREEK = {
     "alpha": "α",
@@ -67,6 +67,9 @@ LATEX_FORMATTING = re.compile(r"\\(?:mathrm|mathbf|text|bf|rm|boldsymbol|scripts
 SYMBOL_TOKEN = re.compile(r"[^\W_]+(?:\.\d+)?")
 CHEMICAL_TYPES = frozenset({"alloying element"})
 NAMED_TYPES = frozenset({"person", "organization", "geo"})
+GENERAL_ZIPF = 5.0
+DOMAIN_ZIPF = 4.5
+ENGLISH_STOP_EXTRA = frozenset({"fig", "et", "al", "eq", "table", "ref"})
 NOISE_RULES: dict[str, re.Pattern[str]] = {
     "punctuation_only": re.compile(r"^[\W_]+$"),
     "formula_variable": re.compile(r"^(?:[A-Za-zΑ-Ωα-ω]{1,2}\d*|.*[\\$^{}].*|[A-Za-zΑ-Ωα-ω]_\S+)$"),
@@ -106,7 +109,7 @@ def window_text(graph: nx.Graph, nodes: list[str]) -> str:
 
 @cache
 def lemma_key(text: str) -> str:
-    words = re.findall(r"[A-Za-zА-Яа-яЁё]+|\d+", text.replace("ё", "е"))
+    words = re.findall(r"[A-Za-zА-Яа-яЁёΑ-Ωα-ω]+|\d+", text.replace("ё", "е"))
     lemmas: list[str] = []
     for word in words:
         if re.match(r"[А-Яа-яЁё]", word):
@@ -291,38 +294,63 @@ def rule_counts(labels: dict[str, list[str]]) -> dict[str, int]:
 
 
 def text_terms(text: str, lang: str, limit: int) -> list[str]:
-    counts: Counter[str] = Counter()
-    if lang == "ru":
-        words = re.findall(r"[А-Яа-яЁё]+", text)
-        parses = [morph().parse(word.lower())[0] for word in words]
-        for index, parsed in enumerate(parses):
-            if parsed.tag.POS == "NOUN" and len(words[index]) >= 5:
-                counts[parsed.normal_form] += 1
-            if index + 1 < len(parses) and parsed.tag.POS in {"ADJF", "PRTF"} and parses[index + 1].tag.POS == "NOUN":
-                counts[f"{parsed.normal_form} {parses[index + 1].normal_form}"] += 1
-    else:
-        for paragraph in text.split("\n\n"):
-            doc = english()(re.sub(r"\$[^$]*\$", " ", paragraph))
-            run: list[str] = []
-            for token in [*doc, None]:
-                if token is not None and token.pos_ in {"ADJ", "NOUN", "PROPN"} and token.is_alpha:
-                    run.append(token.lemma_.lower())
-                    continue
-                while run and run[-1] and len(run) > 0 and not _is_noun_lemma(run[-1]):
-                    run.pop()
-                if len(run) >= 2:
-                    counts[" ".join(run[-3:])] += 1
-                if len(run) == 1 and len(run[0]) >= 5:
-                    counts[run[0]] += 1
-                run = []
+    counts = _russian_candidates(text) if lang == "ru" else _english_candidates(text)
     terms = [
         term
         for term, count in counts.most_common()
-        if (count >= 2 if " " in term else count >= 4) and not set(term.split()) & PRONOUNS
+        if (count >= 2 if " " in term else count >= 4)
+        and not set(term.split()) & PRONOUNS
+        and not all(zipf_frequency(word, lang) >= GENERAL_ZIPF for word in term.split())
     ]
     return terms[:limit]
 
 
-@cache
-def _is_noun_lemma(word: str) -> bool:
-    return english()(word)[0].pos_ in {"NOUN", "PROPN"}
+def _russian_candidates(text: str) -> Counter[str]:
+    counts: Counter[str] = Counter()
+    words = re.findall(r"[А-Яа-яЁё]+", text)
+    parses = [morph().parse(word.lower())[0] for word in words]
+    for index, parsed in enumerate(parses):
+        if parsed.tag.POS == "NOUN" and len(words[index]) >= 5:
+            counts[parsed.normal_form] += 1
+        if index + 1 < len(parses) and parsed.tag.POS in {"ADJF", "PRTF"} and parses[index + 1].tag.POS == "NOUN":
+            counts[f"{parsed.normal_form} {parses[index + 1].normal_form}"] += 1
+    return counts
+
+
+def _english_candidates(text: str) -> Counter[str]:
+    plain = re.sub(r"\\[A-Za-z]+", " ", INLINE_MATH.sub(" ", DISPLAY_MATH.sub(" ", text)))
+    vocabulary = {word.lower() for word in re.findall(r"[A-Za-z]+", plain)}
+    stop = english().Defaults.stop_words | ENGLISH_STOP_EXTRA
+    counts: Counter[str] = Counter()
+    for sentence in re.split(r"[.,;:!?()\[\]\n]+", plain):
+        run: list[str] = []
+        for word in [*re.findall(r"[A-Za-z][A-Za-z-]*", sentence), ""]:
+            lowered = word.lower().strip("-")
+            if len(lowered) >= 3 and lowered not in stop:
+                run.append(lowered)
+                continue
+            _count_ngrams(run, vocabulary, counts)
+            run = []
+        for token in english()(sentence):
+            lowered = token.text.lower()
+            if token.tag_ in {"NN", "NNS"} and token.is_alpha and len(lowered) >= 3 and lowered not in stop:
+                singular = _singular(lowered, vocabulary)
+                if zipf_frequency(singular, "en") < DOMAIN_ZIPF:
+                    counts[singular] += 1
+    return counts
+
+
+def _count_ngrams(run: list[str], vocabulary: set[str], counts: Counter[str]) -> None:
+    for size in (2, 3):
+        for start in range(len(run) - size + 1):
+            gram = [*run[start : start + size - 1], _singular(run[start + size - 1], vocabulary)]
+            if min(zipf_frequency(word, "en") for word in gram) < DOMAIN_ZIPF:
+                counts[" ".join(gram)] += 1
+
+
+def _singular(word: str, vocabulary: set[str]) -> str:
+    if word.endswith("ies") and f"{word[:-3]}y" in vocabulary:
+        return f"{word[:-3]}y"
+    if word.endswith("s") and not word.endswith("ss") and word[:-1] in vocabulary:
+        return word[:-1]
+    return word

@@ -10,6 +10,8 @@ import pandas as pd
 import yaml
 from pydantic import BaseModel
 
+from lab2.service.graph_criteria import lemma_key
+
 RU_BOOK = frozenset({"ru", "both"})
 
 
@@ -134,18 +136,25 @@ def structure_metrics(graph: nx.Graph) -> dict[str, object]:
     }
 
 
-def resolve(graph: nx.Graph, aliases: list[str]) -> str | None:
+def candidates(graph: nx.Graph, aliases: list[str]) -> list[str]:
     index: dict[str, list[str]] = {}
     for node in graph.nodes:
         key = str(node).casefold()
-        index.setdefault(key, []).append(node)
-        head = re.sub(r"\s*\(.*$", "", key).strip()
-        if head != key:
-            index.setdefault(head, []).append(node)
-    candidates = [node for alias in aliases for node in index.get(alias.casefold(), [])]
-    if not candidates:
-        return None
-    return max(candidates, key=lambda node: graph.degree(node))
+        head = re.sub(r"\s+\(.*$", "", key).strip()
+        for variant in dict.fromkeys((key, head, lemma_key(key), lemma_key(head))):
+            index.setdefault(variant, []).append(node)
+    variants = dict.fromkeys(v for alias in aliases for v in (alias.casefold(), lemma_key(alias.casefold())))
+    found = dict.fromkeys(node for variant in variants for node in index.get(variant, []))
+    return sorted(found, key=lambda node: (-graph.degree(node), str(node)))
+
+
+def resolve(graph: nx.Graph, aliases: list[str]) -> str | None:
+    return next(iter(candidates(graph, aliases)), None)
+
+
+def concept_path(graph: nx.Graph, sources: list[str], targets: list[str]) -> list[str] | None:
+    paths = [nx.shortest_path(graph, a, b) for a in sources for b in targets if nx.has_path(graph, a, b)]
+    return min(paths, key=len, default=None)
 
 
 def coverage(graph: nx.Graph, config: EvaluationConfig) -> dict[str, object]:
@@ -183,9 +192,12 @@ def traversal(graph: nx.Graph, config: EvaluationConfig, labels: dict[str, str])
         seeds[concept] = entry
     pairs: list[dict[str, object]] = []
     for source, target in config.pairs:
-        a, b = resolve(graph, config.concepts[source]), resolve(graph, config.concepts[target])
+        sources, targets = candidates(graph, config.concepts[source]), candidates(graph, config.concepts[target])
+        found = concept_path(graph, sources, targets)
+        a = found[0] if found else next(iter(sources), None)
+        b = found[-1] if found else next(iter(targets), None)
         row: dict[str, object] = {"source": source, "target": target, "source_node": a, "target_node": b}
-        if a and b and nx.has_path(graph, a, b):
+        if found and a and b:
             started = time.perf_counter()
             path = nx.shortest_path(graph, a, b)
             row["shortest_ms"] = round((time.perf_counter() - started) * 1000, 3)

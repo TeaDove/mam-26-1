@@ -22,6 +22,7 @@ dependencies = [
     "spacy>=3.8.16",
     "jiwer>=4.0.0",
     "en-core-web-sm",
+    "scipy>=1.18.1",
 ]
 
 [dependency-groups]

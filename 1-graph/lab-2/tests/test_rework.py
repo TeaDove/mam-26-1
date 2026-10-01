@@ -4,8 +4,8 @@ from pathlib import Path
 import networkx as nx
 import pandas as pd
 
-from lab2.api.stages import _source_fragment
 from lab2.dto.models import Chunk
+from lab2.service.comparison import source_fragment
 from lab2.service.corpus import strip_bibliography, token_windows
 from lab2.service.graph_criteria import formula_atoms, integrity, noise_labels, source_vocabulary, table_atoms
 from lab2.service.graph_eval import EvaluationConfig, load_graph, structure_metrics, traversal
@@ -107,9 +107,9 @@ def test_inflected_source_words_are_known() -> None:
 
 def test_source_fragment_prefers_unit_mentioning_node() -> None:
     texts = {"a": "about austenite", "b": "ferrite and more ferrite", "c": "ferrite"}
-    assert _source_fragment("FERRITE", ["a", "c", "b"], texts) == "ferrite and more ferrite"
-    assert _source_fragment("PEARLITE", ["a", "b"], texts) == "about austenite"
-    assert _source_fragment("PEARLITE", [], texts) == ""
+    assert source_fragment("FERRITE", ["a", "c", "b"], texts) == "ferrite and more ferrite"
+    assert source_fragment("PEARLITE", ["a", "b"], texts) == "about austenite"
+    assert source_fragment("PEARLITE", [], texts) == ""
 
 
 def test_formula_atoms_ignore_latex_commands() -> None:
@@ -143,8 +143,8 @@ def test_noise_respects_entity_type() -> None:
 
 def test_source_fragment_matches_inflected_russian_names() -> None:
     texts = {"a": "про прокатку", "b": "ускоренное охлаждение и ускоренного охлаждения", "c": "УОВТ"}
-    assert _source_fragment("УСКОРЕННОЕ ОХЛАЖДЕНИЕ", ["a", "c", "b"], texts) == texts["b"]
-    assert _source_fragment("УО", ["c", "a", "d"], texts | {"d": "КП и УО"}) == "КП и УО"
+    assert source_fragment("УСКОРЕННОЕ ОХЛАЖДЕНИЕ", ["a", "c", "b"], texts) == texts["b"]
+    assert source_fragment("УО", ["c", "a", "d"], texts | {"d": "КП и УО"}) == "КП и УО"
 
 
 def test_traversal_counts_russian_book_vertices() -> None:

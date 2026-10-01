@@ -45,7 +45,7 @@ class LlmClient:
     cached_calls: int = 0
     request_tokens: int = 0
 
-    def complete_json(self, system: str, user: str) -> dict:
+    def complete[T: BaseModel](self, system: str, user: str, model: type[T]) -> T:
         body = {
             "model": self.model,
             "temperature": 0,
@@ -55,20 +55,20 @@ class LlmClient:
         payload = json.dumps(body, ensure_ascii=False).encode()
         if len(payload) > self.max_request_bytes:
             raise ValueError(f"request of {len(payload)} bytes exceeds the proxy limit")
-        key = hashlib.sha256(payload).hexdigest()
-        cached = self.cache_dir / f"{key}.json"
+        cached = self.cache_dir / f"{hashlib.sha256(payload).hexdigest()}.json"
         self.calls += 1
         self.request_tokens += count_tokens(system) + count_tokens(user)
         if cached.exists():
             self.cached_calls += 1
-            return json.loads(cached.read_text(encoding="utf-8"))
+            return model.model_validate_json(cached.read_text(encoding="utf-8"))
         completion = self._post(payload)
         self.prompt_tokens += completion.usage.prompt_tokens
         self.completion_tokens += completion.usage.completion_tokens
-        result = json.loads(completion.choices[0].message.content)
+        content = completion.choices[0].message.content
+        answer = model.model_validate_json(content)
         self.cache_dir.mkdir(parents=True, exist_ok=True)
-        cached.write_text(json.dumps(result, ensure_ascii=False), encoding="utf-8")
-        return result
+        cached.write_text(content, encoding="utf-8")
+        return answer
 
     def _post(self, payload: bytes) -> Completion:
         headers = {

@@ -1,5 +1,6 @@
+import math
 import sys
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 from pptx import Presentation
@@ -79,12 +80,20 @@ def add_mark(paragraph: object, kind: str | None, size: float) -> None:
     run.font.color.rgb = MARK_COLOR
 
 
+def widescreen() -> Presentation:
+    prs = Presentation()
+    prs.slide_width = Inches(13.333)
+    prs.slide_height = Inches(7.5)
+    return prs
+
+
+@dataclass
 class Deck:
-    def __init__(self) -> None:
-        self.prs = Presentation()
-        self.prs.slide_width = Inches(13.333)
-        self.prs.slide_height = Inches(7.5)
-        self.blank = self.prs.slide_layouts[6]
+    prs: Presentation = field(default_factory=widescreen)
+
+    @property
+    def blank(self) -> object:
+        return self.prs.slide_layouts[6]
 
     def slide(self, title: str | None, notes: str) -> object:
         slide = self.prs.slides.add_slide(self.blank)
@@ -750,7 +759,7 @@ def summary_rows(m: Metrics) -> list[list[str]]:
             "вершина + окно BFS-2 + фрагмент текста → gpt-4.1, 120 вершин",
             pct(d.consistency.vertices_with_contradictions_share, 1),
             pct(c.consistency.vertices_with_contradictions_share, 1),
-            "в пределах погрешности",
+            "лучше, на границе погрешности",
         ],
         [
             "Корреференции@D",
@@ -782,10 +791,10 @@ def summary_rows(m: Metrics) -> list[list[str]]:
         ],
         [
             "Покрытие ПрО@D",
-            "40 понятий: по названиям / по векторам вершин",
+            "40 понятий: по названиям и леммам / по векторам названий",
             f"{pct(d.coverage.domain_coverage, 1)} / {pct(d.coverage.vector_coverage, 1)}",
             f"{pct(c.coverage.domain_coverage, 1)} / {pct(c.coverage.vector_coverage, 1)}",
-            "лучше",
+            "лучше, отчасти по построению",
         ],
         [
             "Вершины и рёбра по типам@D",
@@ -813,8 +822,10 @@ def summary_slide(deck: Deck, m: Metrics) -> None:
         "связность, покрытие и обходы: предобработка приблизила русскую книгу к английской. Хуже — корреференции "
         "(модель называет одно понятие в ед. и мн. числе) и шум: в чистом графе появились вершины-переменные формул, "
         "потому что формулы приходят в модель целиком. Формулы не сохраняет ни один граф — это ограничение GraphRAG. "
-        f"Часть роста вершин — эффект более мелких чанков: {num(c.source.vertices_per_1k_tokens, 1)} вершины на "
-        f"1000 токенов против {num(d.source.vertices_per_1k_tokens, 1)}.",
+        "Рост покрытия отчасти по построению: 33 из 40 понятий — термины глоссария, которые нормализация вставляет в "
+        "чистый текст. "
+        f"Часть роста вершин — эффект более мелких чанков: {num(c.input_stats.vertices_per_1k_tokens, 1)} вершины на "
+        f"1000 токенов против {num(d.input_stats.vertices_per_1k_tokens, 1)}.",
     )
     deck.table(
         slide,
@@ -831,7 +842,7 @@ def summary_slide(deck: Deck, m: Metrics) -> None:
 
 def structure_slide(deck: Deck, m: Metrics) -> None:
     ds, cs = m.dirty.structure, m.clean.structure
-    di, ci = m.dirty.source, m.clean.source
+    di, ci = m.dirty.input_stats, m.clean.input_stats
     slide = deck.slide(
         "Показатели графа и типы вершин",
         f"Вершин стало {cs.nodes} вместо {ds.nodes}, но на 1000 токенов входа — {num(ci.vertices_per_1k_tokens, 1)} "
@@ -902,8 +913,10 @@ def traversal_slide(deck: Deck, m: Metrics) -> None:
         f"{ct.pairs_connected} пар из {ct.pairs_resolved}. От ключевых понятий BFS на 2 шага достаёт вершины русской "
         f"книги: {pct(dt.bfs2_ru_book_share)} достигнутых вершин в грязном графе и {pct(ct.bfs2_ru_book_share)} в "
         f"чистом. Покрытие 40 понятий выросло с {pct(dc.domain_coverage, 1)} до {pct(cc.domain_coverage, 1)} по "
-        f"названиям и с {pct(dc.vector_coverage, 1)} до {pct(cc.vector_coverage, 1)} по векторам вершин. Шум в "
-        "окрестностях понятий низкий в обоих графах.",
+        f"названиям и с {pct(dc.vector_coverage, 1)} до {pct(cc.vector_coverage, 1)} по векторам названий вершин. "
+        "Рост отчасти по построению: новые понятия чистого графа — термины глоссария, которые нормализация вставила в "
+        "текст; а pearlite, который был в грязном графе, в чистом потерян. Шум в окрестностях понятий низкий в обоих "
+        "графах.",
     )
     deck.stat(
         slide,
@@ -931,7 +944,7 @@ def traversal_slide(deck: Deck, m: Metrics) -> None:
             ["BFS-1 / BFS-2 / BFS-3, вершин@D", bfs_triple(dt), bfs_triple(ct)],
             ["Ключевых понятий в BFS-2@D", num(dt.bfs2_mean_concepts, 1), num(ct.bfs2_mean_concepts, 1)],
             ["Шумовых вершин в BFS-2@D", pct(dt.bfs2_noise_share, 1), pct(ct.bfs2_noise_share, 1)],
-            ["Покрытие ПрО по векторам вершин@D", pct(dc.vector_coverage, 1), pct(cc.vector_coverage, 1)],
+            ["Покрытие ПрО по векторам названий@D", pct(dc.vector_coverage, 1), pct(cc.vector_coverage, 1)],
             ["DFS: достижимо вершин@D", num(dt.dfs_mean_reached, 0), num(ct.dfs_mean_reached, 0)],
         ],
         0.6,
@@ -1006,14 +1019,22 @@ def quality_slide(deck: Deck, m: Metrics) -> None:
 
 def consistency_slide(deck: Deck, m: Metrics) -> None:
     d, c = m.dirty.consistency, m.clean.consistency
+    difference = d.vertices_with_contradictions_share - c.vertices_with_contradictions_share
+    error = math.sqrt(
+        sum(
+            s.vertices_with_contradictions_share * (1 - s.vertices_with_contradictions_share) / s.checked_vertices
+            for s in (d, c)
+        )
+    )
     slide = deck.slide(
         "Непротиворечивость: контекст из графа → судья",
         f"Для {d.checked_vertices} вершин каждого графа собираем окно BFS-2: соседей, их описания и связи, плюс "
         "фрагмент текста, где название вершины встречается чаще всего. gpt-4.1 отвечает: определён ли термин "
         "полностью и сколько утверждений противоречат тексту. Готовых метрик судья не видит. В чистом графе вершин с "
         f"противоречиями {pct(c.vertices_with_contradictions_share, 1)} против "
-        f"{pct(d.vertices_with_contradictions_share, 1)}, но разница в пределах погрешности: стандартная ошибка "
-        "около 6 п. п. Типичная ошибка в обоих графах — модель-экстрактор обобщает частное утверждение текста.",
+        f"{pct(d.vertices_with_contradictions_share, 1)}: разница {num(difference * 100, 0)} п. п. при стандартной "
+        f"ошибке около {num(error * 100, 0)} п. п. — на границе погрешности. Типичная ошибка в обоих графах — "
+        "модель-экстрактор обобщает частное утверждение текста.",
     )
     deck.stat(
         slide,
@@ -1074,7 +1095,8 @@ def conclusion_lines(m: Metrics) -> list[str]:
         f"{gold.units_correct}/{gold.units_expected} и {gold.terms_correct}/{gold.terms_expected}.",
         f"Chunking после очистки: {pct(chunks.boundaries_cutting_sentence_share)} границ режут предложение вместо "
         f"100%, формулы и таблицы целы; MRR {num(first.mrr)} → {num(best.mrr)}.",
-        f"Граф: покрытие ПрО {pct(d.coverage.domain_coverage, 1)} → {pct(c.coverage.domain_coverage, 1)}, "
+        f"Граф: покрытие ПрО {pct(d.coverage.domain_coverage, 1)} → {pct(c.coverage.domain_coverage, 1)} (отчасти по "
+        "построению — понятия из глоссария), "
         f"полнота {pct(d.completeness.covered_semantic_share)} → {pct(c.completeness.covered_semantic_share)}, "
         f"связаны {pairs_text(dt)} → {pairs_text(ct)} пар понятий.",
         f"Русская книга ближе: русских вершин в крупнейшей компоненте {ds.ru_nodes_in_largest_component} из "

@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     ).expanduser()
     embedding_url: str = "http://127.0.0.1:8011/v1/embeddings"
     embedding_model: str = "bge-m3"
-    openai_base_url: str = "https://teadove.space:7999/proxy/openai/v1"
+    openai_base_url: str = ""
     openai_api_key: str = ""
     judge_model: str = "gpt-4.1"
     tfidf_window: int = 300

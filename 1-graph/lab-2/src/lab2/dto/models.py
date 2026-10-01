@@ -1,6 +1,7 @@
 from enum import StrEnum
+from typing import Literal
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 class BlockKind(StrEnum):
@@ -172,9 +173,19 @@ class RetrievalMetrics(BaseModel):
 
 
 class GraphSummary(BaseModel):
+    documents: int
+    text_units: int
+    entities: int
+    relationships: int
     vertices: int
     edges: int
+    vertices_with_vectors: int
+    vector_dimensions: int
+    reverse_relationships_merged: int
     input_tokens: int
+    mean_text_unit_tokens: float
+    vertices_per_1k_tokens: float
+    edges_per_1k_tokens: float
 
 
 class InputStats(BaseModel):
@@ -187,43 +198,41 @@ class InputStats(BaseModel):
 class GraphStructure(BaseModel):
     nodes: int
     edges: int
+    density: float
     connected_components: int
+    largest_component_nodes: int
     largest_component_share: float
     isolated_nodes: int
     bridges: int
     articulation_points: int
     cyclomatic_number: int
+    cycle_basis: int
+    average_clustering: float
     degree_mean: float
+    degree_median: float
     degree_max: int
     leaves: int
+    lcc_average_shortest_path: float
+    lcc_diameter: int
+    nodes_en: int
     nodes_ru: int
     nodes_both_languages: int
+    ru_nodes_in_largest_component: int
     edges_en_ru: int
     edges_touching_bilingual_nodes: int
-    ru_nodes_in_largest_component: int
+    components_mixing_languages: int
     nodes_by_type: dict[str, int]
     edges_by_type_pair: dict[str, int]
+    top_hubs: list[str]
 
 
 class Completeness(BaseModel):
     reference_terms: int
+    covered_exact: int
+    covered_exact_share: float
     covered_semantic: int
     covered_semantic_share: float
-
-
-class Consistency(BaseModel):
-    checked_vertices: int
-    fully_defined_share: float
-    contradictions_total: int
-    vertices_with_contradictions_share: float
-
-
-class Coreference(BaseModel):
-    lemma_duplicate_groups: int
-    lemma_duplicate_vertices: int
-    embedding_duplicate_pairs: int
-    pronoun_vertices_lifted: int
-    lemma_examples: list[str]
+    missing_examples: list[str]
 
 
 class NoiseReport(BaseModel):
@@ -234,12 +243,25 @@ class NoiseReport(BaseModel):
     examples: list[str]
 
 
+class Coreference(BaseModel):
+    lemma_duplicate_groups: int
+    lemma_duplicate_vertices: int
+    embedding_duplicate_pairs: int
+    cross_language_pairs: int
+    pronoun_vertices_lifted: int
+    pronoun_subtree_vertices: int
+    lemma_examples: list[str]
+    embedding_examples: list[str]
+
+
 class Integrity(BaseModel):
     formulas: int
     formulas_evaluated: int
     formulas_in_vertex: int
     formulas_in_window: int
+    formulas_broken: int
     formula_mean_window_share: float
+    tables: int
     tables_evaluated: int
     tables_in_vertex: int
     tables_in_window: int
@@ -247,11 +269,65 @@ class Integrity(BaseModel):
     table_best_window_share: list[float]
 
 
+class JudgeAnswer(BaseModel):
+    definition: str = "none"
+    contradictions: int = 0
+    comment: str = ""
+
+
+class ConsistencyVerdict(BaseModel):
+    node: str
+    definition: Literal["full", "partial", "none"]
+    contradictions: int
+    comment: str
+
+
+class Consistency(BaseModel):
+    checked_vertices: int
+    fully_defined_share: float
+    partially_defined_share: float
+    contradictions_total: int
+    vertices_with_contradictions_share: float
+
+
 class Coverage(BaseModel):
     concepts_total: int
     concepts_found: int
     domain_coverage: float
+    missing: list[str]
+    resolved: dict[str, str]
+    vector_found: int
     vector_coverage: float
+
+
+class SeedTraversal(BaseModel):
+    node: str
+    bfs1_reached: int
+    bfs1_noise: int
+    bfs1_concepts: int
+    bfs1_ru_book: int
+    bfs2_reached: int
+    bfs2_noise: int
+    bfs2_concepts: int
+    bfs2_ru_book: int
+    bfs3_reached: int
+    bfs3_noise: int
+    bfs3_concepts: int
+    bfs3_ru_book: int
+    dfs_reached: int
+    dfs_max_depth: int
+
+
+class PathPair(BaseModel):
+    source: str
+    target: str
+    source_node: str | None
+    target_node: str | None
+    length: int | None
+    path: list[str] | None = None
+    bidirectional_length: int | None = None
+    shortest_ms: float | None = None
+    bidirectional_ms: float | None = None
 
 
 class TraversalSummary(BaseModel):
@@ -259,38 +335,51 @@ class TraversalSummary(BaseModel):
     pairs_total: int
     pairs_resolved: int
     pairs_connected: int
+    pairs_mean_length: float | None
     bfs1_mean_reached: float
+    bfs1_mean_concepts: float
+    bfs1_noise_share: float
+    bfs1_ru_book_share: float
     bfs2_mean_reached: float
-    bfs3_mean_reached: float
     bfs2_mean_concepts: float
     bfs2_noise_share: float
     bfs2_ru_book_share: float
-    dfs_mean_reached: float
-
-
-class PathPair(BaseModel):
-    source: str
-    target: str
-    path: list[str] | None = None
+    bfs3_mean_reached: float
+    bfs3_mean_concepts: float
+    bfs3_noise_share: float
+    bfs3_ru_book_share: float
+    dfs_mean_reached: float | None
 
 
 class Traversal(BaseModel):
     summary: TraversalSummary
+    seeds: dict[str, SeedTraversal | None]
     pairs: list[PathPair]
 
 
 class GraphReport(BaseModel):
-    source: InputStats = Field(alias="input")
+    input_stats: InputStats
     structure: GraphStructure
     completeness: Completeness
-    consistency: Consistency
-    coreference: Coreference
     noise: NoiseReport
+    coreference: Coreference
     integrity: Integrity
+    consistency: Consistency
     coverage: Coverage
     traversal: Traversal
 
 
+class JudgeUsage(BaseModel):
+    model: str
+    calls: int
+    cached_calls: int
+    request_tokens_all_calls: int
+    new_calls_prompt_tokens: int
+    new_calls_completion_tokens: int
+
+
 class GraphComparison(BaseModel):
+    reference_terms: list[str]
     dirty: GraphReport
     clean: GraphReport
+    judge_usage: JudgeUsage

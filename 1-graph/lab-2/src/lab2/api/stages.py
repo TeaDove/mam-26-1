@@ -1,7 +1,6 @@
 import gzip
 import logging
 import re
-import statistics
 import sys
 from collections import Counter
 from collections.abc import Callable
@@ -15,6 +14,10 @@ from lab2.dto.models import (
     Chunk,
     CleaningMetrics,
     GoldPageMetrics,
+    GraphComparison,
+    GraphReport,
+    GraphSummary,
+    JudgeUsage,
     NormalizationMetrics,
     RetrievalMetrics,
     TokenizationMetrics,
@@ -24,27 +27,15 @@ from lab2.service.chunk_metrics import BookChunks, Span, chunking_metrics
 from lab2.service.chunking import StructuralChunker
 from lab2.service.cleaning import Cleaner, CleaningConfig
 from lab2.service.cleaning_metrics import CleaningEvaluator, combine
+from lab2.service.comparison import ComparisonContext
 from lab2.service.corpus import Corpus, strip_bibliography, token_windows
 from lab2.service.figures import draw_background, draw_graph
 from lab2.service.gold_eval import GoldEvaluator, load_pages
 from lab2.service.graph_criteria import (
-    duplicate_groups,
-    embedding_duplicates,
-    formula_atoms,
-    formulas_and_tables,
-    integrity,
-    lemma_key,
-    lift_pronouns,
-    noise_labels,
-    rule_counts,
-    sample_nodes,
     source_vocabulary,
-    table_atoms,
     text_terms,
-    window,
 )
-from lab2.service.graph_eval import EvaluationConfig, coverage, load_graph, structure_metrics, traversal
-from lab2.service.judge import check_consistency
+from lab2.service.graph_eval import EvaluationConfig, load_graph
 from lab2.service.normalization import Glossary, Normalizer
 from lab2.service.normalization_metrics import ANNOTATION_RULES, NormalizationEvaluator
 from lab2.service.retrieval import QuerySet, RankedQuery, rank, relevant, summarize
@@ -335,184 +326,70 @@ def _api_key(settings: Settings) -> str:
     return api_key
 
 
-def _source_fragment(node: str, units: list[str], unit_text: dict[str, str]) -> str:
-    best = max(units, key=lambda unit: _mentions(node, str(unit_text.get(unit, ""))), default="")
-    return str(unit_text.get(best, ""))
-
-
-def _mentions(name: str, text: str) -> int:
-    total = 0
-    for word in re.findall(r"[^\W_]+", name):
-        if len(word) < 4:
-            total += len(re.findall(rf"(?<![^\W_]){re.escape(word)}(?![^\W_])", text))
-        else:
-            stem = word[: max(4, len(word) - 2)]
-            total += len(re.findall(rf"(?<![^\W_]){re.escape(stem)}", text, re.I))
-    return total
-
-
-def _cosine(left: np.ndarray, right: np.ndarray) -> np.ndarray:
-    a = left / np.linalg.norm(left, axis=1, keepdims=True)
-    b = right / np.linalg.norm(right, axis=1, keepdims=True)
-    return a @ b.T
-
-
 def run_compare(settings: Settings) -> None:
+    if not settings.openai_base_url:
+        raise ValueError("OpenAI base URL is empty: set LAB2_OPENAI_BASE_URL")
     client = LlmClient(
         base_url=settings.openai_base_url,
         api_key=_api_key(settings),
         model=settings.judge_model,
         cache_dir=settings.data_dir / "judge_cache",
     )
-    embedder = EmbeddingClient(url=settings.embedding_url, model=settings.embedding_model)
-    config = EvaluationConfig.load(settings.evaluation_path)
-    cleaned = {chunk.book: chunk.text for chunk in load_chunks(settings, "01_clean.jsonl")}
-    corpus = Corpus(raw_dir=settings.dirty_dir, books=settings.books)
-    chunks = load_chunks(settings, "03_chunks.jsonl")
+    context = _comparison_context(settings, client)
     sources = {
-        "dirty": "\n\n".join(corpus.raw_text(book) for book in settings.books),
-        "clean": "\n\n".join(chunk.text for chunk in chunks),
+        "dirty": "\n\n".join(
+            Corpus(raw_dir=settings.dirty_dir, books=settings.books).raw_text(b) for b in settings.books
+        ),
+        "clean": "\n\n".join(chunk.text for chunk in load_chunks(settings, "03_chunks.jsonl")),
     }
-    terms = text_terms(cleaned["tanaka1981"], "en", config.terms_en)
-    terms += text_terms(cleaned["stat3"], "ru", config.terms_ru)
-    glossary = Glossary.load(settings.glossary_path)
-    vocabulary = source_vocabulary([*cleaned.values(), sources["clean"]])
-    allowed = frozenset(
-        {t.symbol.casefold() for t in glossary.terms if t.symbol}
-        | {a.short.casefold() for a in glossary.abbreviations}
-        | {"ar1", "ar3", "ac1", "ac3", "nb", "ti", "v", "mo", "mn", "si", "al", "cr", "ni", "cu"}
-    )
-    term_vectors = embedder.embed(terms)
-    concepts = list(config.concepts)
-    concept_vectors = embedder.embed([" / ".join(config.concepts[c]) for c in concepts])
     outputs = {
         "dirty": settings.root / settings.dirty_graphrag_dir,
         "clean": settings.root / settings.clean_graphrag_dir,
     }
-    report: dict[str, object] = {"reference_terms": terms}
+    reports: dict[str, GraphReport] = {}
     for arm, output in outputs.items():
-        bundle = load_graph(output)
-        graph = bundle.graph
-        input_tokens = int(bundle.artifacts.text_units["n_tokens"].sum())
-        names = [str(n) for n in graph.nodes]
-        title_vectors = embedder.embed(names)
-        noise = {n: noise_labels(n, vocabulary, allowed, graph.nodes[n]["type"]) for n in names}
-
-        term_similarity = _cosine(term_vectors, title_vectors)
-        keys = {n: f" {lemma_key(n)} " for n in names}
-        exact = [any(f" {lemma_key(t)} " in key for key in keys.values()) for t in terms]
-        semantic = [bool(e or term_similarity[i].max() >= config.term_similarity) for i, e in enumerate(exact)]
-
-        lemma_groups = duplicate_groups(names)
-        embedded = embedding_duplicates(names, title_vectors, config.duplicate_similarity)
-        cross = [p for p in embedded if {graph.nodes[p[0]]["lang"], graph.nodes[p[1]]["lang"]} == {"en", "ru"}]
-        lifted, subtree = lift_pronouns(graph)
-
-        formulas, tables = formulas_and_tables(sources[arm])
-        formula_result = integrity(graph, [formula_atoms(f) for f in formulas])
-        table_result = integrity(graph, [table_atoms(cells) for cells in tables])
-
-        concept_similarity = _cosine(concept_vectors, title_vectors).max(axis=1)
-        name_coverage = coverage(graph, config)
-        vector_found = [c for c, s in zip(concepts, concept_similarity, strict=True) if s >= config.term_similarity]
-
-        entity_units = {
-            row.title: list(row.text_unit_ids)
-            for row in bundle.artifacts.entities.itertuples()
-            if len(row.text_unit_ids)
-        }
-        unit_text = dict(zip(bundle.artifacts.text_units["id"], bundle.artifacts.text_units["text"], strict=True))
-        sample = sample_nodes(graph, list(name_coverage["resolved"].values()), config.consistency_sample)
-        verdicts = [
-            check_consistency(
-                client,
-                graph,
-                node,
-                window(graph, node),
-                _source_fragment(node, entity_units.get(node, []), unit_text),
-            )
-            for node in sample
-        ]
-        noisy = [n for n, labels in noise.items() if labels]
-        report[arm] = {
-            "input": {
-                "text_units": len(bundle.artifacts.text_units),
-                "input_tokens": input_tokens,
-                "vertices_per_1k_tokens": round(len(names) / input_tokens * 1000, 2),
-                "noise_vertices_per_1k_tokens": round(len(noisy) / input_tokens * 1000, 2),
-            },
-            "structure": structure_metrics(graph),
-            "completeness": {
-                "reference_terms": len(terms),
-                "covered_exact": sum(exact),
-                "covered_exact_share": round(sum(exact) / max(len(terms), 1), 4),
-                "covered_semantic": sum(semantic),
-                "covered_semantic_share": round(sum(semantic) / max(len(terms), 1), 4),
-                "missing_examples": [t for t, s in zip(terms, semantic, strict=True) if not s][:25],
-            },
-            "noise": {
-                "vertices": len(names),
-                "noise_vertices": len(noisy),
-                "noise_share": round(len(noisy) / max(len(names), 1), 4),
-                "by_rule": rule_counts(noise),
-                "examples": sorted(noisy, key=str)[:40],
-            },
-            "coreference": {
-                "lemma_duplicate_groups": len(lemma_groups),
-                "lemma_duplicate_vertices": sum(len(g) for g in lemma_groups),
-                "embedding_duplicate_pairs": len(embedded),
-                "cross_language_pairs": len(cross),
-                "pronoun_vertices_lifted": lifted,
-                "pronoun_subtree_vertices": subtree,
-                "lemma_examples": [" = ".join(g) for g in lemma_groups[:15]],
-                "embedding_examples": [f"{a} = {b} ({s})" for a, b, s in embedded[:15]],
-            },
-            "integrity": {
-                "formulas": len(formulas),
-                "formulas_evaluated": formula_result.in_vertex + formula_result.in_window + formula_result.broken,
-                "formulas_in_vertex": formula_result.in_vertex,
-                "formulas_in_window": formula_result.in_window,
-                "formulas_broken": formula_result.broken,
-                "formula_mean_window_share": round(statistics.fmean(formula_result.best_share or [0.0]), 3),
-                "tables": len(tables),
-                "tables_evaluated": table_result.in_vertex + table_result.in_window + table_result.broken,
-                "tables_in_vertex": table_result.in_vertex,
-                "tables_in_window": table_result.in_window,
-                "tables_broken": table_result.broken,
-                "table_best_window_share": table_result.best_share,
-            },
-            "consistency": {
-                "checked_vertices": len(verdicts),
-                "fully_defined_share": round(
-                    sum(v["definition"] == "full" for v in verdicts) / max(len(verdicts), 1), 4
-                ),
-                "partially_defined_share": round(
-                    sum(v["definition"] == "partial" for v in verdicts) / max(len(verdicts), 1), 4
-                ),
-                "contradictions_total": sum(int(v["contradictions"]) for v in verdicts),
-                "vertices_with_contradictions_share": round(
-                    sum(int(v["contradictions"]) > 0 for v in verdicts) / max(len(verdicts), 1), 4
-                ),
-            },
-            "coverage": {
-                **name_coverage,
-                "vector_found": len(vector_found),
-                "vector_coverage": round(len(vector_found) / max(len(concepts), 1), 4),
-            },
-            "traversal": traversal(graph, config, {n: "noise" for n in noisy}),
-        }
-        write_json(settings.metrics_dir / f"08_consistency_{arm}.json", verdicts)
+        reports[arm], verdicts = context.evaluate(load_graph(output), sources[arm])
+        write_json(settings.metrics_dir / f"08_consistency_{arm}.json", [v.model_dump() for v in verdicts])
         log.info("%s evaluated; judge tokens: %d in, %d out", arm, client.prompt_tokens, client.completion_tokens)
-    report["judge_usage"] = {
-        "model": settings.judge_model,
-        "calls": client.calls,
-        "cached_calls": client.cached_calls,
-        "request_tokens_all_calls": client.request_tokens,
-        "new_calls_prompt_tokens": client.prompt_tokens,
-        "new_calls_completion_tokens": client.completion_tokens,
-    }
-    write_json(settings.metrics_dir / "08_graph_comparison.json", report)
+    comparison = GraphComparison(
+        reference_terms=context.terms,
+        dirty=reports["dirty"],
+        clean=reports["clean"],
+        judge_usage=JudgeUsage(
+            model=settings.judge_model,
+            calls=client.calls,
+            cached_calls=client.cached_calls,
+            request_tokens_all_calls=client.request_tokens,
+            new_calls_prompt_tokens=client.prompt_tokens,
+            new_calls_completion_tokens=client.completion_tokens,
+        ),
+    )
+    write_json(settings.metrics_dir / "08_graph_comparison.json", comparison)
     log.info("comparison written")
+
+
+def _comparison_context(settings: Settings, client: LlmClient) -> ComparisonContext:
+    embedder = EmbeddingClient(url=settings.embedding_url, model=settings.embedding_model)
+    config = EvaluationConfig.load(settings.evaluation_path)
+    cleaned = {chunk.book: chunk.text for chunk in load_chunks(settings, "01_clean.jsonl")}
+    chunks = load_chunks(settings, "03_chunks.jsonl")
+    terms = text_terms(cleaned["tanaka1981"], "en", config.terms_en)
+    terms += text_terms(cleaned["stat3"], "ru", config.terms_ru)
+    glossary = Glossary.load(settings.glossary_path)
+    return ComparisonContext(
+        config=config,
+        client=client,
+        embedder=embedder,
+        terms=terms,
+        term_vectors=embedder.embed(terms),
+        concept_vectors=embedder.embed([" / ".join(aliases) for aliases in config.concepts.values()]),
+        vocabulary=source_vocabulary([*cleaned.values(), *(chunk.text for chunk in chunks)]),
+        allowed=frozenset(
+            {t.symbol.casefold() for t in glossary.terms if t.symbol}
+            | {a.short.casefold() for a in glossary.abbreviations}
+            | {"ar1", "ar3", "ac1", "ac3", "nb", "ti", "v", "mo", "mn", "si", "al", "cr", "ni", "cu"}
+        ),
+    )
 
 
 def run_figures(settings: Settings) -> None:
@@ -637,7 +514,7 @@ def run_graphs(settings: Settings) -> None:
     }
     graph_dir = settings.root / "results" / "graphs"
     graph_dir.mkdir(parents=True, exist_ok=True)
-    summary: dict[str, dict[str, object]] = {}
+    summary: dict[str, GraphSummary] = {}
     for arm, output in outputs.items():
         bundle = load_graph(output)
         graph = bundle.graph
@@ -648,20 +525,20 @@ def run_graphs(settings: Settings) -> None:
             graph.nodes[name]["embedding"] = " ".join(f"{value:.5f}" for value in vector)
         with gzip.open(graph_dir / f"{arm}_graph_with_vectors.graphml.gz", "wb") as stream:
             nx.write_graphml(graph, stream)
-        summary[arm] = {
-            "documents": len(bundle.artifacts.documents),
-            "text_units": len(bundle.artifacts.text_units),
-            "entities": len(bundle.artifacts.entities),
-            "relationships": len(bundle.artifacts.relationships),
-            "vertices": graph.number_of_nodes(),
-            "edges": graph.number_of_edges(),
-            "vertices_with_vectors": sum(1 for _, d in graph.nodes(data=True) if d.get("embedding")),
-            "vector_dimensions": int(vectors.shape[1]),
-            "reverse_relationships_merged": sum(d.get("merged", 1) - 1 for *_, d in graph.edges(data=True)),
-            "input_tokens": input_tokens,
-            "mean_text_unit_tokens": round(input_tokens / len(bundle.artifacts.text_units), 1),
-            "vertices_per_1k_tokens": round(graph.number_of_nodes() / input_tokens * 1000, 2),
-            "edges_per_1k_tokens": round(graph.number_of_edges() / input_tokens * 1000, 2),
-        }
+        summary[arm] = GraphSummary(
+            documents=len(bundle.artifacts.documents),
+            text_units=len(bundle.artifacts.text_units),
+            entities=len(bundle.artifacts.entities),
+            relationships=len(bundle.artifacts.relationships),
+            vertices=graph.number_of_nodes(),
+            edges=graph.number_of_edges(),
+            vertices_with_vectors=sum(1 for _, d in graph.nodes(data=True) if d.get("embedding")),
+            vector_dimensions=int(vectors.shape[1]),
+            reverse_relationships_merged=sum(d.get("merged", 1) - 1 for *_, d in graph.edges(data=True)),
+            input_tokens=input_tokens,
+            mean_text_unit_tokens=round(input_tokens / len(bundle.artifacts.text_units), 1),
+            vertices_per_1k_tokens=round(graph.number_of_nodes() / input_tokens * 1000, 2),
+            edges_per_1k_tokens=round(graph.number_of_edges() / input_tokens * 1000, 2),
+        )
     write_json(settings.metrics_dir / "07_graphs.json", summary)
     log.info("graphs exported to %s", graph_dir)

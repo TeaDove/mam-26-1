@@ -522,7 +522,7 @@ def run_figures(settings: Settings) -> None:
         "dirty": settings.root / settings.dirty_graphrag_dir,
         "clean": settings.root / settings.clean_graphrag_dir,
     }
-    titles = {"dirty": "Грязный граф: текст MinerU как есть", "clean": "Чистый граф: после предобработки"}
+    titles = {"dirty": "Грязный граф: текст MinerU без списка литературы", "clean": "Чистый граф: после предобработки"}
     for arm, output in outputs.items():
         graph = load_graph(output).graph
         graph.remove_nodes_from([n for n, d in dict(graph.degree()).items() if d == 0])

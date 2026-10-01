@@ -1,5 +1,6 @@
 import json
 import sys
+from dataclasses import dataclass
 from pathlib import Path
 
 from pptx import Presentation
@@ -25,17 +26,6 @@ CODE_BG = RGBColor(0xF4, 0xF4, 0xF2)
 MARK_COLOR = RGBColor(0x00, 0x83, 0x00)
 MARKS = {"L": "\u22c6", "D": "\u22c4", "H": "\u22b9"}
 FONT = "Calibri"
-NOISE_SHOWCASE = [
-    "KONTROLIROVANNOY PROKATKI",
-    "NEPRYEVNOLITOGO METALLA",
-    "ТЕМПЕРАТУРА НА-ГРЕВА СЛЯ-БОВ",
-    "СОРТАТОПРОКАТ",
-    "САРАФАН",
-    "ГРУББЛЕХ",
-    "NIPPON KINZOKU GAKKAISHI",
-    "TETSU-TO-HAGANÉ",
-    "METALL. TRANS.",
-]
 
 
 def load(name: str) -> dict:
@@ -148,17 +138,25 @@ class Deck:
         self.text(slide, label, left + 0.3, top + 1.0, 3.45, 0.7, size=13, color=MUTED)
 
     def table(
-        self, slide: object, rows: list[list[str]], left: float, top: float, widths: list[float], size: int = 13
+        self,
+        slide: object,
+        rows: list[list[str]],
+        left: float,
+        top: float,
+        widths: list[float],
+        size: int = 13,
+        value_columns: tuple[int, int] = (-2, -1),
+        row_height: float = 0.38,
     ) -> None:
-        height = 0.38 * len(rows)
         shape = slide.shapes.add_table(
-            len(rows), len(widths), Inches(left), Inches(top), Inches(sum(widths)), Inches(height)
+            len(rows), len(widths), Inches(left), Inches(top), Inches(sum(widths)), Inches(row_height * len(rows))
         )
         table = shape.table
+        dirty_column, clean_column = (column % len(widths) for column in value_columns)
         for column, width in enumerate(widths):
             table.columns[column].width = Inches(width)
         for r, row in enumerate(rows):
-            table.rows[r].height = Inches(0.38)
+            table.rows[r].height = Inches(row_height)
             for c, value in enumerate(row):
                 cell = table.cell(r, c)
                 cell.fill.solid()
@@ -174,13 +172,14 @@ class Deck:
                 run.font.size = Pt(size)
                 run.font.name = FONT
                 run.font.bold = r == 0
-                if r > 0 and c == len(row) - 1:
+                if r > 0 and c == clean_column:
                     run.font.color.rgb = CLEAN
-                elif r > 0 and c == len(row) - 2:
+                elif r > 0 and c == dirty_column:
                     run.font.color.rgb = DIRTY
                 else:
                     run.font.color.rgb = INK if r > 0 else MUTED
-                frame.paragraphs[0].alignment = PP_ALIGN.LEFT if c == 0 else PP_ALIGN.RIGHT
+                numeric = c in (dirty_column, clean_column)
+                frame.paragraphs[0].alignment = PP_ALIGN.RIGHT if numeric else PP_ALIGN.LEFT
                 add_mark(frame.paragraphs[0], kind, size)
 
     def bars(
@@ -299,7 +298,7 @@ class Deck:
         run.font.size = Pt(14)
         run.font.color.rgb = MUTED
         run.font.name = FONT
-        for kind, meaning in (("L", "LLM"), ("D", "детерминированный алгоритм"), ("H", "гибрид")):
+        for kind, meaning in (("L", "LLM"), ("D", "алгоритм"), ("H", "гибрид: обход графа + LLM")):
             add_mark(paragraph, kind, 18)
             run = paragraph.add_run()
             run.text = f" — {meaning}   "
@@ -320,23 +319,48 @@ class Deck:
         self.prs.save(str(path))
 
 
-def main() -> None:
-    target = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "results" / "presentation.pptx"
-    chunking = load("01_chunking.json")
-    cleaning = load("02_cleaning.json")
-    normalization = load("03_normalization.json")
-    tokenization = load("04_tokenization.json")
-    vectors = load("05_vectorization.json")
-    comparison = load("08_graph_comparison.json")
-    dirty, clean = comparison["dirty"], comparison["clean"]
-    ds, cs = dirty["structure"], clean["structure"]
-    deck = Deck()
+@dataclass
+class Metrics:
+    cleaning: dict
+    normalization: dict
+    chunking: dict
+    tokenization: dict
+    vectors: dict
+    retrieval: dict
+    gold: dict
+    graphs: dict
+    comparison: dict
 
+    @classmethod
+    def load_all(cls) -> Metrics:
+        return cls(
+            cleaning=load("01_cleaning.json"),
+            normalization=load("02_normalization.json"),
+            chunking=load("03_chunking.json"),
+            tokenization=load("04_tokenization.json"),
+            vectors=load("05_vectorization.json"),
+            retrieval=load("05_retrieval.json"),
+            gold=load("06_gold.json")["total"],
+            graphs=load("07_graphs.json"),
+            comparison=load("08_graph_comparison.json"),
+        )
+
+    @property
+    def dirty(self) -> dict:
+        return self.comparison["dirty"]
+
+    @property
+    def clean(self) -> dict:
+        return self.comparison["clean"]
+
+
+def title_slide(deck: Deck, m: Metrics) -> None:
     slide = deck.slide(
         None,
-        "Тема: как предобработка текста меняет граф знаний. Корпус — два учебника по контролируемой прокатке "
-        "стали: английский обзор Tanaka (1981) и русская статья. Оба текста строят один общий граф. "
-        "Сравниваем граф из сырого текста MinerU и граф после полной предобработки.",
+        "Тема: как предобработка текста меняет граф знаний. Корпус — два учебника по контролируемой прокатке стали: "
+        "английский обзор Tanaka (1981) и русская статья. Оба текста строят один общий граф. Сравниваем граф из сырого "
+        "текста MinerU и граф после предобработки. Это вторая версия: этапы переставлены, все критерии считаются "
+        "обходами графа.",
     )
     deck.text(slide, "Предобработка текста для графа знаний", 0.8, 2.0, 11.8, 1.0, size=36, bold=True)
     deck.text(
@@ -363,43 +387,167 @@ def main() -> None:
         authors = [line.strip() for line in AUTHORS.read_text(encoding="utf-8").splitlines() if line.strip()]
         deck.text(slide, authors, 7.7, 5.5, 5.0, 1.5, size=14, color=MUTED, align=PP_ALIGN.RIGHT, spacing=2)
 
+
+def experiment_slide(deck: Deck, m: Metrics) -> None:
     slide = deck.slide(
         "Эксперимент: отличие только в предобработке",
-        "Оба графа строятся GraphRAG с одинаковыми настройками: gpt-4o-mini, эмбеддинги bge-m3, одни и те же промпты "
-        "и типы сущностей, размер чанка 1200 токенов. Грязный граф — из markdown MinerU как есть. Чистый — из того же "
-        "markdown после пяти этапов предобработки. После каждого этапа считаем метрики по каждой книге и суммарно, "
-        "каждый этап проверял независимый ревьюер.",
+        "Оба графа строит GraphRAG с одинаковыми настройками: gpt-4o-mini, bge-m3, те же промпты и типы сущностей. "
+        "Грязный граф — из markdown MinerU, из которого убран только список литературы, иначе сравнение нечестное. "
+        "Чистый — после пяти этапов. Очистка и нормализация работают с книгой целиком, chunking режет уже чистый "
+        "текст. Качество этапов меряем на четырёх страницах, выверенных вручную по PDF. Критерии сравнения графов "
+        "считаем обходами графа; LLM — только для непротиворечивости.",
     )
-    deck.arrow_row(slide, "Грязный", ["MinerU", "GraphRAG@L"], 1.8, DIRTY)
+    deck.arrow_row(slide, "Грязный", ["MinerU", "− литература", "GraphRAG@L"], 1.8, DIRTY)
     deck.arrow_row(
         slide,
         "Чистый",
-        ["MinerU", "Chunking@D", "Очистка@D", "Нормализация@D", "Токенизация@D", "Векторизация@D", "GraphRAG@L"],
+        ["MinerU", "Очистка@D", "Нормализация@D", "Chunking@D", "Токенизация@D", "Векторизация@D", "GraphRAG@L"],
         3.0,
         CLEAN,
     )
+    graphs = m.graphs
     deck.text(
         slide,
         [
-            "Общий вход: PDF → MinerU → markdown. Одинаковые модели, промпты, типы сущностей, чанк 1200 токенов.",
-            "Оба учебника → один граф. Метрики — после каждого этапа, по книгам и суммарно.",
-            "Сравнение графов: структура, обходы (BFS/DFS/пути), покрытие ПрО, LLM-as-a-judge.",
+            "Одинаковые модели, промпты и типы сущностей; оба учебника → один граф.",
+            "Эталон: 4 страницы (по 2 из книги), выверенные по PDF, — CER/WER, точность и полнота удалений, "
+            "точность приведения величин и терминов.",
+            f"Графы: грязный {graphs['dirty']['vertices']} вершин / {graphs['dirty']['edges']} рёбер, "
+            f"чистый {graphs['clean']['vertices']} / {graphs['clean']['edges']}; у каждой вершины вектор bge-m3.",
         ],
         0.6,
-        4.6,
+        4.4,
         12.1,
         1.8,
         size=16,
         color=MUTED,
     )
-    deck.legend(slide, 0.6, 6.2)
+    deck.legend(slide, 0.6, 6.3)
 
-    ch_d, ch_c = chunking["dirty_graphrag:total"], chunking["structural:total"]
+
+def cleaning_slide(deck: Deck, m: Metrics) -> None:
+    cl_d, cl_c, gold = m.cleaning["dirty:total"], m.cleaning["clean:total"], m.gold
     slide = deck.slide(
-        "1. Chunking: по структуре, а не по счётчику токенов",
-        "GraphRAG по умолчанию режет текст окнами по 1200 токенов — почти каждая граница рвёт предложение, а таблица "
-        "разрезана пополам. Структурный разбивщик идёт по разделам и абзацам, не режет формулы и таблицы и "
-        "предпочитает границы на конце предложения. Чанки сохранены — они пойдут в RAG.",
+        "1. Очистка: на эталоне ошибок почти не осталось",
+        "Удаляем колонтитулы, номера страниц, ссылки на картинки, HTML-сноски, маркеры цитат и шапку с авторами, "
+        "склеиваем абзацы, разорванные страницей, и переносы. Качество — на эталонных страницах: CER упал с 9,7% до "
+        "0,2%, удалено 13 из 13 блоков, которые должны были уйти, и ни одного лишнего. Это хорошо: остаток CER — "
+        "OCR-ошибки в индексах таблицы, которые очистка не исправляет. Числа, формулы и ячейки таблиц сохранены "
+        "на 100%.",
+    )
+    deck.stat(slide, 0.6, 1.55, pct(gold["raw_cer"], 1), pct(gold["clean_cer"], 1), "CER относительно эталона@D")
+    deck.stat(slide, 4.75, 1.55, pct(gold["raw_wer"], 1), pct(gold["clean_wer"], 1), "WER относительно эталона@D")
+    deck.stat(
+        slide,
+        8.9,
+        1.55,
+        f"{gold['blocks_deleted_correctly']}/{gold['blocks_should_delete']}",
+        pct(gold["deletion_f1"]),
+        "удалено нужных блоков → F1 удалений@D",
+    )
+    deck.table(
+        slide,
+        [
+            ["Метрика", "сырой", "после очистки"],
+            ["Доля шумовых символов@D", pct(cl_d["noise_share"], 1), pct(cl_c["noise_share"], 2)],
+            [
+                "Служебные метки / разорванные абзацы@D",
+                f"{cl_d['service_marks']} / {cl_d['broken_paragraphs']}",
+                "0 / 0",
+            ],
+            ["Переносы в словах / PII@D", f"{cl_d['hyphenated_breaks']} / {cl_d['pii_hits']}", "0 / 0"],
+            [
+                "Сохранено чисел / формул / ячеек таблиц@D",
+                "—",
+                f"{pct(cl_c['numbers_preserved_share'])} / {pct(cl_c['formulas_preserved_share'])} / "
+                f"{pct(cl_c['table_cells_preserved_share'])}",
+            ],
+        ],
+        0.6,
+        3.65,
+        [6.6, 2.4, 3.1],
+        size=14,
+    )
+    deck.code(
+        slide,
+        [
+            r're.sub(r"</?(?:strong|u|b|i|em)>", "", text);   re.sub(r"\s*\$\^\{[\d,\s–-]+\}\$", "", text)',
+            r're.sub(r"([^\W\d_]+)-\s+([а-яё]+)", r"\1\2", text);   блоки = колонтитулы ∪ r"^\d{1,3}$" → удалить',
+        ],
+        5.85,
+    )
+
+
+def normalization_slide(deck: Deck, m: Metrics) -> None:
+    raw, norm, gold = m.normalization["raw:total"], m.normalization["normalized:total"], m.gold
+    slide = deck.slide(
+        "2. Нормализация: величины, термины, леммы",
+        "Приводим величины к одному виду, расшифровываем аббревиатуры и ставим перед русским термином канонический "
+        "английский — заново каждые 3000 символов, поэтому пометка не зависит от будущего разбиения. Английский в "
+        "скобках после русского модель игнорирует, а английский первым — нет: так у двух книг появились 23 общих "
+        "термина. Термины лемматизируются: существительные и пары «прилагательное + существительное» подряд. "
+        "На эталоне все 7 величин и 10 терминов приведены верно — хорошо, но выборка маленькая.",
+    )
+    deck.stat(
+        slide, 0.6, 1.55, pct(raw["unit_canonical_share"]), pct(norm["unit_canonical_share"]), "величин в едином виде@D"
+    )
+    deck.stat(
+        slide, 0.6, 3.5, str(raw["bridging_terms"]), str(norm["bridging_terms"]), "терминов глоссария в обеих книгах@D"
+    )
+    deck.card(slide, 4.75, 1.55, 7.95, 3.7)
+    deck.text(slide, "stat3, было", 5.05, 1.7, 7.3, 0.4, size=14, bold=True, color=DIRTY)
+    deck.text(
+        slide,
+        "…эффект КП, как способ измельчения зерна аустенита путем рекристаллизации… "
+        "ускоренное охлаждение после деформации со скоростями 10–30<sup>0</sup>С/сек",
+        5.05,
+        2.1,
+        7.4,
+        1.0,
+        size=14,
+    )
+    deck.text(slide, "стало", 5.05, 3.1, 7.3, 0.4, size=14, bold=True, color=CLEAN)
+    deck.text(
+        slide,
+        "…эффект КП, как способ grain refinement (измельчения зерно) аустенит путем рекристаллизация… "
+        "ускоренное охлаждение после deformation (деформация) со скорость 10–30 °C/с",
+        5.05,
+        3.5,
+        7.4,
+        1.6,
+        size=14,
+    )
+    deck.text(
+        slide,
+        f"Эталон: величины {gold['units_correct']}/{gold['units_expected']}, термины "
+        f"{gold['terms_correct']}/{gold['terms_expected']}; лемматизировано {pct(norm['lemmatized_share'], 1)} "
+        f"слов (полная лемматизация — {pct(norm['full_lemmatization_share'])})@D",
+        0.6,
+        5.45,
+        12.1,
+        0.5,
+        size=14,
+        color=MUTED,
+    )
+    deck.code(
+        slide,
+        [
+            r're.sub(r"<sup>\s*[0o°]\s*</sup>\s*[СC]", " °C", text)',
+            r'periodic(r"\bконтролируем\w* прокатк\w*", lambda m: f"controlled rolling ({m[0]})", every=3000)'
+            "   ← glossary.yaml",
+        ],
+        6.0,
+    )
+
+
+def chunking_slide(deck: Deck, m: Metrics) -> None:
+    ch_d, ch_c = m.chunking["dirty_graphrag:total"], m.chunking["structural:total"]
+    slide = deck.slide(
+        "3. Chunking: по структуре уже чистого текста",
+        "GraphRAG по умолчанию режет текст окнами по 1200 токенов: каждая граница рвёт предложение, таблица "
+        "разрезана. Структурный разбивщик идёт по разделам и абзацам чистого текста, не режет формулы и таблицы и "
+        "ставит границу на конце предложения. Осталась одна граница из 34 внутри предложения — длинный раздел без "
+        "удобного места. Чанки мельче, поэтому GraphRAG их не перерезает; они сохранены для RAG.",
     )
     deck.stat(
         slide,
@@ -417,12 +565,13 @@ def main() -> None:
         str(ch_c["tables_broken"] + ch_c["formulas_broken"]),
         "формул и таблиц разрезано границей@D",
     )
+    books = ("tanaka1981", "stat3", "total")
     deck.bars(
         slide,
         "Размер чанка, токенов o200k (среднее)@D",
         ["tanaka1981", "stat3", "всего"],
-        [chunking[f"dirty_graphrag:{s}"]["tokens"]["mean"] for s in ("tanaka1981", "stat3", "total")],
-        [chunking[f"structural:{s}"]["tokens"]["mean"] for s in ("tanaka1981", "stat3", "total")],
+        [m.chunking[f"dirty_graphrag:{book}"]["tokens"]["mean"] for book in books],
+        [m.chunking[f"structural:{book}"]["tokens"]["mean"] for book in books],
         4.9,
         1.45,
         7.8,
@@ -430,225 +579,224 @@ def main() -> None:
     )
     deck.text(
         slide,
-        f"Чанков: {ch_d['n_chunks']} → {ch_c['n_chunks']}; "
-        f"максимум {ch_c['tokens']['max']} токенов — GraphRAG не перерезает.",
+        f"Чанков: {ch_d['n_chunks']} → {ch_c['n_chunks']}; максимум {ch_c['tokens']['max']} токенов.",
         4.9,
-        5.55,
+        5.45,
         7.8,
         0.5,
         size=14,
         color=MUTED,
     )
-
     deck.code(
         slide,
         [
-            "blocks = parse_blocks(markdown)  →  разделы по заголовкам, формулы $$…$$ и <table> — неделимые блоки",
+            "blocks = parse_blocks(clean_book)  →  разделы по заголовкам, формулы $$…$$ и <table> — неделимые блоки",
             "cut = последняя граница, где tokens(left) ≤ 900 и ends_sentence(left) and not starts_lowercase(right)",
-        ],
-        6.15,
-    )
-
-    cl_d, cl_c = cleaning["dirty:total"], cleaning["clean:total"]
-    slide = deck.slide(
-        "2. Очистка: убираем шум, не теряя смысла",
-        "Удаляем колонтитулы, номера страниц, ссылки на картинки, HTML-сноски, маркеры цитат, список литературы и "
-        "метаданные авторов (PII). Склеиваем абзацы, разорванные страницами и подписями к рисункам, и переносы. "
-        "Все правки журналируются. Числа, формулы и ячейки таблиц в содержательной части сохранены на 100%.",
-    )
-    deck.stat(slide, 0.6, 1.55, pct(cl_d["noise_share"], 1), pct(cl_c["noise_share"], 2), "доля шумовых символов@D")
-    deck.stat(slide, 4.75, 1.55, str(cl_d["service_marks"]), str(cl_c["service_marks"]), "служебных меток@D")
-    deck.stat(slide, 8.9, 1.55, str(cl_d["broken_paragraphs"]), str(cl_c["broken_paragraphs"]), "разорванных абзацев@D")
-    deck.card(slide, 0.6, 3.65, 12.1, 2.35)
-    deck.text(slide, "Было → стало", 0.9, 3.85, 5, 0.4, size=14, bold=True, color=MUTED)
-    deck.text(
-        slide,
-        [
-            "con-  ¶  International Metals Reviews  ¶  186  ¶  trolled   →   controlled",
-            "In 1924 Arrowsmith $^{1}$ had …   →   In 1924 Arrowsmith had …",
-            "ох- лаждение,  1 9 + 4 4  (в формуле)   →   охлаждение,  19 + 44",
-            f"PII (авторы, аффилиации): {cl_d['pii_hits']} → {cl_c['pii_hits']};  "
-            f"числа, формулы, ячейки таблиц: {pct(cl_c['numbers_preserved_share'])} / "
-            f"{pct(cl_c['formulas_preserved_share'])} / {pct(cl_c['table_cells_preserved_share'])} сохранено@D",
-        ],
-        0.9,
-        4.35,
-        11.5,
-        1.6,
-        size=15,
-        font="Consolas",
-    )
-
-    deck.code(
-        slide,
-        [
-            r're.sub(r"</?(?:strong|u|b|i|em)>", "", text);   re.sub(r"\s*\$\^\{[\d,\s–-]+\}\$", "", text)',
-            r're.sub(r"([^\W\d_]+)-\s+([а-яё]+)", r"\1\2", text);   блоки = колонтитулы ∪ r"^\d{1,3}$" → удалить',
-        ],
-        6.15,
-    )
-
-    nm_r, nm_n = normalization["raw:total"], normalization["normalized:total"]
-    slide = deck.slide(
-        "3. Нормализация: единицы, аббревиатуры, термины",
-        "Приводим единицы к одному виду (°C с пробелом, диапазоны через тире, Н/мм²), расшифровываем аббревиатуры и "
-        "сводим термины к канону через двуязычный глоссарий. Важная находка: если писать английский термин в скобках "
-        "после русского, gpt-4o-mini всё равно называет сущности по-русски. Работает только вариант, где канонический "
-        "английский термин стоит первым — один раз на чанк. Так появились общие для двух книг узлы.",
-    )
-    deck.stat(
-        slide,
-        0.6,
-        1.55,
-        pct(nm_r["unit_canonical_share"]),
-        pct(nm_n["unit_canonical_share"]),
-        "единиц измерения в каноническом виде@D",
-    )
-    deck.stat(
-        slide, 0.6, 3.5, str(nm_r["bridging_terms"]), str(nm_n["bridging_terms"]), "терминов глоссария в обеих книгах@D"
-    )
-    deck.card(slide, 4.75, 1.55, 7.95, 3.7)
-    deck.text(slide, "stat3, было", 5.05, 1.75, 7.3, 0.4, size=14, bold=True, color=DIRTY)
-    deck.text(
-        slide,
-        "…эффект КП, как способ измельчения зерна аустенита путём рекристаллизации…",
-        5.05,
-        2.15,
-        7.4,
-        0.8,
-        size=15,
-    )
-    deck.text(slide, "стало", 5.05, 3.0, 7.3, 0.4, size=14, bold=True, color=CLEAN)
-    deck.text(
-        slide,
-        "…эффект controlled rolling (КП, контролируемая прокатка), как способ grain refinement (измельчения зерна) "
-        "austenite (аустенита) путём recrystallization (рекристаллизации)…",
-        5.05,
-        3.4,
-        7.4,
-        1.6,
-        size=15,
-    )
-    deck.text(
-        slide,
-        "Английский в скобках после русского модель игнорирует — проверено на промпте GraphRAG.",
-        4.75,
-        5.45,
-        7.95,
-        0.5,
-        size=14,
-        color=MUTED,
-    )
-
-    deck.code(
-        slide,
-        [
-            r're.sub(r"<sup>\s*[0o°]\s*</sup>\s*[СC]", " °C", text)',
-            r're.sub(r"\bконтролируем\w* прокатк\w*", lambda m: f"controlled rolling ({m[0]})", text, count=1)'
-            "   ← glossary.yaml",
-        ],
-        6.1,
-    )
-
-    tk_r, tk_n = tokenization["raw:total"], tokenization["normalized:total"]
-    vc_d, vc_n = vectors["dirty_units:total"], vectors["normalized:total"]
-    slide = deck.slide(
-        "4–5. Токенизация и векторизация",
-        "OOV считаем по словарю wordfreq плюс доменный глоссарий. Честная оговорка: у tanaka снижение OOV "
-        "почти целиком "
-        "дал удалённый список литературы, а у stat3 — склеенные переносы. Векторы bge-m3 (1024) посчитаны для каждого "
-        "чанка — это база для следующего этапа, RAG, — и для каждой вершины графа, они записаны атрибутом вершин. "
-        "Межъязыковое сходство выросло, но примерно 40% прироста дают вставленные английские термины.",
-    )
-    deck.table(
-        slide,
-        [
-            ["Метрика", "грязный", "чистый"],
-            ["OOV-rate (доля неизвестных слов)@D", pct(tk_r["oov_rate"], 1), pct(tk_n["oov_rate_original_words"], 1)],
-            ["Уникальных OOV@D", str(tk_r["unique_oov"]), str(tk_n["unique_oov"])],
-            [
-                "Неразобранные $ (обрывки формул)@D",
-                str(tk_r["unmatched_math_delimiters"]),
-                str(tk_n["unmatched_math_delimiters"]),
-            ],
-            ["LaTeX-обозначения → текст (γ, °C, Ar3)@D", "—", str(tk_n["formulas_converted_to_text"])],
-            ["Словарь TF-IDF, слов@D", str(vc_d["tfidf_vocabulary"]), str(vc_n["tfidf_vocabulary"])],
-            [
-                "Разреженность TF-IDF (окна по 300 слов)@D",
-                num(vc_d["tfidf_sparsity"], 3),
-                num(vc_n["tfidf_sparsity"], 3),
-            ],
-            [
-                "Сходство RU→EN, лучший чанк (cos)@D",
-                num(vc_d["cross_language_best_match_cosine"], 3),
-                num(vc_n["cross_language_best_match_cosine"], 3),
-            ],
-        ],
-        0.6,
-        1.55,
-        [6.2, 2.0, 2.0],
-        size=15,
-    )
-    deck.text(
-        slide,
-        [
-            "Векторы bge-m3 (1024) — для чанков (задел для RAG) и атрибутом каждой вершины графа.",
-            "Оговорки: OOV у tanaka упал в основном из-за удалённого списка литературы;",
-            "около 40% роста межъязыкового сходства дают вставленные английские термины.",
-        ],
-        0.6,
-        4.9,
-        12.1,
-        1.4,
-        size=15,
-        color=MUTED,
-    )
-
-    deck.code(
-        slide,
-        [
-            r'oov = [w for w in re.findall(r"[^\W\d_]+", text) if zipf_frequency(w, lang) == 0 and w not in glossary]',
-            'SentenceTransformer("BAAI/bge-m3").encode(chunks);   TfidfVectorizer().fit_transform(windows_300)',
         ],
         6.0,
     )
 
+
+def tokens_vectors_slide(deck: Deck, m: Metrics) -> None:
+    tk_r, tk_n = m.tokenization["raw:total"], m.tokenization["normalized:total"]
+    vc_d, vc_c = m.vectors["dirty_units:total"], m.vectors["clean_chunks:total"]
+    slide = deck.slide(
+        "4–5. Токенизация, векторизация и поиск",
+        "OOV считаем по исходным словам: вставленные глоссарием английские термины в знаменатель не входят. OOV упал "
+        "за счёт склеенных переносов; остаток — редкие термины, которых нет в частотном словаре. Поиск по 26 "
+        "вопросам на обоих языках разложен на вклад разбиения и вклад предобработки: каждый даёт около +0,1 MRR, "
+        "вместе +0,18. На 10 вопросах одногруппника, написанных независимо, MRR 0,54 → 0,70.",
+    )
+    deck.table(
+        slide,
+        [
+            ["Метрика", "сырой", "чистый"],
+            ["OOV-rate@D", pct(tk_r["oov_rate"], 2), pct(tk_n["oov_rate_original_words"], 2)],
+            ["Уникальных OOV@D", str(tk_r["unique_oov"]), str(tk_n["unique_oov"])],
+            ["Обрывки формул ($ без пары)@D", str(tk_r["unmatched_math_delimiters"]), "0"],
+            ["Словарь TF-IDF@D", str(vc_d["tfidf_vocabulary"]), str(vc_c["tfidf_vocabulary"])],
+            ["Разреженность TF-IDF@D", num(vc_d["tfidf_sparsity"], 3), num(vc_c["tfidf_sparsity"], 3)],
+            [
+                "Сходство RU→EN, лучший чанк@D",
+                num(vc_d["cross_language_best_match_cosine"], 3),
+                num(vc_c["cross_language_best_match_cosine"], 3),
+            ],
+        ],
+        0.6,
+        1.55,
+        [3.9, 1.3, 1.3],
+        size=14,
+    )
+    r = m.retrieval
+    deck.table(
+        slide,
+        [
+            ["MRR, 26 вопросов", "окна", "структура"],
+            ["грязный текст@D", num(r["dirty_windows:all"]["mrr"]), num(r["dirty_structural:all"]["mrr"])],
+            ["чистый текст@D", num(r["clean_windows:all"]["mrr"]), num(r["clean_structural:all"]["mrr"])],
+        ],
+        7.4,
+        1.55,
+        [2.7, 1.5, 1.5],
+        size=14,
+        value_columns=(1, 2),
+    )
+    deck.text(
+        slide,
+        [
+            f"Hit@1: {pct(r['dirty_windows:all']['hit_at_1'])} → {pct(r['clean_structural:all']['hit_at_1'])}@D",
+            f"Другой язык (12 вопросов): {num(r['dirty_windows:cross_language']['mrr'])} → "
+            f"{num(r['clean_structural:cross_language']['mrr'])}@D",
+            f"Вопросы одногруппника (10): {num(r['dirty_windows:classmate_set']['mrr'])} → "
+            f"{num(r['clean_structural:classmate_set']['mrr'])}@D",
+        ],
+        7.4,
+        2.95,
+        5.4,
+        1.6,
+        size=14,
+        color=MUTED,
+    )
+    deck.code(
+        slide,
+        [
+            r"oov = [w for w in words if zipf_frequency(w, lang) == 0 and w not in glossary]",
+            "cos(bge_m3(question), bge_m3(chunk)) → rank → Hit@k, MRR = mean(1 / rank первого верного), NDCG@10",
+        ],
+        4.75,
+    )
+
+
+def graphs_slide(deck: Deck, m: Metrics) -> None:
+    ds, cs = m.dirty["structure"], m.clean["structure"]
     slide = deck.slide(
         "Графы: русская часть перестала быть островом",
-        "Слева грязный граф: русский текст (оранжевый) — отдельный остров вокруг узла КП, между языками ноль рёбер. "
-        "Справа чистый: русские сущности висят на общих узлах — CONTROLLED ROLLING, AUSTENITE, NIOBIUM и других; "
-        "зелёные узлы извлечены из обеих книг.",
+        "Слева грязный граф: русский текст — отдельный остров, общих вершин у книг почти нет. Справа чистый: русские "
+        "сущности висят на общих вершинах CONTROLLED ROLLING, AUSTENITE, NIOBIUM; такие вершины извлечены из обеих "
+        "книг. Прямых рёбер между языками нет в обоих графах — книги связываются через общие вершины.",
     )
     deck.picture(slide, FIGURES / "dirty_graph.png", 0.5, 1.35, 5.5)
     deck.picture(slide, FIGURES / "clean_graph.png", 6.85, 1.35, 5.5)
-    deck.text(
-        slide,
-        f"рёбер EN–RU: {ds['edges_en_ru']}, общих узлов: {ds['nodes_both_languages']}@D",
-        0.6,
-        6.9,
-        5.8,
-        0.4,
-        size=14,
-        color=DIRTY,
-        bold=True,
-    )
-    deck.text(
-        slide,
-        f"рёбер EN–RU: {cs['edges_en_ru']}, общих узлов: {cs['nodes_both_languages']}@D",
-        6.95,
-        6.9,
-        5.8,
-        0.4,
-        size=14,
-        color=CLEAN,
-        bold=True,
-    )
+    for left, structure, color in ((0.6, ds, DIRTY), (6.95, cs, CLEAN)):
+        deck.text(
+            slide,
+            f"вершин из обеих книг: {structure['nodes_both_languages']}, "
+            f"рёбер у них: {structure['edges_touching_bilingual_nodes']}@D",
+            left,
+            6.9,
+            5.8,
+            0.4,
+            size=14,
+            color=color,
+            bold=True,
+        )
 
+
+def summary_rows(m: Metrics) -> list[list[str]]:
+    d, c = m.dirty, m.clean
+    dt, ct = d["traversal"]["summary"], c["traversal"]["summary"]
+    di, ci = d["integrity"], c["integrity"]
+    return [
+        ["Критерий", "Как считаем по графу", "грязный", "чистый", "Вывод"],
+        [
+            "Полнота по тексту@D",
+            "180 терминов текста среди вершин: леммы или cos bge-m3 ≥ 0,8",
+            pct(d["completeness"]["covered_semantic_share"], 1),
+            pct(c["completeness"]["covered_semantic_share"], 1),
+            "лучше",
+        ],
+        [
+            "Непротиворечивость@H",
+            "вершина + окно BFS-2 + фрагмент текста → gpt-4.1, 120 вершин",
+            pct(d["consistency"]["vertices_with_contradictions_share"], 1),
+            pct(c["consistency"]["vertices_with_contradictions_share"], 1),
+            "в пределах погрешности",
+        ],
+        [
+            "Корреференции@D",
+            "дубликаты по леммам и cos названий ≥ 0,92; местоимения BFS-3",
+            f"{d['coreference']['lemma_duplicate_vertices']} / {d['coreference']['pronoun_vertices_lifted']}",
+            f"{c['coreference']['lemma_duplicate_vertices']} / {c['coreference']['pronoun_vertices_lifted']}",
+            "хуже: ед./мн. число",
+        ],
+        [
+            "Шум@D",
+            "5 регулярных правил + словарь по всем вершинам",
+            pct(d["noise"]["noise_share"], 1),
+            pct(c["noise"]["noise_share"], 1),
+            "OCR ушёл, пришли σ_x",
+        ],
+        [
+            "Целостность формул и таблиц@D",
+            "доля обозначений формулы в лучшем окне 2 × 3",
+            pct(di["formula_mean_window_share"], 1),
+            pct(ci["formula_mean_window_share"], 1),
+            "формулы рвутся в обоих",
+        ],
+        [
+            "Показатели графа@D",
+            "крупнейшая компонента; циклы E − V + C",
+            f"{pct(d['structure']['largest_component_share'])}; {d['structure']['cyclomatic_number']}",
+            f"{pct(c['structure']['largest_component_share'])}; {c['structure']['cyclomatic_number']}",
+            "связнее",
+        ],
+        [
+            "Покрытие ПрО@D",
+            "40 понятий: по названиям / по векторам вершин",
+            f"{pct(d['coverage']['domain_coverage'], 1)} / {pct(d['coverage']['vector_coverage'], 1)}",
+            f"{pct(c['coverage']['domain_coverage'], 1)} / {pct(c['coverage']['vector_coverage'], 1)}",
+            "лучше",
+        ],
+        [
+            "Обходы@D",
+            "пары понятий, связанные путём; другой язык в BFS-2",
+            f"{dt['pairs_connected']}/{dt['pairs_total']}; {pct(dt['bfs2_other_language_share'])}",
+            f"{ct['pairs_connected']}/{ct['pairs_total']}; {pct(ct['bfs2_other_language_share'])}",
+            "главный эффект",
+        ],
+        [
+            "Вершины и рёбра по типам@D",
+            "вершины / рёбра; типов вершин",
+            f"{d['structure']['nodes']} / {d['structure']['edges']}; {len(d['structure']['nodes_by_type'])}",
+            f"{c['structure']['nodes']} / {c['structure']['edges']}; {len(c['structure']['nodes_by_type'])}",
+            "+31%, часть — мелкие чанки",
+        ],
+    ]
+
+
+def summary_slide(deck: Deck, m: Metrics) -> None:
     slide = deck.slide(
-        "Показатели графа",
-        "Вершин стало меньше — ушёл шум (транслит, авторы, обрывки), а рёбер больше: граф плотнее. Компонент связности "
-        "стало вдвое меньше, крупнейшая компонента охватывает больше вершин. Мостов почти столько же, а независимых "
-        "циклов вдвое больше — у знаний появились альтернативные связи.",
+        "Все критерии задания: грязный → чистый",
+        "Все девять критериев посчитаны по графу. Восемь — алгоритмом, без LLM; непротиворечивость — гибрид: "
+        "контекст собирает обход BFS-2, оценивает gpt-4.1. Лучше стали полнота, связность, покрытие и обходы — "
+        "предобработка склеила две книги. Хуже — корреференции (модель называет одно и то же по-разному) и шум: "
+        "OCR-мусор ушёл, но целые формулы превратились в вершины-обозначения. Формулы не сохраняет ни один граф — "
+        "это ограничение GraphRAG. Часть роста вершин — эффект более мелких чанков: 17 вершин на 1000 токенов "
+        "против 10.",
+    )
+    deck.table(
+        slide,
+        summary_rows(m),
+        0.6,
+        1.4,
+        [2.75, 4.6, 1.35, 1.35, 2.1],
+        size=12,
+        value_columns=(2, 3),
+        row_height=0.5,
+    )
+    deck.legend(slide, 0.6, 6.65)
+
+
+def structure_slide(deck: Deck, m: Metrics) -> None:
+    ds, cs = m.dirty["structure"], m.clean["structure"]
+    di, ci = m.dirty["input"], m.clean["input"]
+    slide = deck.slide(
+        "Показатели графа и типы вершин",
+        "Вершин и рёбер стало больше на треть, но на 1000 токенов входа — в 1,7 раза больше: чистый текст пришёл "
+        "мелкими чанками, и модель извлекает из них больше. Крупнейшая компонента выросла с 55% до 66% вершин, "
+        "независимых циклов больше — появились альтернативные связи. Компонент больше потому, что больше вершин, "
+        "в том числе изолированных. Распределение по типам похожее; персон вдвое больше — мелкие чанки чаще выносят "
+        "цитируемых авторов в вершины.",
     )
     deck.table(
         slide,
@@ -656,12 +804,16 @@ def main() -> None:
             ["Показатель", "грязный", "чистый"],
             ["Вершины / рёбра@D", f"{ds['nodes']} / {ds['edges']}", f"{cs['nodes']} / {cs['edges']}"],
             [
-                "Компоненты (без изолированных)@D",
-                f"{ds['connected_components']} ({non_isolated(ds)})",
-                f"{cs['connected_components']} ({non_isolated(cs)})",
+                "Вершин на 1000 токенов входа@D",
+                num(di["vertices_per_1k_tokens"], 1),
+                num(ci["vertices_per_1k_tokens"], 1),
+            ],
+            [
+                "Компоненты / изолированные@D",
+                f"{ds['connected_components']} / {ds['isolated_nodes']}",
+                f"{cs['connected_components']} / {cs['isolated_nodes']}",
             ],
             ["Доля крупнейшей компоненты@D", pct(ds["largest_component_share"]), pct(cs["largest_component_share"])],
-            ["Изолированные вершины@D", str(ds["isolated_nodes"]), str(cs["isolated_nodes"])],
             [
                 "Мосты / точки сочленения@D",
                 f"{ds['bridges']} / {ds['articulation_points']}",
@@ -673,7 +825,7 @@ def main() -> None:
                 f"{num(ds['degree_mean'])} / {ds['degree_max']}",
                 f"{num(cs['degree_mean'])} / {cs['degree_max']}",
             ],
-            ["Кластеризация@D", num(ds["average_clustering"], 3), num(cs["average_clustering"], 3)],
+            ["Пар типов у рёбер@D", str(len(ds["edges_by_type_pair"])), str(len(cs["edges_by_type_pair"]))],
         ],
         0.6,
         1.55,
@@ -694,23 +846,20 @@ def main() -> None:
         5.2,
     )
 
-    dt, ct = dirty["traversal"]["summary"], clean["traversal"]["summary"]
-    paths = [
-        p
-        for p in clean["traversal"]["pairs"]
-        if p.get("path")
-        and not any(
-            q["source"] == p["source"] and q["target"] == p["target"] and q.get("path")
-            for q in dirty["traversal"]["pairs"]
-        )
+
+def traversal_slide(deck: Deck, m: Metrics) -> None:
+    dt, ct = m.dirty["traversal"]["summary"], m.clean["traversal"]["summary"]
+    connected = {(p["source"], p["target"]) for p in m.dirty["traversal"]["pairs"] if p.get("path")}
+    new_paths = [
+        p for p in m.clean["traversal"]["pairs"] if p.get("path") and (p["source"], p["target"]) not in connected
     ]
-    path = max(paths, key=lambda p: len(p["path"]), default=None)
+    path = max(new_paths, key=lambda p: len(p["path"]), default=None)
     slide = deck.slide(
-        "Обходы графа: BFS, DFS, кратчайшие пути",
-        "Берём 8 ключевых концептов как стартовые вершины и 10 пар концептов из разных частей предметной области. "
-        "В грязном графе связаны только 2 пары из 10 — остальные в разных компонентах, в основном из-за языкового "
-        "разрыва. В чистом связаны все 10. BFS на 2 шага теперь достаёт узлы из другого языка, а доля шумовых "
-        "узлов среди достигнутых — по оценке судьи.",
+        "Обходы и покрытие предметной области",
+        "Стартуем BFS из ключевых понятий и ищем пути между 10 парами понятий из разных частей предметной области. "
+        "В грязном графе связаны 3 пары из 10, в чистом — 8. BFS на 2 шага в чистом графе на 84% состоит из вершин "
+        "другого языка: обход переходит из одной книги в другую. Покрытие 40 понятий выросло с 77,5% до 92,5% по "
+        "названиям и с 57,5% до 65% по векторам вершин. Шум в окрестностях понятий низкий в обоих графах.",
     )
     deck.stat(
         slide,
@@ -718,15 +867,15 @@ def main() -> None:
         1.55,
         f"{dt['pairs_connected']}/{dt['pairs_total']}",
         f"{ct['pairs_connected']}/{ct['pairs_total']}",
-        "пар концептов связаны путём@D",
+        "пар понятий связаны путём@D",
     )
     deck.stat(
         slide,
         4.75,
         1.55,
-        pct(dirty["coverage"]["domain_coverage"]),
-        pct(clean["coverage"]["domain_coverage"], 1),
-        "покрытие ПрО: найдено из 40 ключевых понятий@D",
+        pct(m.dirty["coverage"]["domain_coverage"], 1),
+        pct(m.clean["coverage"]["domain_coverage"], 1),
+        "покрытие ПрО: из 40 понятий@D",
     )
     deck.stat(
         slide,
@@ -734,21 +883,21 @@ def main() -> None:
         1.55,
         pct(dt["bfs2_other_language_share"]),
         pct(ct["bfs2_other_language_share"]),
-        "узлов другого языка в BFS-2@D",
+        "вершин другого языка в BFS-2@D",
     )
     deck.table(
         slide,
         [
-            ["Обход от 8 ключевых концептов", "грязный", "чистый"],
+            ["Обход от ключевых понятий, в среднем", "грязный", "чистый"],
+            ["BFS-1 / BFS-2 / BFS-3, вершин@D", bfs_triple(dt), bfs_triple(ct)],
+            ["Ключевых понятий в BFS-2@D", num(dt["bfs2_mean_concepts"], 1), num(ct["bfs2_mean_concepts"], 1)],
+            ["Шумовых вершин в BFS-2@D", pct(dt["bfs2_noise_share"], 1), pct(ct["bfs2_noise_share"], 1)],
             [
-                "BFS-1 / BFS-2 / BFS-3, узлов в среднем@D",
-                bfs_triple(dt),
-                bfs_triple(ct),
+                "Покрытие ПрО по векторам вершин@D",
+                pct(m.dirty["coverage"]["vector_coverage"], 1),
+                pct(m.clean["coverage"]["vector_coverage"], 1),
             ],
-            ["Концептов ПрО в BFS-2@D", num(dt["bfs2_mean_concepts"], 1), num(ct["bfs2_mean_concepts"], 1)],
-            ["Шумовых узлов в BFS-2 (судья)@H", pct(dt["bfs2_noise_share"], 1), pct(ct["bfs2_noise_share"], 1)],
-            ["DFS: достижимо узлов@D", num(dt["dfs_mean_reached"], 0), num(ct["dfs_mean_reached"], 0)],
-            ["Средняя длина пути@D", num(dt["pairs_mean_length"] or 0, 1), num(ct["pairs_mean_length"] or 0, 1)],
+            ["DFS: достижимо вершин@D", num(dt["dfs_mean_reached"], 0), num(ct["dfs_mean_reached"], 0)],
         ],
         0.6,
         3.65,
@@ -756,78 +905,191 @@ def main() -> None:
         size=14,
     )
     if path:
-        deck.text(slide, "Пример пути в чистом графе@D", 0.6, 6.15, 6.0, 0.4, size=13, bold=True, color=MUTED)
+        deck.text(slide, "Новый путь в чистом графе@D", 0.6, 6.15, 6.0, 0.4, size=13, bold=True, color=MUTED)
         deck.text(slide, "  →  ".join(path["path"]), 0.6, 6.5, 12.1, 0.5, size=14)
 
-    ju_d, ju_c = dirty["judge_units"], clean["judge_units"]
-    jn_d, jn_c = dirty["judge_nodes"], clean["judge_nodes"]
-    du_d, du_c = dirty["duplicates"], clean["duplicates"]
+
+def examples(items: list[str], limit: int) -> list[str]:
+    return [item for item in items if 1 < len(item) <= 26][:limit]
+
+
+def quality_slide(deck: Deck, m: Metrics) -> None:
+    dn, cn = m.dirty["noise"], m.clean["noise"]
+    dc, cc = m.dirty["coreference"], m.clean["coreference"]
     slide = deck.slide(
-        "LLM-as-a-judge (gpt-4.1)",
-        "Судья — модель сильнее экстрактора. Он оценивал каждый текстовый фрагмент вместе с извлечёнными из него "
-        "сущностями и связями, отдельно размечал все вершины как основные, второстепенные или шум и подтверждал "
-        "кандидатов в дубликаты, найденных по близости эмбеддингов названий.",
+        "Шум, корреференции, формулы",
+        "Шум — пять регулярных правил и проверка по словарю по всем вершинам. В грязном графе шум — опечатки OCR и "
+        "номера страниц. В чистом его доля выше, но это другой шум: 23 из 32 — переменные формул вроде σ_LH, потому "
+        "что формулы приходят в модель целиком. Корреференции: дубликаты по леммам и эмбеддингам названий; "
+        "вершин-местоимений GraphRAG не создаёт ни в одном графе. Дубликатов в чистом больше — модель пишет одно "
+        "понятие в ед. и мн. числе. Формулы: обозначения формулы ищем в вершине и в окне обхода 2 × 3 — ни одна "
+        "формула не собирается целиком ни в одном графе.",
     )
     deck.table(
         slide,
         [
-            ["Критерий", "грязный", "чистый"],
-            ["Полнота по тексту (1–5)@L", num(ju_d["completeness_mean"]), num(ju_c["completeness_mean"])],
+            ["Показатель", "грязный", "чистый"],
             [
-                "Покрытие понятий фрагмента (1–5)@L",
-                num(ju_d["domain_coverage_mean"]),
-                num(ju_c["domain_coverage_mean"]),
+                "Шумовые вершины@D",
+                f"{dn['noise_vertices']} ({pct(dn['noise_share'], 1)})",
+                f"{cn['noise_vertices']} ({pct(cn['noise_share'], 1)})",
             ],
             [
-                "Целостность формул и таблиц (1–5)@L",
-                num(ju_d["formula_table_integrity_mean"]),
-                num(ju_c["formula_table_integrity_mean"]),
+                "  из них переменные формул@D",
+                str(dn["by_rule"].get("formula_variable", 0)),
+                str(cn["by_rule"].get("formula_variable", 0)),
             ],
-            ["Противоречия тексту, шт.@L", str(ju_d["contradictions_total"]), str(ju_c["contradictions_total"])],
             [
-                "Шумовые сущности во фрагментах@L",
-                pct(ju_d["noise_entities_share"], 1),
-                pct(ju_c["noise_entities_share"], 1),
+                "  опечатки и неизвестные слова@D",
+                str(dn["by_rule"].get("unknown_word", 0)),
+                str(cn["by_rule"].get("unknown_word", 0)),
             ],
-            ["Шумовые вершины графа@L", pct(jn_d["noise_share"], 1), pct(jn_c["noise_share"], 1)],
-            ["Корреференции: дубликаты вершин@H", str(du_d["confirmed"]), str(du_c["confirmed"])],
-            ["  из них межъязыковые@H", str(du_d["confirmed_cross_language"]), str(du_c["confirmed_cross_language"])],
+            [
+                "  числа и единицы@D",
+                str(dn["by_rule"].get("number_or_unit", 0)),
+                str(cn["by_rule"].get("number_or_unit", 0)),
+            ],
+            [
+                "Вершин в группах дубликатов по леммам@D",
+                str(dc["lemma_duplicate_vertices"]),
+                str(cc["lemma_duplicate_vertices"]),
+            ],
+            [
+                "Пар-дубликатов по эмбеддингам@D",
+                str(dc["embedding_duplicate_pairs"]),
+                str(cc["embedding_duplicate_pairs"]),
+            ],
+            ["Вершин-местоимений (BFS-3)@D", str(dc["pronoun_vertices_lifted"]), str(cc["pronoun_vertices_lifted"])],
+            [
+                "Формулы: целиком в вершине или окне@D",
+                f"0 из {m.dirty['integrity']['formulas_evaluated']}",
+                f"0 из {m.clean['integrity']['formulas_evaluated']}",
+            ],
         ],
         0.6,
-        1.55,
-        [5.4, 1.9, 1.9],
-        size=15,
+        1.4,
+        [5.0, 1.75, 1.75],
+        size=13,
     )
-    deck.card(slide, 10.15, 1.55, 2.6, 3.9)
-    deck.text(slide, "Шум грязного графа@L", 10.4, 1.75, 2.2, 0.4, size=13, bold=True, color=MUTED)
-    examples = [n for n in NOISE_SHOWCASE if n in dirty["noise_examples"]][:8]
-    deck.text(slide, examples, 10.4, 2.2, 2.2, 3.2, size=11, spacing=3)
+    deck.card(slide, 9.4, 1.4, 3.35, 5.3)
+    deck.text(slide, "Шум грязного@D", 9.65, 1.55, 3.0, 0.4, size=13, bold=True, color=DIRTY)
+    dirty_noise = [n for n in dn["examples"] if not n.isdigit() and "_" not in n]
+    deck.text(slide, examples(dirty_noise, 5), 9.65, 1.95, 3.0, 1.8, size=11, spacing=2)
+    deck.text(slide, "Шум чистого@D", 9.65, 3.75, 3.0, 0.4, size=13, bold=True, color=CLEAN)
+    variables = examples([n for n in cn["examples"] if "_" in n], 2)
+    words = examples([n for n in cn["examples"] if "_" not in n and len(n) > 3], 3)
+    deck.text(slide, variables + words, 9.65, 4.15, 3.0, 1.0, size=11, spacing=2)
+    deck.text(slide, "Дубликаты чистого@D", 9.65, 5.35, 3.0, 0.4, size=13, bold=True, color=CLEAN)
+    deck.text(slide, examples(cc["lemma_examples"], 3), 9.65, 5.75, 3.0, 1.0, size=11, spacing=2)
 
+
+def consistency_slide(deck: Deck, m: Metrics) -> None:
+    d, c = m.dirty["consistency"], m.clean["consistency"]
+    slide = deck.slide(
+        "Непротиворечивость: контекст из графа → судья",
+        "Для 120 вершин каждого графа собираем окно BFS-2: соседей, их описания и связи, плюс фрагмент текста, где "
+        "название вершины встречается чаще всего. gpt-4.1 отвечает: определён ли термин полностью и сколько "
+        "утверждений противоречат тексту. Готовых метрик судья не видит. В чистом графе вершин с противоречиями "
+        "меньше, но разница в пределах погрешности: при 120 вершинах стандартная ошибка около 6 п. п. Типичная "
+        "ошибка в обоих графах — модель-экстрактор обобщает частное утверждение текста.",
+    )
+    deck.stat(
+        slide,
+        0.6,
+        1.55,
+        pct(d["vertices_with_contradictions_share"], 1),
+        pct(c["vertices_with_contradictions_share"], 1),
+        "вершин с противоречиями@H",
+    )
+    deck.stat(
+        slide,
+        4.75,
+        1.55,
+        pct(d["fully_defined_share"], 1),
+        pct(c["fully_defined_share"], 1),
+        "терминов определены полностью@H",
+    )
+    deck.stat(slide, 8.9, 1.55, str(d["contradictions_total"]), str(c["contradictions_total"]), "противоречий всего@H")
+    deck.code(
+        slide,
+        [
+            "context = vertex + window(graph, vertex, depth=2, breadth=3) + relations + source_fragment(vertex)",
+            'gpt-4.1 → {"definition": "full|partial|none", "contradictions": n}   '
+            "  противоречие ≠ «во фрагменте не сказано»",
+        ],
+        3.65,
+    )
+    deck.card(slide, 0.6, 4.75, 12.1, 1.8)
+    deck.text(slide, "Примеры ответов судьи", 0.85, 4.9, 11.5, 0.4, size=13, bold=True, color=MUTED)
+    deck.text(
+        slide,
+        [
+            "грязный, NIOBIUM STEEL: вершина говорит, что Nb-сталь измельчает зерно динамической рекристаллизацией, "
+            "а текст — что в Nb-стали она почти невозможна",
+            "чистый, V: вершина преувеличивает влияние ванадия на рекристаллизацию; связь V с дисперсионным "
+            "упрочнением передана верно",
+        ],
+        0.85,
+        5.3,
+        11.6,
+        1.2,
+        size=13,
+        spacing=4,
+    )
+
+
+def conclusions_slide(deck: Deck, m: Metrics) -> None:
     slide = deck.slide(
         "Выводы",
-        "Главное: предобработка сделала из двух изолированных графов один. Без неё русская часть — отдельный остров, "
-        "а обход графа не может пройти из одного учебника в другой. Ограничения: глоссарий составлен вручную под "
-        "этот корпус; один прогон GraphRAG без повторов; судья — одна модель. Следующий шаг — RAG на сохранённых "
-        "чанках и векторах.",
+        "Главное: предобработка сделала из двух изолированных частей один граф — обход переходит из английской книги "
+        "в русскую, покрытие предметной области и связанность пар понятий выросли. Этапы предобработки хороши на "
+        "эталоне. Не решено: дубликаты в ед. и мн. числе и вершины-обозначения из формул; формулы GraphRAG не "
+        "сохраняет. Ограничения: ручной глоссарий, один прогон GraphRAG, судья — одна модель, эталон — 4 страницы. "
+        "Следующий шаг — RAG на сохранённых чанках и векторах.",
     )
     deck.background(slide, FIGURES / "clean_graph_background.png")
     deck.text(
         slide,
         [
-            "Chunking по структуре почти перестал рвать предложения и не режет формулы и таблицы.",
-            "Очистка убрала почти весь шум, сохранив все числа, формулы и таблицы содержательной части.",
-            "Нормализация терминов «английский канон первым» связала английскую и русскую части графа.",
-            "Чистый граф связнее: компонент меньше, циклов больше, все пары концептов достижимы.",
-            "Не решено: дубликаты вида ед./мн. число остались — нужна лемматизация сущностей.",
-            "Ограничения: ручной глоссарий, один прогон, один судья. Дальше — RAG на чанках и векторах.",
+            "Очистка на эталоне: CER 9,7% → 0,2%, удалено 13 из 13 нужных блоков и ни одного лишнего.",
+            "Нормализация «английский канон первым» дала 23 общих термина двух книг; эталон 7/7 и 10/10.",
+            "Chunking после очистки: 3% границ режут предложение вместо 100%, формулы и таблицы целы; MRR 0,59 → 0,77.",
+            "Граф: 8 из 10 пар понятий связаны вместо 3, покрытие ПрО 92,5% вместо 77,5%, полнота 61% вместо 54%.",
+            "Хуже: дубликаты ед./мн. числа и вершины-обозначения формул — нужна склейка вершин после извлечения.",
+            "Формулы и таблица не сохраняются ни в одном графе: это ограничение GraphRAG, а не предобработки.",
         ],
         0.6,
         1.6,
         12.0,
-        4.5,
+        4.8,
         size=16,
         spacing=12,
     )
+
+
+SLIDES = (
+    title_slide,
+    experiment_slide,
+    cleaning_slide,
+    normalization_slide,
+    chunking_slide,
+    tokens_vectors_slide,
+    graphs_slide,
+    summary_slide,
+    structure_slide,
+    traversal_slide,
+    quality_slide,
+    consistency_slide,
+    conclusions_slide,
+)
+
+
+def main() -> None:
+    target = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "results" / "presentation.pptx"
+    metrics = Metrics.load_all()
+    deck = Deck()
+    for build in SLIDES:
+        build(deck, metrics)
     deck.save(target)
     print(target)
 

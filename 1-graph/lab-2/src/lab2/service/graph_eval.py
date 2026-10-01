@@ -10,6 +10,8 @@ import pandas as pd
 import yaml
 from pydantic import BaseModel
 
+RU_BOOK = frozenset({"ru", "both"})
+
 
 class EvaluationConfig(BaseModel):
     duplicate_similarity: float
@@ -122,6 +124,7 @@ def structure_metrics(graph: nx.Graph) -> dict[str, object]:
         "nodes_en": langs.get("en", 0),
         "nodes_ru": langs.get("ru", 0),
         "nodes_both_languages": langs.get("both", 0),
+        "ru_nodes_in_largest_component": sum(1 for n in largest if graph.nodes[n]["lang"] == "ru"),
         "edges_en_ru": cross,
         "edges_touching_bilingual_nodes": touches_both,
         "components_mixing_languages": mixed_components,
@@ -172,9 +175,7 @@ def traversal(graph: nx.Graph, config: EvaluationConfig, labels: dict[str, str])
             entry[f"bfs{depth}_reached"] = len(reached)
             entry[f"bfs{depth}_noise"] = sum(1 for n in reached if labels.get(n) == "noise")
             entry[f"bfs{depth}_concepts"] = len(reached & concept_nodes)
-            entry[f"bfs{depth}_other_language"] = sum(
-                1 for n in reached if graph.nodes[n]["lang"] not in (graph.nodes[node]["lang"], "both")
-            )
+            entry[f"bfs{depth}_ru_book"] = sum(1 for n in reached if graph.nodes[n]["lang"] in RU_BOOK)
         tree = nx.dfs_tree(graph, node)
         depth_map = nx.single_source_shortest_path_length(tree, node)
         entry["dfs_reached"] = tree.number_of_nodes() - 1
@@ -202,6 +203,7 @@ def traversal(graph: nx.Graph, config: EvaluationConfig, labels: dict[str, str])
     summary: dict[str, object] = {
         "seeds_resolved": len(resolved_seeds),
         "pairs_total": len(pairs),
+        "pairs_resolved": sum(1 for p in pairs if p["source_node"] and p["target_node"]),
         "pairs_connected": len(found_pairs),
         "pairs_mean_length": round(statistics.fmean([p["length"] for p in found_pairs]), 3) if found_pairs else None,
     }
@@ -213,8 +215,8 @@ def traversal(graph: nx.Graph, config: EvaluationConfig, labels: dict[str, str])
             sum(s[f"bfs{depth}_concepts"] for s in resolved_seeds) / max(len(resolved_seeds), 1), 2
         )
         summary[f"bfs{depth}_noise_share"] = round(noise / max(reached, 1), 4)
-        summary[f"bfs{depth}_other_language_share"] = round(
-            sum(s[f"bfs{depth}_other_language"] for s in resolved_seeds) / max(reached, 1), 4
+        summary[f"bfs{depth}_ru_book_share"] = round(
+            sum(s[f"bfs{depth}_ru_book"] for s in resolved_seeds) / max(reached, 1), 4
         )
     summary["dfs_mean_reached"] = (
         round(statistics.fmean([s["dfs_reached"] for s in resolved_seeds]), 2) if resolved_seeds else None

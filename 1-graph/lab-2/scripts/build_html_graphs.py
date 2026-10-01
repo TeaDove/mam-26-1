@@ -10,7 +10,7 @@ GRAPHS = ROOT / "results" / "graphs"
 LANGUAGE_COLORS = {"en": "#4a3aa7", "ru": "#eda100", "both": "#1baf7a", "unknown": "#a3a29c"}
 LANGUAGE_NAMES = {"en": "английский текст", "ru": "русский текст", "both": "оба текста", "unknown": "неизвестно"}
 TITLES = {
-    "dirty": "Грязный граф: текст MinerU как есть",
+    "dirty": "Грязный граф: текст MinerU без списка литературы",
     "clean": "Чистый граф: после предобработки",
 }
 

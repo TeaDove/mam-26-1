@@ -1,6 +1,6 @@
 from enum import StrEnum
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class BlockKind(StrEnum):
@@ -169,3 +169,126 @@ class RetrievalMetrics(BaseModel):
     hit_at_5: float
     mrr: float
     ndcg_at_10: float
+
+
+class GraphSummary(BaseModel):
+    vertices: int
+    edges: int
+    input_tokens: int
+
+
+class InputStats(BaseModel):
+    text_units: int
+    input_tokens: int
+    vertices_per_1k_tokens: float
+    noise_vertices_per_1k_tokens: float
+
+
+class GraphStructure(BaseModel):
+    nodes: int
+    edges: int
+    connected_components: int
+    largest_component_share: float
+    isolated_nodes: int
+    bridges: int
+    articulation_points: int
+    cyclomatic_number: int
+    degree_mean: float
+    degree_max: int
+    leaves: int
+    nodes_ru: int
+    nodes_both_languages: int
+    edges_en_ru: int
+    edges_touching_bilingual_nodes: int
+    ru_nodes_in_largest_component: int
+    nodes_by_type: dict[str, int]
+    edges_by_type_pair: dict[str, int]
+
+
+class Completeness(BaseModel):
+    reference_terms: int
+    covered_semantic: int
+    covered_semantic_share: float
+
+
+class Consistency(BaseModel):
+    checked_vertices: int
+    fully_defined_share: float
+    contradictions_total: int
+    vertices_with_contradictions_share: float
+
+
+class Coreference(BaseModel):
+    lemma_duplicate_groups: int
+    lemma_duplicate_vertices: int
+    embedding_duplicate_pairs: int
+    pronoun_vertices_lifted: int
+    lemma_examples: list[str]
+
+
+class NoiseReport(BaseModel):
+    vertices: int
+    noise_vertices: int
+    noise_share: float
+    by_rule: dict[str, int]
+    examples: list[str]
+
+
+class Integrity(BaseModel):
+    formulas: int
+    formulas_evaluated: int
+    formulas_in_vertex: int
+    formulas_in_window: int
+    formula_mean_window_share: float
+    tables_evaluated: int
+    tables_broken: int
+    table_best_window_share: list[float]
+
+
+class Coverage(BaseModel):
+    concepts_total: int
+    concepts_found: int
+    domain_coverage: float
+    vector_coverage: float
+
+
+class TraversalSummary(BaseModel):
+    seeds_resolved: int
+    pairs_total: int
+    pairs_resolved: int
+    pairs_connected: int
+    bfs1_mean_reached: float
+    bfs2_mean_reached: float
+    bfs3_mean_reached: float
+    bfs2_mean_concepts: float
+    bfs2_noise_share: float
+    bfs2_ru_book_share: float
+    dfs_mean_reached: float
+
+
+class PathPair(BaseModel):
+    source: str
+    target: str
+    path: list[str] | None = None
+
+
+class Traversal(BaseModel):
+    summary: TraversalSummary
+    pairs: list[PathPair]
+
+
+class GraphReport(BaseModel):
+    source: InputStats = Field(alias="input")
+    structure: GraphStructure
+    completeness: Completeness
+    consistency: Consistency
+    coreference: Coreference
+    noise: NoiseReport
+    integrity: Integrity
+    coverage: Coverage
+    traversal: Traversal
+
+
+class GraphComparison(BaseModel):
+    dirty: GraphReport
+    clean: GraphReport

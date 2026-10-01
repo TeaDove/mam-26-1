@@ -8,7 +8,7 @@ from lab2.api.stages import _source_fragment
 from lab2.dto.models import Chunk
 from lab2.service.corpus import strip_bibliography, token_windows
 from lab2.service.graph_criteria import formula_atoms, integrity, noise_labels, source_vocabulary, table_atoms
-from lab2.service.graph_eval import load_graph
+from lab2.service.graph_eval import EvaluationConfig, load_graph, structure_metrics, traversal
 from lab2.service.lemmatization import Lemmatizer
 from lab2.service.normalization import Glossary, Normalizer
 from lab2.service.retrieval import Query, RankedQuery
@@ -145,3 +145,27 @@ def test_source_fragment_matches_inflected_russian_names() -> None:
     texts = {"a": "про прокатку", "b": "ускоренное охлаждение и ускоренного охлаждения", "c": "УОВТ"}
     assert _source_fragment("УСКОРЕННОЕ ОХЛАЖДЕНИЕ", ["a", "c", "b"], texts) == texts["b"]
     assert _source_fragment("УО", ["c", "a", "d"], texts | {"d": "КП и УО"}) == "КП и УО"
+
+
+def test_traversal_counts_russian_book_vertices() -> None:
+    graph = nx.Graph()
+    for name, lang in (("A", "both"), ("B", "en"), ("C", "ru"), ("D", "ru")):
+        graph.add_node(name, lang=lang, type="concept")
+    graph.add_edges_from([("A", "B"), ("A", "C")])
+    config = EvaluationConfig.model_validate(
+        {
+            "duplicate_similarity": 0.9,
+            "term_similarity": 0.8,
+            "terms_en": 1,
+            "terms_ru": 1,
+            "consistency_sample": 1,
+            "concepts": {"a": ["A"], "d": ["D"]},
+            "seeds": ["a"],
+            "pairs": [["a", "d"]],
+            "bfs_depths": [1],
+        }
+    )
+    summary = traversal(graph, config, {})["summary"]
+    assert summary["bfs1_ru_book_share"] == 0.5
+    assert (summary["pairs_resolved"], summary["pairs_connected"]) == (1, 0)
+    assert structure_metrics(graph)["ru_nodes_in_largest_component"] == 1

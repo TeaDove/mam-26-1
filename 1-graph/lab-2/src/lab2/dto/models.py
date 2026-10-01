@@ -241,6 +241,8 @@ class Integrity(BaseModel):
     formulas_in_window: int
     formula_mean_window_share: float
     tables_evaluated: int
+    tables_in_vertex: int
+    tables_in_window: int
     tables_broken: int
     table_best_window_share: list[float]
 

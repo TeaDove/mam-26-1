@@ -409,7 +409,8 @@ def experiment_slide(deck: Deck, m: Metrics) -> None:
         "Оба графа строит GraphRAG с одинаковыми настройками: gpt-4o-mini, bge-m3, те же промпты и типы сущностей. "
         "Грязный граф — из markdown MinerU, из которого убран только список литературы, иначе сравнение нечестное. "
         "Чистый — после пяти этапов. Очистка и нормализация работают с книгой целиком, chunking режет уже чистый "
-        "текст. Качество этапов меряем на четырёх страницах, выверенных вручную по PDF. Критерии сравнения графов "
+        "текст. Качество этапов меряем на четырёх страницах, которые автор выверил вручную по PDF; проверка эталона "
+        "командой ещё не завершена, поэтому цифры на эталоне предварительные. Критерии сравнения графов "
         "считаем обходами графа; LLM — только для непротиворечивости.",
     )
     deck.arrow_row(slide, "Грязный", ["MinerU", "− литература", "GraphRAG@L"], 1.8, DIRTY)
@@ -425,8 +426,8 @@ def experiment_slide(deck: Deck, m: Metrics) -> None:
         slide,
         [
             "Одинаковые модели, промпты и типы сущностей; оба учебника → один граф.",
-            "Эталон: 4 страницы (по 2 из книги), выверенные по PDF, — CER/WER, точность и полнота удалений, "
-            "точность приведения величин и терминов.",
+            "Эталон: 4 страницы (по 2 из книги), выверенные автором по PDF, проверка командой не завершена — "
+            "CER/WER, точность и полнота удалений, точность приведения величин и терминов.",
             f"Графы: грязный {dirty.vertices} вершин / {dirty.edges} рёбер, "
             f"чистый {clean.vertices} / {clean.edges}; у каждой вершины вектор bge-m3.",
         ],
@@ -457,9 +458,10 @@ def cleaning_slide(deck: Deck, m: Metrics) -> None:
         slide,
         8.9,
         1.55,
+        "—",
         f"{gold.blocks_deleted_correctly}/{gold.blocks_should_delete}",
-        pct(gold.deletion_f1),
-        "удалено нужных блоков → F1 удалений@D",
+        f"удалено нужных блоков, лишних {gold.blocks_deleted - gold.blocks_deleted_correctly}; "
+        f"F1 {pct(gold.deletion_f1)}@D",
     )
     deck.table(
         slide,
@@ -722,6 +724,11 @@ def graphs_slide(deck: Deck, m: Metrics) -> None:
         )
 
 
+def integrity_tables(report: GraphReport) -> str:
+    whole = report.integrity.tables_in_vertex + report.integrity.tables_in_window
+    return f"{whole} из {report.integrity.tables_evaluated}"
+
+
 def pairs_text(summary: TraversalSummary) -> str:
     return f"{summary.pairs_connected} из {summary.pairs_resolved}"
 
@@ -761,9 +768,9 @@ def summary_rows(m: Metrics) -> list[list[str]]:
         ],
         [
             "Целостность формул и таблиц@D",
-            "доля обозначений формулы в лучшем окне 2 × 3",
-            pct(d.integrity.formula_mean_window_share, 1),
-            pct(c.integrity.formula_mean_window_share, 1),
+            "доля обозначений формулы в лучшем окне 2 × 3; таблиц целы",
+            f"{pct(d.integrity.formula_mean_window_share, 1)}; {integrity_tables(d)}",
+            f"{pct(c.integrity.formula_mean_window_share, 1)}; {integrity_tables(c)}",
             "формулы рвутся в обоих",
         ],
         [
@@ -967,6 +974,7 @@ def quality_rows(m: Metrics) -> list[list[str]]:
             f"{m.clean.integrity.formulas_in_vertex + m.clean.integrity.formulas_in_window} из "
             f"{m.clean.integrity.formulas_evaluated}",
         ],
+        ["Таблица: целиком в вершине или окне@D", integrity_tables(m.dirty), integrity_tables(m.clean)],
     ]
 
 
@@ -985,7 +993,7 @@ def quality_slide(deck: Deck, m: Metrics) -> None:
     )
     deck.table(slide, quality_rows(m), 0.6, 1.4, [5.0, 1.75, 1.75], size=13)
     deck.card(slide, 9.4, 1.4, 3.35, 5.3)
-    deck.text(slide, "Не из текста и словаря, грязный@D", 9.65, 1.55, 3.0, 0.4, size=13, bold=True, color=DIRTY)
+    deck.text(slide, "Не из текста, грязный@D", 9.65, 1.55, 3.0, 0.4, size=13, bold=True, color=DIRTY)
     dirty_noise = [n for n in dn.examples if not n.isdigit() and "_" not in n and len(n) > 3]
     deck.text(slide, examples(dirty_noise, 5), 9.65, 1.95, 3.0, 1.8, size=11, spacing=2)
     deck.text(slide, "Шум чистого@D", 9.65, 3.75, 3.0, 0.4, size=13, bold=True, color=CLEAN)

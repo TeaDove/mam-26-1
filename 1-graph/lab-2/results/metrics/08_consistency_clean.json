@@ -164,14 +164,14 @@
   {
     "node": "FINISHING TEMPERATURE",
     "definition": "partial",
-    "contradictions": 0,
-    "comment": "The vertex captures the importance of finishing temperature and its effect on properties, but lacks detail on its specific role in controlled rolling and its interaction with composition and draughting as described in the source."
+    "contradictions": 1,
+    "comment": "The vertex overstates the generality of finishing temperature as the point where material is 'finalized' and omits the specific, nuanced relationship between finishing temperature, deformation in the two-phase region, and transition temperature as described in the source; it also does not mention th"
   },
   {
     "node": "TWO-PHASE REGION",
     "definition": "partial",
     "contradictions": 0,
-    "comment": "The vertex correctly identifies the two-phase region as involving austenite and ferrite and its significance in processing, but lacks detail on its temperature range and specific role in controlled rolling as described in the source."
+    "comment": "The vertex correctly identifies the two-phase region as the γ–α (austenite–ferrite) region and its significance in deformation processes, but lacks detail on microstructural evolution and the resulting mixed structure as described in the source."
   },
   {
     "node": "NON-RECRYSTALLIZATION REGION",
@@ -397,9 +397,9 @@
   },
   {
     "node": "ACICULAR FERRITE",
-    "definition": "none",
-    "contradictions": 1,
-    "comment": "The vertex and neighbourhood describe acicular ferrite and its properties, but the source fragment does not define or mention acicular ferrite at all."
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex describes acicular ferrite's morphology and mechanical benefits, but the source only mentions its production by controlled rolling and suitable composition, not its detailed structure or properties."
   },
   {
     "node": "TEMPERING",
@@ -495,7 +495,7 @@
     "node": "NIOBIUM STEEL",
     "definition": "partial",
     "contradictions": 1,
-    "comment": "The vertex overstates the generality of niobium steel and its toughness, and does not specify that the source only discusses low-pearlite, low-alloy niobium steels for plate, with strength improvement as the main effect."
+    "comment": "The vertex overstates the unique role of niobium and controlled rolling, and omits key mechanisms and microstructural details from the source."
   },
   {
     "node": "GRAIN STRUCTURE",

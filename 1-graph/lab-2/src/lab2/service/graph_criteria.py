@@ -62,6 +62,11 @@ PRONOUNS = frozenset(
     }
 )
 UNIT = r"(?:°\s*[CС]|%|мм|mm|µm|μm|MPa|МПа|N/mm2|Н/мм2|N/mm²|Н/мм²|kg/mm2|K|с|s|min|ч|h)"
+LATEX_ENVIRONMENT = re.compile(r"\\(?:begin|end)\{[^}]*\}(?:\{[^}]*\})?|\\tag\{[^}]*\}")
+LATEX_FORMATTING = re.compile(r"\\(?:mathrm|mathbf|text|bf|rm|boldsymbol|scriptstyle|operatorname)(?![A-Za-z])")
+SYMBOL_TOKEN = re.compile(r"[^\W_]+(?:\.\d+)?")
+CHEMICAL_TYPES = frozenset({"alloying element"})
+NAMED_TYPES = frozenset({"person", "organization", "geo"})
 NOISE_RULES: dict[str, re.Pattern[str]] = {
     "punctuation_only": re.compile(r"^[\W_]+$"),
     "formula_variable": re.compile(r"^(?:[A-Za-zΑ-Ωα-ω]{1,2}\d*|.*[\\$^{}].*|[A-Za-zΑ-Ωα-ω]_\S+)$"),
@@ -118,14 +123,16 @@ def _english_lemma(word: str) -> str:
     return english()(word)[0].lemma_.lower()
 
 
-def noise_labels(name: str, vocabulary: frozenset[str], allowed: frozenset[str]) -> list[str]:
+def noise_labels(name: str, vocabulary: frozenset[str], allowed: frozenset[str], entity_type: str = "") -> list[str]:
     stripped = name.strip()
     if stripped.casefold() in allowed:
         return []
     labels = [rule for rule, pattern in NOISE_RULES.items() if pattern.search(stripped)]
+    if entity_type in CHEMICAL_TYPES and labels == ["formula_variable"]:
+        labels = []
     if "broken_word" not in labels and _hyphen_split(stripped, vocabulary):
         labels.append("broken_word")
-    if _unknown_word(stripped, vocabulary, allowed):
+    if entity_type not in NAMED_TYPES and _unknown_word(stripped, vocabulary, allowed):
         labels.append("unknown_word")
     return labels
 
@@ -150,6 +157,8 @@ def _unknown_word(name: str, vocabulary: frozenset[str], allowed: frozenset[str]
             return True
         if lowered in vocabulary or lowered in allowed or lemma_key(lowered) in vocabulary:
             continue
+        if len(lowered) >= 7 and any(known.startswith(lowered[:-2]) for known in vocabulary):
+            continue
         lang = "ru" if re.search(r"[а-я]", lowered) else "en"
         if zipf_frequency(lowered, lang) == 0 and zipf_frequency(lemma_key(lowered), lang) == 0:
             return True
@@ -163,23 +172,33 @@ def source_vocabulary(texts: list[str]) -> frozenset[str]:
     return frozenset(words | {lemma_key(word) for word in words})
 
 
+def symbol_tokens(text: str) -> set[str]:
+    flat = LATEX_ENVIRONMENT.sub(" ", text)
+    for name, symbol in GREEK.items():
+        flat = re.sub(rf"\\{name}(?![A-Za-z])", symbol, flat)
+        flat = re.sub(rf"(?<![A-Za-z]){name}(?![A-Za-z])", symbol, flat, flags=re.I)
+    flat = LATEX_FORMATTING.sub("", flat)
+    flat = re.sub(r"\s*([_^{])\s*", r"\1", flat)
+    flat = re.sub(r"\\[A-Za-z]+", " ", flat)
+    flat = re.sub(r"(?<=\d),(?=\d)", ".", flat)
+    flat = re.sub(r"[{}_$^\\]", "", flat)
+    return {token.lower() for token in SYMBOL_TOKEN.findall(flat)}
+
+
 def formula_atoms(latex: str) -> set[str]:
-    text = latex.strip("$").replace("\\left", "").replace("\\right", "")
-    text = re.sub(r"\\tag\{\d+\}", " ", text)
-    for name, symbol in GREEK.items():
-        text = re.sub(rf"\\{name}\b", symbol, text)
-    text = re.sub(r"\\(?:mathrm|mathbf|text|bf|rm|boldsymbol|scriptstyle|quad|begin|end|array)\b", " ", text)
-    text = re.sub(r"\{r l\}|[{}\s]", "", text)
-    atoms = set(re.findall(r"[A-Za-zΑ-Ωα-ω]_?[A-Za-z0-9]{0,4}", text.replace("_", "")))
-    atoms |= set(re.findall(r"\d+(?:\.\d+)?", text))
-    return {a.lower() for a in atoms if len(a) > 1 or a in {"d"}}
+    return {token for token in symbol_tokens(latex) if _significant(token)}
 
 
-def plain_atoms(text: str) -> str:
-    flat = text
-    for name, symbol in GREEK.items():
-        flat = re.sub(rf"\\{name}\b|\b{name}\b", symbol, flat, flags=re.I)
-    return re.sub(r"[\s{}_$\\]", "", flat).lower()
+def table_atoms(cells: list[str]) -> set[str]:
+    return {token for cell in cells for token in symbol_tokens(cell) if _significant(token) and token[0].isdigit()}
+
+
+def _significant(token: str) -> bool:
+    if re.fullmatch(r"\d+(?:\.\d+)?", token):
+        return len(token) >= 3
+    if re.search(r"[а-яё]", token) or (token.isalpha() and token.isascii() and len(token) > 4):
+        return False
+    return len(token) >= 2
 
 
 def formulas_and_tables(source: str) -> tuple[list[str], list[list[str]]]:
@@ -197,12 +216,12 @@ class IntegrityResult:
 
 
 def integrity(graph: nx.Graph, items: list[set[str]], threshold: float = 0.6) -> IntegrityResult:
-    vertex_texts = {n: plain_atoms(f"{n} {graph.nodes[n].get('description', '')}") for n in graph.nodes}
-    window_texts = {n: plain_atoms(window_text(graph, window(graph, n))) for n in graph.nodes}
+    vertex_texts = {n: symbol_tokens(f"{n} {graph.nodes[n].get('description', '')}") for n in graph.nodes}
+    window_texts = {n: symbol_tokens(window_text(graph, window(graph, n))) for n in graph.nodes}
     in_vertex = in_window = broken = 0
     shares: list[float] = []
     for atoms in items:
-        if not atoms:
+        if len(atoms) < 2:
             continue
         best_vertex = max((_share(atoms, t) for t in vertex_texts.values()), default=0.0)
         best_window = max((_share(atoms, t) for t in window_texts.values()), default=0.0)
@@ -216,8 +235,8 @@ def integrity(graph: nx.Graph, items: list[set[str]], threshold: float = 0.6) ->
     return IntegrityResult(in_vertex=in_vertex, in_window=in_window, broken=broken, best_share=shares)
 
 
-def _share(atoms: set[str], text: str) -> float:
-    return sum(1 for atom in atoms if atom in text) / len(atoms)
+def _share(atoms: set[str], tokens: set[str]) -> float:
+    return len(atoms & tokens) / len(atoms)
 
 
 def lift_pronouns(graph: nx.Graph, depth: int = 3) -> tuple[int, int]:

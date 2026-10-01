@@ -1,12 +1,13 @@
 from itertools import pairwise
 from pathlib import Path
 
+import networkx as nx
 import pandas as pd
 
 from lab2.api.stages import _source_fragment
 from lab2.dto.models import Chunk
 from lab2.service.corpus import strip_bibliography, token_windows
-from lab2.service.graph_criteria import noise_labels, source_vocabulary
+from lab2.service.graph_criteria import formula_atoms, integrity, noise_labels, source_vocabulary, table_atoms
 from lab2.service.graph_eval import load_graph
 from lab2.service.lemmatization import Lemmatizer
 from lab2.service.normalization import Glossary, Normalizer
@@ -109,3 +110,38 @@ def test_source_fragment_prefers_unit_mentioning_node() -> None:
     assert _source_fragment("FERRITE", ["a", "c", "b"], texts) == "ferrite and more ferrite"
     assert _source_fragment("PEARLITE", ["a", "b"], texts) == "about austenite"
     assert _source_fragment("PEARLITE", [], texts) == ""
+
+
+def test_formula_atoms_ignore_latex_commands() -> None:
+    atoms = formula_atoms(
+        r"\\begin{array}{r l} \\sigma_{y} = \\sigma_{0} + k_{y} d^{-1/2} \\exp(850) \\tag{3} \\end{array}"
+    )
+    assert atoms == {"σy", "σ0", "ky", "850"}
+    assert table_atoms(["1000–1100", "0,5", "6"]) == {"1000", "1100", "0.5"}
+    assert formula_atoms(r"\\sigma_ {\\mathrm{SH}} + Q _ {\\mathrm{dif}} \\text{где} T_{3cpm}") == {
+        "σsh",
+        "qdif",
+        "t3cpm",
+    }
+
+
+def test_integrity_matches_whole_tokens() -> None:
+    graph = nx.Graph()
+    graph.add_node("SIGMA_Y", description="yield stress σ_y grows with k_y")
+    graph.add_node("OTHER", description="σ0y and sky are not the same symbols")
+    graph.add_edge("SIGMA_Y", "OTHER", description="")
+    result = integrity(graph, [{"σy", "ky"}, {"σ0", "ky"}])
+    assert (result.in_vertex, result.in_window, result.broken) == (1, 0, 1)
+
+
+def test_noise_respects_entity_type() -> None:
+    assert noise_labels("C", frozenset(), frozenset(), "alloying element") == []
+    assert noise_labels("C", frozenset(), frozenset(), "process parameter") == ["formula_variable"]
+    assert noise_labels("AZOVSTAL", frozenset(), frozenset(), "organization") == []
+    assert noise_labels("КАРБОНИТРИД", frozenset({"карбонитридным"}), frozenset()) == []
+
+
+def test_source_fragment_matches_inflected_russian_names() -> None:
+    texts = {"a": "про прокатку", "b": "ускоренное охлаждение и ускоренного охлаждения", "c": "УОВТ"}
+    assert _source_fragment("УСКОРЕННОЕ ОХЛАЖДЕНИЕ", ["a", "c", "b"], texts) == texts["b"]
+    assert _source_fragment("УО", ["c", "a", "d"], texts | {"d": "КП и УО"}) == "КП и УО"

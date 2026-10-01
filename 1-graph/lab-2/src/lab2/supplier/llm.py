@@ -8,6 +8,8 @@ from pathlib import Path
 import httpx
 from pydantic import BaseModel
 
+from lab2.util.text import count_tokens
+
 log = logging.getLogger(__name__)
 
 
@@ -39,6 +41,9 @@ class LlmClient:
     retries: int = 6
     prompt_tokens: int = 0
     completion_tokens: int = 0
+    calls: int = 0
+    cached_calls: int = 0
+    request_tokens: int = 0
 
     def complete_json(self, system: str, user: str) -> dict:
         body = {
@@ -52,7 +57,10 @@ class LlmClient:
             raise ValueError(f"request of {len(payload)} bytes exceeds the proxy limit")
         key = hashlib.sha256(payload).hexdigest()
         cached = self.cache_dir / f"{key}.json"
+        self.calls += 1
+        self.request_tokens += count_tokens(system) + count_tokens(user)
         if cached.exists():
+            self.cached_calls += 1
             return json.loads(cached.read_text(encoding="utf-8"))
         completion = self._post(payload)
         self.prompt_tokens += completion.usage.prompt_tokens

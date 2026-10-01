@@ -97,9 +97,9 @@
   },
   {
     "node": "TENSILE STRENGTH",
-    "definition": "full",
+    "definition": "partial",
     "contradictions": 0,
-    "comment": "The definition of tensile strength and its relation to deformation and microstructure is complete and consistent with the source."
+    "comment": "The definition of tensile strength is accurate and clear, but the source fragment does not explicitly define or discuss tensile strength, so the connection to the source is incomplete."
   },
   {
     "node": "TRANSITION TEMPERATURE",
@@ -325,9 +325,9 @@
   },
   {
     "node": "CARBON STEEL",
-    "definition": "none",
-    "contradictions": 1,
-    "comment": "The vertex provides a general definition of carbon steel, but the source fragment does not define or discuss carbon steel as a term or concept."
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex gives a general definition of carbon steel, but the source fragment does not provide a direct definition or detailed discussion of carbon steel itself."
   },
   {
     "node": "NORMALIZATION",
@@ -363,7 +363,7 @@
     "node": "DUCTILE-TO-BRITTLE TRANSITION TEMPERATURE",
     "definition": "partial",
     "contradictions": 0,
-    "comment": "The vertex and neighbourhood correctly state that ductile-to-brittle transition temperature is influenced by grain size and is important for steel, but do not fully define the term or its measurement as described in the source."
+    "comment": "The vertex and neighbourhood capture the general concept and some influencing factors (grain size, effective grain size, microstructure), but omit key details such as the quantitative relationships, the role of strengthening mechanisms, and the complex interplay of microstructural features described"
   },
   {
     "node": "STRENGTH",
@@ -435,7 +435,7 @@
     "node": "GRAIN STRUCTURE",
     "definition": "partial",
     "contradictions": 0,
-    "comment": "The vertex provides a general and accurate description of grain structure and its importance, but lacks specific details from the source about the mechanisms of grain refinement and its relation to controlled rolling in steel."
+    "comment": "The vertex gives a general definition of grain structure, but the source fragment focuses on recrystallized grain size and mixed grain structures in steel, lacking a full, explicit definition."
   },
   {
     "node": "REVERSIBILITY OF GRAIN GROWTH",
@@ -501,7 +501,7 @@
     "node": "MECHANICAL PROPERTIES",
     "definition": "partial",
     "contradictions": 0,
-    "comment": "The vertex and neighbourhood provide a general and mostly correct definition of mechanical properties and their dependence on microstructure, but lack detail on specific properties and their relation to controlled rolling as described in the source."
+    "comment": "The vertex and neighbourhood provide a general and mostly correct definition of mechanical properties and their relation to microstructure, but lack specific details from the source fragment about how controlled rolling and microstructural changes quantitatively affect mechanical properties."
   },
   {
     "node": "3600 STAND",
@@ -649,9 +649,9 @@
   },
   {
     "node": "NB",
-    "definition": "partial",
-    "contradictions": 0,
-    "comment": "The vertex and neighbourhood capture Nb's role in grain refinement and precipitation hardening, but omit details such as its effect on delaying γ-recrystallization, extending the non-recrystallization region, and the specific mechanism of strain-induced Nb(C,N) precipitates."
+    "definition": "none",
+    "contradictions": 1,
+    "comment": "The source fragment does not mention niobium (Nb) or its effects, so the vertex and its neighbourhood are not supported and one contradiction exists."
   },
   {
     "node": "COARSE Γ-GRAIN STRUCTURE",

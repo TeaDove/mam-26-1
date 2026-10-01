@@ -1,6 +1,7 @@
 import gzip
 import logging
 import re
+import statistics
 import sys
 from collections import Counter
 from collections.abc import Callable
@@ -38,6 +39,7 @@ from lab2.service.graph_criteria import (
     rule_counts,
     sample_nodes,
     source_vocabulary,
+    table_atoms,
     text_terms,
     window,
 )
@@ -334,9 +336,19 @@ def _api_key(settings: Settings) -> str:
 
 
 def _source_fragment(node: str, units: list[str], unit_text: dict[str, str]) -> str:
-    name = node.casefold()
-    best = max(units, key=lambda unit: str(unit_text.get(unit, "")).casefold().count(name), default="")
+    best = max(units, key=lambda unit: _mentions(node, str(unit_text.get(unit, ""))), default="")
     return str(unit_text.get(best, ""))
+
+
+def _mentions(name: str, text: str) -> int:
+    total = 0
+    for word in re.findall(r"[^\W_]+", name):
+        if len(word) < 4:
+            total += len(re.findall(rf"(?<![^\W_]){re.escape(word)}(?![^\W_])", text))
+        else:
+            stem = word[: max(4, len(word) - 2)]
+            total += len(re.findall(rf"(?<![^\W_]){re.escape(stem)}", text, re.I))
+    return total
 
 
 def _cosine(left: np.ndarray, right: np.ndarray) -> np.ndarray:
@@ -384,7 +396,7 @@ def run_compare(settings: Settings) -> None:
         input_tokens = int(bundle.artifacts.text_units["n_tokens"].sum())
         names = [str(n) for n in graph.nodes]
         title_vectors = embedder.embed(names)
-        noise = {n: noise_labels(n, vocabulary, allowed) for n in names}
+        noise = {n: noise_labels(n, vocabulary, allowed, graph.nodes[n]["type"]) for n in names}
 
         term_similarity = _cosine(term_vectors, title_vectors)
         keys = {n: f" {lemma_key(n)} " for n in names}
@@ -398,8 +410,7 @@ def run_compare(settings: Settings) -> None:
 
         formulas, tables = formulas_and_tables(sources[arm])
         formula_result = integrity(graph, [formula_atoms(f) for f in formulas])
-        table_atoms = [{re.sub(r"\D", "", c) for c in cells if re.sub(r"\D", "", c)} for cells in tables]
-        table_result = integrity(graph, table_atoms)
+        table_result = integrity(graph, [table_atoms(cells) for cells in tables])
 
         concept_similarity = _cosine(concept_vectors, title_vectors).max(axis=1)
         name_coverage = coverage(graph, config)
@@ -458,10 +469,13 @@ def run_compare(settings: Settings) -> None:
             },
             "integrity": {
                 "formulas": len(formulas),
+                "formulas_evaluated": formula_result.in_vertex + formula_result.in_window + formula_result.broken,
                 "formulas_in_vertex": formula_result.in_vertex,
                 "formulas_in_window": formula_result.in_window,
                 "formulas_broken": formula_result.broken,
+                "formula_mean_window_share": round(statistics.fmean(formula_result.best_share or [0.0]), 3),
                 "tables": len(tables),
+                "tables_evaluated": table_result.in_vertex + table_result.in_window + table_result.broken,
                 "tables_in_vertex": table_result.in_vertex,
                 "tables_in_window": table_result.in_window,
                 "tables_broken": table_result.broken,
@@ -491,8 +505,11 @@ def run_compare(settings: Settings) -> None:
         log.info("%s evaluated; judge tokens: %d in, %d out", arm, client.prompt_tokens, client.completion_tokens)
     report["judge_usage"] = {
         "model": settings.judge_model,
-        "prompt_tokens": client.prompt_tokens,
-        "completion_tokens": client.completion_tokens,
+        "calls": client.calls,
+        "cached_calls": client.cached_calls,
+        "request_tokens_all_calls": client.request_tokens,
+        "new_calls_prompt_tokens": client.prompt_tokens,
+        "new_calls_completion_tokens": client.completion_tokens,
     }
     write_json(settings.metrics_dir / "08_graph_comparison.json", report)
     log.info("comparison written")

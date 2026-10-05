@@ -1,0 +1,4 @@
+controlled rolling (контролируемой прокатка)
+reversing mill (реверсивный стан)
+rolling pass (проход)
+reduction (обжатие)

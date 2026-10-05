@@ -1,4 +1,6 @@
 Nb (niobium)
 α-matrix (ferrite matrix)
 γ-grain (austenite grain)
+α-grain (ferrite grain)
+γ–α-region (austenite–ferrite region)
 C–Mn–Nb fine-grained steel

@@ -14,6 +14,14 @@ Files per page:
 - `*.raw.md` — the page segment of the raw MinerU markdown (bibliography removed), between page-number lines;
 - `*.gold.md` — the page as it should read after cleaning: only content, verified against the PDF page image;
 - `*.units.txt` — quantities as they should read after normalization, one per line;
-- `*.terms.txt` — terms as they should read after normalization (canonical English term first, lemmatized original in brackets), one per line.
+- `*.terms.txt` — terms as they should read after normalization (canonical English term first, lemmatized
+  original in brackets), one per line.
 
-The gold text was written by the author from the PDF page images; an independent check by the team is pending.
+Rules for the lists:
+
+- `units.txt` holds quantities with units of measure; percentages are not included, the pipeline does not
+  normalize them;
+- `terms.txt` holds every glossary term on the page in the form the page-level normalization should produce;
+  terms inside table cells are not listed, because tables are masked during normalization.
+
+The gold text was written by the author from the PDF page images and checked by the team on 2026-10-05.

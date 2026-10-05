@@ -310,26 +310,6 @@ class Deck:
         shape.shadow.inherit = False
         self.text(slide, lines, 0.85, top + 0.15, 11.7, height - 0.2, size=12, color=INK, font="Consolas", spacing=2)
 
-    def legend(self, slide: object, left: float, top: float) -> None:
-        box = slide.shapes.add_textbox(Inches(left), Inches(top), Inches(12.1), Inches(0.4))
-        frame = box.text_frame
-        frame.word_wrap = True
-        frame.margin_left = frame.margin_right = frame.margin_top = frame.margin_bottom = 0
-        paragraph = frame.paragraphs[0]
-        paragraph.alignment = PP_ALIGN.LEFT
-        run = paragraph.add_run()
-        run.text = "Метки у метрик:"
-        run.font.size = Pt(14)
-        run.font.color.rgb = MUTED
-        run.font.name = FONT
-        for kind, meaning in (("L", "LLM"), ("D", "алгоритм"), ("H", "гибрид: обход графа + LLM")):
-            add_mark(paragraph, kind, 18)
-            run = paragraph.add_run()
-            run.text = f" — {meaning}   "
-            run.font.size = Pt(14)
-            run.font.color.rgb = MUTED
-            run.font.name = FONT
-
     def background(self, slide: object, path: Path) -> None:
         picture = slide.shapes.add_picture(str(path), 0, 0, width=self.prs.slide_width, height=self.prs.slide_height)
         tree = slide.shapes._spTree
@@ -447,7 +427,6 @@ def experiment_slide(deck: Deck, m: Metrics) -> None:
         size=16,
         color=MUTED,
     )
-    deck.legend(slide, 0.6, 6.3)
 
 
 def cleaning_slide(deck: Deck, m: Metrics) -> None:
@@ -816,7 +795,7 @@ def summary_rows(m: Metrics) -> list[list[str]]:
 def summary_slide(deck: Deck, m: Metrics) -> None:
     d, c = m.dirty, m.clean
     slide = deck.slide(
-        "8 критериев задания и обходы: грязный → чистый",
+        "Обходы: грязный → чистый",
         "Все восемь критериев задания посчитаны по графу, последней строкой — обходы. Семь критериев — алгоритмом, "
         "без LLM; непротиворечивость — гибрид: контекст собирает обход BFS-2, оценивает gpt-4.1. Лучше стали полнота, "
         "связность, покрытие и обходы: предобработка приблизила русскую книгу к английской. Хуже — корреференции "
@@ -837,7 +816,6 @@ def summary_slide(deck: Deck, m: Metrics) -> None:
         value_columns=(2, 3),
         row_height=0.5,
     )
-    deck.legend(slide, 0.6, 6.65)
 
 
 def structure_slide(deck: Deck, m: Metrics) -> None:

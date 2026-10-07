@@ -115,5 +115,5 @@ uv run pytest && uv run ruff check . && uv run ruff format --check .
 | `results/metrics/` | Метрики этапов (`01`–`06`), сводка графов (`07`), сравнение и ответы судьи (`08`) |
 | `results/graphs/` | Оба графа с атрибутами вершин (тип, книга, вектор bge-m3) в `.graphml.gz` и интерактивные HTML |
 | `results/figures/` | Картинки графов |
-| `results/*.md` | Отчёты по предобработке и по критериям, глоссарий |
+| `results/*.md` | Отчёты по предобработке и по критериям, глоссарий, спич к презентации |
 | `results/presentation.pptx` | Презентация |

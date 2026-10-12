@@ -10,7 +10,10 @@ from lab2.dto.models import (
     Consistency,
     ConsistencyVerdict,
     Coreference,
+    CoreferenceSweepPoint,
     Coverage,
+    CycleProfile,
+    FormulaSubgraph,
     GraphReport,
     GraphStructure,
     InputStats,
@@ -20,9 +23,13 @@ from lab2.dto.models import (
 )
 from lab2.service.graph_criteria import (
     IntegrityResult,
+    cross_script,
+    cycle_profile,
     duplicate_groups,
     embedding_duplicates,
     formula_atoms,
+    formula_subgraph,
+    formula_vertex,
     formulas_and_tables,
     integrity,
     lemma_key,
@@ -42,7 +49,7 @@ from lab2.supplier.llm import LlmClient
 @dataclass
 class ComparisonContext:
     config: EvaluationConfig
-    client: LlmClient
+    client: LlmClient | None
     embedder: EmbeddingClient
     terms: list[str]
     term_vectors: np.ndarray
@@ -50,20 +57,28 @@ class ComparisonContext:
     vocabulary: frozenset[str]
     allowed: frozenset[str]
 
-    def evaluate(self, bundle: GraphBundle, source: str) -> tuple[GraphReport, list[ConsistencyVerdict]]:
+    def evaluate(
+        self, bundle: GraphBundle, source: str, saved: list[ConsistencyVerdict] | None = None
+    ) -> tuple[GraphReport, list[ConsistencyVerdict]]:
         graph = bundle.graph
         names = [str(n) for n in graph.nodes]
         vectors = self.embedder.embed(names)
-        noise = {n: noise_labels(n, self.vocabulary, self.allowed, graph.nodes[n]["type"]) for n in names}
+        formulas = {n for n in names if formula_vertex(n, graph.nodes[n]["type"], self.allowed)}
+        main = [i for i, n in enumerate(names) if n not in formulas]
+        main_names = [names[i] for i in main]
+        noise = {n: noise_labels(n, self.vocabulary, self.allowed, graph.nodes[n]["type"]) for n in main_names}
         noisy = [n for n, labels in noise.items() if labels]
         domain = self.coverage(graph, vectors)
-        verdicts = self.consistency_verdicts(bundle, list(domain.resolved.values()))
+        verdicts = saved if saved is not None else self.consistency_verdicts(bundle, list(domain.resolved.values()))
+        tokens = int(bundle.artifacts.text_units["n_tokens"].sum())
         report = GraphReport(
             input_stats=input_stats(bundle, len(names), len(noisy)),
             structure=GraphStructure.model_validate(structure_metrics(graph)),
+            cycles=CycleProfile.model_validate(cycle_profile(graph, tokens)),
+            formulas=FormulaSubgraph.model_validate(formula_subgraph(graph, formulas)),
             completeness=self.completeness(names, vectors),
-            noise=noise_report(names, noise),
-            coreference=coreference(graph, names, vectors, self.config.duplicate_similarity),
+            noise=noise_report(main_names, noise),
+            coreference=self.coreference(graph, main_names, vectors[main]),
             integrity=integrity_report(graph, source),
             consistency=consistency_summary(verdicts),
             coverage=domain,
@@ -96,7 +111,40 @@ class ComparisonContext:
             vector_coverage=round(len(found) / max(len(concepts), 1), 4),
         )
 
+    def coreference(self, graph: nx.Graph, names: list[str], vectors: np.ndarray) -> Coreference:
+        groups = duplicate_groups(names)
+        floor = min([*self.config.coreference_sweep, self.config.translation_similarity])
+        candidates = embedding_duplicates(names, vectors, floor)
+        same = [p for p in candidates if not cross_script(p[0], p[1]) and p[2] >= self.config.duplicate_similarity]
+        translation = [p for p in candidates if cross_script(p[0], p[1]) and p[2] >= self.config.translation_similarity]
+        pairs = same + translation
+        cross = [p for p in pairs if {graph.nodes[p[0]]["lang"], graph.nodes[p[1]]["lang"]} == {"en", "ru"}]
+        lifted, subtree = lift_pronouns(graph)
+        return Coreference(
+            lemma_duplicate_groups=len(groups),
+            lemma_duplicate_vertices=sum(len(g) for g in groups),
+            embedding_duplicate_pairs=len(pairs),
+            same_language_pairs=len(same),
+            translation_pairs=len(translation),
+            cross_language_pairs=len(cross),
+            pronoun_vertices_lifted=lifted,
+            pronoun_subtree_vertices=subtree,
+            lemma_examples=[" = ".join(g) for g in groups[:15]],
+            embedding_examples=[f"{a} = {b} ({s})" for a, b, s in same[:15]],
+            translation_examples=[f"{a} = {b} ({s})" for a, b, s in translation[:15]],
+            threshold_sweep=[
+                CoreferenceSweepPoint(
+                    threshold=t,
+                    same_language_pairs=sum(1 for p in candidates if not cross_script(p[0], p[1]) and p[2] >= t),
+                    translation_pairs=sum(1 for p in candidates if cross_script(p[0], p[1]) and p[2] >= t),
+                )
+                for t in self.config.coreference_sweep
+            ],
+        )
+
     def consistency_verdicts(self, bundle: GraphBundle, must: list[str]) -> list[ConsistencyVerdict]:
+        if self.client is None:
+            raise ValueError("consistency needs an LLM client or saved verdicts")
         graph = bundle.graph
         entity_units = {
             row.title: list(row.text_unit_ids)
@@ -134,23 +182,6 @@ def noise_report(names: list[str], noise: dict[str, list[str]]) -> NoiseReport:
         noise_share=round(len(noisy) / max(len(names), 1), 4),
         by_rule=rule_counts(noise),
         examples=sorted(noisy, key=str)[:40],
-    )
-
-
-def coreference(graph: nx.Graph, names: list[str], vectors: np.ndarray, threshold: float) -> Coreference:
-    groups = duplicate_groups(names)
-    pairs = embedding_duplicates(names, vectors, threshold)
-    cross = [p for p in pairs if {graph.nodes[p[0]]["lang"], graph.nodes[p[1]]["lang"]} == {"en", "ru"}]
-    lifted, subtree = lift_pronouns(graph)
-    return Coreference(
-        lemma_duplicate_groups=len(groups),
-        lemma_duplicate_vertices=sum(len(g) for g in groups),
-        embedding_duplicate_pairs=len(pairs),
-        cross_language_pairs=len(cross),
-        pronoun_vertices_lifted=lifted,
-        pronoun_subtree_vertices=subtree,
-        lemma_examples=[" = ".join(g) for g in groups[:15]],
-        embedding_examples=[f"{a} = {b} ({s})" for a, b, s in pairs[:15]],
     )
 
 

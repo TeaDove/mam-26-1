@@ -186,7 +186,7 @@
       "text_units": 28,
       "input_tokens": 31823,
       "vertices_per_1k_tokens": 10.18,
-      "noise_vertices_per_1k_tokens": 0.53
+      "noise_vertices_per_1k_tokens": 0.35
     },
     "structure": {
       "nodes": 324,
@@ -300,6 +300,45 @@
         "FERRITE (7)"
       ]
     },
+    "cycles": {
+      "cycles": 74,
+      "cycles_per_100_vertices": 22.8,
+      "cycles_per_1k_tokens": 2.33,
+      "largest_component_cycles": 59,
+      "edges_per_connected_vertex": 1.21,
+      "cycle_lengths": {
+        "3": 38,
+        "4": 24,
+        "5": 7,
+        "6": 4,
+        "7": 1
+      },
+      "triangles": 41,
+      "top_hub": "CONTROLLED ROLLING",
+      "top_hub_degree": 48,
+      "cycles_through_top_hub": 41,
+      "cross_book_cycles": 29
+    },
+    "formulas": {
+      "vertices": 8,
+      "internal_edges": 0,
+      "boundary_edges": 5,
+      "components": 8,
+      "isolated": 3,
+      "anchors": [
+        "УОВТ (5)"
+      ],
+      "examples": [
+        "G_B",
+        "G_H",
+        "R_CRIT",
+        "S",
+        "Г_Θ",
+        "Т_0",
+        "Т_3_{CPM}",
+        "Т_С"
+      ]
+    },
     "completeness": {
       "reference_terms": 180,
       "covered_exact": 102,
@@ -335,30 +374,23 @@
       ]
     },
     "noise": {
-      "vertices": 324,
-      "noise_vertices": 17,
-      "noise_share": 0.0525,
+      "vertices": 316,
+      "noise_vertices": 11,
+      "noise_share": 0.0348,
       "by_rule": {
         "unknown_word": 7,
-        "formula_variable": 6,
-        "number_or_unit": 5
+        "number_or_unit": 4
       },
       "examples": [
         "100",
         "110",
         "111",
         "554",
-        "C",
-        "G_B",
-        "G_H",
-        "R_CRIT",
-        "S",
         "STRIAN-INDUCED PRECIPITATION",
         "UNDERCOOLING",
         "UNIALAXIAL YIELD STRESS",
         "ПЛАТОФОРМА",
         "ПРОСОЧИВАНИЕ",
-        "Т_3_{CPM}",
         "ТЕПЕРАТУРНЫЕ ПАРАМЕТРЫ",
         "УШП"
       ]
@@ -366,8 +398,10 @@
     "coreference": {
       "lemma_duplicate_groups": 7,
       "lemma_duplicate_vertices": 14,
-      "embedding_duplicate_pairs": 8,
-      "cross_language_pairs": 1,
+      "embedding_duplicate_pairs": 11,
+      "same_language_pairs": 6,
+      "translation_pairs": 5,
+      "cross_language_pairs": 4,
       "pronoun_vertices_lifted": 0,
       "pronoun_subtree_vertices": 0,
       "lemma_examples": [
@@ -381,13 +415,55 @@
       ],
       "embedding_examples": [
         "ТЕПЕРАТУРНЫЕ ПАРАМЕТРЫ = ТЕМПЕРАТУРНЫЕ ПАРАМЕТРЫ (0.976)",
-        "НОРМАЛИЗАЦИЯ = NORMALIZATION (0.944)",
-        "ТЕМПЕРАТУРА = TEMPERATURE (0.941)",
         "КП+УО+КП = КП+УО (0.942)",
         "GRAIN REFINING = GRAIN REFINEMENT (0.932)",
         "NORMALIZATION = NORMALIZING (0.95)",
         "SUBGRAINS = SUB-GRAINS (0.931)",
         "STRAIN-INDUCED PRECIPITATION = STRIAN-INDUCED PRECIPITATION (0.925)"
+      ],
+      "translation_examples": [
+        "ДЕФОРМАЦИЯ = DEFORMATION (0.853)",
+        "НОРМАЛИЗАЦИЯ = NORMALIZATION (0.944)",
+        "НОРМАЛИЗАЦИЯ = NORMALIZING (0.909)",
+        "КАРБОН = CARBON (0.901)",
+        "ТЕМПЕРАТУРА = TEMPERATURE (0.941)"
+      ],
+      "threshold_sweep": [
+        {
+          "threshold": 0.95,
+          "same_language_pairs": 2,
+          "translation_pairs": 0
+        },
+        {
+          "threshold": 0.92,
+          "same_language_pairs": 6,
+          "translation_pairs": 2
+        },
+        {
+          "threshold": 0.9,
+          "same_language_pairs": 8,
+          "translation_pairs": 4
+        },
+        {
+          "threshold": 0.88,
+          "same_language_pairs": 12,
+          "translation_pairs": 4
+        },
+        {
+          "threshold": 0.85,
+          "same_language_pairs": 27,
+          "translation_pairs": 5
+        },
+        {
+          "threshold": 0.82,
+          "same_language_pairs": 58,
+          "translation_pairs": 8
+        },
+        {
+          "threshold": 0.8,
+          "same_language_pairs": 87,
+          "translation_pairs": 8
+        }
       ]
     },
     "integrity": {
@@ -477,11 +553,11 @@
         "bfs1_ru_book_share": 0.0833,
         "bfs2_mean_reached": 56.86,
         "bfs2_mean_concepts": 11.29,
-        "bfs2_noise_share": 0.0101,
+        "bfs2_noise_share": 0.005,
         "bfs2_ru_book_share": 0.0804,
         "bfs3_mean_reached": 95.57,
         "bfs3_mean_concepts": 15.29,
-        "bfs3_noise_share": 0.0179,
+        "bfs3_noise_share": 0.0075,
         "bfs3_ru_book_share": 0.1121,
         "dfs_mean_reached": 159.86
       },
@@ -493,11 +569,11 @@
           "bfs1_concepts": 13,
           "bfs1_ru_book": 3,
           "bfs2_reached": 124,
-          "bfs2_noise": 2,
+          "bfs2_noise": 1,
           "bfs2_concepts": 20,
           "bfs2_ru_book": 8,
           "bfs3_reached": 163,
-          "bfs3_noise": 2,
+          "bfs3_noise": 1,
           "bfs3_concepts": 23,
           "bfs3_ru_book": 12,
           "dfs_reached": 178,
@@ -510,11 +586,11 @@
           "bfs1_concepts": 4,
           "bfs1_ru_book": 2,
           "bfs2_reached": 84,
-          "bfs2_noise": 1,
+          "bfs2_noise": 0,
           "bfs2_concepts": 19,
           "bfs2_ru_book": 4,
           "bfs3_reached": 151,
-          "bfs3_noise": 2,
+          "bfs3_noise": 1,
           "bfs3_concepts": 22,
           "bfs3_ru_book": 10,
           "dfs_reached": 178,
@@ -531,7 +607,7 @@
           "bfs2_concepts": 18,
           "bfs2_ru_book": 8,
           "bfs3_reached": 144,
-          "bfs3_noise": 3,
+          "bfs3_noise": 2,
           "bfs3_concepts": 22,
           "bfs3_ru_book": 10,
           "dfs_reached": 178,
@@ -548,7 +624,7 @@
           "bfs2_concepts": 14,
           "bfs2_ru_book": 3,
           "bfs3_reached": 137,
-          "bfs3_noise": 2,
+          "bfs3_noise": 1,
           "bfs3_concepts": 21,
           "bfs3_ru_book": 8,
           "dfs_reached": 178,
@@ -582,7 +658,7 @@
           "bfs2_concepts": 3,
           "bfs2_ru_book": 8,
           "bfs3_reached": 29,
-          "bfs3_noise": 3,
+          "bfs3_noise": 0,
           "bfs3_concepts": 3,
           "bfs3_ru_book": 29,
           "dfs_reached": 51,
@@ -620,8 +696,8 @@
             "УО"
           ],
           "bidirectional_length": 2,
-          "shortest_ms": 0.003,
-          "bidirectional_ms": 0.002
+          "shortest_ms": 0.006,
+          "bidirectional_ms": 0.005
         },
         {
           "source": "recrystallization",
@@ -647,8 +723,8 @@
             "TOUGHNESS"
           ],
           "bidirectional_length": 3,
-          "shortest_ms": 0.003,
-          "bidirectional_ms": 0.003
+          "shortest_ms": 0.008,
+          "bidirectional_ms": 0.006
         },
         {
           "source": "austenite",
@@ -662,8 +738,8 @@
             "YIELD STRENGTH"
           ],
           "bidirectional_length": 2,
-          "shortest_ms": 0.002,
-          "bidirectional_ms": 0.002
+          "shortest_ms": 0.006,
+          "bidirectional_ms": 0.005
         },
         {
           "source": "grain refinement",
@@ -699,8 +775,8 @@
             "FINISH-ROLLING TEMPERATURE"
           ],
           "bidirectional_length": 2,
-          "shortest_ms": 0.003,
-          "bidirectional_ms": 0.003
+          "shortest_ms": 0.008,
+          "bidirectional_ms": 0.006
         },
         {
           "source": "precipitation",
@@ -725,8 +801,8 @@
             "УОВТ"
           ],
           "bidirectional_length": 2,
-          "shortest_ms": 0.003,
-          "bidirectional_ms": 0.002
+          "shortest_ms": 0.006,
+          "bidirectional_ms": 0.005
         },
         {
           "source": "ferrite",
@@ -747,7 +823,7 @@
       "text_units": 36,
       "input_tokens": 24893,
       "vertices_per_1k_tokens": 17.03,
-      "noise_vertices_per_1k_tokens": 1.29
+      "noise_vertices_per_1k_tokens": 0.4
     },
     "structure": {
       "nodes": 424,
@@ -865,6 +941,65 @@
         "DEFORMATION (10)"
       ]
     },
+    "cycles": {
+      "cycles": 97,
+      "cycles_per_100_vertices": 22.9,
+      "cycles_per_1k_tokens": 3.9,
+      "largest_component_cycles": 79,
+      "edges_per_connected_vertex": 1.21,
+      "cycle_lengths": {
+        "3": 42,
+        "4": 35,
+        "5": 14,
+        "6": 3,
+        "7": 1,
+        "8": 2
+      },
+      "triangles": 44,
+      "top_hub": "CONTROLLED ROLLING",
+      "top_hub_degree": 78,
+      "cycles_through_top_hub": 58,
+      "cross_book_cycles": 71
+    },
+    "formulas": {
+      "vertices": 23,
+      "internal_edges": 2,
+      "boundary_edges": 20,
+      "components": 21,
+      "isolated": 5,
+      "anchors": [
+        "YIELD STRESS (9)",
+        "TRANSITION TEMPERATURE (4)",
+        "Α-GRAIN SIZE (1)",
+        "Γ-GRAIN SIZE (1)",
+        "КП 3000 (1)"
+      ],
+      "examples": [
+        "B",
+        "D",
+        "DELTA_P",
+        "D_C",
+        "E",
+        "F_C",
+        "K_Y",
+        "N",
+        "N_S",
+        "N_{S}",
+        "SIGMA_D",
+        "S_{V}",
+        "T_R",
+        "T_RS",
+        "Σ",
+        "Σ_O",
+        "Σ_{DH}",
+        "Σ_{LH}",
+        "Σ_{PH}",
+        "Σ_{SH}",
+        "Σ_{SUB}",
+        "Σ_{TEXT}",
+        "ΣΕ"
+      ]
+    },
     "completeness": {
       "reference_terms": 180,
       "covered_exact": 113,
@@ -900,54 +1035,33 @@
       ]
     },
     "noise": {
-      "vertices": 424,
-      "noise_vertices": 32,
-      "noise_share": 0.0755,
+      "vertices": 401,
+      "noise_vertices": 10,
+      "noise_share": 0.0249,
       "by_rule": {
-        "formula_variable": 23,
         "unknown_word": 9,
-        "number_or_unit": 1
+        "latex_artifact": 1
       },
       "examples": [
-        "B",
         "BIMITE",
-        "D",
         "DEFORMATION IN THE RECRYSTALIZATION REGION",
         "DOUGLAS^2",
         "DUCILE-TO-BRITTLE TRANSITION TEMPERATURE",
-        "D_C",
-        "E",
-        "F_C",
         "GHGR",
-        "K_Y",
-        "N",
         "NON-RECRYSTALIZATION REGION",
-        "N_S",
-        "N_{S}",
         "RECRYSTALIZATION REGION",
-        "S",
-        "S_{V}",
         "TRANSAGGREGATIONAL FRACTURE",
-        "T_R",
-        "T_RS",
-        "Σ",
-        "Σ_O",
-        "Σ_{DH}",
-        "Σ_{LH}",
-        "Σ_{PH}",
-        "Σ_{SH}",
-        "Σ_{SUB}",
-        "Σ_{TEXT}",
-        "ΣΕ",
         "АКСЕЛЕРИРОВАННОЕ ОХЛАЖДЕНИЕ",
         "ГОМООГЕНИЗАЦИЯ"
       ]
     },
     "coreference": {
-      "lemma_duplicate_groups": 10,
-      "lemma_duplicate_vertices": 21,
+      "lemma_duplicate_groups": 9,
+      "lemma_duplicate_vertices": 19,
       "embedding_duplicate_pairs": 13,
-      "cross_language_pairs": 2,
+      "same_language_pairs": 11,
+      "translation_pairs": 2,
+      "cross_language_pairs": 3,
       "pronoun_vertices_lifted": 0,
       "pronoun_subtree_vertices": 0,
       "lemma_examples": [
@@ -957,25 +1071,63 @@
         "SOLUTE DRAG EFFECT = SOLUTE-DRAG EFFECT",
         "FINISH ROLLING = FINISH ROLLED",
         "FINISH ROLLING TEMPERATURE = FINISH-ROLLING TEMPERATURE",
-        "N_{S} = N_S",
         "C–MN STEEL = C-MN STEELS = C-MN STEEL",
         "HIGHS-STRENGTH STEEL = HIGH STRENGTH STEEL",
         "ПРОКАТ = ПРОКАТЫ"
       ],
       "embedding_examples": [
-        "LONGITUDINAL L DIRECTION = LONGITUDINAL DIRECTION (0.927)",
+        "LONGITUDINAL L DIRECTION = LONGITUDINAL DIRECTION (0.928)",
         "GRAIN REFINING = GRAIN REFINEMENT (0.932)",
-        "ТЕМПЕРАТУРА = TEMPERATURE (0.941)",
         "HIGH-TEMPERATURE ROLLING = HIGH-TEMPERATURE CONTROLLED ROLLING (0.953)",
         "RECRYSTALLIZATION REGION = RECRYSTALIZATION REGION (0.977)",
-        "NON-RECRYSTALIZATION REGION = NON-RECRYSTALLIZATION REGION (0.961)",
+        "NON-RECRYSTALIZATION REGION = NON-RECRYSTALLIZATION REGION (0.962)",
         "DEFORMATION IN NON-RECRYSTALLIZATION REGION = DEFORMATION IN THE NON-RECRYSTALLIZATION REGION (0.99)",
-        "S = Σ (0.926)",
         "NIOBIUM (NB) = NB (NIOBIUM) (0.921)",
         "FINISHING TEMPERATURE = TEMPERATURE IN FINISHING STAND (0.932)",
-        "TEMPERATURE ABOVE AR3 = AR3 TEMPERATURE (0.938)",
+        "TEMPERATURE ABOVE AR3 = AR3 TEMPERATURE (0.937)",
         "КП+УО+КП = КП+УО (0.942)",
         "C-MN STEELS = C-MN-NB STEELS (0.928)"
+      ],
+      "translation_examples": [
+        "STEEL = СТАЛЬ (0.856)",
+        "ТЕМПЕРАТУРА = TEMPERATURE (0.941)"
+      ],
+      "threshold_sweep": [
+        {
+          "threshold": 0.95,
+          "same_language_pairs": 4,
+          "translation_pairs": 0
+        },
+        {
+          "threshold": 0.92,
+          "same_language_pairs": 11,
+          "translation_pairs": 1
+        },
+        {
+          "threshold": 0.9,
+          "same_language_pairs": 20,
+          "translation_pairs": 1
+        },
+        {
+          "threshold": 0.88,
+          "same_language_pairs": 40,
+          "translation_pairs": 1
+        },
+        {
+          "threshold": 0.85,
+          "same_language_pairs": 73,
+          "translation_pairs": 2
+        },
+        {
+          "threshold": 0.82,
+          "same_language_pairs": 139,
+          "translation_pairs": 7
+        },
+        {
+          "threshold": 0.8,
+          "same_language_pairs": 195,
+          "translation_pairs": 8
+        }
       ]
     },
     "integrity": {
@@ -1065,11 +1217,11 @@
         "bfs1_ru_book_share": 0.3185,
         "bfs2_mean_reached": 90.38,
         "bfs2_mean_concepts": 14.25,
-        "bfs2_noise_share": 0.0207,
+        "bfs2_noise_share": 0.0111,
         "bfs2_ru_book_share": 0.195,
         "bfs3_mean_reached": 183.12,
         "bfs3_mean_concepts": 22.0,
-        "bfs3_noise_share": 0.0505,
+        "bfs3_noise_share": 0.0157,
         "bfs3_ru_book_share": 0.1461,
         "dfs_mean_reached": 245.25
       },
@@ -1081,11 +1233,11 @@
           "bfs1_concepts": 15,
           "bfs1_ru_book": 19,
           "bfs2_reached": 196,
-          "bfs2_noise": 8,
+          "bfs2_noise": 4,
           "bfs2_concepts": 26,
           "bfs2_ru_book": 30,
           "bfs3_reached": 263,
-          "bfs3_noise": 18,
+          "bfs3_noise": 4,
           "bfs3_concepts": 29,
           "bfs3_ru_book": 35,
           "dfs_reached": 279,
@@ -1102,7 +1254,7 @@
           "bfs2_concepts": 19,
           "bfs2_ru_book": 23,
           "bfs3_reached": 245,
-          "bfs3_noise": 17,
+          "bfs3_noise": 4,
           "bfs3_concepts": 27,
           "bfs3_ru_book": 31,
           "dfs_reached": 279,
@@ -1119,7 +1271,7 @@
           "bfs2_concepts": 19,
           "bfs2_ru_book": 23,
           "bfs3_reached": 226,
-          "bfs3_noise": 8,
+          "bfs3_noise": 4,
           "bfs3_concepts": 26,
           "bfs3_ru_book": 31,
           "dfs_reached": 279,
@@ -1136,7 +1288,7 @@
           "bfs2_concepts": 19,
           "bfs2_ru_book": 19,
           "bfs3_reached": 222,
-          "bfs3_noise": 8,
+          "bfs3_noise": 4,
           "bfs3_concepts": 27,
           "bfs3_ru_book": 30,
           "dfs_reached": 279,
@@ -1153,7 +1305,7 @@
           "bfs2_concepts": 7,
           "bfs2_ru_book": 7,
           "bfs3_reached": 151,
-          "bfs3_noise": 11,
+          "bfs3_noise": 2,
           "bfs3_concepts": 19,
           "bfs3_ru_book": 23,
           "dfs_reached": 279,
@@ -1170,7 +1322,7 @@
           "bfs2_concepts": 16,
           "bfs2_ru_book": 23,
           "bfs3_reached": 198,
-          "bfs3_noise": 8,
+          "bfs3_noise": 4,
           "bfs3_concepts": 26,
           "bfs3_ru_book": 30,
           "dfs_reached": 279,
@@ -1183,11 +1335,11 @@
           "bfs1_concepts": 0,
           "bfs1_ru_book": 5,
           "bfs2_reached": 9,
-          "bfs2_noise": 1,
+          "bfs2_noise": 0,
           "bfs2_concepts": 0,
           "bfs2_ru_book": 9,
           "bfs3_reached": 9,
-          "bfs3_noise": 1,
+          "bfs3_noise": 0,
           "bfs3_concepts": 0,
           "bfs3_ru_book": 9,
           "dfs_reached": 9,
@@ -1200,11 +1352,11 @@
           "bfs1_concepts": 2,
           "bfs1_ru_book": 2,
           "bfs2_reached": 33,
-          "bfs2_noise": 2,
+          "bfs2_noise": 0,
           "bfs2_concepts": 8,
           "bfs2_ru_book": 7,
           "bfs3_reached": 151,
-          "bfs3_noise": 3,
+          "bfs3_noise": 1,
           "bfs3_concepts": 22,
           "bfs3_ru_book": 25,
           "dfs_reached": 279,
@@ -1223,8 +1375,8 @@
             "ACCELERATED COOLING"
           ],
           "bidirectional_length": 1,
-          "shortest_ms": 0.003,
-          "bidirectional_ms": 0.002
+          "shortest_ms": 0.007,
+          "bidirectional_ms": 0.005
         },
         {
           "source": "recrystallization",
@@ -1239,8 +1391,8 @@
             "FINISHING STAND"
           ],
           "bidirectional_length": 3,
-          "shortest_ms": 0.003,
-          "bidirectional_ms": 0.003
+          "shortest_ms": 0.008,
+          "bidirectional_ms": 0.008
         },
         {
           "source": "niobium",
@@ -1255,8 +1407,8 @@
             "TOUGHNESS"
           ],
           "bidirectional_length": 3,
-          "shortest_ms": 0.004,
-          "bidirectional_ms": 0.003
+          "shortest_ms": 0.01,
+          "bidirectional_ms": 0.008
         },
         {
           "source": "austenite",
@@ -1271,8 +1423,8 @@
             "YIELD STRENGTH"
           ],
           "bidirectional_length": 3,
-          "shortest_ms": 0.003,
-          "bidirectional_ms": 0.002
+          "shortest_ms": 0.007,
+          "bidirectional_ms": 0.006
         },
         {
           "source": "grain refinement",
@@ -1288,8 +1440,8 @@
             "SLAB"
           ],
           "bidirectional_length": 4,
-          "shortest_ms": 0.003,
-          "bidirectional_ms": 0.004
+          "shortest_ms": 0.009,
+          "bidirectional_ms": 0.007
         },
         {
           "source": "deformation",
@@ -1304,8 +1456,8 @@
             "REVERSING MILL"
           ],
           "bidirectional_length": 3,
-          "shortest_ms": 0.002,
-          "bidirectional_ms": 0.002
+          "shortest_ms": 0.005,
+          "bidirectional_ms": 0.005
         },
         {
           "source": "ar3",
@@ -1319,8 +1471,8 @@
             "FINISH-ROLLING TEMPERATURE"
           ],
           "bidirectional_length": 2,
-          "shortest_ms": 0.002,
-          "bidirectional_ms": 0.001
+          "shortest_ms": 0.004,
+          "bidirectional_ms": 0.003
         },
         {
           "source": "precipitation",
@@ -1337,8 +1489,8 @@
             "GRAIN SIZE"
           ],
           "bidirectional_length": 5,
-          "shortest_ms": 0.004,
-          "bidirectional_ms": 0.004
+          "shortest_ms": 0.01,
+          "bidirectional_ms": 0.009
         },
         {
           "source": "controlled rolling",
@@ -1363,8 +1515,8 @@
             "HEAVY PLATE"
           ],
           "bidirectional_length": 2,
-          "shortest_ms": 0.003,
-          "bidirectional_ms": 0.002
+          "shortest_ms": 0.006,
+          "bidirectional_ms": 0.004
         }
       ]
     }

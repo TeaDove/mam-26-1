@@ -17,6 +17,7 @@ COMMANDS: dict[str, Callable[[Settings], None]] = {
     "export": stages.run_export,
     "graphs": stages.run_graphs,
     "compare": stages.run_compare,
+    "criteria": stages.run_criteria,
     "figures": stages.run_figures,
 }
 

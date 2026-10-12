@@ -1,4 +1,6 @@
 duplicate_similarity: 0.92
+translation_similarity: 0.85
+coreference_sweep: [0.95, 0.92, 0.9, 0.88, 0.85, 0.82, 0.8]
 term_similarity: 0.8
 terms_en: 120
 terms_ru: 60

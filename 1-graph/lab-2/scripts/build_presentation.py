@@ -742,17 +742,17 @@ def summary_rows(m: Metrics) -> list[list[str]]:
         ],
         [
             "Корреференции@D",
-            "вершин-дубликатов по леммам и cos ≥ 0,92; местоимений BFS-3",
-            f"{d.coreference.lemma_duplicate_vertices} / {d.coreference.pronoun_vertices_lifted}",
-            f"{c.coreference.lemma_duplicate_vertices} / {c.coreference.pronoun_vertices_lifted}",
-            "хуже: ед./мн. число",
+            "формы слова (леммы) / переводы RU–EN (cos ≥ 0,85); местоимений 0",
+            f"{d.coreference.lemma_duplicate_vertices} / {d.coreference.translation_pairs}",
+            f"{c.coreference.lemma_duplicate_vertices} / {c.coreference.translation_pairs}",
+            "переводы ↓, формы слова ↑",
         ],
         [
             "Шум@D",
-            "5 регулярных правил + словарь по всем вершинам",
+            "5 регулярных правил + словарь; формулы — в отдельный подграф",
             pct(d.noise.noise_share, 1),
             pct(c.noise.noise_share, 1),
-            "хуже: переменные формул",
+            "лучше",
         ],
         [
             "Целостность формул и таблиц@D",
@@ -766,7 +766,7 @@ def summary_rows(m: Metrics) -> list[list[str]]:
             "крупнейшая компонента; циклы E − V + C",
             f"{pct(d.structure.largest_component_share)}; {d.structure.cyclomatic_number}",
             f"{pct(c.structure.largest_component_share)}; {c.structure.cyclomatic_number}",
-            "связнее",
+            "связнее; циклов ∝ размеру",
         ],
         [
             "Покрытие ПрО@D",
@@ -798,9 +798,9 @@ def summary_slide(deck: Deck, m: Metrics) -> None:
         "Обходы: грязный → чистый",
         "Все восемь критериев задания посчитаны по графу, последней строкой — обходы. Семь критериев — алгоритмом, "
         "без LLM; непротиворечивость — гибрид: контекст собирает обход BFS-2, оценивает gpt-4.1. Лучше стали полнота, "
-        "связность, покрытие и обходы: предобработка приблизила русскую книгу к английской. Хуже — корреференции "
-        "(модель называет одно понятие в ед. и мн. числе) и шум: в чистом графе появились вершины-переменные формул, "
-        "потому что формулы приходят в модель целиком. Формулы не сохраняет ни один граф — это ограничение GraphRAG. "
+        "связность, покрытие, обходы и шум: вершины-формулы вынесены в отдельный подграф, без них шума меньше. "
+        "Дубликатов-переводов стало меньше, а дубликатов-форм слова больше — модель пишет одно понятие в ед. и мн. "
+        "числе. Формулы не сохраняет ни один граф — это ограничение GraphRAG. "
         "Рост покрытия отчасти по построению: 33 из 40 понятий — термины глоссария, которые нормализация вставляет в "
         "чистый текст. "
         f"Часть роста вершин — эффект более мелких чанков: {num(c.input_stats.vertices_per_1k_tokens, 1)} вершины на "
@@ -826,7 +826,11 @@ def structure_slide(deck: Deck, m: Metrics) -> None:
         f"Вершин стало {cs.nodes} вместо {ds.nodes}, но на 1000 токенов входа — {num(ci.vertices_per_1k_tokens, 1)} "
         f"против {num(di.vertices_per_1k_tokens, 1)}: чистый текст пришёл мелкими чанками, и модель извлекает из них "
         f"больше. Крупнейшая компонента выросла с {pct(ds.largest_component_share)} до "
-        f"{pct(cs.largest_component_share)} вершин, независимых циклов больше — появились альтернативные связи. "
+        f"{pct(cs.largest_component_share)} вершин. Независимых циклов больше ровно пропорционально размеру: "
+        f"{num(m.dirty.cycles.cycles_per_100_vertices, 1)} и {num(m.clean.cycles.cycles_per_100_vertices, 1)} на 100 "
+        f"вершин, рёбер на вершину {num(m.dirty.cycles.edges_per_connected_vertex)} в обоих — плотность не изменилась. "
+        f"Новые циклы сшивают книги: через вершины обеих книг их {m.dirty.cycles.cross_book_cycles} → "
+        f"{m.clean.cycles.cross_book_cycles}. "
         "Компонент и изолированных вершин больше, потому что больше вершин. Мостов и точек сочленения много в обоих "
         f"графах: больше половины вершин — листья ({ds.leaves} и {cs.leaves}), граф GraphRAG — «звёзды» вокруг "
         f"хабов. Максимальная степень {ds.degree_max} → {cs.degree_max}: хаб CONTROLLED ROLLING собрал связи обеих "
@@ -849,7 +853,16 @@ def structure_slide(deck: Deck, m: Metrics) -> None:
                 f"{ds.bridges} / {ds.articulation_points}",
                 f"{cs.bridges} / {cs.articulation_points}",
             ],
-            ["Независимые циклы (E − V + C)@D", str(ds.cyclomatic_number), str(cs.cyclomatic_number)],
+            [
+                "Циклы (E − V + C) / на 100 вершин@D",
+                f"{ds.cyclomatic_number} / {num(m.dirty.cycles.cycles_per_100_vertices, 1)}",
+                f"{cs.cyclomatic_number} / {num(m.clean.cycles.cycles_per_100_vertices, 1)}",
+            ],
+            [
+                "Циклы через вершины обеих книг@D",
+                str(m.dirty.cycles.cross_book_cycles),
+                str(m.clean.cycles.cross_book_cycles),
+            ],
             [
                 "Средняя / макс. степень@D",
                 f"{num(ds.degree_mean)} / {ds.degree_max}",
@@ -943,56 +956,55 @@ def quality_rows(m: Metrics) -> list[list[str]]:
     dn, cn = m.dirty.noise, m.clean.noise
     dc, cc = m.dirty.coreference, m.clean.coreference
     rules = (
-        ("  переменные формул@D", "formula_variable"),
         ("  слова не из текста и словаря@D", "unknown_word"),
         ("  числа и единицы@D", "number_or_unit"),
+        ("  остатки LaTeX в названиях@D", "latex_artifact"),
     )
     return [
         ["Показатель", "грязный", "чистый"],
+        ["Вершины-формулы → подграф@D", str(m.dirty.formulas.vertices), str(m.clean.formulas.vertices)],
         [
-            "Шумовые вершины@D",
+            "Шумовые вершины без формул@D",
             f"{dn.noise_vertices} ({pct(dn.noise_share, 1)})",
             f"{cn.noise_vertices} ({pct(cn.noise_share, 1)})",
         ],
         *[[label, str(dn.by_rule.get(rule, 0)), str(cn.by_rule.get(rule, 0))] for label, rule in rules],
-        ["Вершин в группах дубликатов по леммам@D", str(dc.lemma_duplicate_vertices), str(cc.lemma_duplicate_vertices)],
-        ["Пар-дубликатов по эмбеддингам@D", str(dc.embedding_duplicate_pairs), str(cc.embedding_duplicate_pairs)],
-        ["Вершин-местоимений (BFS-3)@D", str(dc.pronoun_vertices_lifted), str(cc.pronoun_vertices_lifted)],
+        ["Дубликаты: формы слова, вершин@D", str(dc.lemma_duplicate_vertices), str(cc.lemma_duplicate_vertices)],
+        ["Дубликаты: один язык, cos ≥ 0,92@D", str(dc.same_language_pairs), str(cc.same_language_pairs)],
+        ["Дубликаты: переводы RU–EN, cos ≥ 0,85@D", str(dc.translation_pairs), str(cc.translation_pairs)],
         [
-            "Формулы: целиком в вершине или окне@D",
+            "Формулы целиком в вершине / окне@D",
             f"{m.dirty.integrity.formulas_in_vertex + m.dirty.integrity.formulas_in_window} из "
             f"{m.dirty.integrity.formulas_evaluated}",
             f"{m.clean.integrity.formulas_in_vertex + m.clean.integrity.formulas_in_window} из "
             f"{m.clean.integrity.formulas_evaluated}",
         ],
-        ["Таблица: целиком в вершине или окне@D", integrity_tables(m.dirty), integrity_tables(m.clean)],
     ]
 
 
 def quality_slide(deck: Deck, m: Metrics) -> None:
     dn, cn = m.dirty.noise, m.clean.noise
+    df, cf = m.dirty.formulas, m.clean.formulas
     slide = deck.slide(
         "Шум, корреференции, формулы",
-        "Шум — пять регулярных правил и проверка по словарю по всем вершинам. Слова, которых нет ни в тексте, ни в "
-        f"словаре, — опечатки самой модели-экстрактора: их {dn.by_rule.get('unknown_word', 0)} в грязном графе и "
-        f"{cn.by_rule.get('unknown_word', 0)} в чистом, предобработка на них не влияет. Числа в грязном графе — "
-        "индексы текстуры вроде {554}: модель сделала из них вершины. Шум в чистом графе выше из-за переменных "
-        f"формул: {cn.by_rule.get('formula_variable', 0)} из {cn.noise_vertices}, потому что формулы приходят в "
-        "модель целиком. Корреференции: дубликаты по леммам и эмбеддингам названий; вершин-местоимений GraphRAG не "
-        "создаёт ни в одном графе. Дубликатов в чистом больше — модель пишет одно понятие в ед. и мн. числе. "
-        "Формулы: обозначения формулы ищем в вершине и в окне обхода 2 × 3 — ни одна формула не собирается целиком.",
+        "Вершины-формулы — обозначения вроде σ_LH, T_rs, Т_0 — размечаются регулярными выражениями и выносятся в "
+        f"отдельный подграф: {df.vertices} в грязном и {cf.vertices} в чистом графе, в чистом они висят на YIELD "
+        "STRESS и TRANSITION TEMPERATURE. Шум считается по остальным вершинам: "
+        f"{pct(dn.noise_share, 1)} → {pct(cn.noise_share, 1)}. Остаток — опечатки самой модели и номера индексов "
+        "текстуры. Корреференции трёх видов: формы одного слова по леммам, синонимы на одном языке по косинусу "
+        "≥ 0,92 и переводы RU–EN по косинусу ≥ 0,85. Переводов в чистом графе меньше — их убрал «английский канон "
+        "первым»; форм слова больше — модель пишет одно понятие в ед. и мн. числе. Вершин-местоимений GraphRAG не "
+        "создаёт. Формулы целиком не собираются ни в одном графе.",
     )
     deck.table(slide, quality_rows(m), 0.6, 1.4, [5.0, 1.75, 1.75], size=13)
     deck.card(slide, 9.4, 1.4, 3.35, 5.3)
-    deck.text(slide, "Не из текста, грязный@D", 9.65, 1.55, 3.0, 0.4, size=13, bold=True, color=DIRTY)
-    dirty_noise = [n for n in dn.examples if not n.isdigit() and "_" not in n and len(n) > 3]
-    deck.text(slide, examples(dirty_noise, 5), 9.65, 1.95, 3.0, 1.8, size=11, spacing=2)
-    deck.text(slide, "Шум чистого@D", 9.65, 3.75, 3.0, 0.4, size=13, bold=True, color=CLEAN)
-    variables = examples([n for n in cn.examples if "_" in n], 2)
-    words = examples([n for n in cn.examples if "_" not in n and len(n) > 3], 3)
-    deck.text(slide, variables + words, 9.65, 4.15, 3.0, 1.0, size=11, spacing=2)
-    deck.text(slide, "Дубликаты чистого@D", 9.65, 5.35, 3.0, 0.4, size=13, bold=True, color=CLEAN)
-    deck.text(slide, examples(m.clean.coreference.lemma_examples, 3), 9.65, 5.75, 3.0, 1.0, size=11, spacing=2)
+    deck.text(slide, "Подграф формул, чистый@D", 9.65, 1.55, 3.0, 0.4, size=13, bold=True, color=CLEAN)
+    deck.text(slide, examples(cf.examples[-6:], 4) + cf.anchors[:1], 9.65, 1.95, 3.0, 1.6, size=11, spacing=2)
+    deck.text(slide, "Шум чистого@D", 9.65, 3.6, 3.0, 0.4, size=13, bold=True, color=CLEAN)
+    deck.text(slide, examples([n for n in cn.examples if len(n) > 3], 3), 9.65, 4.0, 3.0, 1.0, size=11, spacing=2)
+    deck.text(slide, "Переводы, грязный@D", 9.65, 5.1, 3.0, 0.4, size=13, bold=True, color=DIRTY)
+    translations = [item.rsplit(" (", 1)[0] for item in m.dirty.coreference.translation_examples]
+    deck.text(slide, examples(translations, 3), 9.65, 5.5, 3.0, 1.0, size=11, spacing=2)
 
 
 def consistency_slide(deck: Deck, m: Metrics) -> None:
@@ -1079,7 +1091,8 @@ def conclusion_lines(m: Metrics) -> list[str]:
         f"связаны {pairs_text(dt)} → {pairs_text(ct)} пар понятий.",
         f"Русская книга ближе: русских вершин в крупнейшей компоненте {ds.ru_nodes_in_largest_component} из "
         f"{ds.nodes_ru} → {cs.ru_nodes_in_largest_component} из {cs.nodes_ru}; связь частичная.",
-        "Хуже: дубликаты ед./мн. числа и вершины-переменные формул — нужна склейка вершин после извлечения.",
+        f"Шум без вершин-формул {pct(d.noise.noise_share, 1)} → {pct(c.noise.noise_share, 1)}; формулы — в "
+        "отдельном подграфе. Хуже: дубликаты ед./мн. числа — нужна склейка вершин после извлечения.",
         "Формулы и таблица не сохраняются ни в одном графе: это ограничение GraphRAG, а не предобработки.",
     ]
 
@@ -1089,9 +1102,10 @@ def conclusions_slide(deck: Deck, m: Metrics) -> None:
         "Выводы",
         "Главное: предобработка приблизила русскую книгу к английской — выросли покрытие предметной области, "
         "полнота и число связанных пар понятий. Этапы предобработки хороши на эталоне. Не решено: дубликаты в ед. и "
-        "мн. числе и вершины-переменные из формул; формулы GraphRAG не сохраняет; большая часть русских вершин "
-        "по-прежнему вне крупнейшей компоненты. Ограничения: ручной глоссарий, один прогон GraphRAG, судья — одна "
-        "модель, эталон — 4 страницы. Следующий шаг — RAG на сохранённых чанках и векторах.",
+        "мн. числе; вершины-формулы вынесены в подграф, но сами формулы GraphRAG не сохраняет; большая часть "
+        "русских вершин по-прежнему вне крупнейшей компоненты. Ограничения: ручной глоссарий, один прогон "
+        "GraphRAG, судья — одна модель, эталон — 4 страницы. Следующий шаг — RAG на сохранённых чанках и "
+        "векторах.",
     )
     deck.background(slide, FIGURES / "clean_graph_background.png")
     deck.text(slide, conclusion_lines(m), 0.6, 1.5, 12.0, 5.2, size=16, spacing=10)

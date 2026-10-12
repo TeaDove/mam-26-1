@@ -17,6 +17,8 @@ RU_BOOK = frozenset({"ru", "both"})
 
 class EvaluationConfig(BaseModel):
     duplicate_similarity: float
+    translation_similarity: float
+    coreference_sweep: list[float]
     term_similarity: float
     terms_en: int
     terms_ru: int

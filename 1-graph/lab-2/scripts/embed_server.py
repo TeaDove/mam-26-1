@@ -33,7 +33,8 @@ class EmbeddingResponse(BaseModel):
 
 def build_app(model_name: str) -> FastAPI:
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    encoder = SentenceTransformer(model_name, device=device, model_kwargs={"torch_dtype": torch.float16})
+    dtype = torch.float16 if device == "cuda" else torch.float32
+    encoder = SentenceTransformer(model_name, device=device, model_kwargs={"torch_dtype": dtype})
     app = FastAPI()
 
     @app.post("/v1/embeddings")

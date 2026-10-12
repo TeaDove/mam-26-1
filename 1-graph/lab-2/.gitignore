@@ -14,4 +14,5 @@ results/graphs/*.graphml
 results/graphs/*_node_vectors.npy
 results/slide-*.jpg
 results/presentation.pdf
+results/rework_*.pdf
 authors.txt

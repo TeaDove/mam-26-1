@@ -7,7 +7,17 @@ import pandas as pd
 from lab2.dto.models import Chunk
 from lab2.service.comparison import source_fragment
 from lab2.service.corpus import strip_bibliography, token_windows
-from lab2.service.graph_criteria import formula_atoms, integrity, noise_labels, source_vocabulary, table_atoms
+from lab2.service.graph_criteria import (
+    cross_script,
+    cycle_profile,
+    formula_atoms,
+    formula_subgraph,
+    formula_vertex,
+    integrity,
+    noise_labels,
+    source_vocabulary,
+    table_atoms,
+)
 from lab2.service.graph_eval import EvaluationConfig, load_graph, structure_metrics, traversal
 from lab2.service.lemmatization import Lemmatizer
 from lab2.service.normalization import Glossary, Normalizer
@@ -136,7 +146,7 @@ def test_integrity_matches_whole_tokens() -> None:
 
 def test_noise_respects_entity_type() -> None:
     assert noise_labels("C", frozenset(), frozenset(), "alloying element") == []
-    assert noise_labels("C", frozenset(), frozenset(), "process parameter") == ["formula_variable"]
+    assert noise_labels("DOUGLAS^2", frozenset({"douglas"}), frozenset(), "person") == ["latex_artifact"]
     assert noise_labels("AZOVSTAL", frozenset(), frozenset(), "organization") == []
     assert noise_labels("КАРБОНИТРИД", frozenset({"карбонитридным"}), frozenset()) == []
 
@@ -155,6 +165,8 @@ def test_traversal_counts_russian_book_vertices() -> None:
     config = EvaluationConfig.model_validate(
         {
             "duplicate_similarity": 0.9,
+            "translation_similarity": 0.85,
+            "coreference_sweep": [0.9],
             "term_similarity": 0.8,
             "terms_en": 1,
             "terms_ru": 1,
@@ -169,3 +181,42 @@ def test_traversal_counts_russian_book_vertices() -> None:
     assert summary["bfs1_ru_book_share"] == 0.5
     assert (summary["pairs_resolved"], summary["pairs_connected"]) == (1, 0)
     assert structure_metrics(graph)["ru_nodes_in_largest_component"] == 1
+
+
+def test_formula_vertices_are_marked_by_regex() -> None:
+    allowed = frozenset({"rd", "nb", "кп"})
+    for name in ("Т_0", "Г_Θ", "R_CRIT", "SIGMA_D", "DELTA_P", "Σ", "ΣΕ", "Σ_{SH}", "Т_3_{CPM}", "N_{S}", "B"):
+        assert formula_vertex(name, "process parameter", allowed), name
+    assert not formula_vertex("DOUGLAS^2", "person", allowed)
+    assert not formula_vertex("C", "alloying element", allowed)
+    assert not formula_vertex("C", "steel grade", allowed)
+    assert not formula_vertex("RD", "process parameter", allowed)
+    assert not formula_vertex("КП", "process", allowed)
+    assert not formula_vertex("GRAIN-BOUNDARY AREA (S_V)", "process parameter", allowed)
+    assert not formula_vertex("Γ-GRAIN", "phase", allowed)
+
+
+def test_formula_subgraph_counts_internal_and_boundary_edges() -> None:
+    graph = nx.Graph()
+    graph.add_edges_from([("Σ_{SH}", "Σ_{PH}"), ("Σ_{SH}", "YIELD STRESS"), ("Σ_{PH}", "YIELD STRESS")])
+    graph.add_node("K_Y")
+    report = formula_subgraph(graph, {"Σ_{SH}", "Σ_{PH}", "K_Y"})
+    assert (report["vertices"], report["internal_edges"], report["boundary_edges"]) == (3, 1, 2)
+    assert (report["components"], report["isolated"]) == (2, 1)
+    assert report["anchors"] == ["YIELD STRESS (2)"]
+
+
+def test_cross_script_pairs_mix_cyrillic_and_latin() -> None:
+    assert cross_script("ТЕМПЕРАТУРА", "TEMPERATURE")
+    assert not cross_script("GRAIN SIZE", "Α-GRAIN SIZE")
+    assert not cross_script("СТАЛЬ", "СТАЛИ")
+
+
+def test_cycle_profile_counts_cross_book_cycles() -> None:
+    graph = nx.Graph()
+    for name, lang in (("A", "en"), ("B", "en"), ("C", "ru"), ("D", "en"), ("E", "en"), ("F", "en")):
+        graph.add_node(name, lang=lang)
+    graph.add_edges_from([("A", "B"), ("B", "C"), ("C", "A"), ("A", "D"), ("D", "E"), ("E", "A"), ("F", "A")])
+    profile = cycle_profile(graph, 1000)
+    assert (profile["cycles"], profile["triangles"], profile["cross_book_cycles"]) == (2, 2, 1)
+    assert (profile["top_hub"], profile["cycles_through_top_hub"]) == ("A", 2)

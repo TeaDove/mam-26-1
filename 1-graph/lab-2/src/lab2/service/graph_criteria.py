@@ -65,14 +65,21 @@ UNIT = r"(?:°\s*[CС]|%|мм|mm|µm|μm|MPa|МПа|N/mm2|Н/мм2|N/mm²|Н/м�
 LATEX_ENVIRONMENT = re.compile(r"\\(?:begin|end)\{[^}]*\}(?:\{[^}]*\})?|\\tag\{[^}]*\}")
 LATEX_FORMATTING = re.compile(r"\\(?:mathrm|mathbf|text|bf|rm|boldsymbol|scriptstyle|operatorname)(?![A-Za-z])")
 SYMBOL_TOKEN = re.compile(r"[^\W_]+(?:\.\d+)?")
-CHEMICAL_TYPES = frozenset({"alloying element"})
+CHEMICAL_TYPES = frozenset({"alloying element", "steel grade", "material"})
+GREEK_NAMES = "sigma|delta|gamma|alpha|beta|epsilon|tau|phi|theta|kappa|mu"
+FORMULA_NAME = re.compile(
+    r"^[A-Za-zА-Яа-яЁё]\d*$|^[Α-Ωα-ω]{1,2}\d*$|[\\$^{}]"
+    rf"|^(?:[A-Za-zА-Яа-яЁёΑ-Ωα-ω]{{1,2}}|{GREEK_NAMES})_\S+$",
+    re.I,
+)
+CYRILLIC_NAME = re.compile(r"[А-Яа-яЁё]")
 NAMED_TYPES = frozenset({"person", "organization", "geo"})
 GENERAL_ZIPF = 5.0
 DOMAIN_ZIPF = 4.5
 ENGLISH_STOP_EXTRA = frozenset({"fig", "et", "al", "eq", "table", "ref"})
 NOISE_RULES: dict[str, re.Pattern[str]] = {
     "punctuation_only": re.compile(r"^[\W_]+$"),
-    "formula_variable": re.compile(r"^(?:[A-Za-zΑ-Ωα-ω]{1,2}\d*|.*[\\$^{}].*|[A-Za-zΑ-Ωα-ω]_\S+)$"),
+    "latex_artifact": re.compile(r"[\\$^{}]"),
     "number_or_unit": re.compile(rf"^[~≈<>≤≥]?\s*[\d.,\s–÷+-]+\s*{UNIT}?$|^{UNIT}$", re.I),
     "pronoun_or_function_word": re.compile(r"^(?:" + "|".join(sorted(PRONOUNS)) + r")$", re.I),
     "broken_word": re.compile(r"\b\w+-\s|\s-\w"),
@@ -128,16 +135,27 @@ def _english_lemma(word: str) -> str:
 
 def noise_labels(name: str, vocabulary: frozenset[str], allowed: frozenset[str], entity_type: str = "") -> list[str]:
     stripped = name.strip()
-    if stripped.casefold() in allowed:
+    if stripped.casefold() in allowed or (entity_type in CHEMICAL_TYPES and len(stripped) <= 2):
         return []
     labels = [rule for rule, pattern in NOISE_RULES.items() if pattern.search(stripped)]
-    if entity_type in CHEMICAL_TYPES and labels == ["formula_variable"]:
-        labels = []
     if "broken_word" not in labels and _hyphen_split(stripped, vocabulary):
         labels.append("broken_word")
     if entity_type not in NAMED_TYPES and _unknown_word(stripped, vocabulary, allowed):
         labels.append("unknown_word")
     return labels
+
+
+def formula_vertex(name: str, entity_type: str, allowed: frozenset[str]) -> bool:
+    stripped = name.strip()
+    if entity_type in NAMED_TYPES or stripped.casefold() in allowed:
+        return False
+    if entity_type in CHEMICAL_TYPES and len(stripped) <= 2:
+        return False
+    return bool(FORMULA_NAME.search(stripped))
+
+
+def cross_script(left: str, right: str) -> bool:
+    return bool(CYRILLIC_NAME.search(left)) != bool(CYRILLIC_NAME.search(right))
 
 
 def _hyphen_split(name: str, vocabulary: frozenset[str]) -> bool:
@@ -354,3 +372,46 @@ def _singular(word: str, vocabulary: set[str]) -> str:
     if word.endswith("s") and not word.endswith("ss") and word[:-1] in vocabulary:
         return word[:-1]
     return word
+
+
+def formula_subgraph(graph: nx.Graph, formulas: set[str]) -> dict[str, object]:
+    inner = graph.subgraph(formulas)
+    boundary = [(a, b) for a, b in graph.edges(formulas) if (a in formulas) != (b in formulas)]
+    anchors = Counter(b if a in formulas else a for a, b in boundary)
+    return {
+        "vertices": len(formulas),
+        "internal_edges": inner.number_of_edges(),
+        "boundary_edges": len(boundary),
+        "components": nx.number_connected_components(inner) if formulas else 0,
+        "isolated": sum(1 for n in formulas if graph.degree(n) == 0),
+        "anchors": [f"{name} ({count})" for name, count in anchors.most_common(5)],
+        "examples": sorted(formulas, key=str)[:30],
+    }
+
+
+def cycle_profile(graph: nx.Graph, input_tokens: int) -> dict[str, object]:
+    components = list(nx.connected_components(graph))
+    largest = graph.subgraph(max(components, key=len)) if components else graph
+    cycles = graph.number_of_edges() - graph.number_of_nodes() + len(components)
+    basis = nx.minimum_cycle_basis(graph)
+    hub = max(graph.degree, key=lambda item: item[1])[0] if graph.number_of_nodes() else ""
+    connected = graph.number_of_nodes() - sum(1 for _, degree in graph.degree if degree == 0)
+    cross_book = sum(
+        1
+        for cycle in basis
+        if {"en", "ru"} <= {graph.nodes[n]["lang"] for n in cycle}
+        or any(graph.nodes[n]["lang"] == "both" for n in cycle)
+    )
+    return {
+        "cycles": cycles,
+        "cycles_per_100_vertices": round(100 * cycles / max(graph.number_of_nodes(), 1), 1),
+        "cycles_per_1k_tokens": round(1000 * cycles / max(input_tokens, 1), 2),
+        "largest_component_cycles": largest.number_of_edges() - largest.number_of_nodes() + 1,
+        "edges_per_connected_vertex": round(graph.number_of_edges() / max(connected, 1), 2),
+        "cycle_lengths": {str(k): v for k, v in sorted(Counter(len(c) for c in basis).items())},
+        "triangles": sum(nx.triangles(graph).values()) // 3,
+        "top_hub": str(hub),
+        "top_hub_degree": graph.degree(hub) if hub else 0,
+        "cycles_through_top_hub": sum(1 for cycle in basis if hub in cycle),
+        "cross_book_cycles": cross_book,
+    }

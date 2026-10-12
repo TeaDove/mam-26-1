@@ -243,15 +243,25 @@ class NoiseReport(BaseModel):
     examples: list[str]
 
 
+class CoreferenceSweepPoint(BaseModel):
+    threshold: float
+    same_language_pairs: int
+    translation_pairs: int
+
+
 class Coreference(BaseModel):
     lemma_duplicate_groups: int
     lemma_duplicate_vertices: int
     embedding_duplicate_pairs: int
+    same_language_pairs: int
+    translation_pairs: int
     cross_language_pairs: int
     pronoun_vertices_lifted: int
     pronoun_subtree_vertices: int
     lemma_examples: list[str]
     embedding_examples: list[str]
+    translation_examples: list[str]
+    threshold_sweep: list[CoreferenceSweepPoint]
 
 
 class Integrity(BaseModel):
@@ -357,9 +367,35 @@ class Traversal(BaseModel):
     pairs: list[PathPair]
 
 
+class FormulaSubgraph(BaseModel):
+    vertices: int
+    internal_edges: int
+    boundary_edges: int
+    components: int
+    isolated: int
+    anchors: list[str]
+    examples: list[str]
+
+
+class CycleProfile(BaseModel):
+    cycles: int
+    cycles_per_100_vertices: float
+    cycles_per_1k_tokens: float
+    largest_component_cycles: int
+    edges_per_connected_vertex: float
+    cycle_lengths: dict[str, int]
+    triangles: int
+    top_hub: str
+    top_hub_degree: int
+    cycles_through_top_hub: int
+    cross_book_cycles: int
+
+
 class GraphReport(BaseModel):
     input_stats: InputStats
     structure: GraphStructure
+    cycles: CycleProfile
+    formulas: FormulaSubgraph
     completeness: Completeness
     noise: NoiseReport
     coreference: Coreference
@@ -376,6 +412,10 @@ class JudgeUsage(BaseModel):
     request_tokens_all_calls: int
     new_calls_prompt_tokens: int
     new_calls_completion_tokens: int
+
+
+class StoredJudgeUsage(BaseModel):
+    judge_usage: JudgeUsage
 
 
 class GraphComparison(BaseModel):

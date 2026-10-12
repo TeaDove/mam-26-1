@@ -7,12 +7,13 @@ from collections.abc import Callable
 
 import networkx as nx
 import numpy as np
-from pydantic import BaseModel
+from pydantic import BaseModel, TypeAdapter
 
 from lab2.dto.models import (
     AuditEntry,
     Chunk,
     CleaningMetrics,
+    ConsistencyVerdict,
     GoldPageMetrics,
     GraphComparison,
     GraphReport,
@@ -20,6 +21,7 @@ from lab2.dto.models import (
     JudgeUsage,
     NormalizationMetrics,
     RetrievalMetrics,
+    StoredJudgeUsage,
     TokenizationMetrics,
     VectorizationMetrics,
 )
@@ -336,12 +338,7 @@ def run_compare(settings: Settings) -> None:
         cache_dir=settings.data_dir / "judge_cache",
     )
     context = _comparison_context(settings, client)
-    sources = {
-        "dirty": "\n\n".join(
-            Corpus(raw_dir=settings.dirty_dir, books=settings.books).raw_text(b) for b in settings.books
-        ),
-        "clean": "\n\n".join(chunk.text for chunk in load_chunks(settings, "03_chunks.jsonl")),
-    }
+    sources = _comparison_sources(settings)
     outputs = {
         "dirty": settings.root / settings.dirty_graphrag_dir,
         "clean": settings.root / settings.clean_graphrag_dir,
@@ -368,7 +365,34 @@ def run_compare(settings: Settings) -> None:
     log.info("comparison written")
 
 
-def _comparison_context(settings: Settings, client: LlmClient) -> ComparisonContext:
+def run_criteria(settings: Settings) -> None:
+    context = _comparison_context(settings, None)
+    sources = _comparison_sources(settings)
+    reports: dict[str, GraphReport] = {}
+    for arm in ("dirty", "clean"):
+        path = settings.metrics_dir / f"08_consistency_{arm}.json"
+        saved = TypeAdapter(list[ConsistencyVerdict]).validate_json(path.read_text(encoding="utf-8"))
+        output = settings.root / (settings.dirty_graphrag_dir if arm == "dirty" else settings.clean_graphrag_dir)
+        reports[arm], _ = context.evaluate(load_graph(output), sources[arm], saved)
+        log.info("%s criteria recomputed with %d saved judge verdicts", arm, len(saved))
+    previous = settings.metrics_dir / "08_graph_comparison.json"
+    usage = StoredJudgeUsage.model_validate_json(previous.read_text(encoding="utf-8")).judge_usage
+    comparison = GraphComparison(
+        reference_terms=context.terms, dirty=reports["dirty"], clean=reports["clean"], judge_usage=usage
+    )
+    write_json(previous, comparison)
+    log.info("criteria written")
+
+
+def _comparison_sources(settings: Settings) -> dict[str, str]:
+    corpus = Corpus(raw_dir=settings.dirty_dir, books=settings.books)
+    return {
+        "dirty": "\n\n".join(corpus.raw_text(book) for book in settings.books),
+        "clean": "\n\n".join(chunk.text for chunk in load_chunks(settings, "03_chunks.jsonl")),
+    }
+
+
+def _comparison_context(settings: Settings, client: LlmClient | None) -> ComparisonContext:
     embedder = EmbeddingClient(url=settings.embedding_url, model=settings.embedding_model)
     config = EvaluationConfig.load(settings.evaluation_path)
     cleaned = {chunk.book: chunk.text for chunk in load_chunks(settings, "01_clean.jsonl")}

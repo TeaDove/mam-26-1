@@ -2,7 +2,8 @@
 
 Замечания преподавателя к презентации и что по ним сделано. Подробности и таблицы — в
 [results/graph_criteria_report.md](results/graph_criteria_report.md), раздел «Работа над ошибками 12.10»;
-два слайда для защиты — [results/rework_2026-10-12.pptx](results/rework_2026-10-12.pptx).
+два слайда для защиты — [results/rework_2026-10-12.pptx](results/rework_2026-10-12.pptx); описание: что сделано,
+почему так лучше и почему не иначе — [results/rework_2026-10-12.md](results/rework_2026-10-12.md).
 
 ## 1. Шум: проверить разметку LaTeX-формул
 

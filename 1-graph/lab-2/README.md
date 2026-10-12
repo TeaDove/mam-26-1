@@ -15,7 +15,8 @@ GraphRAG не перерезает.
 
 Презентация — [results/presentation.pptx](results/presentation.pptx), глоссарий с описанием алгоритмов —
 [results/glossary.md](results/glossary.md). Что исправлено по замечаниям 12.10 — два слайда
-[results/rework_2026-10-12.pptx](results/rework_2026-10-12.pptx).
+[results/rework_2026-10-12.pptx](results/rework_2026-10-12.pptx), описание —
+[results/rework_2026-10-12.md](results/rework_2026-10-12.md).
 
 ## Пайплайн
 

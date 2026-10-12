@@ -99,7 +99,7 @@ scripts/run_index_both.sh   # индексация GraphRAG обоих граф�
 uv run lab2 graphs      # графы с векторами вершин → results/graphs
 uv run lab2 compare     # критерии сравнения обходами графа и судья
 uv run lab2 criteria    # пересчёт критериев без LLM; ответы судьи — из results/metrics/08_consistency_*.json
-uv run lab2 rejudge     # второй судья на тех же вершинах (LAB2_JUDGE_MODEL, LAB2_OPENAI_BASE_URL) → results/metrics/09_*
+uv run lab2 rejudge     # второй судья на тех же вершинах (LAB2_JUDGE_MODEL) → results/metrics/09_*
 uv run lab2 figures     # картинки графов
 uv run --with pyvis python scripts/build_html_graphs.py   # интерактивные HTML-графы
 uv run python scripts/build_presentation.py

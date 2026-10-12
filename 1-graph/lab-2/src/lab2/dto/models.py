@@ -414,6 +414,25 @@ class JudgeUsage(BaseModel):
     new_calls_completion_tokens: int
 
 
+class ArmAgreement(BaseModel):
+    vertices: int
+    candidate: Consistency
+    reference: Consistency
+    definition_agreement: float
+    contradiction_agreement: float
+    contradiction_kappa: float
+    both_contradiction: int
+    only_candidate_contradiction: int
+    only_reference_contradiction: int
+
+
+class JudgeAgreement(BaseModel):
+    candidate_model: str
+    reference_model: str
+    seconds: float
+    arms: dict[str, ArmAgreement]
+
+
 class StoredJudgeUsage(BaseModel):
     judge_usage: JudgeUsage
 

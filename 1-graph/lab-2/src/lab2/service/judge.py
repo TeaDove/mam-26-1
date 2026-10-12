@@ -55,3 +55,23 @@ def check_consistency(
         contradictions=answer.contradictions,
         comment=answer.comment[:300],
     )
+
+
+def agreement(candidate: list[ConsistencyVerdict], reference: list[ConsistencyVerdict]) -> dict[str, float | int]:
+    pairs = [(c, r) for c, r in zip(candidate, reference, strict=True) if c.node == r.node]
+    if len(pairs) != len(candidate):
+        raise ValueError("candidate and reference verdicts cover different vertices")
+    total = max(len(pairs), 1)
+    flags = [(c.contradictions > 0, r.contradictions > 0) for c, r in pairs]
+    observed = sum(a == b for a, b in flags) / total
+    candidate_rate = sum(a for a, _ in flags) / total
+    reference_rate = sum(b for _, b in flags) / total
+    expected = candidate_rate * reference_rate + (1 - candidate_rate) * (1 - reference_rate)
+    return {
+        "definition_agreement": round(sum(c.definition == r.definition for c, r in pairs) / total, 4),
+        "contradiction_agreement": round(observed, 4),
+        "contradiction_kappa": round((observed - expected) / (1 - expected), 4) if expected < 1 else 1.0,
+        "both_contradiction": sum(a and b for a, b in flags),
+        "only_candidate_contradiction": sum(a and not b for a, b in flags),
+        "only_reference_contradiction": sum(b and not a for a, b in flags),
+    }

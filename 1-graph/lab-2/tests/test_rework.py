@@ -4,7 +4,7 @@ from pathlib import Path
 import networkx as nx
 import pandas as pd
 
-from lab2.dto.models import Chunk
+from lab2.dto.models import Chunk, ConsistencyVerdict
 from lab2.service.comparison import source_fragment
 from lab2.service.corpus import strip_bibliography, token_windows
 from lab2.service.graph_criteria import (
@@ -19,6 +19,7 @@ from lab2.service.graph_criteria import (
     table_atoms,
 )
 from lab2.service.graph_eval import EvaluationConfig, load_graph, structure_metrics, traversal
+from lab2.service.judge import agreement
 from lab2.service.lemmatization import Lemmatizer
 from lab2.service.normalization import Glossary, Normalizer
 from lab2.service.retrieval import Query, RankedQuery
@@ -220,3 +221,21 @@ def test_cycle_profile_counts_cross_book_cycles() -> None:
     profile = cycle_profile(graph, 1000)
     assert (profile["cycles"], profile["triangles"], profile["cross_book_cycles"]) == (2, 2, 1)
     assert (profile["top_hub"], profile["cycles_through_top_hub"]) == ("A", 2)
+
+
+def test_judge_agreement_counts_flags_and_kappa() -> None:
+    def verdict(node: str, definition: str, contradictions: int) -> ConsistencyVerdict:
+        return ConsistencyVerdict(node=node, definition=definition, contradictions=contradictions, comment="")
+
+    reference = [
+        verdict("A", "full", 0),
+        verdict("B", "partial", 1),
+        verdict("C", "partial", 0),
+        verdict("D", "none", 2),
+    ]
+    candidate = [verdict("A", "full", 0), verdict("B", "partial", 0), verdict("C", "full", 0), verdict("D", "none", 1)]
+    result = agreement(candidate, reference)
+    assert result["definition_agreement"] == 0.75
+    assert result["contradiction_agreement"] == 0.75
+    assert (result["both_contradiction"], result["only_reference_contradiction"]) == (1, 1)
+    assert result["contradiction_kappa"] == 0.5

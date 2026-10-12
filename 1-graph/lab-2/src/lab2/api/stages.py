@@ -2,6 +2,7 @@ import gzip
 import logging
 import re
 import sys
+import time
 from collections import Counter
 from collections.abc import Callable
 
@@ -10,6 +11,7 @@ import numpy as np
 from pydantic import BaseModel, TypeAdapter
 
 from lab2.dto.models import (
+    ArmAgreement,
     AuditEntry,
     Chunk,
     CleaningMetrics,
@@ -18,6 +20,7 @@ from lab2.dto.models import (
     GraphComparison,
     GraphReport,
     GraphSummary,
+    JudgeAgreement,
     JudgeUsage,
     NormalizationMetrics,
     RetrievalMetrics,
@@ -29,7 +32,7 @@ from lab2.service.chunk_metrics import BookChunks, Span, chunking_metrics
 from lab2.service.chunking import StructuralChunker
 from lab2.service.cleaning import Cleaner, CleaningConfig
 from lab2.service.cleaning_metrics import CleaningEvaluator, combine
-from lab2.service.comparison import ComparisonContext
+from lab2.service.comparison import ComparisonContext, consistency_summary, judge_nodes
 from lab2.service.corpus import Corpus, strip_bibliography, token_windows
 from lab2.service.figures import draw_background, draw_graph
 from lab2.service.gold_eval import GoldEvaluator, load_pages
@@ -38,6 +41,7 @@ from lab2.service.graph_criteria import (
     text_terms,
 )
 from lab2.service.graph_eval import EvaluationConfig, load_graph
+from lab2.service.judge import agreement
 from lab2.service.normalization import Glossary, Normalizer
 from lab2.service.normalization_metrics import ANNOTATION_RULES, NormalizationEvaluator
 from lab2.service.retrieval import QuerySet, RankedQuery, rank, relevant, summarize
@@ -363,6 +367,41 @@ def run_compare(settings: Settings) -> None:
     )
     write_json(settings.metrics_dir / "08_graph_comparison.json", comparison)
     log.info("comparison written")
+
+
+def run_rejudge(settings: Settings) -> None:
+    if not settings.openai_base_url:
+        raise ValueError("LLM base URL is empty: set LAB2_OPENAI_BASE_URL")
+    client = LlmClient(
+        base_url=settings.openai_base_url,
+        api_key=settings.openai_api_key or "local",
+        model=settings.judge_model,
+        cache_dir=settings.data_dir / "judge_cache",
+        timeout=settings.llm_timeout,
+    )
+    slug = re.sub(r"[^a-z0-9]+", "-", settings.judge_model.lower()).strip("-")
+    started = time.perf_counter()
+    arms: dict[str, ArmAgreement] = {}
+    for arm in ("dirty", "clean"):
+        path = settings.metrics_dir / f"08_consistency_{arm}.json"
+        reference = TypeAdapter(list[ConsistencyVerdict]).validate_json(path.read_text(encoding="utf-8"))
+        output = settings.root / (settings.dirty_graphrag_dir if arm == "dirty" else settings.clean_graphrag_dir)
+        candidate = judge_nodes(client, load_graph(output), [verdict.node for verdict in reference])
+        write_json(settings.metrics_dir / f"09_consistency_{slug}_{arm}.json", [v.model_dump() for v in candidate])
+        arms[arm] = ArmAgreement(
+            vertices=len(candidate),
+            candidate=consistency_summary(candidate),
+            reference=consistency_summary(reference),
+            **agreement(candidate, reference),
+        )
+    report = JudgeAgreement(
+        candidate_model=settings.judge_model,
+        reference_model=settings.reference_judge_model,
+        seconds=round(time.perf_counter() - started, 1),
+        arms=arms,
+    )
+    write_json(settings.metrics_dir / f"09_judge_agreement_{slug}.json", report)
+    log.info("judge agreement written for %s", settings.judge_model)
 
 
 def run_criteria(settings: Settings) -> None:

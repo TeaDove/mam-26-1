@@ -1,3 +1,4 @@
+import logging
 import re
 import statistics
 from dataclasses import dataclass
@@ -44,6 +45,8 @@ from lab2.service.graph_eval import EvaluationConfig, GraphBundle, coverage, str
 from lab2.service.judge import check_consistency
 from lab2.supplier.embeddings import EmbeddingClient
 from lab2.supplier.llm import LlmClient
+
+log = logging.getLogger(__name__)
 
 
 @dataclass
@@ -145,23 +148,22 @@ class ComparisonContext:
     def consistency_verdicts(self, bundle: GraphBundle, must: list[str]) -> list[ConsistencyVerdict]:
         if self.client is None:
             raise ValueError("consistency needs an LLM client or saved verdicts")
-        graph = bundle.graph
-        entity_units = {
-            row.title: list(row.text_unit_ids)
-            for row in bundle.artifacts.entities.itertuples()
-            if len(row.text_unit_ids)
-        }
-        unit_text = dict(zip(bundle.artifacts.text_units["id"], bundle.artifacts.text_units["text"], strict=True))
-        return [
-            check_consistency(
-                self.client,
-                graph,
-                node,
-                window(graph, node),
-                source_fragment(node, entity_units.get(node, []), unit_text),
-            )
-            for node in sample_nodes(graph, must, self.config.consistency_sample)
-        ]
+        return judge_nodes(self.client, bundle, sample_nodes(bundle.graph, must, self.config.consistency_sample))
+
+
+def judge_nodes(client: LlmClient, bundle: GraphBundle, nodes: list[str]) -> list[ConsistencyVerdict]:
+    graph = bundle.graph
+    entity_units = {
+        row.title: list(row.text_unit_ids) for row in bundle.artifacts.entities.itertuples() if len(row.text_unit_ids)
+    }
+    unit_text = dict(zip(bundle.artifacts.text_units["id"], bundle.artifacts.text_units["text"], strict=True))
+    verdicts: list[ConsistencyVerdict] = []
+    for index, node in enumerate(nodes, start=1):
+        fragment = source_fragment(node, entity_units.get(node, []), unit_text)
+        verdicts.append(check_consistency(client, graph, node, window(graph, node), fragment))
+        if index % 10 == 0 or index == len(nodes):
+            log.info("judged %d/%d vertices with %s", index, len(nodes), client.model)
+    return verdicts
 
 
 def input_stats(bundle: GraphBundle, vertices: int, noisy: int) -> InputStats:

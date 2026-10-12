@@ -22,6 +22,8 @@ class Settings(BaseSettings):
     openai_base_url: str = ""
     openai_api_key: str = ""
     judge_model: str = "gpt-4.1"
+    reference_judge_model: str = "gpt-4.1"
+    llm_timeout: float = 90
     tfidf_window: int = 300
     dirty_graphrag_dir: Path = Path("graphrag-dirty/output")
     clean_graphrag_dir: Path = Path("graphrag-clean/output")

@@ -39,6 +39,7 @@ class LlmClient:
     cache_dir: Path
     max_request_bytes: int = 18000
     retries: int = 6
+    timeout: float = 90
     prompt_tokens: int = 0
     completion_tokens: int = 0
     calls: int = 0
@@ -78,7 +79,9 @@ class LlmClient:
         }
         for attempt in range(self.retries):
             try:
-                response = httpx.post(f"{self.base_url}/chat/completions", content=payload, headers=headers, timeout=90)
+                response = httpx.post(
+                    f"{self.base_url}/chat/completions", content=payload, headers=headers, timeout=self.timeout
+                )
                 response.raise_for_status()
                 return Completion.model_validate_json(response.content)
             except (httpx.HTTPError, ValueError) as error:

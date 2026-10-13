@@ -472,16 +472,6 @@ class VariantComparison(BaseModel):
     overlap_retrieval: RetrievalMetrics
 
 
-class AdjudicatedVertex(BaseModel):
-    arm: Literal["dirty", "clean"]
-    vertex: str
-    disagreement: Literal["only gpt-4.1 flags", "only local models flag"]
-    has_contradiction: bool
-    confidence: Literal["high", "medium", "low"]
-    evidence: str
-    judge_flags: dict[str, bool]
-
-
 class StoredJudgeUsage(BaseModel):
     judge_usage: JudgeUsage
 

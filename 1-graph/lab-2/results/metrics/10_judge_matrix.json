@@ -1,0 +1,288 @@
+{
+  "runs": [
+    {
+      "label": "gpt-4.1",
+      "dirty_contradiction_share": 0.4167,
+      "clean_contradiction_share": 0.3083,
+      "dirty_fully_defined_share": 0.025,
+      "clean_fully_defined_share": 0.0417
+    },
+    {
+      "label": "gemma3-12b",
+      "dirty_contradiction_share": 0.0,
+      "clean_contradiction_share": 0.0,
+      "dirty_fully_defined_share": 0.0083,
+      "clean_fully_defined_share": 0.05
+    },
+    {
+      "label": "gpt-4-1-run2",
+      "dirty_contradiction_share": 0.3667,
+      "clean_contradiction_share": 0.3167,
+      "dirty_fully_defined_share": 0.025,
+      "clean_fully_defined_share": 0.0417
+    },
+    {
+      "label": "qwen2-5-14b-instruct-run2",
+      "dirty_contradiction_share": 0.3583,
+      "clean_contradiction_share": 0.4417,
+      "dirty_fully_defined_share": 0.0167,
+      "clean_fully_defined_share": 0.025
+    },
+    {
+      "label": "qwen2-5-14b-instruct",
+      "dirty_contradiction_share": 0.3583,
+      "clean_contradiction_share": 0.4417,
+      "dirty_fully_defined_share": 0.0167,
+      "clean_fully_defined_share": 0.025
+    },
+    {
+      "label": "qwen2-5-32b-instruct",
+      "dirty_contradiction_share": 0.175,
+      "clean_contradiction_share": 0.3417,
+      "dirty_fully_defined_share": 0.0,
+      "clean_fully_defined_share": 0.0
+    }
+  ],
+  "pairs": [
+    {
+      "left": "gpt-4.1",
+      "right": "gemma3-12b",
+      "arm": "dirty",
+      "definition_agreement": 0.875,
+      "contradiction_agreement": 0.5833,
+      "contradiction_kappa": 0.0
+    },
+    {
+      "left": "gpt-4.1",
+      "right": "gemma3-12b",
+      "arm": "clean",
+      "definition_agreement": 0.925,
+      "contradiction_agreement": 0.6917,
+      "contradiction_kappa": 0.0
+    },
+    {
+      "left": "gpt-4.1",
+      "right": "gpt-4-1-run2",
+      "arm": "dirty",
+      "definition_agreement": 0.9917,
+      "contradiction_agreement": 0.9167,
+      "contradiction_kappa": 0.8256
+    },
+    {
+      "left": "gpt-4.1",
+      "right": "gpt-4-1-run2",
+      "arm": "clean",
+      "definition_agreement": 1.0,
+      "contradiction_agreement": 0.9583,
+      "contradiction_kappa": 0.903
+    },
+    {
+      "left": "gpt-4.1",
+      "right": "qwen2-5-14b-instruct-run2",
+      "arm": "dirty",
+      "definition_agreement": 0.8833,
+      "contradiction_agreement": 0.6917,
+      "contradiction_kappa": 0.3528
+    },
+    {
+      "left": "gpt-4.1",
+      "right": "qwen2-5-14b-instruct-run2",
+      "arm": "clean",
+      "definition_agreement": 0.9167,
+      "contradiction_agreement": 0.6833,
+      "contradiction_kappa": 0.337
+    },
+    {
+      "left": "gpt-4.1",
+      "right": "qwen2-5-14b-instruct",
+      "arm": "dirty",
+      "definition_agreement": 0.8833,
+      "contradiction_agreement": 0.6917,
+      "contradiction_kappa": 0.3528
+    },
+    {
+      "left": "gpt-4.1",
+      "right": "qwen2-5-14b-instruct",
+      "arm": "clean",
+      "definition_agreement": 0.9167,
+      "contradiction_agreement": 0.6833,
+      "contradiction_kappa": 0.337
+    },
+    {
+      "left": "gpt-4.1",
+      "right": "qwen2-5-32b-instruct",
+      "arm": "dirty",
+      "definition_agreement": 0.8667,
+      "contradiction_agreement": 0.6417,
+      "contradiction_kappa": 0.1963
+    },
+    {
+      "left": "gpt-4.1",
+      "right": "qwen2-5-32b-instruct",
+      "arm": "clean",
+      "definition_agreement": 0.9417,
+      "contradiction_agreement": 0.7,
+      "contradiction_kappa": 0.3171
+    },
+    {
+      "left": "gemma3-12b",
+      "right": "gpt-4-1-run2",
+      "arm": "dirty",
+      "definition_agreement": 0.8833,
+      "contradiction_agreement": 0.6333,
+      "contradiction_kappa": 0.0
+    },
+    {
+      "left": "gemma3-12b",
+      "right": "gpt-4-1-run2",
+      "arm": "clean",
+      "definition_agreement": 0.925,
+      "contradiction_agreement": 0.6833,
+      "contradiction_kappa": 0.0
+    },
+    {
+      "left": "gemma3-12b",
+      "right": "qwen2-5-14b-instruct-run2",
+      "arm": "dirty",
+      "definition_agreement": 0.925,
+      "contradiction_agreement": 0.6417,
+      "contradiction_kappa": 0.0
+    },
+    {
+      "left": "gemma3-12b",
+      "right": "qwen2-5-14b-instruct-run2",
+      "arm": "clean",
+      "definition_agreement": 0.9417,
+      "contradiction_agreement": 0.5583,
+      "contradiction_kappa": 0.0
+    },
+    {
+      "left": "gemma3-12b",
+      "right": "qwen2-5-14b-instruct",
+      "arm": "dirty",
+      "definition_agreement": 0.925,
+      "contradiction_agreement": 0.6417,
+      "contradiction_kappa": 0.0
+    },
+    {
+      "left": "gemma3-12b",
+      "right": "qwen2-5-14b-instruct",
+      "arm": "clean",
+      "definition_agreement": 0.9417,
+      "contradiction_agreement": 0.5583,
+      "contradiction_kappa": 0.0
+    },
+    {
+      "left": "gemma3-12b",
+      "right": "qwen2-5-32b-instruct",
+      "arm": "dirty",
+      "definition_agreement": 0.925,
+      "contradiction_agreement": 0.825,
+      "contradiction_kappa": 0.0
+    },
+    {
+      "left": "gemma3-12b",
+      "right": "qwen2-5-32b-instruct",
+      "arm": "clean",
+      "definition_agreement": 0.9333,
+      "contradiction_agreement": 0.6583,
+      "contradiction_kappa": 0.0
+    },
+    {
+      "left": "gpt-4-1-run2",
+      "right": "qwen2-5-14b-instruct-run2",
+      "arm": "dirty",
+      "definition_agreement": 0.875,
+      "contradiction_agreement": 0.6917,
+      "contradiction_kappa": 0.3329
+    },
+    {
+      "left": "gpt-4-1-run2",
+      "right": "qwen2-5-14b-instruct-run2",
+      "arm": "clean",
+      "definition_agreement": 0.9167,
+      "contradiction_agreement": 0.6917,
+      "contradiction_kappa": 0.3558
+    },
+    {
+      "left": "gpt-4-1-run2",
+      "right": "qwen2-5-14b-instruct",
+      "arm": "dirty",
+      "definition_agreement": 0.875,
+      "contradiction_agreement": 0.6917,
+      "contradiction_kappa": 0.3329
+    },
+    {
+      "left": "gpt-4-1-run2",
+      "right": "qwen2-5-14b-instruct",
+      "arm": "clean",
+      "definition_agreement": 0.9167,
+      "contradiction_agreement": 0.6917,
+      "contradiction_kappa": 0.3558
+    },
+    {
+      "left": "gpt-4-1-run2",
+      "right": "qwen2-5-32b-instruct",
+      "arm": "dirty",
+      "definition_agreement": 0.875,
+      "contradiction_agreement": 0.6917,
+      "contradiction_kappa": 0.254
+    },
+    {
+      "left": "gpt-4-1-run2",
+      "right": "qwen2-5-32b-instruct",
+      "arm": "clean",
+      "definition_agreement": 0.9417,
+      "contradiction_agreement": 0.675,
+      "contradiction_kappa": 0.2646
+    },
+    {
+      "left": "qwen2-5-14b-instruct-run2",
+      "right": "qwen2-5-14b-instruct",
+      "arm": "dirty",
+      "definition_agreement": 1.0,
+      "contradiction_agreement": 1.0,
+      "contradiction_kappa": 1.0
+    },
+    {
+      "left": "qwen2-5-14b-instruct-run2",
+      "right": "qwen2-5-14b-instruct",
+      "arm": "clean",
+      "definition_agreement": 1.0,
+      "contradiction_agreement": 1.0,
+      "contradiction_kappa": 1.0
+    },
+    {
+      "left": "qwen2-5-14b-instruct-run2",
+      "right": "qwen2-5-32b-instruct",
+      "arm": "dirty",
+      "definition_agreement": 0.9167,
+      "contradiction_agreement": 0.7333,
+      "contradiction_kappa": 0.3463
+    },
+    {
+      "left": "qwen2-5-14b-instruct-run2",
+      "right": "qwen2-5-32b-instruct",
+      "arm": "clean",
+      "definition_agreement": 0.9417,
+      "contradiction_agreement": 0.7167,
+      "contradiction_kappa": 0.4116
+    },
+    {
+      "left": "qwen2-5-14b-instruct",
+      "right": "qwen2-5-32b-instruct",
+      "arm": "dirty",
+      "definition_agreement": 0.9167,
+      "contradiction_agreement": 0.7333,
+      "contradiction_kappa": 0.3463
+    },
+    {
+      "left": "qwen2-5-14b-instruct",
+      "right": "qwen2-5-32b-instruct",
+      "arm": "clean",
+      "definition_agreement": 0.9417,
+      "contradiction_agreement": 0.7167,
+      "contradiction_kappa": 0.4116
+    }
+  ]
+}

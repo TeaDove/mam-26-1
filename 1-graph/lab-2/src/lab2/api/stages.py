@@ -5,6 +5,7 @@ import sys
 import time
 from collections import Counter
 from collections.abc import Callable
+from itertools import combinations
 
 import networkx as nx
 import numpy as np
@@ -21,15 +22,19 @@ from lab2.dto.models import (
     GraphReport,
     GraphSummary,
     JudgeAgreement,
+    JudgeMatrix,
+    JudgePair,
+    JudgeRun,
     JudgeUsage,
     NormalizationMetrics,
     RetrievalMetrics,
     StoredJudgeUsage,
     TokenizationMetrics,
+    VariantComparison,
     VectorizationMetrics,
 )
 from lab2.service.chunk_metrics import BookChunks, Span, chunking_metrics
-from lab2.service.chunking import StructuralChunker
+from lab2.service.chunking import StructuralChunker, with_overlap
 from lab2.service.cleaning import Cleaner, CleaningConfig
 from lab2.service.cleaning_metrics import CleaningEvaluator, combine
 from lab2.service.comparison import ComparisonContext, consistency_summary, judge_nodes
@@ -46,6 +51,7 @@ from lab2.service.normalization import Glossary, Normalizer
 from lab2.service.normalization_metrics import ANNOTATION_RULES, NormalizationEvaluator
 from lab2.service.retrieval import QuerySet, RankedQuery, rank, relevant, summarize
 from lab2.service.tokenization import FORMULA_CONVERSION_RULES, TextTokenizer
+from lab2.service.variants import compare_variants
 from lab2.service.vectorization import VectorDocuments, save_tfidf, vectorization_metrics, word_windows
 from lab2.supplier.embeddings import EmbeddingClient
 from lab2.supplier.llm import LlmClient
@@ -190,7 +196,16 @@ def run_chunking(settings: Settings) -> None:
         min_tokens=settings.chunk_min_tokens,
         hard_max_tokens=settings.chunk_hard_max_tokens,
     )
-    structural = [chunk for book in settings.books for chunk in chunker.chunk(book, normalized[book])]
+    structural = [
+        chunk
+        for book in settings.books
+        for chunk in with_overlap(
+            chunker.chunk(book, normalized[book]),
+            normalized[book],
+            settings.chunk_overlap_share,
+            settings.graphrag_chunk_tokens,
+        )
+    ]
     write_jsonl(settings.data_dir / "03_chunks.jsonl", structural)
     dirty = [
         unit
@@ -376,10 +391,11 @@ def run_rejudge(settings: Settings) -> None:
         base_url=settings.openai_base_url,
         api_key=settings.openai_api_key or "local",
         model=settings.judge_model,
-        cache_dir=settings.data_dir / "judge_cache",
+        cache_dir=settings.judge_cache_dir or settings.data_dir / "judge_cache",
         timeout=settings.llm_timeout,
     )
-    slug = re.sub(r"[^a-z0-9]+", "-", settings.judge_model.lower()).strip("-")
+    label = f"{settings.judge_model}-{settings.judge_run}" if settings.judge_run else settings.judge_model
+    slug = re.sub(r"[^a-z0-9]+", "-", label.lower()).strip("-")
     started = time.perf_counter()
     arms: dict[str, ArmAgreement] = {}
     for arm in ("dirty", "clean"):
@@ -395,13 +411,83 @@ def run_rejudge(settings: Settings) -> None:
             **agreement(candidate, reference),
         )
     report = JudgeAgreement(
-        candidate_model=settings.judge_model,
+        candidate_model=label,
         reference_model=settings.reference_judge_model,
         seconds=round(time.perf_counter() - started, 1),
         arms=arms,
     )
     write_json(settings.metrics_dir / f"09_judge_agreement_{slug}.json", report)
     log.info("judge agreement written for %s", settings.judge_model)
+
+
+def run_judge_matrix(settings: Settings) -> None:
+    adapter = TypeAdapter(list[ConsistencyVerdict])
+    runs: dict[str, dict[str, list[ConsistencyVerdict]]] = {settings.reference_judge_model: {}}
+    for arm in ("dirty", "clean"):
+        path = settings.metrics_dir / f"08_consistency_{arm}.json"
+        runs[settings.reference_judge_model][arm] = adapter.validate_json(path.read_text(encoding="utf-8"))
+        for path in sorted(settings.metrics_dir.glob(f"09_consistency_*_{arm}.json")):
+            label = path.name.removeprefix("09_consistency_").removesuffix(f"_{arm}.json")
+            runs.setdefault(label, {})[arm] = adapter.validate_json(path.read_text(encoding="utf-8"))
+    complete = {label: arms for label, arms in runs.items() if set(arms) == {"dirty", "clean"}}
+    summaries = {label: {arm: consistency_summary(v) for arm, v in arms.items()} for label, arms in complete.items()}
+    matrix = JudgeMatrix(
+        runs=[
+            JudgeRun(
+                label=label,
+                dirty_contradiction_share=s["dirty"].vertices_with_contradictions_share,
+                clean_contradiction_share=s["clean"].vertices_with_contradictions_share,
+                dirty_fully_defined_share=s["dirty"].fully_defined_share,
+                clean_fully_defined_share=s["clean"].fully_defined_share,
+            )
+            for label, s in summaries.items()
+        ],
+        pairs=[
+            JudgePair(left=left, right=right, arm=arm, **_pair_agreement(complete[left][arm], complete[right][arm]))
+            for left, right in combinations(complete, 2)
+            for arm in ("dirty", "clean")
+        ],
+    )
+    write_json(settings.metrics_dir / "10_judge_matrix.json", matrix)
+    log.info("judge matrix written for %d runs", len(complete))
+
+
+def run_variants(settings: Settings) -> None:
+    def comparison(folder: str) -> GraphComparison:
+        path = settings.metrics_dir / folder / "08_graph_comparison.json"
+        return GraphComparison.model_validate_json(path.read_text(encoding="utf-8"))
+
+    def retrieval(folder: str) -> RetrievalMetrics:
+        path = settings.metrics_dir / folder / "05_retrieval.json"
+        columns = TypeAdapter(dict[str, RetrievalMetrics]).validate_json(path.read_text(encoding="utf-8"))
+        return columns["clean_structural:all"]
+
+    result = VariantComparison(
+        metrics=compare_variants(comparison("."), comparison("11_rerun"), comparison("11_overlap")),
+        baseline_retrieval=retrieval("."),
+        overlap_retrieval=retrieval("11_overlap"),
+    )
+    write_json(settings.metrics_dir / "11_variants.json", result)
+    lines = [
+        "## Chunk overlap vs baseline (clean graph)",
+        "",
+        "| metric | baseline | rerun | overlap | noise | delta | clear |",
+        "| --- | --- | --- | --- | --- | --- | --- |",
+    ]
+    lines.extend(
+        f"| {m.name} | {m.baseline:g} | {m.rerun:g} | {m.overlap:g} | {m.noise:g} | {m.delta:+g} | "
+        f"{'yes' if m.clear else ''} |"
+        for m in result.metrics
+    )
+    (settings.metrics_dir / "11_variants.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    log.info("variant comparison written: %d clear deviations", sum(m.clear for m in result.metrics))
+
+
+def _pair_agreement(left: list[ConsistencyVerdict], right: list[ConsistencyVerdict]) -> dict[str, float]:
+    result = agreement(left, right)
+    return {
+        key: float(result[key]) for key in ("definition_agreement", "contradiction_agreement", "contradiction_kappa")
+    }
 
 
 def run_criteria(settings: Settings) -> None:

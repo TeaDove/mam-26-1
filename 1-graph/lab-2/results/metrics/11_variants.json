@@ -1,0 +1,240 @@
+{
+  "metrics": [
+    {
+      "name": "text units",
+      "kind": "count",
+      "baseline": 36.0,
+      "rerun": 36.0,
+      "overlap": 36.0,
+      "noise": 0.0,
+      "delta": 0.0,
+      "clear": false
+    },
+    {
+      "name": "input tokens",
+      "kind": "count",
+      "baseline": 24893.0,
+      "rerun": 24893.0,
+      "overlap": 28038.0,
+      "noise": 0.0,
+      "delta": 3145.0,
+      "clear": true
+    },
+    {
+      "name": "vertices per 1k tokens",
+      "kind": "count",
+      "baseline": 17.03,
+      "rerun": 15.63,
+      "overlap": 12.34,
+      "noise": 1.4,
+      "delta": -4.69,
+      "clear": true
+    },
+    {
+      "name": "vertices",
+      "kind": "count",
+      "baseline": 424.0,
+      "rerun": 389.0,
+      "overlap": 346.0,
+      "noise": 35.0,
+      "delta": -78.0,
+      "clear": true
+    },
+    {
+      "name": "edges",
+      "kind": "count",
+      "baseline": 437.0,
+      "rerun": 433.0,
+      "overlap": 455.0,
+      "noise": 4.0,
+      "delta": 18.0,
+      "clear": false
+    },
+    {
+      "name": "connected components",
+      "kind": "count",
+      "baseline": 84.0,
+      "rerun": 67.0,
+      "overlap": 40.0,
+      "noise": 17.0,
+      "delta": -44.0,
+      "clear": true
+    },
+    {
+      "name": "largest component share",
+      "kind": "share",
+      "baseline": 0.6604,
+      "rerun": 0.6272,
+      "overlap": 0.7717,
+      "noise": 0.0332,
+      "delta": 0.1113,
+      "clear": true
+    },
+    {
+      "name": "isolated vertices",
+      "kind": "count",
+      "baseline": 64.0,
+      "rerun": 49.0,
+      "overlap": 30.0,
+      "noise": 15.0,
+      "delta": -34.0,
+      "clear": true
+    },
+    {
+      "name": "RU vertices in largest component",
+      "kind": "count",
+      "baseline": 21.0,
+      "rerun": 16.0,
+      "overlap": 49.0,
+      "noise": 5.0,
+      "delta": 28.0,
+      "clear": true
+    },
+    {
+      "name": "cycles per 100 vertices",
+      "kind": "count",
+      "baseline": 22.9,
+      "rerun": 28.5,
+      "overlap": 43.1,
+      "noise": 5.6,
+      "delta": 20.2,
+      "clear": true
+    },
+    {
+      "name": "cross-book cycles",
+      "kind": "count",
+      "baseline": 71.0,
+      "rerun": 74.0,
+      "overlap": 128.0,
+      "noise": 3.0,
+      "delta": 57.0,
+      "clear": true
+    },
+    {
+      "name": "completeness (semantic)",
+      "kind": "share",
+      "baseline": 0.6556,
+      "rerun": 0.6722,
+      "overlap": 0.5944,
+      "noise": 0.0166,
+      "delta": -0.0612,
+      "clear": true
+    },
+    {
+      "name": "domain coverage",
+      "kind": "share",
+      "baseline": 0.925,
+      "rerun": 0.95,
+      "overlap": 0.95,
+      "noise": 0.025,
+      "delta": 0.025,
+      "clear": false
+    },
+    {
+      "name": "connected concept pairs",
+      "kind": "count",
+      "baseline": 9.0,
+      "rerun": 8.0,
+      "overlap": 9.0,
+      "noise": 1.0,
+      "delta": 0.0,
+      "clear": false
+    },
+    {
+      "name": "RU book share in BFS-2",
+      "kind": "share",
+      "baseline": 0.195,
+      "rerun": 0.1512,
+      "overlap": 0.2972,
+      "noise": 0.0438,
+      "delta": 0.1022,
+      "clear": true
+    },
+    {
+      "name": "noise share",
+      "kind": "share",
+      "baseline": 0.0249,
+      "rerun": 0.0368,
+      "overlap": 0.038,
+      "noise": 0.0119,
+      "delta": 0.0131,
+      "clear": false
+    },
+    {
+      "name": "formula vertices",
+      "kind": "count",
+      "baseline": 23.0,
+      "rerun": 9.0,
+      "overlap": 4.0,
+      "noise": 14.0,
+      "delta": -19.0,
+      "clear": false
+    },
+    {
+      "name": "translation duplicates",
+      "kind": "count",
+      "baseline": 2.0,
+      "rerun": 3.0,
+      "overlap": 1.0,
+      "noise": 1.0,
+      "delta": -1.0,
+      "clear": false
+    },
+    {
+      "name": "same-language duplicates",
+      "kind": "count",
+      "baseline": 11.0,
+      "rerun": 6.0,
+      "overlap": 4.0,
+      "noise": 5.0,
+      "delta": -7.0,
+      "clear": false
+    },
+    {
+      "name": "word-form duplicate vertices",
+      "kind": "count",
+      "baseline": 19.0,
+      "rerun": 14.0,
+      "overlap": 8.0,
+      "noise": 5.0,
+      "delta": -11.0,
+      "clear": true
+    },
+    {
+      "name": "formula window share",
+      "kind": "share",
+      "baseline": 0.112,
+      "rerun": 0.084,
+      "overlap": 0.036,
+      "noise": 0.028,
+      "delta": -0.076,
+      "clear": true
+    },
+    {
+      "name": "vertices with contradictions",
+      "kind": "share",
+      "baseline": 0.3083,
+      "rerun": 0.2833,
+      "overlap": 0.3083,
+      "noise": 0.0334,
+      "delta": 0.0,
+      "clear": false
+    }
+  ],
+  "baseline_retrieval": {
+    "queries": 26,
+    "hit_at_1": 0.6538,
+    "hit_at_3": 0.8462,
+    "hit_at_5": 0.9231,
+    "mrr": 0.7738,
+    "ndcg_at_10": 0.7113
+  },
+  "overlap_retrieval": {
+    "queries": 26,
+    "hit_at_1": 0.6154,
+    "hit_at_3": 0.7692,
+    "hit_at_5": 0.8462,
+    "mrr": 0.7297,
+    "ndcg_at_10": 0.6815
+  }
+}

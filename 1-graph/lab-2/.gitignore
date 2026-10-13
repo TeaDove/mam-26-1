@@ -3,7 +3,7 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .env
-data/judge_cache/
+data/judge_cache*/
 graphrag-*/cache/
 graphrag-*/output/lancedb/
 graphrag-*/logs/

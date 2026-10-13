@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     chunk_target_tokens: int = 900
     chunk_min_tokens: int = 250
     chunk_hard_max_tokens: int = 1100
+    chunk_overlap_share: float = 0.0
     graphrag_chunk_tokens: int = 1200
     graphrag_chunk_overlap: int = 100
     tiktoken_encoding: str = "o200k_base"
@@ -24,6 +25,8 @@ class Settings(BaseSettings):
     judge_model: str = "gpt-4.1"
     reference_judge_model: str = "gpt-4.1"
     llm_timeout: float = 90
+    judge_run: str = ""
+    judge_cache_dir: Path | None = None
     tfidf_window: int = 300
     dirty_graphrag_dir: Path = Path("graphrag-dirty/output")
     clean_graphrag_dir: Path = Path("graphrag-clean/output")

@@ -2,6 +2,7 @@ import re
 from dataclasses import dataclass, field
 
 from lab2.dto.models import Block, BlockKind, Chunk
+from lab2.service.chunk_metrics import cuts_sentence
 from lab2.util.text import clean_cut, count_tokens, furniture_lines, language, parse_blocks
 
 SENTENCE_SPLIT = re.compile(r"(?<=[.!?])\s+(?=[A-ZА-ЯЁ(])")
@@ -147,3 +148,91 @@ def _sub_block(block: Block, text: str) -> Block:
 
 def _join(blocks: list[Block]) -> str:
     return "\n\n".join(block.text for block in blocks)
+
+
+def with_overlap(chunks: list[Chunk], book_text: str, share: float, limit_tokens: int) -> list[Chunk]:
+    if share <= 0:
+        return chunks
+    blocks = parse_blocks(book_text)
+    furniture = furniture_lines(book_text)
+    result: list[Chunk] = []
+    for index, chunk in enumerate(chunks):
+        previous = chunks[index - 1] if index > 0 else None
+        following = chunks[index + 1] if index + 1 < len(chunks) else None
+        head = _edge_units(previous.text, share, from_end=True) if previous else []
+        tail = _edge_units(following.text, share, from_end=False) if following else []
+        while (head or tail) and count_tokens(_overlap_text(head, chunk.text, tail)) > limit_tokens:
+            if len(head) >= len(tail):
+                head = head[1:]
+            else:
+                tail = tail[:-1]
+        start, end_at = -1, -1
+        while previous and head:
+            start = book_text.rfind(head[0][1], previous.start, previous.end + 1)
+            if start >= 0 and not cuts_sentence(book_text, blocks, start, furniture):
+                break
+            head, start = head[1:], -1
+        while following and tail:
+            found = book_text.find(tail[-1][1], following.start)
+            end_at = found + len(tail[-1][1]) if found >= 0 else -1
+            if end_at >= 0 and not cuts_sentence(book_text, blocks, end_at, furniture):
+                break
+            tail, end_at = tail[:-1], -1
+        text = _overlap_text(head, chunk.text, tail)
+        result.append(
+            chunk.model_copy(
+                update={
+                    "text": text,
+                    "n_tokens": count_tokens(text),
+                    "start": start if start >= 0 else chunk.start,
+                    "end": end_at if end_at >= 0 else chunk.end,
+                }
+            )
+        )
+    return result
+
+
+def _edge_units(text: str, share: float, from_end: bool) -> list[tuple[int, str]]:
+    units = [
+        (block_index, unit)
+        for block_index, block in enumerate(text.split("\n\n"))
+        for unit in (_atomic(block) or SENTENCE_SPLIT.split(block))
+        if unit.strip()
+    ]
+    budget = share * count_tokens(text)
+    taken: list[tuple[int, str]] = []
+    for unit in reversed(units) if from_end else units:
+        current = count_tokens(_join_units(taken)) if taken else 0
+        extended = count_tokens(_join_units([*taken, unit] if not from_end else [unit, *taken]))
+        if taken and abs(extended - budget) >= abs(current - budget):
+            break
+        if not taken and extended > 2 * budget:
+            break
+        taken = [unit, *taken] if from_end else [*taken, unit]
+    return taken
+
+
+def _atomic(block: str) -> list[str]:
+    stripped = block.strip()
+    if stripped.startswith(("$$", "<table", "#")):
+        return [block]
+    return []
+
+
+def _join_units(units: list[tuple[int, str]]) -> str:
+    parts: list[str] = []
+    for position, (block_index, unit) in enumerate(units):
+        if position and units[position - 1][0] != block_index:
+            parts.append("\n\n")
+        elif position:
+            parts.append(" ")
+        parts.append(unit)
+    return "".join(parts)
+
+
+def _overlap_text(head: list[tuple[int, str]], body: str, tail: list[tuple[int, str]]) -> str:
+    parts = [_join_units(head)] if head else []
+    parts.append(body)
+    if tail:
+        parts.append(_join_units(tail))
+    return "\n\n".join(parts)

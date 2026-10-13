@@ -52,8 +52,8 @@ def chunking_metrics(books: list[BookChunks], graphrag_limit: int) -> ChunkingMe
         positions: set[int] = set()
         token_counts.extend(count_tokens(span.text) for span in book.spans)
         for left, right in pairwise(book.spans):
-            ends_bad = _cuts_sentence(book.book_text, blocks, left.end, furniture)
-            starts_bad = _cuts_sentence(book.book_text, blocks, right.start, furniture)
+            ends_bad = cuts_sentence(book.book_text, blocks, left.end, furniture)
+            starts_bad = cuts_sentence(book.book_text, blocks, right.start, furniture)
             overlapping = right.start < left.end
             boundaries += 1
             end_mid += ends_bad
@@ -99,7 +99,7 @@ def _formula_spans(text: str) -> list[tuple[int, int]]:
     return display + [(s, e) for s, e in inline if not is_citation(text[s:e])]
 
 
-def _cuts_sentence(text: str, blocks: list[Block], position: int, furniture: frozenset[str]) -> bool:
+def cuts_sentence(text: str, blocks: list[Block], position: int, furniture: frozenset[str]) -> bool:
     for block in blocks:
         if block.start < position < block.end:
             if block.kind is not BlockKind.PARAGRAPH:

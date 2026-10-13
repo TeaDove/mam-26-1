@@ -14,9 +14,9 @@
 GraphRAG не перерезает.
 
 Презентация — [results/presentation.pptx](results/presentation.pptx), глоссарий с описанием алгоритмов —
-[results/glossary.md](results/glossary.md). Что исправлено по замечаниям 12.10 — два слайда
-[results/rework_2026-10-12.pptx](results/rework_2026-10-12.pptx), описание —
-[results/rework_2026-10-12.md](results/rework_2026-10-12.md).
+[results/glossary.md](results/glossary.md). Что исправлено по замечаниям 12.10, выбор судьи и
+эксперимент с пересечением чанков — четыре слайда [results/rework_2026-10-12.pptx](results/rework_2026-10-12.pptx),
+описание — [results/rework_2026-10-12.md](results/rework_2026-10-12.md).
 
 ## Пайплайн
 
@@ -100,10 +100,12 @@ uv run lab2 graphs      # графы с векторами вершин → resu
 uv run lab2 compare     # критерии сравнения обходами графа и судья
 uv run lab2 criteria    # пересчёт критериев без LLM; ответы судьи — из results/metrics/08_consistency_*.json
 uv run lab2 rejudge     # второй судья на тех же вершинах (LAB2_JUDGE_MODEL) → results/metrics/09_*
+uv run lab2 judge-matrix  # согласие всех судей → results/metrics/10_judge_matrix.json
+uv run lab2 variants    # пересечение чанков против базы и повтора → results/metrics/11_variants.*
 uv run lab2 figures     # картинки графов
 uv run --with pyvis python scripts/build_html_graphs.py   # интерактивные HTML-графы
 uv run python scripts/build_presentation.py
-uv run python scripts/build_rework_slides.py   # два слайда о работе над ошибками 12.10
+uv run python scripts/build_rework_slides.py   # четыре слайда о работе над ошибками 12.10
 uv run pytest && uv run ruff check . && uv run ruff format --check .
 ```
 
@@ -126,4 +128,5 @@ uv run pytest && uv run ruff check . && uv run ruff format --check .
 | `results/figures/` | Картинки графов |
 | `results/*.md` | Отчёты по предобработке и по критериям, глоссарий, спич к презентации |
 | `results/presentation.pptx` | Презентация |
-| `results/rework_2026-10-12.pptx` | Два слайда: что исправлено по замечаниям 12.10 |
+| `results/rework_2026-10-12.pptx` | Четыре слайда: замечания 12.10, выбор судьи, пересечение чанков |
+| `results/metrics/1[01]_*` | Матрица судей; вариант с пересечением чанков (`11_overlap/`) и повтор индексации (`11_rerun/`) |

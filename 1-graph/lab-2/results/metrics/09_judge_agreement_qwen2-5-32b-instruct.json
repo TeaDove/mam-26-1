@@ -1,0 +1,53 @@
+{
+  "candidate_model": "qwen2.5:32b-instruct",
+  "reference_model": "gpt-4.1",
+  "seconds": 5521.0,
+  "arms": {
+    "dirty": {
+      "vertices": 120,
+      "candidate": {
+        "checked_vertices": 120,
+        "fully_defined_share": 0.0,
+        "partially_defined_share": 0.9333,
+        "contradictions_total": 21,
+        "vertices_with_contradictions_share": 0.175
+      },
+      "reference": {
+        "checked_vertices": 120,
+        "fully_defined_share": 0.025,
+        "partially_defined_share": 0.8833,
+        "contradictions_total": 51,
+        "vertices_with_contradictions_share": 0.4167
+      },
+      "definition_agreement": 0.8667,
+      "contradiction_agreement": 0.6417,
+      "contradiction_kappa": 0.1963,
+      "both_contradiction": 14,
+      "only_candidate_contradiction": 7,
+      "only_reference_contradiction": 36
+    },
+    "clean": {
+      "vertices": 120,
+      "candidate": {
+        "checked_vertices": 120,
+        "fully_defined_share": 0.0,
+        "partially_defined_share": 0.9833,
+        "contradictions_total": 41,
+        "vertices_with_contradictions_share": 0.3417
+      },
+      "reference": {
+        "checked_vertices": 120,
+        "fully_defined_share": 0.0417,
+        "partially_defined_share": 0.9417,
+        "contradictions_total": 38,
+        "vertices_with_contradictions_share": 0.3083
+      },
+      "definition_agreement": 0.9417,
+      "contradiction_agreement": 0.7,
+      "contradiction_kappa": 0.3171,
+      "both_contradiction": 21,
+      "only_candidate_contradiction": 20,
+      "only_reference_contradiction": 16
+    }
+  }
+}

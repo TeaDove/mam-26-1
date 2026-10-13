@@ -1,0 +1,352 @@
+[
+  {
+    "arm": "dirty",
+    "vertex": "554",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": true,
+    "confidence": "medium",
+    "evidence": "{554} is called a phase; the source treats it as a texture component",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "dirty",
+    "vertex": "NORMALIZING",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": false,
+    "confidence": "medium",
+    "evidence": "normalizing after controlled rolling fits the Miyoshi process; generic definition is incompleteness",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "dirty",
+    "vertex": "КП+УО",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": true,
+    "confidence": "high",
+    "evidence": "УОВТ attributed to КП 3000, while the source says only the 3600 mill has accelerated cooling",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "dirty",
+    "vertex": "VANADIUM CARBIDE (VC)",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": true,
+    "confidence": "low",
+    "evidence": "V(C,N) precipitate called an alloying element",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "dirty",
+    "vertex": "NON-RECRYSTALLIZATION REGION",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": true,
+    "confidence": "medium",
+    "evidence": "non-recrystallization region claimed to have no structural changes; source: deformation bands, substructure",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "dirty",
+    "vertex": "SEPARATION",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": false,
+    "confidence": "medium",
+    "evidence": "separation description agrees with the source; missing details only",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "dirty",
+    "vertex": "NIOBIUM CARBIDE (NBC)",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": true,
+    "confidence": "low",
+    "evidence": "Nb(C,N) precipitate called an alloying element",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "dirty",
+    "vertex": "CARBON STEEL",
+    "disagreement": "only local models flag",
+    "has_contradiction": true,
+    "confidence": "medium",
+    "evidence": "Nb called an alloying element of carbon steel; source contrasts Nb steel with plain C steel",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  },
+  {
+    "arm": "dirty",
+    "vertex": "PLATE MILL",
+    "disagreement": "only local models flag",
+    "has_contradiction": false,
+    "confidence": "medium",
+    "evidence": "plate-mill reduction limits match the source",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  },
+  {
+    "arm": "dirty",
+    "vertex": "COARSE Γ-GRAIN STRUCTURE",
+    "disagreement": "only local models flag",
+    "has_contradiction": false,
+    "confidence": "high",
+    "evidence": "coarse austenite from high-temperature processing worsens toughness, as in the source",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  },
+  {
+    "arm": "dirty",
+    "vertex": "LOW-ANGLE BOUNDARY",
+    "disagreement": "only local models flag",
+    "has_contradiction": true,
+    "confidence": "medium",
+    "evidence": "sub-grains said to add dislocation hardening; source: subgrain structure eliminates it",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "ТЕМП ПРОКАТКИ",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": true,
+    "confidence": "high",
+    "evidence": "rolling tempo column (τ, s) read as a rolling temperature",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "PHILLIPS AND CHAPMAN",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": false,
+    "confidence": "high",
+    "evidence": "pioneers of controlled rolling, as in the source",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "MO",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": true,
+    "confidence": "high",
+    "evidence": "Mo said to raise toughness; source: only Nb raises both strength and toughness",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "GRAIN REFINING",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": false,
+    "confidence": "high",
+    "evidence": "grain refining description almost verbatim from the source",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "RECRYSTALLIZATION-PRECIPITATION-TIME DIAGRAM",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": false,
+    "confidence": "medium",
+    "evidence": "RPT diagram typed as equipment; a type error, no conflicting statement",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "HARDENABILITY",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": false,
+    "confidence": "high",
+    "evidence": "generic hardenability definition, the source only mentions it",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "NIOBIUM STEEL",
+    "disagreement": "only gpt-4.1 flags",
+    "has_contradiction": true,
+    "confidence": "medium",
+    "evidence": "controlled-rolled steel said to minimise through-thickness embrittlement; source: it causes it",
+    "judge_flags": {
+      "gpt-4.1": true,
+      "gpt-4.1 run2": true,
+      "qwen2.5:14b-instruct": false,
+      "qwen2.5:32b-instruct": false
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "NB (NIOBIUM)",
+    "disagreement": "only local models flag",
+    "has_contradiction": true,
+    "confidence": "medium",
+    "evidence": "normalizing said to follow controlled rolling; source: controlled rolling replaces normalizing",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "GRAIN STRUCTURE",
+    "disagreement": "only local models flag",
+    "has_contradiction": false,
+    "confidence": "medium",
+    "evidence": "deformation band relations match the source",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "TRANSITION TEMPERATURE",
+    "disagreement": "only local models flag",
+    "has_contradiction": true,
+    "confidence": "medium",
+    "evidence": "through-thickness embrittlement inverted and causality of separation reversed",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "HEAVY PLATE",
+    "disagreement": "only local models flag",
+    "has_contradiction": true,
+    "confidence": "high",
+    "evidence": "normalizing said to follow controlled rolling; source: done instead of normalizing",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "ASHBY-OROWAN STRENGTHENING",
+    "disagreement": "only local models flag",
+    "has_contradiction": false,
+    "confidence": "high",
+    "evidence": "Ashby-Orowan strengthening matches the source",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "QUENCHED AND TEMPERED STEEL",
+    "disagreement": "only local models flag",
+    "has_contradiction": false,
+    "confidence": "medium",
+    "evidence": "controlled-rolled vs quenched and tempered steel consistent with the source",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  },
+  {
+    "arm": "clean",
+    "vertex": "DELTA",
+    "disagreement": "only local models flag",
+    "has_contradiction": false,
+    "confidence": "high",
+    "evidence": "Δ term of Gladman's equation matches the source",
+    "judge_flags": {
+      "gpt-4.1": false,
+      "gpt-4.1 run2": false,
+      "qwen2.5:14b-instruct": true,
+      "qwen2.5:32b-instruct": true
+    }
+  }
+]

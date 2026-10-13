@@ -5,6 +5,7 @@ import networkx as nx
 import pandas as pd
 
 from lab2.dto.models import Chunk, ConsistencyVerdict
+from lab2.service.chunking import with_overlap
 from lab2.service.comparison import source_fragment
 from lab2.service.corpus import strip_bibliography, token_windows
 from lab2.service.graph_criteria import (
@@ -23,6 +24,8 @@ from lab2.service.judge import agreement
 from lab2.service.lemmatization import Lemmatizer
 from lab2.service.normalization import Glossary, Normalizer
 from lab2.service.retrieval import Query, RankedQuery
+from lab2.service.variants import METRICS, is_clear
+from lab2.util.text import count_tokens
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -239,3 +242,59 @@ def test_judge_agreement_counts_flags_and_kappa() -> None:
     assert result["contradiction_agreement"] == 0.75
     assert (result["both_contradiction"], result["only_reference_contradiction"]) == (1, 1)
     assert result["contradiction_kappa"] == 0.5
+
+
+def test_overlap_adds_whole_sentences_from_neighbours() -> None:
+    first = "One alpha sentence here. Two beta sentence here. Three gamma sentence here."
+    second = "Four delta sentence here. Five epsilon sentence here. Six zeta sentence here."
+    book = f"{first}\n\n{second}"
+    chunks = [
+        Chunk(chunk_id="b_c000", book="b", lang="en", section="", text=first, n_tokens=1, start=0, end=len(first)),
+        Chunk(
+            chunk_id="b_c001",
+            book="b",
+            lang="en",
+            section="",
+            text=second,
+            n_tokens=1,
+            start=len(first) + 2,
+            end=len(book),
+        ),
+    ]
+    result = with_overlap(chunks, book, 0.4, 1200)
+    assert result[0].text == f"{first}\n\nFour delta sentence here."
+    assert result[1].text == f"Three gamma sentence here.\n\n{second}"
+    assert result[1].start == book.index("Three")
+    assert with_overlap(chunks, book, 0.0, 1200) == chunks
+
+
+def test_overlap_respects_token_limit() -> None:
+    first = " ".join(f"Sentence number {i} is here." for i in range(40))
+    second = " ".join(f"Other sentence {i} is here." for i in range(40))
+    book = f"{first}\n\n{second}"
+    chunks = [
+        Chunk(chunk_id="b_c000", book="b", lang="en", section="", text=first, n_tokens=1, start=0, end=len(first)),
+        Chunk(
+            chunk_id="b_c001",
+            book="b",
+            lang="en",
+            section="",
+            text=second,
+            n_tokens=1,
+            start=len(first) + 2,
+            end=len(book),
+        ),
+    ]
+    limit = count_tokens(first) + 15
+    result = with_overlap(chunks, book, 0.3, limit)
+    assert all(chunk.n_tokens <= limit for chunk in result)
+
+
+def test_clear_deviation_needs_to_exceed_noise_and_floor() -> None:
+    share = next(spec for spec in METRICS if spec.kind == "share")
+    count = next(spec for spec in METRICS if spec.kind == "count")
+    assert is_clear(share, 0.30, 0.05, 0.01)
+    assert not is_clear(share, 0.30, 0.05, 0.03)
+    assert not is_clear(share, 0.30, 0.02, 0.0)
+    assert is_clear(count, 100, 15, 5)
+    assert not is_clear(count, 100, 8, 0)

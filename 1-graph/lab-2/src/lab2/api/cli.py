@@ -19,6 +19,8 @@ COMMANDS: dict[str, Callable[[Settings], None]] = {
     "compare": stages.run_compare,
     "criteria": stages.run_criteria,
     "rejudge": stages.run_rejudge,
+    "judge-matrix": stages.run_judge_matrix,
+    "variants": stages.run_variants,
     "figures": stages.run_figures,
 }
 

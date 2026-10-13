@@ -1,0 +1,722 @@
+[
+  {
+    "node": "CONTROLLED ROLLING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition lacks details about the specific temperature ranges and deformation strategies employed."
+  },
+  {
+    "node": "ACCELERATED COOLING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions enhancing mechanical properties but doesn't fully explain the microstructural changes facilitated by accelerated cooling."
+  },
+  {
+    "node": "КПУО",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions controlled rolling with accelerated cooling (КПУО) as a process for managing steel cooling, but lacks detail on the specific mechanisms or goals beyond influencing mechanical properties."
+  },
+  {
+    "node": "RECRYSTALLIZATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions γ-grain boundaries, but the source fragment focuses on γ-grains."
+  },
+  {
+    "node": "AUSTENITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions carbon dissolution but doesn't fully explain the role of austenite in controlled rolling as described in the source."
+  },
+  {
+    "node": "FERRITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the role of controlled rolling in ferrite formation."
+  },
+  {
+    "node": "BAINITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions upper bainite as a component of a mixed microstructure, but doesn't fully define it."
+  },
+  {
+    "node": "MARTENSITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition lacks details about the carbon content and the role of temperature in martensite formation."
+  },
+  {
+    "node": "GRAIN REFINEMENT",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the role of substitutional alloying elements in lowering the transformation temperature."
+  },
+  {
+    "node": "GRAIN SIZE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the role of grain boundaries in nucleation, a key point from the source."
+  },
+  {
+    "node": "NIOBIUM",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions niobium's role in improving strength and reducing niobium/vanadium consumption, but doesn't fully explain its mechanism."
+  },
+  {
+    "node": "V",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes vanadium's role in precipitation hardening and its lesser effect on recrystallization compared to niobium."
+  },
+  {
+    "node": "TI",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions Ti's contribution to strength and grain refinement, but doesn't fully explain the mechanism or the nuance of toughness reduction."
+  },
+  {
+    "node": "TOUGHNESS",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes toughness as being improved by grain refining or toughening the ferrite matrix, but doesn't fully explain the underlying mechanisms."
+  },
+  {
+    "node": "YIELD STRENGTH",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is accurate but the source fragment doesn't elaborate on its significance beyond mentioning it's a property influencing performance."
+  },
+  {
+    "node": "TENSILE STRENGTH",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is partially correct but misses the crucial aspect of failure under tensile stress mentioned in the source."
+  },
+  {
+    "node": "TRANSITION TEMPERATURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the connection to separation and the difference in transition temperature between directions."
+  },
+  {
+    "node": "DEFORMATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of deformation is broad but misses the crucial aspect of its role in controlled rolling, specifically regarding grain refinement."
+  },
+  {
+    "node": "REDUCTION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the different recrystallization regions and their impact on grain structure."
+  },
+  {
+    "node": "PRECIPITATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions alloys generally, while the source fragment focuses on steel."
+  },
+  {
+    "node": "AR3 TEMPERATURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the strain-induced aspect of the Ar3 temperature."
+  },
+  {
+    "node": "ЧИСТОВАЯ КЛЕТЬ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the table context where the finishing mill is located."
+  },
+  {
+    "node": "ROUGHING STAND",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions initial shaping but lacks details about the reduction ratio and temperature ranges."
+  },
+  {
+    "node": "REVERSING MILL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions bidirectional rolling, which isn't explicitly stated in the source."
+  },
+  {
+    "node": "SLAB",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions processing before rolling, but the source fragment primarily focuses on the controlled rolling process itself."
+  },
+  {
+    "node": "HEAVY PLATE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions construction use, which isn't explicitly stated in the source."
+  },
+  {
+    "node": "REHEATING TEMPERATURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions reheating temperature but doesn't fully define it as the temperature before rolling."
+  },
+  {
+    "node": "FINISHING TEMPERATURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't fully capture the relationship between finishing temperature and transition temperature as described in the source."
+  },
+  {
+    "node": "TWO-PHASE REGION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions austenite and ferrite coexistence, which is accurate, but lacks detail about the role of temperature and deformation."
+  },
+  {
+    "node": "NON-RECRYSTALLIZATION REGION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition lacks details about the temperature range and the role of stored energy."
+  },
+  {
+    "node": "DEFORMATION BAND",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition lacks the connection to ferrite nucleation and the relationship with γ-grain boundaries, as described in the source."
+  },
+  {
+    "node": "HALL-PETCH RELATION",
+    "definition": "full",
+    "contradictions": 0,
+    "comment": "The provided text accurately describes the Hall-Petch relation and its importance in controlled rolling."
+  },
+  {
+    "node": "SEPARATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition lacks details about the role of MnS inclusions and banded microstructures in initiating separation."
+  },
+  {
+    "node": "LOW-PEARLITE STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes low-pearlite steel as being processed via controlled rolling and thermomechanical treatment, but doesn't fully explain its composition or properties."
+  },
+  {
+    "node": "СКОРОСТЬ ОХЛАЖДЕНИЯ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment defines cooling rate as a parameter influencing mechanical properties and relates it to accelerated cooling and temperature."
+  },
+  {
+    "node": "УОВТ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes УОВТ as equipment for accelerated cooling, but doesn't fully explain its function."
+  },
+  {
+    "node": "NORMALIZING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions air cooling, which is not supported by the source fragment."
+  },
+  {
+    "node": "SUBGRAIN",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions deformation affecting mechanical performance, which is not explicitly stated in the source."
+  },
+  {
+    "node": "MICROALLOYING ELEMENTS",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of microalloying elements' influence is incomplete, as the source mentions strain-induced precipitation as a key mechanism."
+  },
+  {
+    "node": "NB",
+    "definition": "full",
+    "contradictions": 0,
+    "comment": "The provided text fragment comprehensively defines the role of niobium in retarding recrystallization."
+  },
+  {
+    "node": "LARGE-DIAMETER PIPELINES",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions large-diameter pipelines as an application driving controlled rolling, but doesn't fully define what constitutes a 'large-diameter pipeline'."
+  },
+  {
+    "node": "NON-RECRYSTALIZATION REGION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the crucial role of temperature and delay time in the non-recrystallization region."
+  },
+  {
+    "node": "LONGITUDINAL L DIRECTION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition lacks the context of its relation to separation and the experimental setup described in the text."
+  },
+  {
+    "node": "PLASTIC/ELASTIC INTERFACE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes the plastic/elastic interface as the location of maximum stress during separation, but doesn't fully define it."
+  },
+  {
+    "node": "COARSENING OF GRAIN",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions mechanical property effects, but the source fragment focuses on the relationship with Nb and its impact on toughness."
+  },
+  {
+    "node": "D_C",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of D_C is incomplete as it doesn't mention its role in the equation (11) as a component of yield strength."
+  },
+  {
+    "node": "ASTM 5",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of ASTM 5 is incomplete as it doesn't mention the size limit."
+  },
+  {
+    "node": "C-MN-NB STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions mechanical properties but doesn't elaborate on how controlled rolling achieves them, as described in the source."
+  },
+  {
+    "node": "ROLLER MILL 3000",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes the Roller Mill 3000 as specialized for strip production and having a higher rolling speed than another mill, but doesn't fully explain its function."
+  },
+  {
+    "node": "USINOR",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions USINOR's use of both two-stage and three-stage rolling schedules, but the neighborhood doesn't reflect this nuance."
+  },
+  {
+    "node": "BAINITIC",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes bainite as a microstructure influencing texture development, but doesn't fully define it."
+  },
+  {
+    "node": "ROLLING SCHEDULE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment defines a rolling schedule as a temperature-deformation regime, but doesn't fully explain its purpose or components."
+  },
+  {
+    "node": "МАЛОПЕРЛИТНАЯ СТАЛЬ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes малоперлитная сталь as a steel grade used for producing sheets with exceptional mechanical properties, characterized by a minimal amount of pearlite."
+  },
+  {
+    "node": "THICKNESS OF MATERIAL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the control of initial thickness relative to final thickness, a key aspect highlighted in the source."
+  },
+  {
+    "node": "MEDIUM HARDENABILITY STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment defines controlled rolling's benefit for medium hardenability steel, but doesn't fully explain what 'medium hardenability' means."
+  },
+  {
+    "node": "CELLULAR DISLOCATION STRUCTURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes the transformation and its effect, but doesn't fully define 'cellular dislocation structure'."
+  },
+  {
+    "node": "NB(C,N)",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the role of strain-induced precipitation in retarding recrystallization, a key aspect highlighted in the source."
+  },
+  {
+    "node": "PARTIAL RECRYSTALLIZATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes partial recrystallization as a region between recovery and complete recrystallization, producing a mixed grain structure."
+  },
+  {
+    "node": "Σ_{TEXT}",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions texture hardening as a minor addition to the Hall-Petch equation, but doesn't fully define its mechanism."
+  },
+  {
+    "node": "ТЕМП ПРОКАТКИ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions structural integrity and defect minimization, which are not present in the source fragment."
+  },
+  {
+    "node": "UPPER BAINITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions deformation conditions, but the source fragment primarily links upper bainite formation to austenite grain size and deformation amount."
+  },
+  {
+    "node": "DELTA",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment defines Delta as a contribution to the transition temperature from dislocations in low-angle boundaries, but doesn't fully explain its nature."
+  },
+  {
+    "node": "CARBONITRIDE STRENGTHENING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions 'carbonitride strengthening' as part of a production technology, but doesn't fully explain what it *is*."
+  },
+  {
+    "node": "VOEST-ALPINE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions VOEST-ALPINE as a company utilizing controlled rolling, but doesn't define what VOEST-ALPINE *is*."
+  },
+  {
+    "node": "DISLOCATION HARDENING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes dislocation hardening as a component influencing transition temperature, not a general phenomenon of increased dislocation density."
+  },
+  {
+    "node": "SUBGRAIN FORMATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions subgrain formation as a mechanism for strength increase, but doesn't fully define the phenomenon itself."
+  },
+  {
+    "node": "ACICULAR FERRITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes acicular ferrite as a microstructure resulting from controlled rolling, but doesn't fully explain its formation mechanism."
+  },
+  {
+    "node": "TEMPERING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions improving toughness, which aligns with the source, but it lacks the context of it being a post-quenching process."
+  },
+  {
+    "node": "STATIC RECRYSTALLIZATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions factors influencing static recrystallization, but doesn't fully explain the underlying mechanism."
+  },
+  {
+    "node": "N_{S}",
+    "definition": "full",
+    "contradictions": 0,
+    "comment": "The fragment clearly defines N_S and its relationship to S_V and the transformation rate."
+  },
+  {
+    "node": "POLYGONAL GRAIN",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition lacks the context of its formation within the two-phase region and its relation to subgrains."
+  },
+  {
+    "node": "ДТУ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions temperature control during rolling, but doesn't fully explain its purpose or how it's achieved."
+  },
+  {
+    "node": "GLADMAN",
+    "definition": "full",
+    "contradictions": 0,
+    "comment": "The provided text accurately describes Gladman's equation for the transition temperature of bainitic steel."
+  },
+  {
+    "node": "B",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment defines B as a constant in an equation relating to transition temperature, but lacks details about its specific role or value."
+  },
+  {
+    "node": "КП 3000",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions 'compression ratios' which is not explicitly stated in the source fragment, only 'total compression'."
+  },
+  {
+    "node": "QUENCHED AND TEMPERED STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment defines quenched and tempered steel only in comparison to controlled-rolled steel, not independently."
+  },
+  {
+    "node": "SOLUTE DRAG EFFECT",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is partial because it doesn't mention the connection to solute atoms retarding recrystallization due to their interaction with grain boundaries."
+  },
+  {
+    "node": "ROUGHER MILL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions the rougher mill's role in heavy reduction but lacks details about its specific function beyond that."
+  },
+  {
+    "node": "PIPE STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions high pressure and extreme conditions, which are not explicitly stated in the source fragment."
+  },
+  {
+    "node": "ПЛОСКОСТНОСТЬ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions плоскостность as a property achieved through controlled rolling and accelerated cooling, but doesn't fully define it."
+  },
+  {
+    "node": "УПРУГОСТЬ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition focuses on recovery from deformation, but the source fragment primarily discusses the impact of controlled rolling and accelerated cooling on strength and other properties."
+  },
+  {
+    "node": "BIMITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of 'bimate' is not present in the source fragment, but it is linked to upper bainite, which is mentioned."
+  },
+  {
+    "node": "NIOBIUM STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions enhanced durability, which isn't explicitly stated in the source fragment."
+  },
+  {
+    "node": "GRAIN STRUCTURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the context of high-temperature deformation and austenite grains."
+  },
+  {
+    "node": "GRAIN-BOUNDARY AREA",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition includes deformation bands as part of grain-boundary area, which is not fully accurate according to the source."
+  },
+  {
+    "node": "BISRA",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment establishes BISRA's role in controlled rolling research but doesn't fully define the organization's scope or activities."
+  },
+  {
+    "node": "ASHBY-OROWAN STRENGTHENING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the link to the transition temperature as described in the source."
+  },
+  {
+    "node": "REHEATING FURNACE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions deformation but doesn't specify the purpose of reheating, which is to prepare the slab for rolling."
+  },
+  {
+    "node": "COLD-WORKED GRAIN",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of cold-worked grain is partially correct but lacks crucial context from the source fragment regarding its formation during two-phase deformation."
+  },
+  {
+    "node": "ALPHA",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of alpha phase is correct but the source fragment focuses on its transformation and relationship to Ar3 temperature, which is not fully captured."
+  },
+  {
+    "node": "STRENGTH",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of strength is accurate but lacks depth regarding the mechanisms described in the source."
+  },
+  {
+    "node": "CONVENTIONAL HOT ROLLING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the key difference regarding α nucleation location compared to controlled rolling."
+  },
+  {
+    "node": "C-MN-NB STEELS",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of C-MN-NB steels is incomplete as it doesn't mention their specific application or the reason for niobium addition beyond grain refinement."
+  },
+  {
+    "node": "NB (NIOBIUM)",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of niobium's effect on notch toughness is accurate but lacks context from the source."
+  },
+  {
+    "node": "МЕХАНИЧЕСКИЕ СВОЙСТВА",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes mechanical properties as being influenced by cooling and temperature, but doesn't fully define what they *are*."
+  },
+  {
+    "node": "МАРТЕНСИТ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions martensite only in the context of avoiding its formation through controlled cooling."
+  },
+  {
+    "node": "MO",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions molybdenum's role in transformation hardening and acicular ferrite steel, but lacks details on its other functions."
+  },
+  {
+    "node": "F_C",
+    "definition": "full",
+    "contradictions": 0,
+    "comment": "The fragment explicitly defines F_c and its role in the yield strength equation."
+  },
+  {
+    "node": "FINE GRAINED STRUCTURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions improved mechanical properties, which is consistent with the source, but lacks detail about the mechanism."
+  },
+  {
+    "node": "Α-GRAIN SIZE",
+    "definition": "full",
+    "contradictions": 0,
+    "comment": "The definition and relationships are accurately reflected in the source fragment."
+  },
+  {
+    "node": "ROLLING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of rolling is broad but misses the specific context of controlled rolling within the austenite-ferrite region."
+  },
+  {
+    "node": "HARDENABILITY",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions alloying elements influencing hardenability, but the source fragment primarily discusses their impact on strength, toughness, and transformation temperature."
+  },
+  {
+    "node": "STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition lacks the crucial aspect of controlled rolling being a means to achieve properties comparable to highly alloyed or heat-treated steel."
+  },
+  {
+    "node": "MN (MANGANESE)",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions manganese's role in improving notch toughness, but doesn't fully define its function as an alloying element."
+  },
+  {
+    "node": "GRAIN REFINING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions lowering transformation temperatures as a mechanism, which is present in the source."
+  },
+  {
+    "node": "RECRYSTALLIZATION-PRECIPITATION-TIME DIAGRAM",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The source fragment explicitly mentions a 'recrystallization—precipitation—time (RPT) diagram', not 'recrystallization-precipitation-time diagram'."
+  },
+  {
+    "node": "PHILLIPS AND CHAPMAN",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment establishes Phillips and Chapman's contribution to controlled rolling and their focus on the non-recrystallization region, but lacks detail on their specific methodologies."
+  },
+  {
+    "node": "WELDABILITY",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of weldability is accurate but lacks detail about the mechanisms involved beyond carbon content."
+  },
+  {
+    "node": "ЧИСЛЕННЫЕ РЕЗУЛЬТАТЫ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment describes numerical results as calculations demonstrating the relationship between cooling rate and technological parameters, but doesn't fully define what 'numerical results' represent."
+  },
+  {
+    "node": "PLAIN CARBON STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is incomplete as it doesn't mention the influence of deformation and finishing temperatures on the transition temperature."
+  },
+  {
+    "node": "DUCILE-TO-BRITTLE TRANSITION TEMPERATURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is partially correct, but the source fragment doesn't fully elaborate on the transition process itself."
+  },
+  {
+    "node": "HESLOP",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment only mentions Heslop and Petch's theoretical work on the inverse relationship between transition temperature and grain size, not their broader research contributions."
+  },
+  {
+    "node": "FINISH-ROLLING TEMPERATURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The fragment mentions finish-rolling temperature's influence on grain size and notch toughness, but doesn't fully define it as a 'critical parameter'."
+  },
+  {
+    "node": "ПРОКАТ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of rolling is present, but the source fragment focuses on accelerated cooling and doesn't fully elaborate on the mechanical aspects of the process."
+  },
+  {
+    "node": "HOT-ROLLED STRIP",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition lacks detail about the specific temperature range and final thickness of hot-rolled strip."
+  },
+  {
+    "node": "LATTICE HARDENING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions defects in the crystal lattice, but the source fragment only describes lattice hardening as one of several terms contributing to yield stress."
+  },
+  {
+    "node": "THROUGH-THICKNESS EMBRITTLEMENT",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions toughness and strength impacts, but the source fragment focuses more on crack propagation and separation."
+  },
+  {
+    "node": "FINE Α-GRAIN",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition is partially correct, but the source fragment doesn't explicitly state that fine α-grain enhances strength."
+  },
+  {
+    "node": "ALPHA-PHASE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition mentions mechanical characteristics but the source fragment focuses on texture development and anisotropy."
+  },
+  {
+    "node": "C–MN–NB FINE-GRAINED STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition lacks details about the specific alloying elements and their roles beyond Nb."
+  }
+]

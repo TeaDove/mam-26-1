@@ -1,0 +1,722 @@
+[
+  {
+    "node": "CONTROLLED ROLLING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of controlled rolling, missing specific details about the three stages and the role of alloying elements as described in the source."
+  },
+  {
+    "node": "УО",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of УО, focusing on its role in enhancing mechanical properties but lacking specific details from the source text."
+  },
+  {
+    "node": "КПУО",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of КПУО is partially covered, but the source fragment does not mention the high-temperature rolling aspect, which is included in the vertex."
+  },
+  {
+    "node": "RECRYSTALLIZATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a broad context but lack specific details about recrystallization in the context of controlled rolling and the role of Nb in retarding recrystallization."
+  },
+  {
+    "node": "AUSTENITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a comprehensive but not complete definition of austenite, missing some specific details from the source text."
+  },
+  {
+    "node": "FERRITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of ferrite is mostly accurate but lacks specific details about its role in controlled rolling and its interaction with other phases."
+  },
+  {
+    "node": "PEARLITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of pearlite and its relation to controlled rolling, but the source fragment does not contain detailed information about pearlite's formation or its interaction with other microstructures."
+  },
+  {
+    "node": "BAINITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of bainite is partially covered, but the source fragment does not provide a comprehensive definition of bainite or its formation process."
+  },
+  {
+    "node": "MARTENSITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of martensite is accurate but the source fragment does not provide comprehensive details about its formation or mechanical impact in the context of controlled rolling."
+  },
+  {
+    "node": "GRAIN REFINEMENT",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of grain refinement is partially correct but lacks details specific to the source text, such as the limiting value of grain refinement and the role of the two-phase region."
+  },
+  {
+    "node": "GRAIN SIZE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a broad context but lack specific details about grain size in the context of controlled rolling and recrystallization processes as described in the source fragment."
+  },
+  {
+    "node": "NIOBIUM",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of niobium's role in steel, focusing on its impact on strength and microstructure but lacking specific details from the source text."
+  },
+  {
+    "node": "V",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the alloying element V, focusing on its role in precipitation hardening and strength enhancement, but lacks details on its specific effects in controlled rolling as described in the source."
+  },
+  {
+    "node": "TI",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of Ti as an alloying element, but the source fragment does not fully cover Ti's role in controlled rolling and its effects on toughness."
+  },
+  {
+    "node": "TOUGHNESS",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of toughness is accurate but the neighbourhood includes additional concepts that are not directly defined or discussed in the source fragment."
+  },
+  {
+    "node": "YIELD STRENGTH",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a broad context for yield strength but lack specific details from the source fragment."
+  },
+  {
+    "node": "TENSILE STRENGTH",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general definition of tensile strength but lack specific details relevant to the source text, which focuses on controlled rolling and its effects on steel properties."
+  },
+  {
+    "node": "TRANSITION TEMPERATURE",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of transition temperature is partially covered, but the source fragment specifically discusses the relationship with grain size and chemical composition, which is not fully reflected in the vertex."
+  },
+  {
+    "node": "DEFORMATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a broad context for deformation but lack specific details about the process as described in the source fragment."
+  },
+  {
+    "node": "ОБЖАТИЕ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of 'Обжатие' is partially covered, but the source fragment provides more detailed information on the specific parameters and stages of deformation."
+  },
+  {
+    "node": "AR3 TEMPERATURE",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of Ar3 temperature is partially correct but lacks details on the strain-induced transformation and its impact on the Ar3 temperature."
+  },
+  {
+    "node": "СЛЯБ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the term 'сляб', focusing on its role as a semi-finished product and its cooling process, but lacks specific details about its use in controlled rolling."
+  },
+  {
+    "node": "FINISH-ROLLING TEMPERATURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of finish-rolling temperature is incomplete as it does not specify the temperature ranges or the specific impact on recrystallization and grain refinement."
+  },
+  {
+    "node": "TWO-PHASE REGION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of the TWO-PHASE REGION is partially covered, but it lacks specific details about the effects of deformation within this region on mechanical properties and microstructure as described in the source."
+  },
+  {
+    "node": "NON-RECRYSTALLIZATION REGION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of the non-recrystallization region is partially covered, focusing on grain refinement and deformation bands but missing specific details from the source text."
+  },
+  {
+    "node": "DEFORMATION BAND",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of deformation bands is partially covered, but the source fragment provides more context on their role in ferrite nucleation and their influence on grain refinement."
+  },
+  {
+    "node": "HALL-PETCH RELATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The Hall-Petch relation is described correctly, but the source fragment does not provide a comprehensive definition of the term within the context of controlled rolling."
+  },
+  {
+    "node": "SEPARATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a broad context but lack specific details about the conditions and mechanisms of separation in controlled-rolled steels as described in the source."
+  },
+  {
+    "node": "МАЛОПЕРЛИТНЫЕ СТАЛИ",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of малоперлитные стали is partially covered, but the source fragment does not mention the specific mechanical properties or the high-temperature cooling process in detail."
+  },
+  {
+    "node": "СКОРОСТИ ОХЛАЖДЕНИЯ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "Определение скоростей охлаждения включает их влияние на механические свойства, но не охватывает детали процесса, такие как температурные интервалы и расход воды."
+  },
+  {
+    "node": "УОВТ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of УОВТ, focusing on its role in cooling but lacking specific details from the source text."
+  },
+  {
+    "node": "NORMALIZING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general description of normalizing but lack specific details about its application in the context of controlled rolling as described in the source fragment."
+  },
+  {
+    "node": "CONTROLLED-ROLLED FERRITE-PEARLITE STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general description but lack specific details on the process and microstructure changes mentioned in the source fragment."
+  },
+  {
+    "node": "NB STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of Nb steel, focusing on its properties and the role of niobium, but lack specific details about the recrystallization behavior and critical deformation required for recrystallization as described in the source."
+  },
+  {
+    "node": "ACICULAR FERRITE VOLUME FRACTION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general understanding of acicular ferrite volume fraction but lack specific details from the source fragment about the process parameters and their effects on mechanical properties."
+  },
+  {
+    "node": "HEAVY REDUCTION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of heavy reduction is partially covered but lacks specific details about the context and application in the finisher phase as described in the source."
+  },
+  {
+    "node": "MELLOY AND DENNISON",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of Melloy and Dennison's contributions, focusing on their influence on controlled rolling but lacking specific details from the source text."
+  },
+  {
+    "node": "ВЯЗКОСТЬ",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of viscosity (ВЯЗКОСТЬ) is partially correct but overly generalized and not specific to the context of controlled rolling of steel as described in the source."
+  },
+  {
+    "node": "МАРТЕНСИТ",
+    "definition": "none",
+    "contradictions": 1,
+    "comment": "The source fragment does not define or discuss МАРТЕНСИТ, УКРОЩЕНИЕ, or ТРУБЫ in the context provided."
+  },
+  {
+    "node": "POLYGONAL FERRITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of polygonal ferrite, focusing on its formation and role in controlled rolling, but lacks specific details from the source fragment."
+  },
+  {
+    "node": "WATANABE ET AL.",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide partial information about the research conducted by Watanabe et al., focusing on deformation and precipitation effects in Nb steel, but lacks specific details from the source fragment."
+  },
+  {
+    "node": "CONTROLLED ROLLED STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of controlled rolled steel, focusing on mechanical properties and textures but lacking specific details from the source fragment."
+  },
+  {
+    "node": "PEARLITE-REDUCED STEEL",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of pearlite-reduced steel is partially correct but lacks details on the role of alloying elements and specific thermal processing techniques mentioned in the source."
+  },
+  {
+    "node": "Γ-GRAIN",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of γ-grain, focusing on its role in controlled rolling and its transformation to α-grain, but lacks detailed information on the specific conditions and processes mentioned in the source fragment."
+  },
+  {
+    "node": "CARBON STEEL",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The vertex and its neighbourhood provide a partial definition of carbon steel and its properties, but the source fragment does not mention niobium's role in carbon steel directly, leading to a contradiction."
+  },
+  {
+    "node": "GRAIN STRUCTURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a broad context for grain structure but lack specific details from the source fragment about the effects of strain rate and deformation temperature on recrystallized grain size."
+  },
+  {
+    "node": "NB(C,N)",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of NB(C,N) is partially covered, but its specific impact on recrystallization and precipitation kinetics is not fully detailed."
+  },
+  {
+    "node": "RARE EARTH METALS",
+    "definition": "none",
+    "contradictions": 0,
+    "comment": "The source fragment does not define or discuss rare earth metals as an alloying element in controlled rolling of steel."
+  },
+  {
+    "node": "BISRA",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of BISRA's role in controlled rolling, but lack details on specific contributions and methodologies."
+  },
+  {
+    "node": "NUCLEATION RATE (N_S)",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of nucleation rate, but the source fragment offers more context on its relationship with deformation and grain refinement."
+  },
+  {
+    "node": "YIELD STRESS",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of yield stress, focusing on its relation to grain size and subgrain hardening, but do not fully capture the context from the source text."
+  },
+  {
+    "node": "КП+УО",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of КП+УО is partially covered, but lacks specific details on temperature ranges and cooling rates."
+  },
+  {
+    "node": "SOLUTE DRAG EFFECT",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of the solute drag effect is provided, but the source fragment does not fully elaborate on the mechanism or its implications in controlled rolling."
+  },
+  {
+    "node": "STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a broad overview but lack specific details on the stages and mechanisms of controlled rolling as described in the source."
+  },
+  {
+    "node": "FERRITE-PEARLITE STRUCTURE",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of ferrite-pearlite structure is incomplete as it does not specify the conditions under which it forms, and there is a contradiction regarding the formation process from the alpha phase."
+  },
+  {
+    "node": "NOTCH TOUGHNESS",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of notch toughness is correct but lacks specific details from the source text, such as the role of niobium and controlled rolling temperatures."
+  },
+  {
+    "node": "ROLLING MILLS",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general description of rolling mills and related equipment but do not capture the specific context of controlled rolling and cooling processes described in the source text."
+  },
+  {
+    "node": "ПРОЧНОСТЬ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of 'Прочность' (strength) and its relation to controlled rolling, but the source fragment does not directly define 'Прочность' and focuses more on the process and parameters of controlled rolling."
+  },
+  {
+    "node": "HEAVY DRAUGHTING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of heavy draughting is partially covered, but the source fragment does not provide a complete description of the process parameter."
+  },
+  {
+    "node": "Y. SAITO",
+    "definition": "none",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood do not define a term but describe acknowledgments in a manuscript."
+  },
+  {
+    "node": "КАРБОН",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of carbon as an alloying element in steel, but do not fully capture the context from the source text."
+  },
+  {
+    "node": "NIOBIUM CARBIDE (NBC)",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of niobium carbide and its role in steel, but the source fragment focuses more on the microstructural changes and strain-induced precipitation during controlled rolling."
+  },
+  {
+    "node": "SUB-GRAINS",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The source fragment does not provide a comprehensive definition of sub-grains and their role in material properties, and there is a contradiction regarding the role of sub-boundaries in arresting brittle cracking."
+  },
+  {
+    "node": "DYNAMIC RECRYSTALLIZATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of dynamic recrystallization is partially covered, but the source fragment provides more context on the conditions and mechanisms involved."
+  },
+  {
+    "node": "GENERAL STEELS DIVISION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the General Steels Division, focusing on its role within the British Steel Corporation and its specialization in steel processes, but lacks specific details about controlled rolling techniques mentioned in the source."
+  },
+  {
+    "node": "ТРУБЫ",
+    "definition": "none",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood do not define the term 'controlled rolling of steel' or any related concepts from the source fragment."
+  },
+  {
+    "node": "ANISOTROPY",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a broad context for anisotropy but lack specific details about its development in controlled-rolled steels as described in the source."
+  },
+  {
+    "node": "SUBGRAIN HARDENING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The source fragment mentions subgrain hardening as a strengthening mechanism but does not provide a detailed definition or explanation of the term."
+  },
+  {
+    "node": "M. KIMURA",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood only describe the contributions of individuals to the manuscript preparation but do not define the term 'controlled rolling of steel'."
+  },
+  {
+    "node": "CALCIUM",
+    "definition": "none",
+    "contradictions": 0,
+    "comment": "The source fragment does not define or discuss calcium as an alloying element or its role in inclusion-shape control."
+  },
+  {
+    "node": "TOTAL DEFORMATION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of total deformation is incomplete as it does not specify the context of its application in controlled rolling as described in the source."
+  },
+  {
+    "node": "MIYOSHI ET AL.",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of Miyoshi et al.'s contributions, focusing on their work in thermomechanical treatment techniques for steel processing, but lacks specific details from the source text."
+  },
+  {
+    "node": "PROCESSING SCHEME",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the processing scheme, focusing on its influence on mechanical properties and microstructure, but lacks specific details from the source text."
+  },
+  {
+    "node": "ALPHA",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general description of the alpha phase but lack specific details about its formation and transformation processes as described in the source fragment."
+  },
+  {
+    "node": "ПЛАСТИЧНОСТЬ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a basic definition of plasticity but do not fully capture the context of controlled rolling and specific conditions mentioned in the source text."
+  },
+  {
+    "node": "CEMENTITE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general description of cementite and its role in steel microstructure but do not specifically relate to the source text's focus on controlled rolling and microstructural changes during the process."
+  },
+  {
+    "node": "COMPRESSION DEVICE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general description of a compression device and its relation to dilatometric methods, but the source fragment only mentions the use of a compression device in dilatometric methods without providing a detailed definition."
+  },
+  {
+    "node": "ОАО «МК «АЗОВСТАЛЬ»",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the term 'controlled rolling' and its application, but do not fully capture the detailed process and conditions described in the source text."
+  },
+  {
+    "node": "MARTENSITIC STRUCTURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of the martensitic structure is incomplete as it does not cover the context of controlled rolling and the specific microstructural details mentioned in the source."
+  },
+  {
+    "node": "HOT ROLLING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general overview of hot rolling and related processes but do not fully capture the specific stages and mechanisms of controlled rolling described in the source fragment."
+  },
+  {
+    "node": "3600 STAND",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the 3600 stand, focusing on its role in the rolling process but lacking specific details from the source text."
+  },
+  {
+    "node": "TRANSVERSE DIRECTION",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of the transverse direction is provided, but the source fragment does not fully cover its mechanical response or its relation to Charpy impact energy."
+  },
+  {
+    "node": "NIOBIUM STEEL",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of Nb steel, focusing on its alloying element and some processes but lacking specific details from the source text."
+  },
+  {
+    "node": "DEFORMATION BANDS",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of deformation bands is incomplete as it lacks specific details about their role in controlled rolling and their interaction with austenite and ferrite phases."
+  },
+  {
+    "node": "554",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the phase notation 554, focusing on its role in texture characteristics and mechanical properties but lacking specific details from the source fragment."
+  },
+  {
+    "node": "PLATE MILL",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of PLATE MILL is incomplete as it does not mention the specific challenges and practices related to controlled rolling in plate mills."
+  },
+  {
+    "node": "DUCTILE-TO-BRITTLE TRANSITION TEMPERATURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of DBTT is partially covered, focusing on its relation to grain size and its importance in material behavior, but lacks specific details from the source text."
+  },
+  {
+    "node": "111",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the <111> orientation, but the source fragment does not define it and instead discusses other textures and their effects."
+  },
+  {
+    "node": "AVRAMI'S LAW",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of Avrami's law, focusing on its application to recrystallization but lacking specific details from the source fragment."
+  },
+  {
+    "node": "GAMMA",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a comprehensive description of the gamma phase but lack specific details about its role in controlled rolling as described in the source fragment."
+  },
+  {
+    "node": "NORMALIZATION",
+    "definition": "none",
+    "contradictions": 0,
+    "comment": "The source fragment does not define normalization or provide any information about it."
+  },
+  {
+    "node": "И. В. ГАНОШЕНКО",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the term, focusing on the contributions of И. В. Ганошенко and the application of controlled rolling processes but lacking detailed technical specifics."
+  },
+  {
+    "node": "REVERSIBILITY OF GRAIN GROWTH",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of reversibility of grain growth, focusing on its impact on microstructure but lacking specific details from the source text."
+  },
+  {
+    "node": "В. И. СПИВАКОВ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the term 'controlled rolling' and its application, but lack detailed technical specifics and context from the source text."
+  },
+  {
+    "node": "LOW-TEMPERATURE TOUGHNESS",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of low-temperature toughness is partially covered, but the source fragment provides more context on the formation and prevention of mixed grain structures."
+  },
+  {
+    "node": "АУСТЕНИТ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a correct but incomplete definition of austenite and its relation to ferrite, as the source fragment does not provide detailed structural information."
+  },
+  {
+    "node": "110",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the <110> phase, but the source fragment focuses more on specific textures and their effects on mechanical properties rather than defining the <110> phase itself."
+  },
+  {
+    "node": "SEPARATION PHENOMENON",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of the separation phenomenon is incomplete and does not align with the context provided in the source fragment."
+  },
+  {
+    "node": "СТАЛЬ 10Г2ФБ",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The vertex and its neighbourhood provide partial information about the steel grade 10Г2ФБ, but the relation to viscosity (вякость) is a contradiction as viscosity is not discussed in the source fragment."
+  },
+  {
+    "node": "G_H",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of G_H is correct but the source fragment does not provide comprehensive context for its role in the overall process."
+  },
+  {
+    "node": "LOW-ANGLE BOUNDARY",
+    "definition": "none",
+    "contradictions": 1,
+    "comment": "The source fragment does not define or discuss low-angle boundaries, focusing instead on grain size effects and transition temperatures."
+  },
+  {
+    "node": "ROLLING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general overview of rolling and related concepts but do not capture the specific details of controlled rolling and its effects on grain structure and mechanical properties as described in the source fragment."
+  },
+  {
+    "node": "RECRYSTALLIZED GRAIN SIZE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of recrystallized grain size is partially covered, but the source fragment does not provide a complete definition."
+  },
+  {
+    "node": "CONTROLLED-ROLLING",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of controlled-rolling, missing details on specific factors and conditions involved in the process."
+  },
+  {
+    "node": "NB",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of Nb's role in controlled rolling, missing specific details from the source text."
+  },
+  {
+    "node": "SUBSTRUCTURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of SUBSTRUCTURE is partially aligned with the source text, but lacks specific details about the context of controlled rolling and the role of deformation bands."
+  },
+  {
+    "node": "GRAIN REFINING EFFECT",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general description of the grain-refining effect but lack specific details from the source fragment about strain-induced precipitation and deformation bands."
+  },
+  {
+    "node": "COARSE Γ-GRAIN STRUCTURE",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of coarse γ-grain structure is partially correct but lacks context on how it is formed and its relation to controlled rolling."
+  },
+  {
+    "node": "API X70",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide context but do not fully define API X70 steel grade based on the source fragment."
+  },
+  {
+    "node": "GRAIN-BOUNDARY AREA (S_V)",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of grain-boundary area is partially covered, but the source text provides more context on its influence and behavior during deformation."
+  },
+  {
+    "node": "СТАН 3000",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of СТАН 3000, focusing on its use in hot rolling but lacking specific details from the source text."
+  },
+  {
+    "node": "EQUIAXED GRAINS",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of equiaxed grains is correct but the source fragment does not provide a detailed definition of equiaxed grains, focusing more on the process of controlled rolling and its effects."
+  },
+  {
+    "node": "CHARPY IMPACT PROPERTIES",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The definition of Charpy impact properties is correct but the neighbourhood does not fully capture the context from the source text."
+  },
+  {
+    "node": "100",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the <100> orientation, but the source fragment specifically mentions the <100> orientation in the context of embrittlement and does not define it as a crystallographic direction."
+  },
+  {
+    "node": "ОХЛАЖДЕНИЕ",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "The definition of охлаждение is partially correct but lacks specific details from the source text, and there is a contradiction in the relation between охлаждение and скорости охлаждения."
+  },
+  {
+    "node": "ЗАЛИВКА",
+    "definition": "none",
+    "contradictions": 0,
+    "comment": "The source fragment does not contain information about the process of pouring molten metal into molds or the creation of rolled steel products."
+  },
+  {
+    "node": "ВОДА",
+    "definition": "partial",
+    "contradictions": 1,
+    "comment": "Вода не является сплавляющим элементом, что противоречит её описанию в графе."
+  },
+  {
+    "node": "CLEAVAGE FRACTURE",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a general definition of cleavage fracture but lack specific details from the source fragment."
+  },
+  {
+    "node": "Э. А. ОРЛОВ",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of the term, focusing on the involvement of the author and the process but lacking detailed technical specifics from the source."
+  },
+  {
+    "node": "VANADIUM CARBIDE (VC)",
+    "definition": "partial",
+    "contradictions": 0,
+    "comment": "The vertex and its neighbourhood provide a partial definition of vanadium carbide (VC) and its role in steel, but the source fragment does not explicitly define VC."
+  }
+]

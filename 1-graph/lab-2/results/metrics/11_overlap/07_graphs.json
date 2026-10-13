@@ -1,0 +1,32 @@
+{
+  "dirty": {
+    "documents": 2,
+    "text_units": 28,
+    "entities": 324,
+    "relationships": 345,
+    "vertices": 324,
+    "edges": 336,
+    "vertices_with_vectors": 324,
+    "vector_dimensions": 1024,
+    "reverse_relationships_merged": 9,
+    "input_tokens": 31823,
+    "mean_text_unit_tokens": 1136.5,
+    "vertices_per_1k_tokens": 10.18,
+    "edges_per_1k_tokens": 10.56
+  },
+  "clean": {
+    "documents": 36,
+    "text_units": 36,
+    "entities": 346,
+    "relationships": 473,
+    "vertices": 346,
+    "edges": 455,
+    "vertices_with_vectors": 346,
+    "vector_dimensions": 1024,
+    "reverse_relationships_merged": 18,
+    "input_tokens": 28038,
+    "mean_text_unit_tokens": 778.8,
+    "vertices_per_1k_tokens": 12.34,
+    "edges_per_1k_tokens": 16.23
+  }
+}

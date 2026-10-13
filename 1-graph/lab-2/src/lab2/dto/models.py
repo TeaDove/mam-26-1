@@ -433,6 +433,55 @@ class JudgeAgreement(BaseModel):
     arms: dict[str, ArmAgreement]
 
 
+class JudgeRun(BaseModel):
+    label: str
+    dirty_contradiction_share: float
+    clean_contradiction_share: float
+    dirty_fully_defined_share: float
+    clean_fully_defined_share: float
+
+
+class JudgePair(BaseModel):
+    left: str
+    right: str
+    arm: str
+    definition_agreement: float
+    contradiction_agreement: float
+    contradiction_kappa: float
+
+
+class JudgeMatrix(BaseModel):
+    runs: list[JudgeRun]
+    pairs: list[JudgePair]
+
+
+class VariantMetric(BaseModel):
+    name: str
+    kind: Literal["share", "count"]
+    baseline: float
+    rerun: float
+    overlap: float
+    noise: float
+    delta: float
+    clear: bool
+
+
+class VariantComparison(BaseModel):
+    metrics: list[VariantMetric]
+    baseline_retrieval: RetrievalMetrics
+    overlap_retrieval: RetrievalMetrics
+
+
+class AdjudicatedVertex(BaseModel):
+    arm: Literal["dirty", "clean"]
+    vertex: str
+    disagreement: Literal["only gpt-4.1 flags", "only local models flag"]
+    has_contradiction: bool
+    confidence: Literal["high", "medium", "low"]
+    evidence: str
+    judge_flags: dict[str, bool]
+
+
 class StoredJudgeUsage(BaseModel):
     judge_usage: JudgeUsage
 

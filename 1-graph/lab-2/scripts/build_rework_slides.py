@@ -1,7 +1,8 @@
 import sys
 from pathlib import Path
 
-from build_presentation import MUTED, ROOT, Deck, Metrics, load, num, pct
+from build_presentation import AUTHORS, MUTED, ROOT, Deck, Metrics, load, num, pct
+from pptx.enum.text import PP_ALIGN
 
 from lab2.dto.models import (
     Coreference,
@@ -59,6 +60,9 @@ def fixes_slide(deck: Deck, m: Metrics) -> None:
         f"вершин; новые циклы проходят через вершины обеих книг: {d.cycles.cross_book_cycles} → "
         f"{c.cycles.cross_book_cycles}.",
     )
+    if AUTHORS.exists():
+        authors = [line.strip() for line in AUTHORS.read_text(encoding="utf-8").splitlines() if line.strip()]
+        deck.text(slide, authors, 8.7, 0.25, 4.0, 1.1, size=11, color=MUTED, align=PP_ALIGN.RIGHT, spacing=0)
     deck.table(slide, fixes_rows(m), 0.6, 1.4, [2.4, 4.1, 3.2, 2.4], size=13, value_columns=(2, 2), row_height=1.15)
     deck.text(
         slide,

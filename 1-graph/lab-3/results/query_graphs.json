@@ -1,0 +1,626 @@
+{
+  "f01": {
+    "entities": [
+      {
+        "name": "Azovstal mill 3600",
+        "type": "equipment",
+        "description": "A specific rolling mill at Azovstal steel plant."
+      },
+      {
+        "name": "high-temperature controlled-rolling",
+        "type": "process",
+        "description": "A rolling process where steel is rolled at high temperatures with controlled parameters."
+      },
+      {
+        "name": "range",
+        "type": "process parameter",
+        "description": "The temperature range used in the high-temperature controlled-rolling process."
+      }
+    ],
+    "relations": [
+      {
+        "source": "Azovstal mill 3600",
+        "target": "high-temperature controlled-rolling",
+        "description": "The process performed at this equipment."
+      },
+      {
+        "source": "high-temperature controlled-rolling",
+        "target": "range",
+        "description": "The specific temperature range used in this process."
+      }
+    ]
+  },
+  "f02": {
+    "entities": [
+      {
+        "name": "accelerated-cooling rate",
+        "type": "process parameter",
+        "description": "The cooling rate applied after deformation in the controlled rolling process for thick plate."
+      },
+      {
+        "name": "thick plate",
+        "type": "material",
+        "description": "Steel plate with a thickness greater than a certain threshold, typically used in construction and manufacturing."
+      }
+    ],
+    "relations": [
+      {
+        "source": "accelerated-cooling rate",
+        "target": "thick plate",
+        "description": "The specific cooling rate applied to thick plate after deformation in the controlled rolling process."
+      }
+    ]
+  },
+  "f03": {
+    "entities": [
+      {
+        "name": "high-temperature rolling",
+        "type": "process",
+        "description": "A rolling process performed at elevated temperatures."
+      },
+      {
+        "name": "accelerated cooling",
+        "type": "process",
+        "description": "A rapid cooling method applied after rolling to control microstructure and properties."
+      }
+    ],
+    "relations": [
+      {
+        "source": "high-temperature rolling",
+        "target": "accelerated cooling",
+        "description": "The relation indicates that accelerated cooling is applied after high-temperature rolling."
+      }
+    ]
+  },
+  "f04": {
+    "entities": [
+      {
+        "name": "low-temperature controlled rolling",
+        "type": "process",
+        "description": "A rolling process conducted at lower temperatures than conventional rolling."
+      },
+      {
+        "name": "air-cooling hold",
+        "type": "process parameter",
+        "description": "The duration of the cooling period after rolling."
+      },
+      {
+        "name": "50 mm slab",
+        "type": "material",
+        "description": "A steel slab with a thickness of approximately 50 mm."
+      }
+    ],
+    "relations": [
+      {
+        "source": "low-temperature controlled rolling",
+        "target": "air-cooling hold",
+        "description": "The process parameter of air-cooling hold is part of the low-temperature controlled rolling process."
+      },
+      {
+        "source": "air-cooling hold",
+        "target": "50 mm slab",
+        "description": "The air-cooling hold duration applies to the cooling of a 50 mm slab after rolling."
+      }
+    ]
+  },
+  "f05": {
+    "entities": [
+      {
+        "name": "КП+УО+КП",
+        "type": "process",
+        "description": "A controlled rolling route involving controlled passes and accelerated cooling."
+      },
+      {
+        "name": "finishing passes",
+        "type": "process parameter",
+        "description": "The final rolling passes in the controlled rolling process."
+      },
+      {
+        "name": "accelerated cooling",
+        "type": "process",
+        "description": "A rapid cooling process applied after rolling to control microstructure and properties."
+      }
+    ],
+    "relations": [
+      {
+        "source": "КП+УО+КП",
+        "target": "finishing passes",
+        "description": "The КП+УО+КП route includes specific finishing passes."
+      },
+      {
+        "source": "КП+УО+КП",
+        "target": "accelerated cooling",
+        "description": "The КП+УО+КП route includes accelerated cooling after certain passes."
+      },
+      {
+        "source": "finishing passes",
+        "target": "accelerated cooling",
+        "description": "Finishing passes occur both before and after accelerated cooling in the КП+УО+КП route."
+      }
+    ]
+  },
+  "f06": {
+    "entities": [
+      {
+        "name": "controlled rolling",
+        "type": "process",
+        "description": "A process used to refine the microstructure of steel by rolling at specific temperatures and strain rates."
+      },
+      {
+        "name": "non-recrystallization region",
+        "type": "phenomenon",
+        "description": "A temperature range during rolling where the material undergoes plastic deformation without recrystallization."
+      }
+    ],
+    "relations": [
+      {
+        "source": "controlled rolling",
+        "target": "non-recrystallization region",
+        "description": "Uses the temperature range where non-recrystallization occurs to refine the microstructure of steel."
+      }
+    ]
+  },
+  "f07": {
+    "entities": [
+      {
+        "name": "unrecrystallized austenite grains",
+        "type": "microstructure",
+        "description": "Grains of austenite that have not undergone recrystallization during the controlled rolling process."
+      },
+      {
+        "name": "controlled rolling",
+        "type": "process",
+        "description": "A steel manufacturing process that involves precise control of temperature and deformation to achieve desired mechanical properties."
+      }
+    ],
+    "relations": [
+      {
+        "source": "unrecrystallized austenite grains",
+        "target": "controlled rolling",
+        "description": "The feature that divides these grains is a characteristic or result of the controlled rolling process."
+      }
+    ]
+  },
+  "f08": {
+    "entities": [
+      {
+        "name": "AUSTENITE GRAIN BOUNDARIES",
+        "type": "phase",
+        "description": "The phase boundaries within austenite where ferrite can nucleate."
+      },
+      {
+        "name": "FERRITE",
+        "type": "phase",
+        "description": "The phase that nucleates during the cooling of steel in the controlled rolling process."
+      },
+      {
+        "name": "CONTROLLED-ROLLED STEEL",
+        "type": "material",
+        "description": "Steel that undergoes a specific rolling process to control its microstructure and properties."
+      }
+    ],
+    "relations": [
+      {
+        "source": "AUSTENITE GRAIN BOUNDARIES",
+        "target": "FERRITE",
+        "description": "Ferrite nucleates at these boundaries during the cooling process of controlled-rolled steel."
+      },
+      {
+        "source": "CONTROLLED-ROLLED STEEL",
+        "target": "FERRITE",
+        "description": "In this type of steel, ferrite nucleates at specific locations during processing."
+      }
+    ]
+  },
+  "f09": {
+    "entities": [
+      {
+        "name": "Austenite",
+        "type": "phase",
+        "description": "A phase in steel that exists at high temperatures."
+      },
+      {
+        "name": "Recrystallization",
+        "type": "phenomenon",
+        "description": "A process where deformed grains are replaced by a new set of undeformed grains."
+      }
+    ],
+    "relations": [
+      {
+        "source": "Recrystallization",
+        "target": "Austenite",
+        "description": "Retardation of this phenomenon in the phase is asked about."
+      }
+    ]
+  },
+  "f10": {
+    "entities": [
+      {
+        "name": "Hall-Petch yield-stress relation",
+        "type": "phenomenon",
+        "description": "A relationship between dislocation density and yield stress in materials"
+      }
+    ],
+    "relations": []
+  },
+  "e01": {
+    "entities": [
+      {
+        "name": "separation (delamination)",
+        "type": "phenomenon",
+        "description": "A defect in steel where layers separate or delaminate during rolling."
+      },
+      {
+        "name": "controlled rolling",
+        "type": "process",
+        "description": "A steelmaking process that controls rolling parameters to achieve desired microstructure and properties."
+      },
+      {
+        "name": "toughness",
+        "type": "mechanical property",
+        "description": "A measure of a material's ability to absorb energy and plastically deform without fracturing."
+      }
+    ],
+    "relations": [
+      {
+        "source": "separation (delamination)",
+        "target": "controlled rolling",
+        "description": "Occurs during or as a result of controlled rolling."
+      },
+      {
+        "source": "separation (delamination)",
+        "target": "toughness",
+        "description": "Affects the toughness of the steel negatively."
+      }
+    ]
+  },
+  "e02": {
+    "entities": [
+      {
+        "name": "Bainitic steel",
+        "type": "steel grade",
+        "description": "Steel that undergoes bainitic transformation during cooling."
+      },
+      {
+        "name": "Transition temperature",
+        "type": "process parameter",
+        "description": "Temperature at which a phase transformation occurs in steel."
+      }
+    ],
+    "relations": [
+      {
+        "source": "Bainitic steel",
+        "target": "Transition temperature",
+        "description": "The equation provides the transition temperature for this type of steel."
+      }
+    ]
+  },
+  "e03": {
+    "entities": [
+      {
+        "name": "USINOR",
+        "type": "organization",
+        "description": "A steelmaker located in Dunkirk"
+      },
+      {
+        "name": "three-stage rolling schedule",
+        "type": "process",
+        "description": "A rolling schedule consisting of three stages"
+      }
+    ],
+    "relations": [
+      {
+        "source": "USINOR",
+        "target": "three-stage rolling schedule",
+        "description": "Used by this steelmaker"
+      }
+    ]
+  },
+  "e04": {
+    "entities": [
+      {
+        "name": "Acicular Ferrite Steel",
+        "type": "steel grade",
+        "description": "A type of steel characterized by an acicular ferrite microstructure."
+      },
+      {
+        "name": "Acicular Ferrite",
+        "type": "microstructure",
+        "description": "A fine, needle-like ferrite microstructure in steel."
+      },
+      {
+        "name": "Developed By",
+        "type": "person",
+        "description": "The person or organization who developed acicular ferrite steel."
+      }
+    ],
+    "relations": [
+      {
+        "source": "Acicular Ferrite Steel",
+        "target": "Acicular Ferrite",
+        "description": "Acicular Ferrite Steel has the microstructure Acicular Ferrite."
+      },
+      {
+        "source": "Acicular Ferrite Steel",
+        "target": "Developed By",
+        "description": "Acicular Ferrite Steel was developed by the person or organization."
+      }
+    ]
+  },
+  "e05": {
+    "entities": [
+      {
+        "name": "mill 3600",
+        "type": "equipment",
+        "description": "A rolling mill with a capacity of 3600 tons per day"
+      },
+      {
+        "name": "accelerated water cooling",
+        "type": "process",
+        "description": "A rapid cooling method used to control the microstructure and properties of steel plates"
+      }
+    ],
+    "relations": [
+      {
+        "source": "mill 3600",
+        "target": "accelerated water cooling",
+        "description": "The process used for cooling steel plates at this specific rolling mill"
+      }
+    ]
+  },
+  "e06": {
+    "entities": [
+      {
+        "name": "plate experiments",
+        "type": "process parameter",
+        "description": "The number of experiments conducted with steel plates to build a thermal model."
+      },
+      {
+        "name": "cooling unit",
+        "type": "equipment",
+        "description": "The equipment used for cooling steel plates during the manufacturing process."
+      }
+    ],
+    "relations": [
+      {
+        "source": "plate experiments",
+        "target": "cooling unit",
+        "description": "The plate experiments were used to build the thermal model for this cooling unit."
+      }
+    ]
+  },
+  "r01": {
+    "entities": [
+      {
+        "name": "alloying element",
+        "type": "alloying element",
+        "description": "An alloying element that affects the recrystallization of austenite."
+      },
+      {
+        "name": "austenite",
+        "type": "phase",
+        "description": "The phase of steel that is face-centered cubic and present at high temperatures."
+      },
+      {
+        "name": "recrystallization",
+        "type": "phenomenon",
+        "description": "The process of forming new, defect-free grains that nucleate and grow to replace the deformed structure of the material."
+      }
+    ],
+    "relations": [
+      {
+        "source": "alloying element",
+        "target": "recrystallization",
+        "description": "The alloying element affects the rate of recrystallization."
+      },
+      {
+        "source": "recrystallization",
+        "target": "austenite",
+        "description": "Recrystallization is the process that affects the austenite phase."
+      }
+    ]
+  },
+  "r02": {
+    "entities": [
+      {
+        "name": "Полосы деформации",
+        "type": "phenomenon",
+        "description": "Линии или зоны, где происходит деформация материала при контролируемой прокатке"
+      },
+      {
+        "name": "Контролируемая прокатка",
+        "type": "process",
+        "description": "Процесс обработки металла, при котором контролируется степень деформации материала"
+      }
+    ],
+    "relations": [
+      {
+        "source": "Контролируемая прокатка",
+        "target": "Полосы деформации",
+        "description": "Процесс, в ходе которого образуются полосы деформации"
+      }
+    ]
+  },
+  "r03": {
+    "entities": [
+      {
+        "name": "температура хрупко-вязкого перехода",
+        "type": "phenomenon",
+        "description": "Температура, при которой материал проходит переход от хрупкого к вязкому состоянию."
+      },
+      {
+        "name": "размер зерна",
+        "type": "process parameter",
+        "description": "Размер кристаллических зерен в металле."
+      }
+    ],
+    "relations": [
+      {
+        "source": "температура хрупко-вязкого перехода",
+        "target": "размер зерна",
+        "description": "Зависимость температуры хрупко-вязкого перехода от размера зерна."
+      }
+    ]
+  },
+  "r04": {
+    "entities": [
+      {
+        "name": "игольчатый феррит",
+        "type": "microstructure",
+        "description": "Микроструктура стали, состоящая из игольчатых пластин феррита."
+      },
+      {
+        "name": "разработчик",
+        "type": "person",
+        "description": "Личность, которая разработала сталь с игольчатым ферритом."
+      }
+    ],
+    "relations": [
+      {
+        "source": "игольчатый феррит",
+        "target": "разработчик",
+        "description": "Разработчик стали с данной микроструктурой."
+      }
+    ]
+  },
+  "r05": {
+    "entities": [
+      {
+        "name": "бейнитная сталь",
+        "type": "steel grade",
+        "description": "Сталь, в которой при закалке образуется бейнитная микроструктура."
+      },
+      {
+        "name": "температурный переход",
+        "type": "phenomenon",
+        "description": "Процесс изменения фазового состояния материала при изменении температуры."
+      }
+    ],
+    "relations": [
+      {
+        "source": "температурный переход",
+        "target": "бейнитная сталь",
+        "description": "Уравнение, описывающее температурный переход, связано с изменением фазового состояния бейнитной стали."
+      }
+    ]
+  },
+  "r06": {
+    "entities": [
+      {
+        "name": "УОВТ",
+        "type": "equipment",
+        "description": "Установка для ускоренного охлаждения раскатов на стане 3600."
+      }
+    ],
+    "relations": []
+  },
+  "r07": {
+    "entities": [
+      {
+        "name": "experimental data",
+        "type": "process parameter",
+        "description": "data from experiments with steel sheets"
+      },
+      {
+        "name": "thermotechnical model",
+        "type": "phenomenon",
+        "description": "model describing heat treatment processes"
+      }
+    ],
+    "relations": [
+      {
+        "source": "experimental data",
+        "target": "thermotechnical model",
+        "description": "experimental data used for the thermotechnical model"
+      }
+    ]
+  },
+  "r08": {
+    "entities": [
+      {
+        "name": "controlled rolling",
+        "type": "process",
+        "description": "A steel rolling process with controlled parameters."
+      },
+      {
+        "name": "high temperature controlled rolling",
+        "type": "process",
+        "description": "A specific type of controlled rolling process conducted at high temperatures."
+      },
+      {
+        "name": "accelerated cooling",
+        "type": "process parameter",
+        "description": "A rapid cooling method applied after rolling."
+      },
+      {
+        "name": "rolling speed",
+        "type": "process parameter",
+        "description": "The speed at which the steel is rolled in the process."
+      }
+    ],
+    "relations": [
+      {
+        "source": "high temperature controlled rolling",
+        "target": "accelerated cooling",
+        "description": "The high temperature controlled rolling process includes accelerated cooling as a parameter."
+      },
+      {
+        "source": "accelerated cooling",
+        "target": "rolling speed",
+        "description": "The use of accelerated cooling in high temperature controlled rolling increases the rolling speed."
+      }
+    ]
+  },
+  "r09": {
+    "entities": [
+      {
+        "name": "КП+УО+КП",
+        "type": "process parameter",
+        "description": "Схема ускоренного охлаждения в процессе контролируемой деформации стали."
+      },
+      {
+        "name": "проходы",
+        "type": "process parameter",
+        "description": "Количество проходов стали через прокатные станы в чистовой клети."
+      }
+    ],
+    "relations": [
+      {
+        "source": "проходы",
+        "target": "КП+УО+КП",
+        "description": "Количество проходов до и после указанной схемы ускоренного охлаждения."
+      }
+    ]
+  },
+  "r10": {
+    "entities": [
+      {
+        "name": "high-temperature controlled rolling",
+        "type": "process",
+        "description": "A steel rolling process conducted at high temperatures with controlled parameters."
+      },
+      {
+        "name": "temperature",
+        "type": "process parameter",
+        "description": "The temperature at which the high-temperature controlled rolling process ends."
+      },
+      {
+        "name": "3600 mill",
+        "type": "equipment",
+        "description": "A rolling mill where high-temperature controlled rolling is performed."
+      }
+    ],
+    "relations": [
+      {
+        "source": "high-temperature controlled rolling",
+        "target": "temperature",
+        "description": "The process ends at this temperature."
+      },
+      {
+        "source": "high-temperature controlled rolling",
+        "target": "3600 mill",
+        "description": "This process is carried out on this rolling mill."
+      }
+    ]
+  }
+}

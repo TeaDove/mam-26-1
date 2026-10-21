@@ -1,0 +1,198 @@
+questions:
+  - id: f01
+    lang: en
+    book: stat3
+    question: At Azovstal mill 3600, what high-temperature controlled-rolling range is reported?
+    evidence: ['730\s*[–-]\s*800', 'высокотемпературн']
+    key: '730\s*[–-]\s*800'
+    answer: 730–800 °C (against 690–740 °C for low-temperature controlled rolling).
+  - id: f02
+    lang: en
+    book: stat3
+    question: What accelerated-cooling rate after deformation is reported for thick plate?
+    evidence: ['10\s*[–-]\s*30', 'скорост']
+    key: '10\s*[–-]\s*30'
+    answer: 10–30 °C/s.
+  - id: f03
+    lang: en
+    book: stat3
+    question: What maximum rolling-rate increase is reported for high-temperature rolling with accelerated cooling?
+    evidence: ['темп прокатк', '20\s?%']
+    key: '20\s?%'
+    answer: Up to 20% compared with low-temperature controlled rolling.
+  - id: f04
+    lang: en
+    book: stat3
+    question: >-
+      Under existing low-temperature controlled rolling at mill 3600, how long is the air-cooling hold for a roughly
+      50 mm slab?
+    evidence: ['50\s?мм', '300 с']
+    key: '300\s?(с|s)\b'
+    answer: About 300 s.
+  - id: f05
+    lang: en
+    book: stat3
+    question: In the КП+УО+КП route, how many finishing passes occur before and after accelerated cooling?
+    evidence: ['5\+3']
+    key: '5\s?\+\s?3'
+    answer: 5 passes before and 3 passes after accelerated cooling (5+3).
+  - id: f06
+    lang: en
+    book: tanaka1981
+    question: Which controlled-rolling stage uses the non-recrystallization region?
+    evidence: ['stage 2', 'non-recrystallization']
+    key: 'stage 2|second stage|стади\w* 2'
+    answer: Stage 2 — deformation in the austenite non-recrystallization region.
+  - id: f07
+    lang: en
+    book: tanaka1981
+    question: What feature divides unrecrystallized austenite grains during controlled rolling?
+    evidence: ['deformation band', 'unrecrystallized']
+    key: 'deformation band|полос\w* деформац'
+    answer: Deformation bands divide an unrecrystallized austenite grain into several blocks.
+  - id: f08
+    lang: en
+    book: tanaka1981
+    question: Besides austenite grain boundaries, where does ferrite nucleate in controlled-rolled steel?
+    evidence: ['grain interior', 'nucleat']
+    key: 'grain interior|deformation band|внутри зерн'
+    answer: In grain interiors, on deformation bands in unrecrystallized austenite.
+  - id: f09
+    lang: en
+    book: tanaka1981
+    question: Which element retards austenite recrystallization?
+    evidence: ['Nb', 'retard']
+    key: '\bnb\b|niobium|ниоби'
+    answer: Niobium (Nb).
+  - id: f10
+    lang: en
+    book: tanaka1981
+    question: What is the Hall–Petch yield-stress relation?
+    evidence: ['Hall.?Petch', 'yield stress']
+    key: 'd\s*\^\s*\{?\s*\(?\s*-\s*1\s*/\s*2'
+    answer: >-
+      Yield stress grows with decreasing ferrite grain size: σy = σ0 + ky·d^(-1/2), where σ0 is the internal stress
+      and d is the grain size.
+  - id: e01
+    lang: en
+    book: tanaka1981
+    question: What is separation (delamination) in controlled-rolled steel and how does it affect toughness?
+    evidence: ['delamination|splitting']
+    key: 'through-thickness|parallel to the plate'
+    answer: >-
+      Brittle cracks parallel to the plate surface in fractured Charpy specimens, caused by through-thickness
+      embrittlement (texture, flattened MnS); it lowers the transition temperature in the longitudinal direction
+      and reduces the absorbed energy.
+  - id: e02
+    lang: en
+    book: tanaka1981
+    question: Which equation gives the transition temperature of bainitic steel?
+    evidence: ['Gladman']
+    key: 'gladman'
+    answer: >-
+      Gladman's equation: T = −19 + 44(%Si) + 700(%N free)^(1/2) + 0.26(σD + ΔP + Δ) − 11.5·d^(-1/2).
+  - id: e03
+    lang: en
+    book: tanaka1981
+    question: Which steelmaker in Dunkirk used a three-stage rolling schedule?
+    evidence: ['USINOR']
+    key: 'usinor'
+    answer: USINOR.
+  - id: e04
+    lang: en
+    book: tanaka1981
+    question: What is acicular ferrite steel and who developed it?
+    evidence: ['acicular ferrite', 'Climax']
+    key: 'climax'
+    answer: >-
+      A low-carbon Mn–Mo–Nb HSLA steel that transforms to acicular ferrite when controlled rolling accelerates the
+      transformation; developed by the Climax Molybdenum Company.
+  - id: e05
+    lang: en
+    book: stat3
+    question: Which unit is used for accelerated water cooling of plates at mill 3600?
+    evidence: ['УОВТ', 'раскат']
+    key: 'уовт'
+    answer: The accelerated cooling unit УОВТ.
+  - id: e06
+    lang: en
+    book: stat3
+    question: How many plate experiments were used to build the thermal model of the cooling unit?
+    evidence: ['300 эксперимент']
+    key: '300 эксперимент|300 experiment'
+    answer: About 300 experiments (plates 10–32 mm thick, about 40 heats).
+  - id: r01
+    lang: ru
+    book: tanaka1981
+    question: Какой легирующий элемент замедляет рекристаллизацию аустенита?
+    evidence: ['Nb', 'retard']
+    key: '\bnb\b|niobium|ниоби'
+    answer: Ниобий (Nb).
+  - id: r02
+    lang: ru
+    book: tanaka1981
+    question: Что такое полосы деформации и где они образуются при контролируемой прокатке?
+    evidence: ['deformation band', 'unrecrystallized']
+    key: 'unrecrystallized|нерекристаллизован'
+    answer: >-
+      Полосы внутри деформированного нерекристаллизованного аустенита (стадия 2, область без рекристаллизации); они
+      делят зерно на блоки, и на них зарождается феррит.
+  - id: r03
+    lang: ru
+    book: tanaka1981
+    question: Как температура хрупко-вязкого перехода зависит от размера зерна?
+    evidence: ['Heslop']
+    key: 'heslop|d\s*\^\s*\{?\s*\(?\s*-\s*1\s*/\s*2'
+    answer: >-
+      По Хеслопу и Петчу температура перехода линейно связана с d^(-1/2): чем мельче зерно, тем ниже температура
+      перехода.
+  - id: r04
+    lang: ru
+    book: tanaka1981
+    question: Кто разработал сталь с игольчатым ферритом?
+    evidence: ['acicular ferrite', 'Climax']
+    key: 'climax'
+    answer: Компания Climax Molybdenum.
+  - id: r05
+    lang: ru
+    book: tanaka1981
+    question: Какое уравнение описывает температуру перехода бейнитной стали?
+    evidence: ['Gladman']
+    key: 'gladman'
+    answer: >-
+      Уравнение Гладмана: T = −19 + 44(%Si) + 700(%N своб.)^(1/2) + 0,26(σD + ΔP + Δ) − 11,5·d^(-1/2).
+  - id: r06
+    lang: ru
+    book: stat3
+    question: Какая установка используется для ускоренного охлаждения раскатов на стане 3600?
+    evidence: ['УОВТ', 'раскат']
+    key: 'уовт'
+    answer: Установка ускоренного охлаждения УОВТ.
+  - id: r07
+    lang: ru
+    book: stat3
+    question: Сколько экспериментов с листами использовалось для теплотехнической модели?
+    evidence: ['300 эксперимент']
+    key: '300 эксперимент|300 experiment'
+    answer: Около 300 экспериментов (листы толщиной 10–32 мм, около 40 плавок).
+  - id: r08
+    lang: ru
+    book: stat3
+    question: На сколько повышается темп прокатки при высокотемпературной КП с ускоренным охлаждением?
+    evidence: ['темп прокатк', '20\s?%']
+    key: '20\s?%'
+    answer: До 20% по сравнению с низкотемпературной КП.
+  - id: r09
+    lang: ru
+    book: stat3
+    question: Сколько проходов делают в чистовой клети до и после ускоренного охлаждения по схеме КП+УО+КП?
+    evidence: ['5\+3']
+    key: '5\s?\+\s?3'
+    answer: 5 проходов до и 3 прохода после ускоренного охлаждения (5+3).
+  - id: r10
+    lang: ru
+    book: stat3
+    question: При какой температуре заканчивают высокотемпературную контролируемую прокатку на стане 3600?
+    evidence: ['730\s*[–-]\s*800', 'высокотемпературн']
+    key: '730\s*[–-]\s*800'
+    answer: 730–800 °C.

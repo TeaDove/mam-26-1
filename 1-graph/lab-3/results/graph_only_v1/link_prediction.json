@@ -1,0 +1,42 @@
+[
+  {
+    "graph": "dirty",
+    "encoder": "gat",
+    "vertices": 324,
+    "edges": 336,
+    "best_epoch": 26,
+    "val_auc": 0.6951,
+    "test_auc": 0.7897,
+    "test_ap": 0.8128
+  },
+  {
+    "graph": "dirty",
+    "encoder": "sage",
+    "vertices": 324,
+    "edges": 336,
+    "best_epoch": 68,
+    "val_auc": 0.5207,
+    "test_auc": 0.6354,
+    "test_ap": 0.6347
+  },
+  {
+    "graph": "clean",
+    "encoder": "gat",
+    "vertices": 424,
+    "edges": 437,
+    "best_epoch": 1,
+    "val_auc": 0.6988,
+    "test_auc": 0.5625,
+    "test_ap": 0.5734
+  },
+  {
+    "graph": "clean",
+    "encoder": "sage",
+    "vertices": 424,
+    "edges": 437,
+    "best_epoch": 28,
+    "val_auc": 0.5922,
+    "test_auc": 0.5468,
+    "test_ap": 0.5482
+  }
+]

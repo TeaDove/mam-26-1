@@ -14,6 +14,9 @@ class Settings(BaseSettings):
     description_chars: int = 1000
     device: str = "cuda"
     llm_base_url: str = "http://127.0.0.1:11434/v1"
+    llm_api_key: str = "local"
+    llm_api_key_header: str = "Authorization"
+    llm_api_key_prefix: str = "Bearer "
     llm_model: str = "qwen2.5:14b-instruct"
     judge_model: str = "qwen2.5:14b-instruct"
     llm_timeout: float = 900

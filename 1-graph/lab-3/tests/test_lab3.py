@@ -1,12 +1,15 @@
 import numpy as np
 import pandas as pd
 import pytest
+import torch
+from torch_geometric.utils import to_undirected
 
 from lab3.answer import NO_ANSWER, context_text, judge
-from lab3.evaluate import first_relevant_rank, run_metrics
-from lab3.gnn import GnnConfig, embed, train_link_prediction
+from lab3.evaluate import first_relevant_rank, retrieval_metrics, run_metrics
+from lab3.gnn import GnnConfig, decode, embed, known_pairs, sample_negatives, train_link_prediction
 from lab3.graph import KnowledgeGraph, build_graph, relevant_vertices
-from lab3.models import QueryEntity, QueryGraph, QueryRelation, QuestionResult, Verdict
+from lab3.llm import parse_json
+from lab3.models import Answer, QueryEntity, QueryGraph, QueryRelation, QuestionResult, Verdict
 from lab3.query import extract_query_graph
 from lab3.retrieve import RetrievalConfig, combine, expand, query_edges, retrieve, source_units
 
@@ -122,6 +125,11 @@ def test_context_text_lists_entities_and_relations() -> None:
     assert "RELATIONS:\n- NB — RECRYSTALLIZATION: Nb retards it strongly" in text
 
 
+def test_parse_json_handles_fences_and_preamble() -> None:
+    assert parse_json(Answer, '```json\n{"answer": "ok"}\n```').answer == "ok"
+    assert parse_json(Answer, 'Result: {"answer": "ok"} end').answer == "ok"
+
+
 def test_judge_normalizes_unknown_verdicts() -> None:
     assert judge(FakeClient(Verdict(verdict=" Correct ")), "q", "r", "a").verdict == "correct"
     assert judge(FakeClient(Verdict(verdict="maybe")), "q", "r", NO_ANSWER).verdict == "wrong"
@@ -147,6 +155,32 @@ def result(rank: int | None, relevant: int, verdict: str) -> QuestionResult:
         key_in_graph=relevant > 0,
         key_in_context=verdict == "correct",
     )
+
+
+def test_retrieval_metrics_counts() -> None:
+    metrics = retrieval_metrics("g", "r", [1, 3, None], [True, False, True], [True, False, True])
+    assert metrics.with_relevant == 2
+    assert metrics.mrr == pytest.approx(0.6667)
+    assert metrics.hit_at_1 == 0.5
+    assert metrics.hit_at_10 == 1.0
+    assert metrics.context_recall == 0.5
+    assert metrics.key_in_context_share == pytest.approx(0.6667)
+
+
+def test_cosine_decode_is_bounded() -> None:
+    z = torch.randn(8, 4)
+    logits = decode(z, torch.tensor([[0, 1], [2, 3]]))
+    assert torch.all(logits.abs() <= 10.0 + 1e-5)
+
+
+def test_negative_sampling_excludes_known_edges() -> None:
+    edges = torch.tensor([[0, 1, 2, 3], [1, 2, 3, 0]])
+    known = known_pairs(to_undirected(edges), 6, "cpu")
+    positive = torch.tensor([[0, 2], [1, 3]])
+    for _ in range(20):
+        negatives = sample_negatives(positive, 6, known)
+        assert not known[negatives[0], negatives[1]].any()
+        assert not (negatives[0] == negatives[1]).any()
 
 
 def test_run_metrics() -> None:

@@ -1,4 +1,4 @@
-from lab3.models import QuestionResult, RunMetrics
+from lab3.models import QuestionResult, RetrievalMetrics, RunMetrics
 
 
 def first_relevant_rank(ranking: list[str], relevant: set[str]) -> int | None:
@@ -7,6 +7,25 @@ def first_relevant_rank(ranking: list[str], relevant: set[str]) -> int | None:
 
 def share(count: int, total: int) -> float:
     return round(count / total, 4) if total else 0.0
+
+
+def retrieval_metrics(
+    graph: str, retriever: str, ranks: list[int | None], context_hits: list[bool], key_hits: list[bool]
+) -> RetrievalMetrics:
+    scored = [rank for rank in ranks if rank is not None]
+    context_scored = [hit for rank, hit in zip(ranks, context_hits, strict=False) if rank is not None]
+    return RetrievalMetrics(
+        graph=graph,
+        retriever=retriever,
+        questions=len(ranks),
+        with_relevant=len(scored),
+        mrr=round(sum(1 / rank for rank in scored) / len(scored), 4) if scored else 0.0,
+        hit_at_1=share(sum(rank <= 1 for rank in scored), len(scored)),
+        hit_at_3=share(sum(rank <= 3 for rank in scored), len(scored)),
+        hit_at_10=share(sum(rank <= 10 for rank in scored), len(scored)),
+        context_recall=share(sum(context_scored), len(scored)),
+        key_in_context_share=share(sum(key_hits), len(key_hits)),
+    )
 
 
 def run_metrics(graph: str, retriever: str, results: list[QuestionResult]) -> RunMetrics:

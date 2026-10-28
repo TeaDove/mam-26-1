@@ -1,0 +1,429 @@
+{
+  "summary": {
+    "answers": 52,
+    "correct_flag_agreement": 51,
+    "verdict_agreement": 50,
+    "manual_correct_share": {
+      "hybrid": 0.4231,
+      "bge-m3": 0.6538
+    }
+  },
+  "answers": [
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "f01",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "f02",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "f03",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "f04",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "f05",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "f06",
+      "judge": "partial",
+      "manual": "partial",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "f07",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "f08",
+      "judge": "partial",
+      "manual": "wrong",
+      "note": "names boundaries and pre-existing ferrite, not grain interiors"
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "f09",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "f10",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "e01",
+      "judge": "partial",
+      "manual": "partial",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "e02",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "e03",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "e04",
+      "judge": "partial",
+      "manual": "partial",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "e05",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "e06",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "r01",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "r02",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "r03",
+      "judge": "partial",
+      "manual": "partial",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "r04",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "r05",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "r06",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "r07",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "r08",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "r09",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "id": "r10",
+      "judge": "partial",
+      "manual": "partial",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "f01",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "f02",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "f03",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "f04",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "f05",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "f06",
+      "judge": "partial",
+      "manual": "partial",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "f07",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "f08",
+      "judge": "partial",
+      "manual": "correct",
+      "note": "states grain interiors as well as boundaries — the key fact"
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "f09",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "f10",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "e01",
+      "judge": "partial",
+      "manual": "partial",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "e02",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "e03",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "e04",
+      "judge": "partial",
+      "manual": "partial",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "e05",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "e06",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "r01",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "r02",
+      "judge": "partial",
+      "manual": "partial",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "r03",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": "answer switches to Chinese and gives no relation"
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "r04",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "r05",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "r06",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "r07",
+      "judge": "wrong",
+      "manual": "wrong",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "r08",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "r09",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "id": "r10",
+      "judge": "correct",
+      "manual": "correct",
+      "note": ""
+    }
+  ]
+}

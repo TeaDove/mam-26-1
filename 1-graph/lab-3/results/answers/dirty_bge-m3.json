@@ -247,9 +247,9 @@
     "retriever": "bge-m3",
     "question": "In the КП+УО+КП route, how many finishing passes occur before and after accelerated cooling?",
     "reference": "5 passes before and 3 passes after accelerated cooling (5+3).",
-    "answer": "In the КП+УО+КП route, 5 finishing passes occur before accelerated cooling, and the last 3 passes occur after returning to the finishing mill cell following accelerated cooling.",
+    "answer": "In the КП+УО+КП route, 5 finishing passes occur before accelerated cooling, followed by 3 passes after accelerated cooling.",
     "verdict": "correct",
-    "comment": "The answer correctly states the number of passes before and after accelerated cooling.",
+    "comment": "The answer correctly states the number of finishing passes before and after accelerated cooling.",
     "query_entities": [
       "КП+УО+КП",
       "finishing passes",
@@ -308,9 +308,9 @@
     "retriever": "bge-m3",
     "question": "Which controlled-rolling stage uses the non-recrystallization region?",
     "reference": "Stage 2 — deformation in the austenite non-recrystallization region.",
-    "answer": "Controlled rolling extends into the non-recrystallization region, effectively enhancing mechanical properties while controlling grain size.",
+    "answer": "Controlled rolling extends into the non-recrystallization region to enhance mechanical properties while controlling grain size.",
     "verdict": "partial",
-    "comment": "The answer mentions the non-recrystallization region but does not specify that it is Stage 2.",
+    "comment": "The answer mentions the non-recrystallization region but does not specify which stage uses it.",
     "query_entities": [
       "controlled rolling",
       "non-recrystallization region"
@@ -368,9 +368,9 @@
     "retriever": "bge-m3",
     "question": "What feature divides unrecrystallized austenite grains during controlled rolling?",
     "reference": "Deformation bands divide an unrecrystallized austenite grain into several blocks.",
-    "answer": "В контексте нет ответа.",
+    "answer": "Dynamic recrystallization divides unrecrystallized austenite grains during controlled rolling, influencing the microstructural evolution.",
     "verdict": "wrong",
-    "comment": "The answer incorrectly states there is no answer, when the reference provides a specific feature (deformation bands) that divides unrecrystallized austenite grains.",
+    "comment": "The answer incorrectly states dynamic recrystallization instead of deformation bands.",
     "query_entities": [
       "unrecrystallized austenite grains",
       "controlled rolling"
@@ -549,9 +549,9 @@
     "retriever": "bge-m3",
     "question": "What is the Hall–Petch yield-stress relation?",
     "reference": "Yield stress grows with decreasing ferrite grain size: σy = σ0 + ky·d^(-1/2), where σ0 is the internal stress and d is the grain size.",
-    "answer": "The Hall-Petch relation connects grain structure to yield stress, indicating that finer grain sizes lead to higher yield stress, which is critical for understanding the strength of controlled-rolled steels.",
-    "verdict": "correct",
-    "comment": "The answer correctly captures the essence of the Hall-Petch relation and its relevance to grain size and yield stress.",
+    "answer": "The Hall-Petch relation connects grain structure to yield stress, meaning it is critical for understanding the strength of controlled-rolled steels. Smaller grains lead to higher yield stress according to this relation.",
+    "verdict": "partial",
+    "comment": "The answer provides a conceptual understanding but lacks the specific mathematical formula given in the reference.",
     "query_entities": [
       "Hall-Petch yield-stress relation"
     ],
@@ -610,7 +610,7 @@
     "reference": "Brittle cracks parallel to the plate surface in fractured Charpy specimens, caused by through-thickness embrittlement (texture, flattened MnS); it lowers the transition temperature in the longitudinal direction and reduces the absorbed energy.",
     "answer": "Separation (delamination) in controlled-rolled steel is a fracture phenomenon where internal stresses exceed the material's strength, leading to the development of cracks and separation along specific planes within the material. This compromises the structural integrity of the steel. In terms of toughness, separation can negatively impact it by causing premature failure of the material under stress, reducing its ability to absorb energy and deform plastically before fracturing.",
     "verdict": "partial",
-    "comment": "The answer describes the phenomenon but lacks the specific detail about the orientation and effect on transition temperature and absorbed energy as in the reference.",
+    "comment": "The answer describes the phenomenon but lacks the specific detail about the orientation and effect on toughness as stated in the reference.",
     "query_entities": [
       "separation (delamination)",
       "controlled rolling",
@@ -731,7 +731,7 @@
     "reference": "USINOR.",
     "answer": "В контексте нет ответа.",
     "verdict": "wrong",
-    "comment": "The answer incorrectly states there is no answer, when the reference clearly provides one.",
+    "comment": "The answer incorrectly states there is no answer, when USINOR is the correct response.",
     "query_entities": [
       "USINOR",
       "three-stage rolling schedule"
@@ -972,7 +972,7 @@
     "reference": "Ниобий (Nb).",
     "answer": "Niobium замедляет рекристаллизацию аустенита.",
     "verdict": "correct",
-    "comment": "Ответ точно соответствует ключевому факту из.reference.",
+    "comment": "Ответ точно соответствует.reference",
     "query_entities": [
       "alloying element",
       "austenite",
@@ -1031,9 +1031,9 @@
     "retriever": "bge-m3",
     "question": "Что такое полосы деформации и где они образуются при контролируемой прокатке?",
     "reference": "Полосы внутри деформированного нерекристаллизованного аустенита (стадия 2, область без рекристаллизации); они делят зерно на блоки, и на них зарождается феррит.",
-    "answer": "Полосы деформации (DEFORMATION BANDS) — это специфические структуры, которые возникают в микроструктуре материалов, особенно стали, в процессе пластической деформации. Эти полосы играют значительную роль в влиянии на нуклеаризацию и рост фаз в материале. Они образуются в контролируемой прокатке, способствуя улучшению механических свойств стали.",
-    "verdict": "wrong",
-    "comment": "Ответ не содержит ключевой информации о том, что полосы деформации образуются внутри деформированного нерекристаллизованного аустенита и делят зерно на блоки.",
+    "answer": "Полосы деформации (DEFORMATION BANDS) — это особые структуры, которые возникают в микроструктуре материалов, особенно стали, в процессе пластической деформации. Эти полосы играют значительную роль в формировании механических свойств стали, так как они способствуют образованию новых зерен и изменению механических свойств материала. При контролируемой прокатке деформационные полосы формируются в результате деформации стали в области, где происходит контролируемая прокатка.",
+    "verdict": "partial",
+    "comment": "Ответ содержит полезную информацию, но не упоминает конкретное место образования полос деформации в нерекристаллизованном аустените.",
     "query_entities": [
       "Полосы деформации",
       "Контролируемая прокатка"
@@ -1093,7 +1093,7 @@
     "reference": "По Хеслопу и Петчу температура перехода линейно связана с d^(-1/2): чем мельче зерно, тем ниже температура перехода.",
     "answer": "Температура хрупко-вязкого перехода (DBTT) обратно пропорциональна квадрату корня размера зерна (d). Это означает, что уменьшение размера зерна приводит к снижению температуры хрупко-вязкого перехода, что увеличивает пластичность материала при низких температурах.",
     "verdict": "partial",
-    "comment": "Ответ содержит правильную информацию, но неверно указывает на обратную пропорциональность к квадрату корня вместо квадратного корня.",
+    "comment": "Ответ содержит правильную информацию, но неверно указывает на обратную пропорциональность квадратуры корня вместо обратной пропорциональности корню.",
     "query_entities": [
       "температура хрупко-вязкого перехода",
       "размер зерна"
@@ -1153,7 +1153,7 @@
     "reference": "Компания Climax Molybdenum.",
     "answer": "В контексте нет ответа.",
     "verdict": "wrong",
-    "comment": "Ответ должен указывать, что сталь с игольчатым ферритом была разработана компанией Climax Molybdenum.",
+    "comment": "Ответ должен указать, что сталь с игольчатым ферритом была разработана компанией Climax Molybdenum.",
     "query_entities": [
       "игольчатый феррит",
       "разработчик"
@@ -1213,7 +1213,7 @@
     "reference": "Уравнение Гладмана: T = −19 + 44(%Si) + 700(%N своб.)^(1/2) + 0,26(σD + ΔP + Δ) − 11,5·d^(-1/2).",
     "answer": "Температура перехода бейнитной стали описывается следующим уравнением: $$ T _ {\text{rs}} (^ {\text{o}} \text{C}) = - 19 + 44 (\text{\textpercent Si}) + 700 (\text{\textpercent N}_{\text{free}})^{1 / 2} + 0.26 (\text{$\textsigma_{\text{D}}$} + \text{$\textDelta P$} + \text{$\textDelta$}) - 11.5 d^{-1 / 2} $$",
     "verdict": "correct",
-    "comment": "Ответ содержит правильное уравнение Гладмана с правильными коэффициентами и переменными.",
+    "comment": "Ответ содержит правильное уравнение Гладмана с небольшими различиями в оформлении.",
     "query_entities": [
       "бейнитная сталь",
       "температурный переход"
@@ -1454,7 +1454,7 @@
     "reference": "5 проходов до и 3 прохода после ускоренного охлаждения (5+3).",
     "answer": "По схеме КП+УО+КП в чистовой клети делают 5 проходов до ускоренного охлаждения и 3 прохода после ускоренного охлаждения.",
     "verdict": "correct",
-    "comment": "Ответ точно соответствует ключевому факту из.reference.",
+    "comment": "Ответ точно соответствует информации из.reference.",
     "query_entities": [
       "КП+УО+КП",
       "проходы"

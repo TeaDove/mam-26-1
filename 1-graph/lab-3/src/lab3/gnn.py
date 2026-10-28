@@ -9,7 +9,7 @@ from torch.nn import functional
 from torch_geometric.data import Data
 from torch_geometric.nn import GATConv, SAGEConv
 from torch_geometric.transforms import RandomLinkSplit
-from torch_geometric.utils import negative_sampling, to_undirected
+from torch_geometric.utils import to_undirected
 
 
 @dataclass(frozen=True)
@@ -54,8 +54,13 @@ class LinkEncoder(nn.Module):
         return self.second(x, edge_index)
 
 
+SCALE = 10.0
+
+
 def decode(z: torch.Tensor, pairs: torch.Tensor) -> torch.Tensor:
-    return (z[pairs[0]] * z[pairs[1]]).sum(dim=-1)
+    left = functional.normalize(z[pairs[0]], dim=-1)
+    right = functional.normalize(z[pairs[1]], dim=-1)
+    return (left * right).sum(dim=-1) * SCALE
 
 
 def scores(model: LinkEncoder, data: Data) -> tuple[np.ndarray, np.ndarray]:
@@ -73,12 +78,31 @@ def split_edges(x: np.ndarray, edges: np.ndarray, device: str) -> tuple[Data, Da
     return train.to(device), val.to(device), test.to(device)
 
 
-def train_step(model: LinkEncoder, optimizer: torch.optim.Optimizer, train: Data) -> float:
+def known_pairs(edge_index: torch.Tensor, num_nodes: int, device: str) -> torch.Tensor:
+    mask = torch.zeros((num_nodes, num_nodes), dtype=torch.bool)
+    mask[edge_index[0], edge_index[1]] = True
+    mask = mask | mask.T
+    return mask.to(device)
+
+
+def sample_negatives(positive: torch.Tensor, num_nodes: int, known: torch.Tensor) -> torch.Tensor:
+    count = positive.size(1)
+    negatives = torch.empty((2, count), dtype=torch.long, device=positive.device)
+    negatives[0] = positive[0]
+    negatives[1] = torch.randint(num_nodes, (count,), device=positive.device)
+    bad = known[negatives[0], negatives[1]] | (negatives[0] == negatives[1])
+    while bad.any():
+        negatives[1, bad] = torch.randint(num_nodes, (int(bad.sum()),), device=positive.device)
+        bad = known[negatives[0], negatives[1]] | (negatives[0] == negatives[1])
+    return negatives
+
+
+def train_step(model: LinkEncoder, optimizer: torch.optim.Optimizer, train: Data, known: torch.Tensor) -> float:
     model.train()
     optimizer.zero_grad()
     z = model(train.x, train.edge_index)
     positive = train.edge_label_index
-    negative = negative_sampling(train.edge_index, num_nodes=train.num_nodes, num_neg_samples=positive.size(1))
+    negative = sample_negatives(positive, train.num_nodes, known)
     pairs = torch.cat([positive, negative], dim=1)
     labels = torch.cat([torch.ones(positive.size(1)), torch.zeros(negative.size(1))]).to(z.device)
     loss = functional.binary_cross_entropy_with_logits(decode(z, pairs), labels)
@@ -93,11 +117,12 @@ def train_link_prediction(
     torch.manual_seed(config.seed)
     np.random.seed(config.seed)
     train, val, test = split_edges(x, edges, device)
+    known = known_pairs(train.edge_index, train.num_nodes, device)
     model = LinkEncoder(config.kind, x.shape[1], config.hidden, config.heads, config.dropout).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=config.learning_rate, weight_decay=config.weight_decay)
     best_auc, best_epoch, best_state = -1.0, 0, copy.deepcopy(model.state_dict())
     for epoch in range(1, config.epochs + 1):
-        train_step(model, optimizer, train)
+        train_step(model, optimizer, train, known)
         labels, probabilities = scores(model, val)
         auc = float(roc_auc_score(labels, probabilities))
         if auc > best_auc:

@@ -126,7 +126,7 @@
     "retriever": "bge-m3",
     "question": "What maximum rolling-rate increase is reported for high-temperature rolling with accelerated cooling?",
     "reference": "Up to 20% compared with low-temperature controlled rolling.",
-    "answer": "The maximum rolling-rate increase reported for high-temperature rolling with accelerated cooling is 20% compared to low-temperature controlled rolling.",
+    "answer": "The maximum rolling-rate increase reported for high-temperature rolling with accelerated cooling is 20%.",
     "verdict": "correct",
     "comment": "The answer accurately states the key fact from the reference.",
     "query_entities": [
@@ -310,7 +310,7 @@
     "reference": "Stage 2 — deformation in the austenite non-recrystallization region.",
     "answer": "Finish rolling uses the non-recrystallization region to achieve improved material strength.",
     "verdict": "partial",
-    "comment": "The answer mentions the non-recrystallization region but does not specify it is for Stage 2 as in the reference.",
+    "comment": "The answer mentions the non-recrystallization region but does not specify it is Stage 2 as per the reference.",
     "query_entities": [
       "controlled rolling",
       "non-recrystallization region"
@@ -491,7 +491,7 @@
     "reference": "Niobium (Nb).",
     "answer": "Niobium (Nb) retards austenite recrystallization.",
     "verdict": "correct",
-    "comment": "The answer correctly identifies Niobium as the element that retards austenite recrystallization.",
+    "comment": "The answer correctly identifies Niobium (Nb) as the element that retards austenite recrystallization.",
     "query_entities": [
       "Austenite",
       "Recrystallization"
@@ -549,7 +549,7 @@
     "retriever": "bge-m3",
     "question": "What is the Hall–Petch yield-stress relation?",
     "reference": "Yield stress grows with decreasing ferrite grain size: σy = σ0 + ky·d^(-1/2), where σ0 is the internal stress and d is the grain size.",
-    "answer": "The Hall–Petch yield-stress relation is described by the equation: \\( \text{σ}_{\text{y}} = \text{σ}_{0} + k_{\text{y}} d^{-1/2} \\), where \\( \text{σ}_{\text{y}} \\) is the yield stress, \\( \text{σ}_{0} \\) is internal stress, \\( d \\) is grain size, and \\( k_{\text{y}} \\) is a constant. This relation indicates that the yield stress of polycrystalline solids increases with decreasing grain size, as per the Hall-Petch effect.",
+    "answer": "The Hall–Petch yield-stress relation is given by the equation: \n$$ \text{σ}_{\text{y}} = \text{σ}_{0} + k_{\text{y}} d^{-1/2} $$\nwhere σ_{y} is the yield stress, σ_{0} is internal stress, d is the grain size, and k_{y} is a constant. This relation describes how the yield stress of polycrystalline solids increases with decreasing grain size.",
     "verdict": "correct",
     "comment": "The answer correctly states the Hall-Petch relation and its components.",
     "query_entities": [
@@ -608,9 +608,9 @@
     "retriever": "bge-m3",
     "question": "What is separation (delamination) in controlled-rolled steel and how does it affect toughness?",
     "reference": "Brittle cracks parallel to the plate surface in fractured Charpy specimens, caused by through-thickness embrittlement (texture, flattened MnS); it lowers the transition temperature in the longitudinal direction and reduces the absorbed energy.",
-    "answer": "Separation (delamination) in controlled-rolled steel is a phenomenon where it impacts the mechanical properties under stress and temperature variations. This can lead to adverse effects such as the formation and propagation of cracks, which detrimentally affect toughness and can cause the material to fail under certain conditions. Therefore, separation reduces the toughness of the steel by promoting crack formation and propagation.",
+    "answer": "Separation (delamination) in controlled-rolled steel is a phenomenon that impacts its mechanical properties under stress and temperature variations. It can lead to adverse effects such as the formation and propagation of cracks, which detrimentally affect toughness. This process is closely tied to dislocation hardening, which contributes to the strength of steel but can also cause separation issues leading to reduced toughness due to directional dependence of mechanical properties, particularly under fracture stress.",
     "verdict": "partial",
-    "comment": "The answer discusses the effect on toughness but lacks the specific detail about brittle cracks parallel to the plate surface and the role of texture and flattened MnS in embrittlement.",
+    "comment": "The answer touches on the impact of separation on toughness but lacks the specific detail about the transition temperature and absorbed energy as stated in the reference.",
     "query_entities": [
       "separation (delamination)",
       "controlled rolling",
@@ -789,9 +789,9 @@
     "retriever": "bge-m3",
     "question": "What is acicular ferrite steel and who developed it?",
     "reference": "A low-carbon Mn–Mo–Nb HSLA steel that transforms to acicular ferrite when controlled rolling accelerates the transformation; developed by the Climax Molybdenum Company.",
-    "answer": "Acicular ferrite steel is a specialized high-strength low-alloy steel developed by Climax Molybdenum Company. This steel is notable for its intricate microstructure, which consists of fine non-equiaxed ferrite particles interspersed with cementite and martensite islands, granting it significant strength and suitability for various applications.",
+    "answer": "Acicular ferrite steel is a specialized high-strength low-alloy steel that has been developed by Climax Molybdenum Company. This steel is notable for its intricate microstructure, which consists of fine non-equiaxed ferrite particles interspersed with cementite and martensite islands, granting it significant strength and suitability for various applications.",
     "verdict": "partial",
-    "comment": "The answer provides additional details but lacks the mention of controlled rolling and the specific composition of Mn–Mo–Nb.",
+    "comment": "Mentions the developer but lacks key details about composition and transformation process.",
     "query_entities": [
       "Acicular Ferrite Steel",
       "Acicular Ferrite",
@@ -852,7 +852,7 @@
     "reference": "The accelerated cooling unit УОВТ.",
     "answer": "УОВТ",
     "verdict": "correct",
-    "comment": "The answer correctly identifies the unit as УОВТ.",
+    "comment": "The answer correctly identifies the unit used for accelerated water cooling.",
     "query_entities": [
       "mill 3600",
       "accelerated water cooling"
@@ -970,9 +970,9 @@
     "retriever": "bge-m3",
     "question": "Какой легирующий элемент замедляет рекристаллизацию аустенита?",
     "reference": "Ниобий (Nb).",
-    "answer": "Niobium (Nb) замедляет рекристаллизацию аустенита.",
+    "answer": "Ниобий (Nb) замедляет рекристаллизацию аустенита.",
     "verdict": "correct",
-    "comment": "Ответ точно соответствует.reference",
+    "comment": "Ответ полностью соответствует.reference",
     "query_entities": [
       "alloying element",
       "austenite",
@@ -1031,9 +1031,9 @@
     "retriever": "bge-m3",
     "question": "Что такое полосы деформации и где они образуются при контролируемой прокатке?",
     "reference": "Полосы внутри деформированного нерекристаллизованного аустенита (стадия 2, область без рекристаллизации); они делят зерно на блоки, и на них зарождается феррит.",
-    "answer": "Полосы деформации (деформационные полосы) — это структурные особенности, возникающие в микроструктуре материалов, особенно при процессах пластической деформации. Эти полосы характеризуются парой параллельных линий, расположенных близко друг к другу, что указывает на области значительной деформации. При контролируемой прокатке деформационные полосы образуются в зернах стали в результате механических воздействий, приводящих к изменению формы и размера материала.",
+    "answer": "Полосы деформации (деформационные полосы) — это структурные особенности, возникающие в микроструктуре материалов, особенно при процессах пластической деформации. Эти полосы характеризуются парой параллельных линий, расположенных близко друг к другу, что указывает на области значительной деформации. Они образуются в зернах материала при контролируемой прокатке, особенно в двухфазной области, и могут сильно влиять на механические свойства материала.",
     "verdict": "partial",
-    "comment": "Ответ содержит правильную информацию о полосах деформации, но не упоминает конкретное место их образования в нерекристаллизованном аустените.",
+    "comment": "Ответ содержит полезную информацию, но не упоминает конкретное место образования полос деформации в нерекристаллизованном аустените.",
     "query_entities": [
       "Полосы деформации",
       "Контролируемая прокатка"
@@ -1091,9 +1091,9 @@
     "retriever": "bge-m3",
     "question": "Как температура хрупко-вязкого перехода зависит от размера зерна?",
     "reference": "По Хеслопу и Петчу температура перехода линейно связана с d^(-1/2): чем мельче зерно, тем ниже температура перехода.",
-    "answer": "Размер зерна влияет на температуру хрупко-вязкого перехода, так как уточнение микроструктуры (включая уменьшение размера зерна) улучшает прочность и韧性和脆性转变温度之间的关系在给定的知识图中没有直接说明。但是，可以推断出细化晶粒（如通过控制轧制实现）可以影响材料的机械性能，包括韧性，从而间接影响韧性-脆性转变温度。因此，细化晶粒通常会提高材料的韧性，可能降低韧性-脆性转变温度。由于直接关系未在上下文中明确给出，答案是：“В контексте нет ответа。”} {",
-    "verdict": "wrong",
-    "comment": "ответ не предоставляет ключевую информацию о линейной зависимости температуры перехода от d^(-1/2), как указано в ссылке.",
+    "answer": "Размер зерна влияет на температуру хрупко-вязкого перехода, так как уточнение зерна улучшает как прочность, так и ударную вязкость материала. В контексте контролируемого рулонирования, уточнение зерна достигается за счет дисперсного рассеяния вторичной фазы и/или снижения температуры трансформации за счет добавления заместительных легирующих элементов. Уменьшение размера зерна повышает ударную вязкость, что указывает на то, что более мелкое зерно сдвигает температуру хрупко-вязкого перехода в сторону более низких температур.",
+    "verdict": "partial",
+    "comment": "Ответ содержит правильную информацию о зависимости температуры перехода от размера зерна, но не упоминает линейную связь по формуле d^(-1/2) из ссылки.",
     "query_entities": [
       "температура хрупко-вязкого перехода",
       "размер зерна"
@@ -1211,9 +1211,9 @@
     "retriever": "bge-m3",
     "question": "Какое уравнение описывает температуру перехода бейнитной стали?",
     "reference": "Уравнение Гладмана: T = −19 + 44(%Si) + 700(%N своб.)^(1/2) + 0,26(σD + ΔP + Δ) − 11,5·d^(-1/2).",
-    "answer": "Гladman предложил уравнение для температуры перехода бейнитной стали, которое представлено как формула (13): $$ T _ {\text{rs}} (^ {\text{o}} \text{C}) = - 19 + 44 (\text{\\% Si}) + 700 (\text{\\% N} _ {\text{free}}) ^ {1 / 2} + 0.26 (\text{\\sigma}_ {\text{D}} + \text{\\Delta P} + \text{\\Delta}) - 11.5 d ^ {- 1 / 2} $$",
+    "answer": "Гladman предложил уравнение для температуры перехода бейнитной стали, которое записывается как: $$ T _ {\text{rs}} (^ {\text{o}} \text{C}) = - 19 + 44 (\text{\\% Si}) + 700 (\text{\\% N} _ {\text{free}}) ^ {1 / 2} + 0.26 (\text{σ}_ {\text{D}} + \text{Δ P} + \text{Δ}) - 11.5 d ^ {- 1 / 2} \tag{13} $$",
     "verdict": "correct",
-    "comment": "Ответ содержит правильное уравнение Гладмана с корректными коэффициентами и переменными.",
+    "comment": "Уравнение полностью совпадает с приведенным в ссылке.",
     "query_entities": [
       "бейнитная сталь",
       "температурный переход"
@@ -1389,7 +1389,7 @@
     "reference": "До 20% по сравнению с низкотемпературной КП.",
     "answer": "При высокотемпературной КП с ускоренным охлаждением темп прокатки повышается на 20%.",
     "verdict": "correct",
-    "comment": "Ответ точно соответствует ключевому факту из.reference.",
+    "comment": "Ответ точно соответствует ключевому факту из ссылки.",
     "query_entities": [
       "controlled rolling",
       "high temperature controlled rolling",

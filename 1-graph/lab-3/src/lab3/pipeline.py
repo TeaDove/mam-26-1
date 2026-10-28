@@ -11,11 +11,20 @@ from pydantic import TypeAdapter
 from sentence_transformers import SentenceTransformer
 
 from lab3.answer import context_text, generate, graph_text, judge
-from lab3.evaluate import first_relevant_rank, run_metrics
+from lab3.evaluate import first_relevant_rank, retrieval_metrics, run_metrics
 from lab3.gnn import GnnConfig, LinkEncoder, embed, train_link_prediction
 from lab3.graph import KnowledgeGraph, load_graph, relevant_vertices, vertex_text
 from lab3.llm import LlmClient
-from lab3.models import LinkMetrics, QueryGraph, Question, QuestionResult, QuestionSet, RagReport, RunMetrics
+from lab3.models import (
+    LinkMetrics,
+    QueryGraph,
+    Question,
+    QuestionResult,
+    QuestionSet,
+    RagReport,
+    RetrievalMetrics,
+    RunMetrics,
+)
 from lab3.query import extract_query_graph
 from lab3.retrieve import Retrieval, RetrievalConfig, combine, query_edges, retrieve, source_units
 from lab3.settings import Settings
@@ -113,6 +122,9 @@ def llm(settings: Settings, model: str) -> LlmClient:
         base_url=settings.llm_base_url,
         model=model,
         cache_dir=settings.data_dir / "llm_cache",
+        api_key=settings.llm_api_key,
+        api_key_header=settings.llm_api_key_header,
+        api_key_prefix=settings.llm_api_key_prefix,
         timeout=settings.llm_timeout,
     )
 
@@ -184,6 +196,34 @@ def answer_question(
         key_in_graph=bool(key.search(graph_text(kg, kg.nodes))),
         key_in_context=bool(key.search(context)),
     )
+
+
+def run_retrieval(settings: Settings) -> None:
+    sbert = encoder_model(settings)
+    queries = QUERY_GRAPHS.validate_json((settings.root / "results" / "query_graphs.json").read_text(encoding="utf-8"))
+    runs: list[RetrievalMetrics] = []
+    for graph in settings.graphs:
+        kg = load_graph(graph, settings.graphrag_output(graph))
+        x = np.load(settings.data_dir / f"{graph}_features.npy")
+        for retriever in settings.retrievers:
+            encoders = retriever_encoders(settings, graph, retriever)
+            vectors = blocks(settings, retriever, x, kg.edge_array(), encoders)
+            ranks: list[int | None] = []
+            context_hits: list[bool] = []
+            key_hits: list[bool] = []
+            for question in questions(settings):
+                query = queries[question.id]
+                query_x = query_vectors(settings, sbert, query, retriever, encoders)
+                found = retrieve(kg, vectors, query, query_x, retrieval_config(settings))
+                relevant = relevant_vertices(kg, question.evidence)
+                ranks.append(first_relevant_rank(found.ranking, relevant) if relevant else None)
+                context_hits.append(bool(relevant & set(found.context)))
+                units = source_units(kg, found.seeds, found.context, settings.source_units)
+                context = context_text(kg, found.context, units, settings.source_chars)
+                key_hits.append(bool(re.compile(question.key, re.IGNORECASE).search(context)))
+            runs.append(retrieval_metrics(graph, retriever, ranks, context_hits, key_hits))
+            log.info("%s", runs[-1])
+    write_json(settings.metrics_dir / "retrieval.json", [r.model_dump() for r in runs])
 
 
 def run_rag(settings: Settings) -> None:

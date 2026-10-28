@@ -8,7 +8,7 @@ from lab3.settings import Settings
 def main() -> None:
     parser = argparse.ArgumentParser(prog="lab3")
     commands = parser.add_subparsers(dest="command", required=True)
-    for name in ("features", "train", "queries", "rag"):
+    for name in ("features", "train", "queries", "retrieval", "rag"):
         commands.add_parser(name)
     ask = commands.add_parser("ask")
     ask.add_argument("question")
@@ -22,6 +22,7 @@ def main() -> None:
         "features": pipeline.run_features,
         "train": pipeline.run_train,
         "queries": pipeline.run_queries,
+        "retrieval": pipeline.run_retrieval,
         "rag": pipeline.run_rag,
     }
     if args.command == "ask":

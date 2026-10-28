@@ -93,3 +93,16 @@ class RunMetrics(BaseModel):
 class RagReport(BaseModel):
     runs: list[RunMetrics]
     link_prediction: list[LinkMetrics]
+
+
+class RetrievalMetrics(BaseModel):
+    graph: str
+    retriever: str
+    questions: int
+    with_relevant: int
+    mrr: float
+    hit_at_1: float
+    hit_at_3: float
+    hit_at_10: float
+    context_recall: float
+    key_in_context_share: float

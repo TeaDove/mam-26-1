@@ -1,0 +1,38 @@
+[
+  {
+    "graph": "dirty",
+    "retriever": "bge-m3",
+    "context_recall": 0.4807692307692308,
+    "recall_n": 26,
+    "faithfulness": 0.7777777777777778,
+    "faithfulness_n": 15,
+    "abstentions": 11
+  },
+  {
+    "graph": "dirty",
+    "retriever": "hybrid",
+    "context_recall": 0.7884615384615384,
+    "recall_n": 26,
+    "faithfulness": 0.7936507936507936,
+    "faithfulness_n": 21,
+    "abstentions": 5
+  },
+  {
+    "graph": "clean",
+    "retriever": "bge-m3",
+    "context_recall": 0.6923076923076923,
+    "recall_n": 26,
+    "faithfulness": 0.8961038961038961,
+    "faithfulness_n": 22,
+    "abstentions": 4
+  },
+  {
+    "graph": "clean",
+    "retriever": "hybrid",
+    "context_recall": 0.8461538461538461,
+    "recall_n": 26,
+    "faithfulness": 0.8863636363636364,
+    "faithfulness_n": 22,
+    "abstentions": 4
+  }
+]

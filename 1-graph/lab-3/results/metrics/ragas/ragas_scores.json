@@ -1,0 +1,3158 @@
+{
+  "ragas_version": "0.4.3",
+  "runs": [
+    {
+      "graph": "dirty",
+      "retriever": "bge-m3",
+      "questions": 26,
+      "indexed_units": 28,
+      "questions_with_reference": 26,
+      "context_precision": {
+        "mean": 0.19230769230769232,
+        "n": 26
+      },
+      "context_recall": {
+        "mean": 0.11703296703296703,
+        "n": 26
+      },
+      "correct": 8,
+      "rows": [
+        {
+          "id": "f01",
+          "retrieved_ids": [
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60",
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f02",
+          "retrieved_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "597244ab0bfb91546dc4e3a8eb0a073758dc2e9c44a9ca0d3db895517c717e80b28ea0ab2f9bf8f28d5c4b744ad7dd8d08e0e4f1c9c1c74a509327552e3600be"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f03",
+          "retrieved_ids": [
+            "46aa3326e12ec411eca262e5c1f73c10250d66b0d720ffbf5aeafdeb01f08ffc5ae908c07e8a65bb4268d165575f7207bd6edf31b0e01b77662e3207c27534ab",
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f04",
+          "retrieved_ids": [
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f05",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "46aa3326e12ec411eca262e5c1f73c10250d66b0d720ffbf5aeafdeb01f08ffc5ae908c07e8a65bb4268d165575f7207bd6edf31b0e01b77662e3207c27534ab"
+          ],
+          "reference_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f06",
+          "retrieved_ids": [
+            "46aa3326e12ec411eca262e5c1f73c10250d66b0d720ffbf5aeafdeb01f08ffc5ae908c07e8a65bb4268d165575f7207bd6edf31b0e01b77662e3207c27534ab",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "f07",
+          "retrieved_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "reference_ids": [
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f08",
+          "retrieved_ids": [
+            "46aa3326e12ec411eca262e5c1f73c10250d66b0d720ffbf5aeafdeb01f08ffc5ae908c07e8a65bb4268d165575f7207bd6edf31b0e01b77662e3207c27534ab",
+            "9d831b32c5820187ce39e1b1451b2cf94951f3d0e793998a27fd647609280f724fea96fba95d5cc2abb46e4951835292d6cdfe61b86a4c2798087ebe7abeb7be"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f09",
+          "retrieved_ids": [
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "597244ab0bfb91546dc4e3a8eb0a073758dc2e9c44a9ca0d3db895517c717e80b28ea0ab2f9bf8f28d5c4b744ad7dd8d08e0e4f1c9c1c74a509327552e3600be"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "3a76b511997a4408fdee4f393834ac01dbf9ea15b2347cd5df4a8de63b3ca0815e7ef8ad6cea9c04d6a5913578c2e47dda8234be20cd0776f2a30330a0373433",
+            "cf374ded4a850e0fdc564f8c81f5c0a6790a3e0fc0855c71cb46fefec7da11a7457948f72d1ff84b03531793547bb5bc09273167d0e78145c3777c404526fd11",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "05d9e26d3f94011b6e5ee8e57558a2bc802d05fa5cfe60876de4969aa8f68997bf8aad9b670f692a5efaedaa9e136431cab39b6cb307cda17b6a627be8146eea",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f10",
+          "retrieved_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "aee3c785323cab46a06410b4f8103e49387fdb5f46f505833f132b334994f5771741e5bce9e73c21d039931c2a0f1dbd518cddac4a944ff40636e5d2e329cf7b"
+          ],
+          "reference_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e01",
+          "retrieved_ids": [
+            "46aa3326e12ec411eca262e5c1f73c10250d66b0d720ffbf5aeafdeb01f08ffc5ae908c07e8a65bb4268d165575f7207bd6edf31b0e01b77662e3207c27534ab",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "b425f7079f1bd1f16d70e315060602807f5e9d2ce034dd089744a95ad178febb970b29455a20b874e163d511d5c9c7491a65a42dda2a9f84c740c9a7f14c6416"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e02",
+          "retrieved_ids": [
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e03",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed"
+          ],
+          "reference_ids": [
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e04",
+          "retrieved_ids": [
+            "9d831b32c5820187ce39e1b1451b2cf94951f3d0e793998a27fd647609280f724fea96fba95d5cc2abb46e4951835292d6cdfe61b86a4c2798087ebe7abeb7be",
+            "d6efa62316e383b34fcfd9117bbf85673f5b7b90e3e85ea877b2a8fa563dcd581f130516813ebfcdd2e562c9d4251b9b4bb6e46199bf5f0c1a7514b687673bdd"
+          ],
+          "reference_ids": [
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e05",
+          "retrieved_ids": [
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37",
+            "46aa3326e12ec411eca262e5c1f73c10250d66b0d720ffbf5aeafdeb01f08ffc5ae908c07e8a65bb4268d165575f7207bd6edf31b0e01b77662e3207c27534ab"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e06",
+          "retrieved_ids": [
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "reference_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r01",
+          "retrieved_ids": [
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "3a76b511997a4408fdee4f393834ac01dbf9ea15b2347cd5df4a8de63b3ca0815e7ef8ad6cea9c04d6a5913578c2e47dda8234be20cd0776f2a30330a0373433",
+            "cf374ded4a850e0fdc564f8c81f5c0a6790a3e0fc0855c71cb46fefec7da11a7457948f72d1ff84b03531793547bb5bc09273167d0e78145c3777c404526fd11",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "05d9e26d3f94011b6e5ee8e57558a2bc802d05fa5cfe60876de4969aa8f68997bf8aad9b670f692a5efaedaa9e136431cab39b6cb307cda17b6a627be8146eea",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.14285714285714285,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r02",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194"
+          ],
+          "reference_ids": [
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "r03",
+          "retrieved_ids": [
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7"
+          ],
+          "reference_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "r04",
+          "retrieved_ids": [
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37",
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150"
+          ],
+          "reference_ids": [
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r05",
+          "retrieved_ids": [
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r06",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.4,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r07",
+          "retrieved_ids": [
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "cf374ded4a850e0fdc564f8c81f5c0a6790a3e0fc0855c71cb46fefec7da11a7457948f72d1ff84b03531793547bb5bc09273167d0e78145c3777c404526fd11"
+          ],
+          "reference_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r08",
+          "retrieved_ids": [
+            "b425f7079f1bd1f16d70e315060602807f5e9d2ce034dd089744a95ad178febb970b29455a20b874e163d511d5c9c7491a65a42dda2a9f84c740c9a7f14c6416",
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r09",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b"
+          ],
+          "reference_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r10",
+          "retrieved_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        }
+      ]
+    },
+    {
+      "graph": "dirty",
+      "retriever": "gat",
+      "questions": 26,
+      "indexed_units": 28,
+      "questions_with_reference": 26,
+      "context_precision": {
+        "mean": 0.28846153846153844,
+        "n": 26
+      },
+      "context_recall": {
+        "mean": 0.21831501831501832,
+        "n": 26
+      },
+      "correct": 11,
+      "rows": [
+        {
+          "id": "f01",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f02",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f03",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f04",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f05",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b"
+          ],
+          "reference_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f06",
+          "retrieved_ids": [
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "f07",
+          "retrieved_ids": [
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60"
+          ],
+          "reference_ids": [
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "f08",
+          "retrieved_ids": [
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f09",
+          "retrieved_ids": [
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "3a76b511997a4408fdee4f393834ac01dbf9ea15b2347cd5df4a8de63b3ca0815e7ef8ad6cea9c04d6a5913578c2e47dda8234be20cd0776f2a30330a0373433",
+            "cf374ded4a850e0fdc564f8c81f5c0a6790a3e0fc0855c71cb46fefec7da11a7457948f72d1ff84b03531793547bb5bc09273167d0e78145c3777c404526fd11",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "05d9e26d3f94011b6e5ee8e57558a2bc802d05fa5cfe60876de4969aa8f68997bf8aad9b670f692a5efaedaa9e136431cab39b6cb307cda17b6a627be8146eea",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f10",
+          "retrieved_ids": [
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "reference_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e01",
+          "retrieved_ids": [
+            "b425f7079f1bd1f16d70e315060602807f5e9d2ce034dd089744a95ad178febb970b29455a20b874e163d511d5c9c7491a65a42dda2a9f84c740c9a7f14c6416"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "b425f7079f1bd1f16d70e315060602807f5e9d2ce034dd089744a95ad178febb970b29455a20b874e163d511d5c9c7491a65a42dda2a9f84c740c9a7f14c6416"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.5,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e02",
+          "retrieved_ids": [
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "aee3c785323cab46a06410b4f8103e49387fdb5f46f505833f132b334994f5771741e5bce9e73c21d039931c2a0f1dbd518cddac4a944ff40636e5d2e329cf7b"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e03",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f"
+          ],
+          "reference_ids": [
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e04",
+          "retrieved_ids": [
+            "d6efa62316e383b34fcfd9117bbf85673f5b7b90e3e85ea877b2a8fa563dcd581f130516813ebfcdd2e562c9d4251b9b4bb6e46199bf5f0c1a7514b687673bdd",
+            "05d9e26d3f94011b6e5ee8e57558a2bc802d05fa5cfe60876de4969aa8f68997bf8aad9b670f692a5efaedaa9e136431cab39b6cb307cda17b6a627be8146eea"
+          ],
+          "reference_ids": [
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e05",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e06",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "reference_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r01",
+          "retrieved_ids": [
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "3a76b511997a4408fdee4f393834ac01dbf9ea15b2347cd5df4a8de63b3ca0815e7ef8ad6cea9c04d6a5913578c2e47dda8234be20cd0776f2a30330a0373433",
+            "cf374ded4a850e0fdc564f8c81f5c0a6790a3e0fc0855c71cb46fefec7da11a7457948f72d1ff84b03531793547bb5bc09273167d0e78145c3777c404526fd11",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "05d9e26d3f94011b6e5ee8e57558a2bc802d05fa5cfe60876de4969aa8f68997bf8aad9b670f692a5efaedaa9e136431cab39b6cb307cda17b6a627be8146eea",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.14285714285714285,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r02",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed"
+          ],
+          "reference_ids": [
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r03",
+          "retrieved_ids": [
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c"
+          ],
+          "reference_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r04",
+          "retrieved_ids": [
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f"
+          ],
+          "reference_ids": [
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r05",
+          "retrieved_ids": [
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r06",
+          "retrieved_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.2,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r07",
+          "retrieved_ids": [
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "reference_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r08",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r09",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "reference_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r10",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        }
+      ]
+    },
+    {
+      "graph": "dirty",
+      "retriever": "sage",
+      "questions": 26,
+      "indexed_units": 28,
+      "questions_with_reference": 26,
+      "context_precision": {
+        "mean": 0.25,
+        "n": 26
+      },
+      "context_recall": {
+        "mean": 0.19716117216117215,
+        "n": 26
+      },
+      "correct": 9,
+      "rows": [
+        {
+          "id": "f01",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f02",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f03",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f04",
+          "retrieved_ids": [
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f05",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f"
+          ],
+          "reference_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f06",
+          "retrieved_ids": [
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "f07",
+          "retrieved_ids": [
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5"
+          ],
+          "reference_ids": [
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f08",
+          "retrieved_ids": [
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.25,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "f09",
+          "retrieved_ids": [
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "3a76b511997a4408fdee4f393834ac01dbf9ea15b2347cd5df4a8de63b3ca0815e7ef8ad6cea9c04d6a5913578c2e47dda8234be20cd0776f2a30330a0373433"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "3a76b511997a4408fdee4f393834ac01dbf9ea15b2347cd5df4a8de63b3ca0815e7ef8ad6cea9c04d6a5913578c2e47dda8234be20cd0776f2a30330a0373433",
+            "cf374ded4a850e0fdc564f8c81f5c0a6790a3e0fc0855c71cb46fefec7da11a7457948f72d1ff84b03531793547bb5bc09273167d0e78145c3777c404526fd11",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "05d9e26d3f94011b6e5ee8e57558a2bc802d05fa5cfe60876de4969aa8f68997bf8aad9b670f692a5efaedaa9e136431cab39b6cb307cda17b6a627be8146eea",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.14285714285714285,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f10",
+          "retrieved_ids": [
+            "46aa3326e12ec411eca262e5c1f73c10250d66b0d720ffbf5aeafdeb01f08ffc5ae908c07e8a65bb4268d165575f7207bd6edf31b0e01b77662e3207c27534ab",
+            "aee3c785323cab46a06410b4f8103e49387fdb5f46f505833f132b334994f5771741e5bce9e73c21d039931c2a0f1dbd518cddac4a944ff40636e5d2e329cf7b"
+          ],
+          "reference_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e01",
+          "retrieved_ids": [
+            "b425f7079f1bd1f16d70e315060602807f5e9d2ce034dd089744a95ad178febb970b29455a20b874e163d511d5c9c7491a65a42dda2a9f84c740c9a7f14c6416",
+            "dad39f7d198fa97215b9a3fd8f3c711b7fb283d7482328d55cf640c12f7edf71e4f75e38a58b69cb561733bee5bf7ee386e27c6e303ea9f0b912ad3ab4032c53"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "b425f7079f1bd1f16d70e315060602807f5e9d2ce034dd089744a95ad178febb970b29455a20b874e163d511d5c9c7491a65a42dda2a9f84c740c9a7f14c6416"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e02",
+          "retrieved_ids": [
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "aee3c785323cab46a06410b4f8103e49387fdb5f46f505833f132b334994f5771741e5bce9e73c21d039931c2a0f1dbd518cddac4a944ff40636e5d2e329cf7b"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e03",
+          "retrieved_ids": [
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5"
+          ],
+          "reference_ids": [
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e04",
+          "retrieved_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "9d831b32c5820187ce39e1b1451b2cf94951f3d0e793998a27fd647609280f724fea96fba95d5cc2abb46e4951835292d6cdfe61b86a4c2798087ebe7abeb7be"
+          ],
+          "reference_ids": [
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e05",
+          "retrieved_ids": [
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.2,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e06",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "reference_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r01",
+          "retrieved_ids": [
+            "aee3c785323cab46a06410b4f8103e49387fdb5f46f505833f132b334994f5771741e5bce9e73c21d039931c2a0f1dbd518cddac4a944ff40636e5d2e329cf7b",
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "3a76b511997a4408fdee4f393834ac01dbf9ea15b2347cd5df4a8de63b3ca0815e7ef8ad6cea9c04d6a5913578c2e47dda8234be20cd0776f2a30330a0373433",
+            "cf374ded4a850e0fdc564f8c81f5c0a6790a3e0fc0855c71cb46fefec7da11a7457948f72d1ff84b03531793547bb5bc09273167d0e78145c3777c404526fd11",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "05d9e26d3f94011b6e5ee8e57558a2bc802d05fa5cfe60876de4969aa8f68997bf8aad9b670f692a5efaedaa9e136431cab39b6cb307cda17b6a627be8146eea",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r02",
+          "retrieved_ids": [
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed"
+          ],
+          "reference_ids": [
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r03",
+          "retrieved_ids": [
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f"
+          ],
+          "reference_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r04",
+          "retrieved_ids": [
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f"
+          ],
+          "reference_ids": [
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r05",
+          "retrieved_ids": [
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r06",
+          "retrieved_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862",
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.2,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r07",
+          "retrieved_ids": [
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "reference_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r08",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r09",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "reference_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r10",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "partial"
+        }
+      ]
+    },
+    {
+      "graph": "dirty",
+      "retriever": "hybrid",
+      "questions": 26,
+      "indexed_units": 28,
+      "questions_with_reference": 26,
+      "context_precision": {
+        "mean": 0.4230769230769231,
+        "n": 26
+      },
+      "context_recall": {
+        "mean": 0.310989010989011,
+        "n": 26
+      },
+      "correct": 17,
+      "rows": [
+        {
+          "id": "f01",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f02",
+          "retrieved_ids": [
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f03",
+          "retrieved_ids": [
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f04",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f05",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b"
+          ],
+          "reference_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f06",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f07",
+          "retrieved_ids": [
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "reference_ids": [
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.25,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f08",
+          "retrieved_ids": [
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37",
+            "46aa3326e12ec411eca262e5c1f73c10250d66b0d720ffbf5aeafdeb01f08ffc5ae908c07e8a65bb4268d165575f7207bd6edf31b0e01b77662e3207c27534ab"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.25,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "f09",
+          "retrieved_ids": [
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "3a76b511997a4408fdee4f393834ac01dbf9ea15b2347cd5df4a8de63b3ca0815e7ef8ad6cea9c04d6a5913578c2e47dda8234be20cd0776f2a30330a0373433",
+            "cf374ded4a850e0fdc564f8c81f5c0a6790a3e0fc0855c71cb46fefec7da11a7457948f72d1ff84b03531793547bb5bc09273167d0e78145c3777c404526fd11",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "05d9e26d3f94011b6e5ee8e57558a2bc802d05fa5cfe60876de4969aa8f68997bf8aad9b670f692a5efaedaa9e136431cab39b6cb307cda17b6a627be8146eea",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.14285714285714285,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f10",
+          "retrieved_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5"
+          ],
+          "reference_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e01",
+          "retrieved_ids": [
+            "b425f7079f1bd1f16d70e315060602807f5e9d2ce034dd089744a95ad178febb970b29455a20b874e163d511d5c9c7491a65a42dda2a9f84c740c9a7f14c6416",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "b425f7079f1bd1f16d70e315060602807f5e9d2ce034dd089744a95ad178febb970b29455a20b874e163d511d5c9c7491a65a42dda2a9f84c740c9a7f14c6416"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e02",
+          "retrieved_ids": [
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e03",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "reference_ids": [
+            "787df731d1fa1c37935c2b7d5ec4246d3322d5db54d861d7d392a8b42ac9bc823bcc549409847b64e0044f349425a55cb8d2921aa1a70555298323245cd36a60"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e04",
+          "retrieved_ids": [
+            "9d831b32c5820187ce39e1b1451b2cf94951f3d0e793998a27fd647609280f724fea96fba95d5cc2abb46e4951835292d6cdfe61b86a4c2798087ebe7abeb7be",
+            "d6efa62316e383b34fcfd9117bbf85673f5b7b90e3e85ea877b2a8fa563dcd581f130516813ebfcdd2e562c9d4251b9b4bb6e46199bf5f0c1a7514b687673bdd"
+          ],
+          "reference_ids": [
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e05",
+          "retrieved_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862",
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.4,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e06",
+          "retrieved_ids": [
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed"
+          ],
+          "reference_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r01",
+          "retrieved_ids": [
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194"
+          ],
+          "reference_ids": [
+            "8f573d89420d00a245480e8b1c8c1405849c998ab06f0af2cdb27c3c8b9754ad98de000e236ba1cb76dd3662e0b57b10e853350ea4597c05dd2a37c04abcd6f7",
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "3a76b511997a4408fdee4f393834ac01dbf9ea15b2347cd5df4a8de63b3ca0815e7ef8ad6cea9c04d6a5913578c2e47dda8234be20cd0776f2a30330a0373433",
+            "cf374ded4a850e0fdc564f8c81f5c0a6790a3e0fc0855c71cb46fefec7da11a7457948f72d1ff84b03531793547bb5bc09273167d0e78145c3777c404526fd11",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "05d9e26d3f94011b6e5ee8e57558a2bc802d05fa5cfe60876de4969aa8f68997bf8aad9b670f692a5efaedaa9e136431cab39b6cb307cda17b6a627be8146eea",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.14285714285714285,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r02",
+          "retrieved_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "reference_ids": [
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150",
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "6e1149f9089ead59a6fa7ba41de63492f7b14b30c4b1c2aee2b37c62288335e3075a4919c54de6267f9955011af403fed3be4d3c0b76a1199b03f7e8cd62568c",
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r03",
+          "retrieved_ids": [
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "597244ab0bfb91546dc4e3a8eb0a073758dc2e9c44a9ca0d3db895517c717e80b28ea0ab2f9bf8f28d5c4b744ad7dd8d08e0e4f1c9c1c74a509327552e3600be"
+          ],
+          "reference_ids": [
+            "a04c499678053e1e445e3a6425b8aa2b356448333341941a9c74091b226ce066ecfc80876da086717807a2bfea931c77e48160c4ac4a6296d86c18de44b14194",
+            "819c11c9ea6923fd2fc484011da2a112b9108cc40cd9554da898dfe9df047b1d955ca41f8a93e9e146c4bf7703b8911a2f51527bd325f68ad4f02448ca84c9f5",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r04",
+          "retrieved_ids": [
+            "7fd33a456a7ad1bd4bad50c1989a84c37fa3d8f347c6bfd7365ecbe1cb85415b34e628011a9aded628e2ae28722114f3a995689ac1c6490c108d430b26ddbf37",
+            "d6efa62316e383b34fcfd9117bbf85673f5b7b90e3e85ea877b2a8fa563dcd581f130516813ebfcdd2e562c9d4251b9b4bb6e46199bf5f0c1a7514b687673bdd"
+          ],
+          "reference_ids": [
+            "0c0d7570cb40e5adc7e70b7fee937b39a05e9ba41b1ba7d91a12495e3d475b596da289dbe1ee9fbb78961a1dbcf54b25ac850cb1802891c056bfa9cdce01e2ac"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r05",
+          "retrieved_ids": [
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de",
+            "52ae7b440a446030b79c1a8daa804de1ac8838026f25e918bd00fef93d6be0b286007651d8f26c7a4bdd4ccadc3dc638e4b45b10d80701a8a8306b8a42f7c150"
+          ],
+          "reference_ids": [
+            "fd1499f658568096bd074a32d831f1ad49680fc98c93339f43bf6d5f0e80c625678b1225efaf741b9a7e52256ead1766f20f32ac91f2485ff3d5816c2231a1b3",
+            "5cac9eae544a4a02a13badf57b8c8bae3a4c8342e2bac38d21e0909355ca37381365b5971d179b98742d9967dabb0cd636d829ebde4e45ae056ce7602ff9684f",
+            "7564330eefc41d6ac25fd214b10c15b83d8cca592adfefdc07e646cea1bb2c8de0188da181cc7597165a1670eef16bba330eba6058a7b99108e941a8f88043de"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r06",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9",
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "5d990640eb7764f486525681ebd4030d60c8f6084f09555b3b9226c9172ceef4a8447a2126ab5d4bfe2aafd547f5b0b6d73837b01de2145b0f7b8b62a504668f",
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.4,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r07",
+          "retrieved_ids": [
+            "d8483466786282d6de276eb2b97ea5a781542f701442ce06534042402a4b400f7160b9a9c6fb2a5f394171f6662cd4fb018f8804235b7ea4fbd63d5c0a4fd5ed",
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "reference_ids": [
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r08",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "44e9e6bbf8f76e9b7543739995da8a7014a60374960a6430e56171d5594f9bba61bbee1f0adc0cf4667273efb964bd44e0d288028189d6aebeb10675cfba4087"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r09",
+          "retrieved_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b"
+          ],
+          "reference_ids": [
+            "5461336fda5c88aaf57939761024d50dec5364d28f4314819151d1076a1f975026e04ad4f7259bdc20c5a585123525c3a9d37b68a7c2bda1e872096ed3a9098b",
+            "299455f4f35891cf7809feb89811ece3e0fd49767a206be7ce096c5da4d96ce6a5803d0c90e7dc16dca752f9f06b5110f7e8f8370a93e2d82bcfb7435b8f1862"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r10",
+          "retrieved_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4",
+            "d24f8b62599cf1deb35711dadbc98b28473422818d0a34a1138713fa91775a063a80579d1e63058e01e931b9727e84648549ea38086857aae13e28b6aab230b9"
+          ],
+          "reference_ids": [
+            "66a8ce5705e57a3fb7756673a2c5787810a7bb55173be84735a3d187e9a4194419f7af7297729640ce6f3a5cad1cce37aa9453d571cd826f51c64ae6561ca8d4"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        }
+      ]
+    },
+    {
+      "graph": "clean",
+      "retriever": "bge-m3",
+      "questions": 26,
+      "indexed_units": 36,
+      "questions_with_reference": 26,
+      "context_precision": {
+        "mean": 0.40384615384615385,
+        "n": 26
+      },
+      "context_recall": {
+        "mean": 0.4128205128205128,
+        "n": 26
+      },
+      "correct": 16,
+      "rows": [
+        {
+          "id": "f01",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f02",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f03",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f04",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f05",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f06",
+          "retrieved_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "f07",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "54e6b916491a7e00a36a25b1f2766a5b085b96fed578fd1c9ea4c6f8722745a67c14e32dbf230a3afad95b8f6f73ae794573061fe828ad47f01951c4ed5e51ed",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f08",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073"
+          ],
+          "reference_ids": [
+            "92085c32222f452e4ebd4087f394b1342043c92da11bed5adfe5eff227bd0e662b9d1670122031b62e63e513605477d6a45944daa17d80f3e3115156739fb3d1",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "ffc291b58a378a3e10a484c8f219fb745933e2dccb9bbf45569ae840b7959fabd0b5a6441fd4908d073e19fe574039987827011d24957a0bbb59b64bc1eae4ae"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.25,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "f09",
+          "retrieved_ids": [
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679"
+          ],
+          "reference_ids": [
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b",
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.2,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f10",
+          "retrieved_ids": [
+            "1e3d4e5ca89a653b0b913d0b36844a10817b9b8724b547f96ee8144c6da48c430317134de7a14032c45d4c36947db8e81f34bdb87e3af8569886cf8728d26819",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6"
+          ],
+          "reference_ids": [
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "1e3d4e5ca89a653b0b913d0b36844a10817b9b8724b547f96ee8144c6da48c430317134de7a14032c45d4c36947db8e81f34bdb87e3af8569886cf8728d26819"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e01",
+          "retrieved_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "cdfbb07f503eec9bc7965ce2be012679f35249e7595120af519410e70d2b95d62a564c20c5c4473699a65711001c7f47c7fec91ad8b6f296f733d97b112e6921",
+            "ffc291b58a378a3e10a484c8f219fb745933e2dccb9bbf45569ae840b7959fabd0b5a6441fd4908d073e19fe574039987827011d24957a0bbb59b64bc1eae4ae"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e02",
+          "retrieved_ids": [
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b"
+          ],
+          "reference_ids": [
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "fce79eef71ffe119b72a3c38fe7f8d247b83dbb0e57975c8e78e972434e7dd053a6fdaf548add0e469e71967c36e2f78855acc12780c4049f6629deda42cd319"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e03",
+          "retrieved_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e04",
+          "retrieved_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd",
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b"
+          ],
+          "reference_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e05",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.25,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e06",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679"
+          ],
+          "reference_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r01",
+          "retrieved_ids": [
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679"
+          ],
+          "reference_ids": [
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b",
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.2,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r02",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "54e6b916491a7e00a36a25b1f2766a5b085b96fed578fd1c9ea4c6f8722745a67c14e32dbf230a3afad95b8f6f73ae794573061fe828ad47f01951c4ed5e51ed",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "r03",
+          "retrieved_ids": [
+            "f67d2771cab657a0b3267599086ec891073c95b327df613a1018c0f55a257be2b3b9db90255d1457e862a9f557f73147e6d1fb38b9aaf59e6d6888d37165f792",
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b"
+          ],
+          "reference_ids": [
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "r04",
+          "retrieved_ids": [
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "reference_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r05",
+          "retrieved_ids": [
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b"
+          ],
+          "reference_ids": [
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "fce79eef71ffe119b72a3c38fe7f8d247b83dbb0e57975c8e78e972434e7dd053a6fdaf548add0e469e71967c36e2f78855acc12780c4049f6629deda42cd319"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r06",
+          "retrieved_ids": [
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r07",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6"
+          ],
+          "reference_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r08",
+          "retrieved_ids": [
+            "a5377c057f0791bd9a8a74f22203ba61b3982c98192bcf952f530ae1a7c5fa492d5f4f68de6ed64195300ceeac42a0735ab949b97ff44c650740eec68e6a44c7",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r09",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "reference_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r10",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        }
+      ]
+    },
+    {
+      "graph": "clean",
+      "retriever": "gat",
+      "questions": 26,
+      "indexed_units": 36,
+      "questions_with_reference": 26,
+      "context_precision": {
+        "mean": 0.28846153846153844,
+        "n": 26
+      },
+      "context_recall": {
+        "mean": 0.23525641025641025,
+        "n": 26
+      },
+      "correct": 10,
+      "rows": [
+        {
+          "id": "f01",
+          "retrieved_ids": [
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f02",
+          "retrieved_ids": [
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f03",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f04",
+          "retrieved_ids": [
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f05",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6"
+          ],
+          "reference_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f06",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6"
+          ],
+          "reference_ids": [
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f07",
+          "retrieved_ids": [
+            "92085c32222f452e4ebd4087f394b1342043c92da11bed5adfe5eff227bd0e662b9d1670122031b62e63e513605477d6a45944daa17d80f3e3115156739fb3d1",
+            "f67d2771cab657a0b3267599086ec891073c95b327df613a1018c0f55a257be2b3b9db90255d1457e862a9f557f73147e6d1fb38b9aaf59e6d6888d37165f792"
+          ],
+          "reference_ids": [
+            "54e6b916491a7e00a36a25b1f2766a5b085b96fed578fd1c9ea4c6f8722745a67c14e32dbf230a3afad95b8f6f73ae794573061fe828ad47f01951c4ed5e51ed",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f08",
+          "retrieved_ids": [
+            "b0e43fabddb28fb33af8f467891d8692497b793f50851b555f41415e5e52381808479db9d9674b50e703f66f9d313b9806bdcccda665cc65e335969f7e76568d",
+            "c2a4b0154a5f568eae9578c072ea32098bfe44605b4abd0ba271cbef169ef83839cd9469059c4a204576130321d3f22e6644df2fa976eb0af5d72af58b015164"
+          ],
+          "reference_ids": [
+            "92085c32222f452e4ebd4087f394b1342043c92da11bed5adfe5eff227bd0e662b9d1670122031b62e63e513605477d6a45944daa17d80f3e3115156739fb3d1",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "ffc291b58a378a3e10a484c8f219fb745933e2dccb9bbf45569ae840b7959fabd0b5a6441fd4908d073e19fe574039987827011d24957a0bbb59b64bc1eae4ae"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f09",
+          "retrieved_ids": [
+            "fce79eef71ffe119b72a3c38fe7f8d247b83dbb0e57975c8e78e972434e7dd053a6fdaf548add0e469e71967c36e2f78855acc12780c4049f6629deda42cd319",
+            "ebd0b6526cff950a2b232e4171676dd5550a6ecec60a806453b8fdbbaf39c07dde26416621210a9b295fd6a4bab8b6262ffae00883c6f33333c0fd8a6c6c54cb"
+          ],
+          "reference_ids": [
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b",
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f10",
+          "retrieved_ids": [
+            "1e3d4e5ca89a653b0b913d0b36844a10817b9b8724b547f96ee8144c6da48c430317134de7a14032c45d4c36947db8e81f34bdb87e3af8569886cf8728d26819"
+          ],
+          "reference_ids": [
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "1e3d4e5ca89a653b0b913d0b36844a10817b9b8724b547f96ee8144c6da48c430317134de7a14032c45d4c36947db8e81f34bdb87e3af8569886cf8728d26819"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e01",
+          "retrieved_ids": [
+            "cdfbb07f503eec9bc7965ce2be012679f35249e7595120af519410e70d2b95d62a564c20c5c4473699a65711001c7f47c7fec91ad8b6f296f733d97b112e6921",
+            "a5377c057f0791bd9a8a74f22203ba61b3982c98192bcf952f530ae1a7c5fa492d5f4f68de6ed64195300ceeac42a0735ab949b97ff44c650740eec68e6a44c7"
+          ],
+          "reference_ids": [
+            "cdfbb07f503eec9bc7965ce2be012679f35249e7595120af519410e70d2b95d62a564c20c5c4473699a65711001c7f47c7fec91ad8b6f296f733d97b112e6921",
+            "ffc291b58a378a3e10a484c8f219fb745933e2dccb9bbf45569ae840b7959fabd0b5a6441fd4908d073e19fe574039987827011d24957a0bbb59b64bc1eae4ae"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e02",
+          "retrieved_ids": [
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203"
+          ],
+          "reference_ids": [
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "fce79eef71ffe119b72a3c38fe7f8d247b83dbb0e57975c8e78e972434e7dd053a6fdaf548add0e469e71967c36e2f78855acc12780c4049f6629deda42cd319"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e03",
+          "retrieved_ids": [
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e04",
+          "retrieved_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "reference_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 1.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e05",
+          "retrieved_ids": [
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.25,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e06",
+          "retrieved_ids": [
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r01",
+          "retrieved_ids": [
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "ebd0b6526cff950a2b232e4171676dd5550a6ecec60a806453b8fdbbaf39c07dde26416621210a9b295fd6a4bab8b6262ffae00883c6f33333c0fd8a6c6c54cb"
+          ],
+          "reference_ids": [
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b",
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.2,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r02",
+          "retrieved_ids": [
+            "32c3a9ccd8f52c5e4e742a980df1e8b2509c3aedce1c15f3479b3808ef948fba04482f821186bc561d4bb2afcc4b3fbbf995a363b77a0f98ded3103ff5848a7b",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "54e6b916491a7e00a36a25b1f2766a5b085b96fed578fd1c9ea4c6f8722745a67c14e32dbf230a3afad95b8f6f73ae794573061fe828ad47f01951c4ed5e51ed",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r03",
+          "retrieved_ids": [
+            "91cb14089b406578263bd837e2d3c0e40bc1f4de9207b4c006fc7f6669c5fd5a14156bdf0e4aa8056d838e0608712af55e78f62c0f029d569d27cdc7d0f83219",
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16"
+          ],
+          "reference_ids": [
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r04",
+          "retrieved_ids": [
+            "f67d2771cab657a0b3267599086ec891073c95b327df613a1018c0f55a257be2b3b9db90255d1457e862a9f557f73147e6d1fb38b9aaf59e6d6888d37165f792",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6"
+          ],
+          "reference_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r05",
+          "retrieved_ids": [
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b"
+          ],
+          "reference_ids": [
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "fce79eef71ffe119b72a3c38fe7f8d247b83dbb0e57975c8e78e972434e7dd053a6fdaf548add0e469e71967c36e2f78855acc12780c4049f6629deda42cd319"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r06",
+          "retrieved_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r07",
+          "retrieved_ids": [
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r08",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r09",
+          "retrieved_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191"
+          ],
+          "reference_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r10",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        }
+      ]
+    },
+    {
+      "graph": "clean",
+      "retriever": "sage",
+      "questions": 26,
+      "indexed_units": 36,
+      "questions_with_reference": 26,
+      "context_precision": {
+        "mean": 0.1346153846153846,
+        "n": 26
+      },
+      "context_recall": {
+        "mean": 0.14423076923076922,
+        "n": 26
+      },
+      "correct": 8,
+      "rows": [
+        {
+          "id": "f01",
+          "retrieved_ids": [
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f02",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f03",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f04",
+          "retrieved_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f05",
+          "retrieved_ids": [
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f06",
+          "retrieved_ids": [
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f07",
+          "retrieved_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6"
+          ],
+          "reference_ids": [
+            "54e6b916491a7e00a36a25b1f2766a5b085b96fed578fd1c9ea4c6f8722745a67c14e32dbf230a3afad95b8f6f73ae794573061fe828ad47f01951c4ed5e51ed",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f08",
+          "retrieved_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679",
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6"
+          ],
+          "reference_ids": [
+            "92085c32222f452e4ebd4087f394b1342043c92da11bed5adfe5eff227bd0e662b9d1670122031b62e63e513605477d6a45944daa17d80f3e3115156739fb3d1",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "ffc291b58a378a3e10a484c8f219fb745933e2dccb9bbf45569ae840b7959fabd0b5a6441fd4908d073e19fe574039987827011d24957a0bbb59b64bc1eae4ae"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "f09",
+          "retrieved_ids": [
+            "a2d978042a1df83e8e0908588bf3a5263b25e5d53c4fc24846df18455be08f13ac1f0ef3f8c75a762f7a03592c741f319bc98b6839fafa8b7214a0a3b28c3070",
+            "ebd0b6526cff950a2b232e4171676dd5550a6ecec60a806453b8fdbbaf39c07dde26416621210a9b295fd6a4bab8b6262ffae00883c6f33333c0fd8a6c6c54cb"
+          ],
+          "reference_ids": [
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b",
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f10",
+          "retrieved_ids": [
+            "1e3d4e5ca89a653b0b913d0b36844a10817b9b8724b547f96ee8144c6da48c430317134de7a14032c45d4c36947db8e81f34bdb87e3af8569886cf8728d26819",
+            "c2a4b0154a5f568eae9578c072ea32098bfe44605b4abd0ba271cbef169ef83839cd9469059c4a204576130321d3f22e6644df2fa976eb0af5d72af58b015164"
+          ],
+          "reference_ids": [
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "1e3d4e5ca89a653b0b913d0b36844a10817b9b8724b547f96ee8144c6da48c430317134de7a14032c45d4c36947db8e81f34bdb87e3af8569886cf8728d26819"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e01",
+          "retrieved_ids": [
+            "cdfbb07f503eec9bc7965ce2be012679f35249e7595120af519410e70d2b95d62a564c20c5c4473699a65711001c7f47c7fec91ad8b6f296f733d97b112e6921",
+            "b0e43fabddb28fb33af8f467891d8692497b793f50851b555f41415e5e52381808479db9d9674b50e703f66f9d313b9806bdcccda665cc65e335969f7e76568d"
+          ],
+          "reference_ids": [
+            "cdfbb07f503eec9bc7965ce2be012679f35249e7595120af519410e70d2b95d62a564c20c5c4473699a65711001c7f47c7fec91ad8b6f296f733d97b112e6921",
+            "ffc291b58a378a3e10a484c8f219fb745933e2dccb9bbf45569ae840b7959fabd0b5a6441fd4908d073e19fe574039987827011d24957a0bbb59b64bc1eae4ae"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e02",
+          "retrieved_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203"
+          ],
+          "reference_ids": [
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "fce79eef71ffe119b72a3c38fe7f8d247b83dbb0e57975c8e78e972434e7dd053a6fdaf548add0e469e71967c36e2f78855acc12780c4049f6629deda42cd319"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e03",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "9099798dbe733cd9cf3b54eac5be6921c8df8ecaaceb9677fd0dea15bb3fa3e77eb5606ad173bf7639f43f4806cdc628b88494258d70629747ebeded77562b8c"
+          ],
+          "reference_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e04",
+          "retrieved_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "reference_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 1.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e05",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e06",
+          "retrieved_ids": [
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "reference_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r01",
+          "retrieved_ids": [
+            "54e6b916491a7e00a36a25b1f2766a5b085b96fed578fd1c9ea4c6f8722745a67c14e32dbf230a3afad95b8f6f73ae794573061fe828ad47f01951c4ed5e51ed",
+            "ebd0b6526cff950a2b232e4171676dd5550a6ecec60a806453b8fdbbaf39c07dde26416621210a9b295fd6a4bab8b6262ffae00883c6f33333c0fd8a6c6c54cb"
+          ],
+          "reference_ids": [
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b",
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r02",
+          "retrieved_ids": [
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "54e6b916491a7e00a36a25b1f2766a5b085b96fed578fd1c9ea4c6f8722745a67c14e32dbf230a3afad95b8f6f73ae794573061fe828ad47f01951c4ed5e51ed",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r03",
+          "retrieved_ids": [
+            "1e3d4e5ca89a653b0b913d0b36844a10817b9b8724b547f96ee8144c6da48c430317134de7a14032c45d4c36947db8e81f34bdb87e3af8569886cf8728d26819",
+            "91cb14089b406578263bd837e2d3c0e40bc1f4de9207b4c006fc7f6669c5fd5a14156bdf0e4aa8056d838e0608712af55e78f62c0f029d569d27cdc7d0f83219"
+          ],
+          "reference_ids": [
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r04",
+          "retrieved_ids": [
+            "cdfbb07f503eec9bc7965ce2be012679f35249e7595120af519410e70d2b95d62a564c20c5c4473699a65711001c7f47c7fec91ad8b6f296f733d97b112e6921",
+            "d3880dbab3489a5483c28686dd48733a881425b8bc35bf83ef2c79840bdf3317630213b4c5eca89e36a4e851977ac49bf84e20ac9a7ce0c9b51331b80a75f024"
+          ],
+          "reference_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r05",
+          "retrieved_ids": [
+            "91cb14089b406578263bd837e2d3c0e40bc1f4de9207b4c006fc7f6669c5fd5a14156bdf0e4aa8056d838e0608712af55e78f62c0f029d569d27cdc7d0f83219",
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16"
+          ],
+          "reference_ids": [
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "fce79eef71ffe119b72a3c38fe7f8d247b83dbb0e57975c8e78e972434e7dd053a6fdaf548add0e469e71967c36e2f78855acc12780c4049f6629deda42cd319"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r06",
+          "retrieved_ids": [
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.25,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r07",
+          "retrieved_ids": [
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r08",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r09",
+          "retrieved_ids": [
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "reference_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r10",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "53ccf0b464847f10844ed52a85262759f79b57816a01be41e0f820c37cb9bb51335213cd7fdf1855855752c99d096f8efeb33a947c91098c226bc66b2df6f7d6"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        }
+      ]
+    },
+    {
+      "graph": "clean",
+      "retriever": "hybrid",
+      "questions": 26,
+      "indexed_units": 36,
+      "questions_with_reference": 26,
+      "context_precision": {
+        "mean": 0.36538461538461536,
+        "n": 26
+      },
+      "context_recall": {
+        "mean": 0.43205128205128207,
+        "n": 26
+      },
+      "correct": 17,
+      "rows": [
+        {
+          "id": "f01",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f02",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "b0e43fabddb28fb33af8f467891d8692497b793f50851b555f41415e5e52381808479db9d9674b50e703f66f9d313b9806bdcccda665cc65e335969f7e76568d"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f03",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f04",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f05",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f06",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679"
+          ],
+          "reference_ids": [
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f07",
+          "retrieved_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "54e6b916491a7e00a36a25b1f2766a5b085b96fed578fd1c9ea4c6f8722745a67c14e32dbf230a3afad95b8f6f73ae794573061fe828ad47f01951c4ed5e51ed",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f08",
+          "retrieved_ids": [
+            "a5377c057f0791bd9a8a74f22203ba61b3982c98192bcf952f530ae1a7c5fa492d5f4f68de6ed64195300ceeac42a0735ab949b97ff44c650740eec68e6a44c7",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "92085c32222f452e4ebd4087f394b1342043c92da11bed5adfe5eff227bd0e662b9d1670122031b62e63e513605477d6a45944daa17d80f3e3115156739fb3d1",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "ffc291b58a378a3e10a484c8f219fb745933e2dccb9bbf45569ae840b7959fabd0b5a6441fd4908d073e19fe574039987827011d24957a0bbb59b64bc1eae4ae"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "f09",
+          "retrieved_ids": [
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679"
+          ],
+          "reference_ids": [
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b",
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.2,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "f10",
+          "retrieved_ids": [
+            "1e3d4e5ca89a653b0b913d0b36844a10817b9b8724b547f96ee8144c6da48c430317134de7a14032c45d4c36947db8e81f34bdb87e3af8569886cf8728d26819",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203"
+          ],
+          "reference_ids": [
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "1e3d4e5ca89a653b0b913d0b36844a10817b9b8724b547f96ee8144c6da48c430317134de7a14032c45d4c36947db8e81f34bdb87e3af8569886cf8728d26819"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e01",
+          "retrieved_ids": [
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318",
+            "b0e43fabddb28fb33af8f467891d8692497b793f50851b555f41415e5e52381808479db9d9674b50e703f66f9d313b9806bdcccda665cc65e335969f7e76568d"
+          ],
+          "reference_ids": [
+            "cdfbb07f503eec9bc7965ce2be012679f35249e7595120af519410e70d2b95d62a564c20c5c4473699a65711001c7f47c7fec91ad8b6f296f733d97b112e6921",
+            "ffc291b58a378a3e10a484c8f219fb745933e2dccb9bbf45569ae840b7959fabd0b5a6441fd4908d073e19fe574039987827011d24957a0bbb59b64bc1eae4ae"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e02",
+          "retrieved_ids": [
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b"
+          ],
+          "reference_ids": [
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "fce79eef71ffe119b72a3c38fe7f8d247b83dbb0e57975c8e78e972434e7dd053a6fdaf548add0e469e71967c36e2f78855acc12780c4049f6629deda42cd319"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e03",
+          "retrieved_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "e04",
+          "retrieved_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd",
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b"
+          ],
+          "reference_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "e05",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "e06",
+          "retrieved_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f",
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "reference_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r01",
+          "retrieved_ids": [
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "7b51c370f92835d35da0deecb1abcaa7a87216162e0b30e30b2d3b5a43ec80537a449f0b84fee4ee7155149a769e5a28bb9ef033cd70fdd87877b4128b2b2679"
+          ],
+          "reference_ids": [
+            "4b375f676b2258b3655c71c638a16b77a9347e1c3644bf8062fe16d0dfda18ae250b6dea1d20bc627d27f3656b9dfece3257d61fc4ab5357e8acc4279150879b",
+            "949a91286c86e4f04115865e32b252025e6d2674ca28dc5d76d1c78ac3d23b96bc8180c465914facccbb48e4e9f30310a145c4e826b23280f0235965afc10b16",
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "2abb3698bbd10ee363ceb2caa3448bd99c7dd95f0c84bf0812805f2dabb240b2dc5cef5585785a30dfdda8abf384570f809fbff7cb1666a686fab8c833e7b203",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.2,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r02",
+          "retrieved_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "54e6b916491a7e00a36a25b1f2766a5b085b96fed578fd1c9ea4c6f8722745a67c14e32dbf230a3afad95b8f6f73ae794573061fe828ad47f01951c4ed5e51ed",
+            "5a301352a0c103b6bc63d6bc2610e5a157c71d3779411328ba584e79c1e4e9651bdc0e95b798e62c0c7437c222238b1d30d639ede40d66d2730d7a9aba0a0073",
+            "9d6f318b4f2c4a534f7ee9837d50334156f8a12203fea1d92b5cd9f4accf745f4235d9e520ea92271bcedfedd8157866942c0cdb654f964411c404c4ed3944eb",
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "wrong"
+        },
+        {
+          "id": "r03",
+          "retrieved_ids": [
+            "f67d2771cab657a0b3267599086ec891073c95b327df613a1018c0f55a257be2b3b9db90255d1457e862a9f557f73147e6d1fb38b9aaf59e6d6888d37165f792",
+            "cdfbb07f503eec9bc7965ce2be012679f35249e7595120af519410e70d2b95d62a564c20c5c4473699a65711001c7f47c7fec91ad8b6f296f733d97b112e6921"
+          ],
+          "reference_ids": [
+            "3a711969ac9672624b33c8d207daaad1f6de662f2b9b717fff47cd072be9d4c6dbff2e6159c2f4ebffea0c992b34d54036fa33d709edcdafb23be6e2abb7f6d6",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f"
+          ],
+          "context_precision": 0.0,
+          "context_recall": 0.0,
+          "answer_verdict": "partial"
+        },
+        {
+          "id": "r04",
+          "retrieved_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd",
+            "c2a4b0154a5f568eae9578c072ea32098bfe44605b4abd0ba271cbef169ef83839cd9469059c4a204576130321d3f22e6644df2fa976eb0af5d72af58b015164"
+          ],
+          "reference_ids": [
+            "6a60fbba2ee4485cade3ddd7f4bb7ecfb74b3749f1fc52a00ae519d87af27fcdf905eac990762053edad06b72d115e0978e80590167c3b66ca274917d6ff10fd"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r05",
+          "retrieved_ids": [
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "cdfbb07f503eec9bc7965ce2be012679f35249e7595120af519410e70d2b95d62a564c20c5c4473699a65711001c7f47c7fec91ad8b6f296f733d97b112e6921"
+          ],
+          "reference_ids": [
+            "b10f334b9681bcdb5720840d595c08dacf035ad2a94221dd16670906485f6da3c947e2100b190c8167bb23c552be70a5ae7de93ff67852279d64de08b861e5b9",
+            "bc01375bea77d98ecb88a39e65e73af8a57d35e29afd9d31da3d8c39864639f0839c7e57c840e20f0fa0b2e0058259be2aeb446533854fdefeb2aaa15149a45f",
+            "fce79eef71ffe119b72a3c38fe7f8d247b83dbb0e57975c8e78e972434e7dd053a6fdaf548add0e469e71967c36e2f78855acc12780c4049f6629deda42cd319"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r06",
+          "retrieved_ids": [
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 1.0,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r07",
+          "retrieved_ids": [
+            "36ed8e589d210af877e5ce15a1482f783bda45a3d072d5a586886feefdc7ac876d606652c2563bad7dbd7e2a488e67ee0403afd1178e9cb4f0bc1cddc9530191",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "reference_ids": [
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r08",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685"
+          ],
+          "reference_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.5,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r09",
+          "retrieved_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c",
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a"
+          ],
+          "reference_ids": [
+            "8b465316fe007fc7aa4734b15402d42a96f146b5dd104306bd664271d360532cffb15fd0ccf9156693a926984a2f25119b8c975639efe17a020f3bf31416e78c"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 1.0,
+          "answer_verdict": "correct"
+        },
+        {
+          "id": "r10",
+          "retrieved_ids": [
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "033070f82da3606c647c5d3d837ecd207f0ecbbe2cce9a8f4a3ce0a268870091f216dbfe901729424e0b45bac83b01a4c6ec8f7b4f741e0424411a9a769cd318"
+          ],
+          "reference_ids": [
+            "202ce9b6d1edcc72b7e1796510e0abe09be194075680ee3afca59c5578eb105c4dbad907a4fc321f16cdc9d3ab98baf96abe592e2816bd6c3aa9629e4de8248a",
+            "8082948de9f6decbc300534405542361205c3048cb02a5b7080d95d9577b40678574326d932ae6a2dadf4d007554ee8ce6ac8695d4191fe49134da4dab774685",
+            "044c02b7af8e890f9943ee15474166c48443e8d12f0b851682a439085e93d89ab03a6df6fda897d9ef318c2ada4ef0ef08857ceb604665455f668c0132a2a48f"
+          ],
+          "context_precision": 0.5,
+          "context_recall": 0.3333333333333333,
+          "answer_verdict": "partial"
+        }
+      ]
+    }
+  ]
+}

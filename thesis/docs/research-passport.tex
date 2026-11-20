@@ -1,0 +1,50 @@
+\documentclass[a4paper,14pt,oneside]{extarticle}
+\usepackage[left=30mm,right=15mm,top=20mm,bottom=20mm]{geometry}
+\usepackage{fontspec}
+\usepackage[english]{babel}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{indentfirst}
+
+\IfFontExistsTF{Times New Roman}
+  {\setmainfont{Times New Roman}}
+  {\setmainfont[BoldFont=texgyretermes-bold.otf,
+    ItalicFont=texgyretermes-italic.otf,
+    BoldItalicFont=texgyretermes-bolditalic.otf]{texgyretermes-regular.otf}}
+\onehalfspacing
+\setlength{\parindent}{12.5mm}
+\setlength{\parskip}{0pt}
+
+\titleformat{\section}[block]{\centering\fontsize{16bp}{19bp}\selectfont\bfseries}{}{0pt}{}
+\titlespacing*{\section}{0pt}{0pt}{\baselineskip}
+
+\begin{document}
+\fontsize{14bp}{17bp}\selectfont
+\thispagestyle{empty}
+\section*{Research Project Passport}
+
+\textbf{Topic.} Comparison of graph neural networks for missing-link prediction in scholarly citation graphs.
+
+\textbf{Motivation.} Missing citation links limit the discovery of related research.
+  A link prediction model could suggest candidate references for manual review.
+
+\textbf{Object of study.} A directed citation graph whose vertices are scholarly articles and
+  whose edges are citations.
+
+\textbf{Subject of study.} The effect of neighborhood aggregation on missing-link prediction quality.
+
+\textbf{Objective.} Determine whether GraphSAGE improves citation ranking over a degree-based
+  heuristic and a matrix factorization baseline.
+
+\textbf{Tasks.} Build a synthetic citation graph, prepare a chronological split, train the models,
+  and compare their accuracy and runtime.
+
+\textbf{Method.} Train on citations observed before a cutoff and rank later citations
+  among candidate articles available at prediction time. Measure mean reciprocal rank and Hits@10.
+
+\textbf{Expected result.} A reproducible evaluation protocol, a prototype, and a comparison of the methods.
+
+\textbf{Practical application.} Prioritize candidate links in scholarly search and discovery tools.
+
+\textbf{Status.} Illustrative research proposal using synthetic data.
+\end{document}

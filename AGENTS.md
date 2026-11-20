@@ -22,7 +22,7 @@ Course names below are English translations of the titles in the
 ├── 1-algorithms/ — Algorithms and Data Structures
 │   ├── homework/ — Homework notebooks
 │   └── lectures/ — Lecture materials
-├── thesis/ — Thesis materials
+├── diploma/ — Thesis materials
 │   └── docs/ — Research project passport and formatting reference
 └── 1-graph/ — Graph Theory and Graph Neural Networks
     ├── lab-1/ — Knowledge graph construction

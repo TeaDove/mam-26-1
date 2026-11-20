@@ -1,6 +1,6 @@
 # Паспорт НИР
 
-Из каталога `thesis` установите зависимости командой `make install-macos` или `make install-ubuntu`,
+Из каталога `diploma` установите зависимости командой `make install-macos` или `make install-ubuntu`,
 затем запустите `make docs`. Готовые файлы появятся в `docs/research-passport.pdf` и
 `docs/research-passport.docx`. Команда `make pdf` собирает только PDF.
 

@@ -34,7 +34,8 @@ The input layout is:
 Measurements are stored in .local/measurements.json.
 The chessboard has 8 by 8 squares with a measured cell side of 22 mm.
 The corridor optical-centre height is 0.60 m and the measured target distance is 1.50 m.
-The outdoor rendering uses its own camera pose and a documented height scale.
+The outdoor rendering uses its own camera pose and an estimated optical-centre height of 1.60 m.
+This height is an approximate estimate from the capture conditions.
 
 ## Execution
 
@@ -46,7 +47,7 @@ Use the prepared Python 3.14 interpreter and pinned requirements from this direc
     export MPLBACKEND=Agg
     .local/python main.py normalize
     .local/python main.py calibrate
-    .local/python main.py project --height 1.50 --horizon-row 500
+    .local/python main.py project --height 1.60 --horizon-row 500 --height-source "estimated capture height"
     .local/python main.py features
     .local/python main.py ground
 

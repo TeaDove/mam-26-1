@@ -1,8 +1,8 @@
 {
   "duration_seconds": 8.682144444444445,
   "output_fps": 15,
-  "camera_height_m": 1.5,
-  "height_source": "assumed scene scale",
+  "camera_height_m": 1.6,
+  "height_source": "estimated capture height",
   "horizon_row_px": 500.0,
   "pitch_degrees": 6.3412097925454285,
   "ground_line_x_m": [

@@ -22,6 +22,12 @@ Course names below are English translations of the titles in the
 ├── 1-algorithms/ — Algorithms and Data Structures
 │   ├── homework/ — Homework notebooks
 │   └── lectures/ — Lecture materials
+├── 1-computer-vision/ — Computer Vision
+│   ├── tests/ — Geometry regression checks
+│   ├── lab-1/ — Phone camera calibration
+│   ├── lab-2/ — Ground-plane projection and quaternion rotation
+│   ├── lab-3/ — Panorama and keypoint matching
+│   └── lab-4/ — Ground ruler and vanishing point
 ├── diploma/ — Thesis materials
 │   └── docs/ — Research project passport and formatting reference
 └── 1-graph/ — Graph Theory and Graph Neural Networks

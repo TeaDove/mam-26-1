@@ -1,0 +1,57 @@
+{
+  "still": {
+    "sampled_frames": 90,
+    "valid_frames": 90,
+    "camera_height_m": 0.6,
+    "median_pitch_deg": 7.423104927998892,
+    "std_pitch_deg": 4.192834366342551,
+    "median_rotation_deg": 7.098461839601018,
+    "std_rotation_deg": 2.5122134815463157,
+    "median_filtered_pitch_deg": 7.338673494730633,
+    "std_filtered_pitch_deg": 0.91091344105291,
+    "median_filtered_rotation_deg": 7.09236468833108,
+    "std_filtered_rotation_deg": 0.7346976484050901,
+    "median_distance_m": 1.589564488826408,
+    "target_pixel": [
+      370.1052806069319,
+      879.4059213344619
+    ],
+    "tape_distance_m": 1.5,
+    "signed_error_m": 0.089564488826408,
+    "absolute_error_m": 0.089564488826408
+  },
+  "move": {
+    "sampled_frames": 141,
+    "valid_frames": 141,
+    "camera_height_m": 0.6,
+    "median_pitch_deg": 12.221382634818648,
+    "std_pitch_deg": 5.11579262216555,
+    "median_rotation_deg": 10.446436205338504,
+    "std_rotation_deg": 3.2049556464559372,
+    "median_filtered_pitch_deg": 11.896308441492861,
+    "std_filtered_pitch_deg": 3.200421148446399,
+    "median_filtered_rotation_deg": 9.321783580260355,
+    "std_filtered_rotation_deg": 1.6863361035357654
+  },
+  "reference": {
+    "sampled_frames": 100,
+    "valid_frames": 100,
+    "camera_height_m": 2.137275152226904,
+    "median_pitch_deg": 7.49374387478854,
+    "std_pitch_deg": 3.938210316777089,
+    "median_rotation_deg": -0.11907251369910776,
+    "std_rotation_deg": 4.071778633119142,
+    "median_filtered_pitch_deg": 7.542007762535904,
+    "std_filtered_pitch_deg": 2.5466041857433948,
+    "median_filtered_rotation_deg": -0.11635103869130549,
+    "std_filtered_rotation_deg": 0.29969890026707746,
+    "calibrated_pitch_deg": 5.6721593143368185,
+    "calibrated_rotation_deg": -1.0165490396384152e-05,
+    "pitch_error_deg": 1.8215845604517211,
+    "rotation_error_deg": -0.11906234820871138
+  },
+  "sampling_hz": 10,
+  "line_count_limit": 15,
+  "line_inlier_distance_px": 15,
+  "median_window": 15
+}

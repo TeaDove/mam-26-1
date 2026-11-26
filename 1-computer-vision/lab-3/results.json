@@ -1,0 +1,123 @@
+{
+  "panorama": {
+    "gftt": {
+      "focal_ratio": 1.1347040793776813,
+      "keypoints": [
+        1349,
+        1217,
+        1295,
+        1182
+      ],
+      "pairs": [
+        {
+          "first": 0,
+          "second": 1,
+          "matches": 349,
+          "inliers": 169
+        },
+        {
+          "first": 1,
+          "second": 2,
+          "matches": 372,
+          "inliers": 160
+        },
+        {
+          "first": 2,
+          "second": 3,
+          "matches": 267,
+          "inliers": 134
+        }
+      ]
+    },
+    "harris": {
+      "focal_ratio": 1.1347040793776813,
+      "keypoints": [
+        156,
+        321,
+        508,
+        498
+      ],
+      "pairs": [
+        {
+          "first": 0,
+          "second": 1,
+          "matches": 69,
+          "inliers": 34
+        },
+        {
+          "first": 1,
+          "second": 2,
+          "matches": 169,
+          "inliers": 82
+        },
+        {
+          "first": 2,
+          "second": 3,
+          "matches": 101,
+          "inliers": 37
+        }
+      ]
+    },
+    "orb": {
+      "focal_ratio": 1.1347040793776813,
+      "keypoints": [
+        3000,
+        3000,
+        3000,
+        3000
+      ],
+      "pairs": [
+        {
+          "first": 0,
+          "second": 1,
+          "matches": 327,
+          "inliers": 183
+        },
+        {
+          "first": 1,
+          "second": 2,
+          "matches": 591,
+          "inliers": 218
+        },
+        {
+          "first": 2,
+          "second": 3,
+          "matches": 175,
+          "inliers": 52
+        }
+      ]
+    }
+  },
+  "matching": {
+    "sample_fps": 15,
+    "frame_size": [
+      640,
+      1136
+    ],
+    "pairs": 135,
+    "device": "cpu",
+    "superpoint_threshold": 0.015,
+    "superpoint_match_distance": 0.7,
+    "sift_features": 2000,
+    "sift_matcher": "mutual nearest-neighbour L2",
+    "ransac_threshold_px": 3.0,
+    "summary": {
+      "SuperPoint": {
+        "points1": 901.2074074074075,
+        "points2": 942.3555555555556,
+        "matches": 305.85185185185185,
+        "inliers": 44.97037037037037,
+        "inlier_ratio": 0.1470976835089866,
+        "processing_ms": 3216.4160781022574
+      },
+      "SIFT": {
+        "points1": 2000.3333333333333,
+        "points2": 2000.3555555555556,
+        "matches": 506.3703703703704,
+        "inliers": 128.9037037037037,
+        "inlier_ratio": 0.25417494637388466,
+        "processing_ms": 391.9259746524471
+      }
+    }
+  }
+}
